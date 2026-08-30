@@ -1,14 +1,29 @@
-# ⚡ QuickSnipe — Official Public Support & Documentation Hub
+<div align="center">
+
+<img src="assets/icon.png" alt="QuickSnipe Logo" width="80" height="80" />
+
+# ⚡ QuickSnipe
+
+### Pure-Margin AI Listing Studio, Competitor Sniper & Profit Calculator for Google Chrome
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.2.0-blue.svg?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](https://github.com/RadTome/quicksnipe-support#--bring-your-own-key-byok-ai-setup-guide)
+[![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
 [![GitHub Issues](https://img.shields.io/github/issues/RadTome/quicksnipe-support)](https://github.com/RadTome/quicksnipe-support/issues)
 [![License](https://img.shields.io/badge/License-Commercial-blue.svg)](SUPPORT.md)
 
-Welcome to the official public documentation, issue tracker, and support repository for **QuickSnipe** — the pure-margin AI Listing Studio, Competitor Search Sniper, Multi-Platform Profit Calculator, and SEO Optimizer for Google Chrome.
+<p align="center">
+  <a href="https://chrome.google.com/webstore"><b>🛒 Chrome Web Store</b></a> •
+  <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
+  <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
+  <a href="FAQ.md"><b>❓ FAQs</b></a> •
+  <a href="SUPPORT.md"><b>🆘 Support Policy</b></a> •
+  <a href="https://github.com/RadTome/quicksnipe-support/issues/new/choose"><b>🐛 Open Issue</b></a>
+</p>
 
 ---
+
+</div>
 
 ## ⚡ Quick Navigation
 
