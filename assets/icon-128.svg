@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <!-- Sunset Royal Brand Gradient -->
+    <linearGradient id="qsRing" x1="16" y1="16" x2="114" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="38%" stop-color="#7C3AED"/>
+      <stop offset="75%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+    <linearGradient id="qsSpark" x1="45" y1="36" x2="85" y2="96" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <linearGradient id="qsLoop" x1="56" y1="8" x2="92" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818CF8"/>
+      <stop offset="100%" stop-color="#FB7185"/>
+    </linearGradient>
+    <filter id="qsGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#4F46E5" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Tag Ring Loop -->
+  <ellipse cx="76" cy="18" rx="10" ry="14" transform="rotate(22 76 18)" stroke="url(#qsLoop)" stroke-width="5" fill="none"/>
+
+  <!-- Q Body -->
+  <g filter="url(#qsGlow)">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="
+      M 64 22
+      C 36.39 22 14 44.39 14 72
+      C 14 99.61 36.39 122 64 122
+      C 76.2 122 87.3 117.6 95.8 110.3
+      L 104.2 118.7
+      C 107.8 122.3 114 119.8 114 114.6
+      L 114 103.5
+      C 114 102.1 113.4 100.8 112.4 99.8
+      L 103.6 91
+      C 108.9 85.5 112 79.1 112 72
+      C 112 44.39 89.61 22 64 22
+      Z
+      M 64 46
+      C 78.36 46 90 57.64 90 72
+      C 90 86.36 78.36 98 64 98
+      C 49.64 98 38 86.36 38 72
+      C 38 57.64 49.64 46 64 46
+      Z
+    " fill="url(#qsRing)" />
+
+    <!-- Amber / Gold Electric Spark -->
+    <path d="
+      M 68 36
+      L 46 68
+      H 62
+      L 54 98
+      L 84 63
+      H 68
+      L 77 36
+      Z
+    " fill="url(#qsSpark)" />
+  </g>
+</svg>

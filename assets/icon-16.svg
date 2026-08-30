@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <defs>
+    <linearGradient id="qsRing16" x1="2" y1="2" x2="14" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="50%" stop-color="#9333EA"/>
+      <stop offset="100%" stop-color="#F43F5E"/>
+    </linearGradient>
+    <linearGradient id="qsSpark16" x1="5" y1="4" x2="11" y2="12" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FDE047"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Tag Ring Top -->
+  <ellipse cx="9.5" cy="2.5" rx="1.5" ry="2" transform="rotate(22 9.5 2.5)" stroke="url(#qsRing16)" stroke-width="0.8" fill="none"/>
+
+  <!-- Q Body -->
+  <path fill-rule="evenodd" clip-rule="evenodd" d="
+    M 8 3
+    C 4.68 3 2 5.68 2 9
+    C 2 12.32 4.68 15 8 15
+    C 9.5 15 10.9 14.4 12 13.5
+    L 13.2 14.7
+    C 13.8 15.3 14.8 14.9 14.8 14.1
+    L 14.8 12.8
+    L 13 11
+    C 13.6 10.4 14 9.7 14 9
+    C 14 5.68 11.32 3 8 3
+    Z
+    M 8 6
+    C 9.66 6 11 7.34 11 9
+    C 11 10.66 9.66 12 8 12
+    C 6.34 12 5 10.66 5 9
+    C 5 7.34 6.34 6 8 6
+    Z
+  " fill="url(#qsRing16)" />
+
+  <!-- Spark Center -->
+  <path d="M 8.5 4.5 L 5.8 8.8 H 7.8 L 6.8 12.5 L 10.5 8.2 H 8.5 L 9.6 4.5 Z" fill="url(#qsSpark16)"/>
+</svg>
