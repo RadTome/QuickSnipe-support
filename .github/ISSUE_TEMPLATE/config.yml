@@ -1,14 +1,17 @@
 blank_issues_enabled: false
 contact_links:
   - name: 💬 Community Discussions & Seller Strategy
-    url: https://github.com/RadTome/quicksnipe-support/discussions
+    url: https://github.com/RadTome/QuickSnipe-support/discussions
     about: Ask general questions, share prompt recipes, and discuss seller workflows.
   - name: 🛠️ Troubleshooting & Diagnostic Guide
-    url: https://github.com/RadTome/quicksnipe-support/blob/main/TROUBLESHOOTING.md
+    url: https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md
     about: Instant answers for common scraping, autofill, and API key issues.
   - name: ❓ Frequently Asked Questions (FAQ)
-    url: https://github.com/RadTome/quicksnipe-support/blob/main/FAQ.md
+    url: https://github.com/RadTome/QuickSnipe-support/blob/main/FAQ.md
     about: Answers to safety, bans, AI providers, and billing questions.
+  - name: 🛡️ Privacy Policy & Permissions Disclosures
+    url: https://github.com/RadTome/QuickSnipe-support/blob/main/PRIVACY.md
+    about: Review our 100% client-side privacy model and permissions justification.
   - name: 🔒 Security Vulnerability Reporting
-    url: https://github.com/RadTome/quicksnipe-support/blob/main/SECURITY.md
+    url: https://github.com/RadTome/QuickSnipe-support/blob/main/SECURITY.md
     about: Report sensitive security vulnerabilities privately.

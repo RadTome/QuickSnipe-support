@@ -33,7 +33,7 @@ If you discover a security vulnerability or sensitive data leakage issue within 
 ### Reporting Procedure:
 1. **Do NOT open a public GitHub issue** for undisclosed security vulnerabilities.
 2. Submit a report through **GitHub Private Vulnerability Reporting**:
-   👉 [**Report a Vulnerability (Private Advisory)**](https://github.com/RadTome/quicksnipe-support/security/advisories/new)
+   👉 [**Report a Vulnerability (Private Advisory)**](https://github.com/RadTome/QuickSnipe-support/security/advisories/new)
    *(Or navigate to the **Security** tab at the top of this repository and click **"Report a vulnerability"**).*
 3. Include the following details in the private advisory:
    - Type of vulnerability (e.g., XSS, storage exposure, permission escalation).

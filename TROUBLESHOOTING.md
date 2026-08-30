@@ -50,7 +50,7 @@ This guide provides targeted solutions for the most common technical issues, err
 2. If using Etsy Shop Manager, ensure you are on the **Create/Edit Listing** page.
 3. If using Amazon Seller Central, ensure you are on the **Add Products / Listing Edit** step.
 4. **Fallback Option**: Every generated AI block has a **📋 Copy** button. If the platform is undergoing a major UI update, use 1-click clipboard copy to paste directly into the field while we push a selector patch.
-5. Report the broken selector using our [Marketplace Scraper Issue Form](https://github.com/RadTome/quicksnipe-support/issues/new?template=3_marketplace_scraper_issue.yml).
+5. Report the broken selector using our [Marketplace Scraper Issue Form](https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml).
 
 ---
 
@@ -151,4 +151,4 @@ This guide provides targeted solutions for the most common technical issues, err
 2. Scroll to the **Subscription & License** section.
 3. Click **🔄 Refresh License Status** (or click **Manage Subscription**).
 4. QuickSnipe will ping ExtensionPay and upgrade your local badge to **PRO** immediately.
-5. If the issue persists, submit a [Billing & License Support Ticket](https://github.com/RadTome/quicksnipe-support/issues/new?template=5_billing_license_support.yml) with your checkout email address.
+5. If the issue persists, submit a [Billing & License Support Ticket](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml) with your checkout email address.

@@ -90,4 +90,4 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 **A: Yes.** Your Pro license is managed securely via ExtensionPay and linked to your email address. Simply enter the same email on any Chrome browser to activate your license.
 
 ### Q: How do I cancel or request a refund?
-**A:** You can manage or cancel your subscription at any time by going to **Settings ⚙ → Manage Subscription**. If you need assistance or a refund within 14 days of purchase, please submit a [Billing & License Support Ticket](https://github.com/RadTome/quicksnipe-support/issues/new?template=5_billing_license_support.yml).
+**A:** You can manage or cancel your subscription at any time by going to **Settings ⚙ → Manage Subscription**. If you need assistance or a refund within 14 days of purchase, please submit a [Billing & License Support Ticket](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml).

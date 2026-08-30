@@ -9,7 +9,8 @@
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.2.0-blue.svg?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
-[![GitHub Issues](https://img.shields.io/github/issues/RadTome/quicksnipe-support)](https://github.com/RadTome/quicksnipe-support/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/RadTome/QuickSnipe-support)](https://github.com/RadTome/QuickSnipe-support/issues)
+[![Privacy](https://img.shields.io/badge/Privacy-100%25_Client--Side-green.svg)](PRIVACY.md)
 [![License](https://img.shields.io/badge/License-Commercial-blue.svg)](SUPPORT.md)
 
 <p align="center">
@@ -17,8 +18,9 @@
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
+  <a href="PRIVACY.md"><b>🛡️ Privacy Policy</b></a> •
   <a href="SUPPORT.md"><b>🆘 Support Policy</b></a> •
-  <a href="https://github.com/RadTome/quicksnipe-support/issues/new/choose"><b>🐛 Open Issue</b></a>
+  <a href="https://github.com/RadTome/QuickSnipe-support/issues/new/choose"><b>🐛 Open Issue</b></a>
 </p>
 
 ---
@@ -30,12 +32,13 @@
 | Resource | Description | Link |
 |---|---|---|
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
+| 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | ❓ **Frequently Asked Questions** | Common seller questions, safety, bans, and licensing | [FAQ.md](FAQ.md) |
-| 🔒 **Security & Disclosures** | Security vulnerability reporting and PGP disclosure | [SECURITY.md](SECURITY.md) |
-| 🐛 **Open a Bug Report** | Report broken scrapers, UI glitches, or extension errors | [Submit Bug](https://github.com/RadTome/quicksnipe-support/issues/new?template=1_bug_report.yml) |
-| 💡 **Request a Feature** | Request a new marketplace, AI model, or studio generator | [Submit Feature](https://github.com/RadTome/quicksnipe-support/issues/new?template=2_feature_request.yml) |
-| 💬 **Community Discussions** | Strategy, prompt sharing, and seller workflows | [GitHub Discussions](https://github.com/RadTome/quicksnipe-support/discussions) |
+| 🔒 **Security & Disclosures** | Security vulnerability reporting and private advisories | [SECURITY.md](SECURITY.md) |
+| 🐛 **Open a Bug Report** | Report broken scrapers, UI glitches, or extension errors | [Submit Bug](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml) |
+| 💡 **Request a Feature** | Request a new marketplace, AI model, or studio generator | [Submit Feature](https://github.com/RadTome/QuickSnipe-support/issues/new?template=2_feature_request.yml) |
+| 💬 **Community Discussions** | Strategy, prompt sharing, and seller workflows | [GitHub Discussions](https://github.com/RadTome/QuickSnipe-support/discussions) |
 
 ---
 
@@ -180,12 +183,12 @@ QuickSnipe **does not** collect personal identities, sell browsing history, or r
 If you run into an issue, check these resources before submitting a ticket:
 
 1. Review [TROUBLESHOOTING.md](TROUBLESHOOTING.md) for quick step-by-step diagnostic solutions.
-2. Search existing [GitHub Issues](https://github.com/RadTome/quicksnipe-support/issues) and [FAQ.md](FAQ.md).
+2. Search existing [GitHub Issues](https://github.com/RadTome/QuickSnipe-support/issues) and [FAQ.md](FAQ.md).
 3. If your issue is unresolved, choose the appropriate issue template:
-   - [🐛 Bug Report](https://github.com/RadTome/quicksnipe-support/issues/new?template=1_bug_report.yml)
-   - [🛒 Marketplace Scraper Issue](https://github.com/RadTome/quicksnipe-support/issues/new?template=3_marketplace_scraper_issue.yml) (Etsy, Amazon, eBay, Shopify, etc. changed their HTML)
-   - [🔑 BYOK API / Model Issue](https://github.com/RadTome/quicksnipe-support/issues/new?template=4_byok_api_issue.yml)
-   - [💳 Billing & License Support](https://github.com/RadTome/quicksnipe-support/issues/new?template=5_billing_license_support.yml)
-   - [💡 Feature / Marketplace Request](https://github.com/RadTome/quicksnipe-support/issues/new?template=2_feature_request.yml)
+   - [🐛 Bug Report](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml)
+   - [🛒 Marketplace Scraper Issue](https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml) (Etsy, Amazon, eBay, Shopify, etc. changed their HTML)
+   - [🔑 BYOK API / Model Issue](https://github.com/RadTome/QuickSnipe-support/issues/new?template=4_byok_api_issue.yml)
+   - [💳 Billing & License Support](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml)
+   - [💡 Feature / Marketplace Request](https://github.com/RadTome/QuickSnipe-support/issues/new?template=2_feature_request.yml)
 
 For complete support policies, response times, and billing inquiries, see [SUPPORT.md](SUPPORT.md).

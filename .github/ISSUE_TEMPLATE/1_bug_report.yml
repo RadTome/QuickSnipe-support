@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you for reporting an issue! Please check [TROUBLESHOOTING.md](https://github.com/RadTome/quicksnipe-support/blob/main/TROUBLESHOOTING.md) first before submitting.
+        Thank you for reporting an issue! Please check [TROUBLESHOOTING.md](https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md) first before submitting.
   - type: dropdown
     id: affected-feature
     attributes:
@@ -92,9 +92,9 @@ body:
     attributes:
       label: Pre-Submission Checklist
       options:
-        - label: "I have checked the [Troubleshooting Guide](https://github.com/RadTome/quicksnipe-support/blob/main/TROUBLESHOOTING.md) and [FAQ](https://github.com/RadTome/quicksnipe-support/blob/main/FAQ.md)."
+        - label: "I have checked the [Troubleshooting Guide](https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md) and [FAQ](https://github.com/RadTome/QuickSnipe-support/blob/main/FAQ.md)."
           required: true
-        - label: "I searched existing [GitHub Issues](https://github.com/RadTome/quicksnipe-support/issues) and confirmed this is not a duplicate."
+        - label: "I searched existing [GitHub Issues](https://github.com/RadTome/QuickSnipe-support/issues) and confirmed this is not a duplicate."
           required: true
         - label: "I have ensured my API key / personal seller credentials are NOT included in logs or screenshots."
           required: true

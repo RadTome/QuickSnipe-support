@@ -8,10 +8,10 @@ Thank you for using **QuickSnipe**! This document explains our support channels,
 
 | Channel | Best For | Expected Response Time | Link |
 |---|---|:---:|---|
-| **🐛 GitHub Issues** | Bug reports, broken marketplace scrapers, API client errors, autofill issues | 24–48 hours | [Open an Issue](https://github.com/RadTome/quicksnipe-support/issues) |
-| **💡 Feature Requests** | New e-commerce platforms, new AI models, generator suggestions | Weekly triage | [Request Feature](https://github.com/RadTome/quicksnipe-support/issues/new?template=2_feature_request.yml) |
-| **💬 GitHub Discussions** | Seller strategy, prompt sharing, general Q&A, workflow tips | Community / 2–3 days | [Discussions Forum](https://github.com/RadTome/quicksnipe-support/discussions) |
-| **💳 Billing & Licensing** | ExtensionPay / Stripe receipt lookups, subscription cancellation, refund requests | < 24 hours | [Billing Issue Form](https://github.com/RadTome/quicksnipe-support/issues/new?template=5_billing_license_support.yml) |
+| **🐛 GitHub Issues** | Bug reports, broken marketplace scrapers, API client errors, autofill issues | 24–48 hours | [Open an Issue](https://github.com/RadTome/QuickSnipe-support/issues) |
+| **💡 Feature Requests** | New e-commerce platforms, new AI models, generator suggestions | Weekly triage | [Request Feature](https://github.com/RadTome/QuickSnipe-support/issues/new?template=2_feature_request.yml) |
+| **💬 GitHub Discussions** | Seller strategy, prompt sharing, general Q&A, workflow tips | Community / 2–3 days | [Discussions Forum](https://github.com/RadTome/QuickSnipe-support/discussions) |
+| **💳 Billing & Licensing** | ExtensionPay / Stripe receipt lookups, subscription cancellation, refund requests | < 24 hours | [Billing Issue Form](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml) |
 | **🔒 Security Reporting** | Responsible vulnerability disclosures | < 12 hours | [SECURITY.md](SECURITY.md) |
 
 ---
@@ -69,7 +69,7 @@ Chrome automatically updates extensions, but you can force an instant update:
 
 To help us fix your issue as quickly as possible:
 
-1. **Use the appropriate template**: Select [Bug Report](https://github.com/RadTome/quicksnipe-support/issues/new?template=1_bug_report.yml), [Marketplace Scraper Issue](https://github.com/RadTome/quicksnipe-support/issues/new?template=3_marketplace_scraper_issue.yml), or [BYOK API Issue](https://github.com/RadTome/quicksnipe-support/issues/new?template=4_byok_api_issue.yml).
+1. **Use the appropriate template**: Select [Bug Report](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml), [Marketplace Scraper Issue](https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml), or [BYOK API Issue](https://github.com/RadTome/QuickSnipe-support/issues/new?template=4_byok_api_issue.yml).
 2. **Include the Marketplace & Listing URL**: Example: `https://www.etsy.com/listing/123456789/...` (Feel free to redact private identifying seller names if necessary).
 3. **Specify the AI Provider & Model**: Example: `Google Gemini / gemini-3.6-flash`.
 4. **Include Browser & OS Information**: Example: `Google Chrome v128.0 (Windows 11)`.
@@ -84,4 +84,4 @@ To help us fix your issue as quickly as possible:
 - **What happens after my 7-day free trial?**  
   If you choose not to upgrade, your account automatically reverts to the **Free Plan** (which includes daily generation quotas and unlimited BYOK use).
 - **Need a refund?**  
-  If you were billed mistakenly or experienced technical issues, open a [Billing Issue Ticket](https://github.com/RadTome/quicksnipe-support/issues/new?template=5_billing_license_support.yml) within 14 days of purchase for a prompt refund.
+  If you were billed mistakenly or experienced technical issues, open a [Billing Issue Ticket](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml) within 14 days of purchase for a prompt refund.
