@@ -1,0 +1,100 @@
+name: 🐛 Bug Report
+description: Report a bug, UI glitch, sidepanel crash, or unexpected behavior in QuickSnipe.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please check [TROUBLESHOOTING.md](https://github.com/RadTome/quicksnipe-support/blob/main/TROUBLESHOOTING.md) first before submitting.
+  - type: dropdown
+    id: affected-feature
+    attributes:
+      label: Affected QuickSnipe Feature
+      description: Which part of the extension is experiencing an issue?
+      options:
+        - "🤖 AI Studio Listing Generators"
+        - "⚡ 1-Click Form Autofill Engine"
+        - "💰 Multi-Platform Profit & Margin Calculator"
+        - "🎯 Competitor Keyword Gap Matrix"
+        - "🎯 Competitor Price Sniper"
+        - "💬 Customer Review Objection Miner"
+        - "📊 Full-Page SEO & Content Auditor"
+        - "🖼️ AI Image Alt-Text Generator"
+        - "📦 Amazon Backend Search Terms 249B Validator"
+        - "📁 Swipe File & CSV/TSV Export"
+        - "⚙️ Settings / BYOK Key Manager"
+        - "🗗 Sidepanel / Popup / General UI"
+    validations:
+      required: true
+  - type: input
+    id: extension-version
+    attributes:
+      label: QuickSnipe Extension Version
+      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.2.0).
+      placeholder: "v1.2.0"
+    validations:
+      required: true
+  - type: input
+    id: browser-os
+    attributes:
+      label: Chrome Browser Version & Operating System
+      placeholder: "Chrome 128.0 (Windows 11) / Chrome 127.0 (macOS Sequoia)"
+    validations:
+      required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: "When I click 'Autofill Form' on Etsy, the tags field remains blank..."
+    validations:
+      required: true
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce the issue step-by-step?
+      value: |
+        1. Open QuickSnipe on `...`
+        2. Click on `...`
+        3. Switch to tab `...`
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: "The listing tags should populate into the 13 Etsy tag inputs."
+    validations:
+      required: true
+  - type: textarea
+    id: console-logs
+    attributes:
+      label: DevTools Console Errors (If Any)
+      description: Right-click Sidepanel -> Inspect -> Console. Paste any red error text here.
+      render: shell
+      placeholder: "Uncaught Error: ..."
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots or Screen Recording
+      description: Drag and drop screenshots or screen recordings showing the issue.
+      placeholder: "Paste or upload images here..."
+    validations:
+      required: false
+  - type: checkboxes
+    id: pre-flight-checks
+    attributes:
+      label: Pre-Submission Checklist
+      options:
+        - label: "I have checked the [Troubleshooting Guide](https://github.com/RadTome/quicksnipe-support/blob/main/TROUBLESHOOTING.md) and [FAQ](https://github.com/RadTome/quicksnipe-support/blob/main/FAQ.md)."
+          required: true
+        - label: "I searched existing [GitHub Issues](https://github.com/RadTome/quicksnipe-support/issues) and confirmed this is not a duplicate."
+          required: true
+        - label: "I have ensured my API key / personal seller credentials are NOT included in logs or screenshots."
+          required: true

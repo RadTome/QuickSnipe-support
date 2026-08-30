@@ -1,0 +1,53 @@
+name: 💳 Billing, Subscription & License Support
+description: Request assistance with ExtensionPay / Stripe upgrades, license sync, invoices, or refunds.
+title: "[Billing]: "
+labels: ["billing", "license", "private-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for subscription, trial, licensing, or payment support.
+        Payments are processed securely via Stripe through ExtensionPay.
+  - type: dropdown
+    id: issue-category
+    attributes:
+      label: Inquiry Type
+      options:
+        - "🔄 License Not Activating (Paid on Stripe but badge says FREE)"
+        - "📅 7-Day Free Trial Question"
+        - "🧾 Invoice / Payment Receipt Request"
+        - "❌ Subscription Cancellation Assistance"
+        - "💰 Refund Request (Within 14-day window)"
+        - "💻 Multi-Device License Transfer Question"
+    validations:
+      required: true
+  - type: input
+    id: checkout-email
+    attributes:
+      label: Email Address Used During Stripe Checkout
+      description: We will use this to look up your ExtensionPay license record.
+      placeholder: "seller@example.com"
+    validations:
+      required: true
+  - type: input
+    id: purchase-date
+    attributes:
+      label: Approximate Date of Purchase / Charge
+      placeholder: "e.g., August 28, 2026"
+    validations:
+      required: false
+  - type: textarea
+    id: issue-details
+    attributes:
+      label: Details of the Request
+      description: Describe what assistance is needed.
+      placeholder: "I purchased the Pro plan on Stripe, but my extension still shows the Free badge after restarting Chrome..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: troubleshooting-tried
+    attributes:
+      label: Diagnostic Steps Tried
+      options:
+        - label: "I clicked 'Settings ⚙' → 'Refresh License Status' in the QuickSnipe sidepanel."
+        - label: "I restarted Google Chrome and reloaded the extension."

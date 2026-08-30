@@ -1,0 +1,57 @@
+name: 💡 Feature Request
+description: Suggest an idea, new marketplace scraper, new AI model, or studio generator for QuickSnipe.
+title: "[Feature]: "
+labels: ["enhancement", "feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We love hearing feature requests from active e-commerce sellers! Please describe your proposed enhancement below.
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of enhancement are you suggesting?
+      options:
+        - "🛒 New Marketplace Support (e.g., Walmart, TikTok Shop, Vinted)"
+        - "🤖 New AI Provider or LLM Model Support"
+        - "✍️ New AI Studio Copywriting Generator / Task"
+        - "💰 Profit Calculator & Fee Preset Updates"
+        - "🔍 SEO & Readability Analytics"
+        - "⚡ 1-Click Form Autofill Enhancement"
+        - "📁 Export & Integration (Notion, Airtable, Zapier)"
+        - "🎨 UI / Theme / Usability Improvement"
+    validations:
+      required: true
+  - type: textarea
+    id: problem-statement
+    attributes:
+      label: Problem or Use Case
+      description: Is your feature request related to a specific workflow problem or limitation?
+      placeholder: "I'm always frustrated when I list items on TikTok Shop because QuickSnipe currently doesn't scrape..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution & Feature Behavior
+      description: A clear and concise description of what you want to happen.
+      placeholder: "Add TikTok Shop product detail scraper that parses title, bullet points, and generates 1-click video hook scripts..."
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives-considered
+    attributes:
+      label: Alternatives Considered
+      description: Have you tried any alternative workarounds or tools?
+      placeholder: "Currently I manually copy the text from TikTok Shop into the custom prompt box..."
+    validations:
+      required: false
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context / Examples / Mockups
+      description: Add any other context, marketplace screenshots, or prompt examples here.
+      placeholder: "Attach images or prompt templates here..."
+    validations:
+      required: false

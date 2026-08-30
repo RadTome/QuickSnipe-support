@@ -1,0 +1,74 @@
+name: 🔑 BYOK API / AI Model Issue
+description: Report issues related to AI provider connectivity, API errors, rate limits, or model generation failures.
+title: "[API Issue]: "
+labels: ["ai-engine", "byok", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form if you encounter an error when connecting your BYOK API key (Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter, or Ollama).
+        **⚠️ NEVER paste your secret API key in this issue!**
+  - type: dropdown
+    id: ai-provider
+    attributes:
+      label: Configured AI Provider
+      options:
+        - "Google Gemini (aistudio.google.com)"
+        - "Groq (console.groq.com)"
+        - "OpenAI (platform.openai.com)"
+        - "Anthropic Claude (console.anthropic.com)"
+        - "DeepSeek (platform.deepseek.com)"
+        - "OpenRouter (openrouter.ai)"
+        - "Ollama (Local / http://localhost:11434)"
+        - "Chrome Built-in AI / Local Heuristic Fallback"
+    validations:
+      required: true
+  - type: input
+    id: model-id
+    attributes:
+      label: Model Name / ID Selected
+      placeholder: "gemini-3.6-flash / llama-3.3-70b-versatile / gpt-4o-mini / claude-3-7-sonnet"
+    validations:
+      required: true
+  - type: dropdown
+    id: error-code
+    attributes:
+      label: Error Status / Type
+      options:
+        - "401 Unauthorized / Invalid API Key"
+        - "429 Too Many Requests (Rate Limit Exceeded)"
+        - "404 Model Not Found / Deprecated Model ID"
+        - "400 Bad Request / Schema Validation Error"
+        - "500 / 503 Provider Server Error"
+        - "CORS Error / Failed to Fetch / Network Error"
+        - "Stream / JSON Response Parsing Failed"
+        - "Output Truncated or Empty"
+    validations:
+      required: true
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Exact Error Message & DevTools Console Output
+      description: Right-click Sidepanel -> Inspect -> Console. Paste the error log here (ensure no API key is in the text).
+      render: shell
+      placeholder: "Error calling Gemini API: 429 RESOURCE_EXHAUSTED..."
+    validations:
+      required: true
+  - type: textarea
+    id: task-triggered
+    attributes:
+      label: Which AI Studio Task Triggered the Error?
+      placeholder: "Etsy 1-Click Power Listing / Review Objection Slayer / Amazon FBA Bullets..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: verification-checklist
+    attributes:
+      label: Verification Checklist
+      options:
+        - label: "I have verified my API key is active and has sufficient quota/credits on the provider's developer console."
+          required: true
+        - label: "I have tested re-saving the API key in QuickSnipe Settings (with no leading/trailing spaces)."
+          required: true
+        - label: "I have confirmed that my API key is NOT included anywhere in this ticket."
+          required: true

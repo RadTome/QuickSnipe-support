@@ -1,0 +1,80 @@
+name: 🛒 Marketplace Scraper / Selector Breakage
+description: Report when a supported marketplace (Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari) updates their website and scraping fails.
+title: "[Scraper Issue]: "
+labels: ["scraper", "dom-update", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Marketplaces frequently update their DOM elements, CSS classes, and HTML hierarchy. Use this form so we can quickly patch the selector parser in `utils/site-parsers.js`.
+  - type: dropdown
+    id: marketplace
+    attributes:
+      label: Affected Marketplace
+      options:
+        - "Etsy (etsy.com)"
+        - "Amazon (amazon.com / global)"
+        - "eBay (ebay.com / global)"
+        - "Shopify (Custom Storefront / DTC)"
+        - "Poshmark (poshmark.com)"
+        - "Depop (depop.com)"
+        - "Mercari (mercari.com)"
+        - "Other Marketplace"
+    validations:
+      required: true
+  - type: dropdown
+    id: page-type
+    attributes:
+      label: Page Type
+      options:
+        - "Product Detail / Listing Page"
+        - "Search Results / Category Grid"
+        - "Seller Listing Creator / Editor (Autofill)"
+        - "Customer Reviews Section"
+        - "Media / Image Gallery"
+    validations:
+      required: true
+  - type: input
+    id: sample-url
+    attributes:
+      label: Public Sample Listing or Search URL
+      description: Provide a public URL where the scraper fails (or a search query URL).
+      placeholder: "https://www.etsy.com/listing/123456789/..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: failed-fields
+    attributes:
+      label: Which fields failed to extract or autofill?
+      options:
+        - label: "Product Title"
+        - label: "Product Price / Currency"
+        - label: "Product Description / Bullet Points"
+        - label: "Product Gallery Images (Alt-Text generator)"
+        - label: "Customer Negative Reviews (Review Miner)"
+        - label: "Competitor Search Result Cards (Sniper / Keyword Gap)"
+        - label: "1-Click Form Autofill Inputs"
+  - type: textarea
+    id: actual-vs-expected
+    attributes:
+      label: What happened vs. What was expected?
+      placeholder: "Expected QuickSnipe to detect price '$24.99', but the sidepanel shows '$0.00' or 'N/A'..."
+    validations:
+      required: true
+  - type: textarea
+    id: html-snippet
+    attributes:
+      label: In-Page HTML Snippet (Optional)
+      description: If you know how to use Chrome Inspect, paste the outer HTML of the failing element here.
+      render: html
+      placeholder: "<h1 class=\"wt-text-body-01 ...\">Product Title</h1>"
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Attach screenshots of the marketplace page and the QuickSnipe sidepanel.
+      placeholder: "Drag and drop images here..."
+    validations:
+      required: false
