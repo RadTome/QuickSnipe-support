@@ -34,13 +34,10 @@ Instead of paying $20–$99/month for multiple bloated SaaS tools that store you
 
 ## 💎 Core Feature Breakdown
 
-```
-┌─────────────────────────────────────────────────────────────────────────┐
-│                       ⚡ QUICKSNIPE CREATOR DASHBOARD                    │
-├──────────────┬──────────────┬──────────────┬──────────────┬─────────────┤
-│ 🤖 AI STUDIO │   🎯 SNIPER  │  💬 REVIEWS  │   📊 SEO     │   🔧 TOOLS  │
-└──────────────┴──────────────┴──────────────┴──────────────┴─────────────┘
-```
+| 🤖 AI Studio | 🎯 Sniper | 💬 Reviews | 📊 SEO Auditor | 🔧 Tools |
+|:---:|:---:|:---:|:---:|:---:|
+| **10+ AI Generators**<br>Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari | **Price Sweet-Spot**<br>Median, Min, Max & price distribution curves | **Review Miner**<br>Scrapes 1–3 star complaints on competitor items | **Readability Engine**<br>Flesch-Kincaid grade & reading ease scores | **Profit Calculator**<br>Live fees, margins, ROI & breakeven prices |
+| **1-Click Form Autofill**<br>Direct form injection into active listing editors | **Keyword Gap Matrix**<br>Venn analysis vs top 24 ranking competitors | **Objection Slayer**<br>Converts buyer objections into FAQs | **Image Alt-Text**<br>5 accessible, keyword-rich gallery alt tags | **Amazon 249B Validator**<br>Strict UTF-8 byte meter & stop word cleaner |
 
 ### 1. ⚡ 1-Click Form Autofill Engine
 Push AI-generated Title, Price, Description, and Tags directly into active listing creation and edit forms on **Etsy Shop Manager, Amazon Seller Central, eBay Selling, Shopify Admin, Poshmark, and Depop**.
