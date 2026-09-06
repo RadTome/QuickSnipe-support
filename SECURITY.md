@@ -10,8 +10,8 @@ We actively provide security patches and updates for the following versions:
 
 | Version | Supported | Notes |
 |---|:---:|---|
-| `1.2.x` | ✅ | Current Stable Release (Manifest V3) |
-| `< 1.2.0` | ❌ | Deprecated. Please update to latest Chrome Web Store release. |
+| `1.3.x` | ✅ | Current Stable Release (Manifest V3) |
+| `< 1.3.0` | ❌ | Deprecated. Please update to latest Chrome Web Store release. |
 
 ---
 

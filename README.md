@@ -6,7 +6,7 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sniper & Profit Calculator for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.2.0-blue.svg?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.0-blue.svg?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
 [![GitHub Issues](https://img.shields.io/github/issues/RadTome/QuickSnipe-support)](https://github.com/RadTome/QuickSnipe-support/issues)
@@ -44,7 +44,7 @@
 
 ## 📖 What is QuickSnipe?
 
-**QuickSnipe** is a high-performance **Google Chrome Sidepanel Extension (Manifest V3)** built specifically for multi-channel e-commerce sellers across **Etsy, Amazon, eBay, Shopify, Poshmark, Depop, and Mercari**.
+**QuickSnipe** is a high-performance **Google Chrome Sidepanel Extension (Manifest V3)** built specifically for multi-channel e-commerce sellers across **Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, and Grailed**.
 
 Instead of paying $20–$99/month for multiple bloated SaaS tools that store your seller data on third-party servers, QuickSnipe runs **100% locally in your browser** with zero cloud server overhead, zero subscription lock-in, and zero latency.
 
@@ -124,6 +124,8 @@ Live real-time fee breakdown and unit economic analysis:
 | **Poshmark** | ✅ | ✅ | ❌ | ✅ | ✅ ($2.95 or 20%) |
 | **Depop** | ✅ | ✅ | ❌ | ✅ | ✅ (3.3% + $0.45) |
 | **Mercari** | ✅ | ✅ | ❌ | ✅ | ✅ (2.9% + $0.50) |
+| **Walmart** | ✅ | ✅ | ✅ | ✅ | ✅ (15% Referral) |
+| **Grailed** | ✅ | ✅ | ✅ | ✅ | ✅ (9% Commission + 3.49%) |
 
 ---
 

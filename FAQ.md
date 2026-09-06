@@ -65,6 +65,8 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 5. **Poshmark** (Closet listings, brand extraction)
 6. **Depop** (Streetwear/vintage hashtags and measurements)
 7. **Mercari** (Product listings, condition tags, fast-sale hooks)
+8. **Walmart** (Title formatting, key features, shelf keywords, reviews)
+9. **Grailed** (Archive fashion, designer credentials, condition grading)
 
 ### Q: How does the Competitor Keyword Gap Matrix work?
 **A:** When you are on a search result page, QuickSnipe extracts the top 24 organic ranking competitor listings, tokenizes their titles and tags, and compares them against your product. It highlights the high-value keywords that top sellers are using that you are currently missing, allowing you to click `⚡ Borrow Keywords` to immediately inject them into your listing.
