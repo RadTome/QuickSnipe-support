@@ -14,6 +14,7 @@ This guide provides targeted solutions for the most common technical issues, err
 - [6. Amazon Backend Terms byte meter turns red / exceeds 249 bytes](#6-amazon-backend-terms-byte-meter-turns-red--exceeds-249-bytes)
 - [7. Ollama Local AI connection refused (`net::ERR_CONNECTION_REFUSED`)](#7-ollama-local-ai-connection-refused-neterr_connection_refused)
 - [8. Upgraded to Pro but badge still says "FREE"](#8-upgraded-to-pro-but-badge-still-says-free)
+- [9. Chrome Built-in AI (Gemini Nano) shows "Not Available" or "Model Needs Download"](#9-chrome-built-in-ai-gemini-nano-shows-not-available-or-model-needs-download)
 
 ---
 
@@ -35,6 +36,8 @@ This guide provides targeted solutions for the most common technical issues, err
    - **Poshmark**: `poshmark.com/listing/...`
    - **Depop**: `depop.com/products/...`
    - **Mercari**: `mercari.com/us/item/...`
+   - **Walmart**: `walmart.com/ip/...`
+   - **Grailed**: `grailed.com/listings/...`
 
 ---
 
@@ -152,3 +155,24 @@ This guide provides targeted solutions for the most common technical issues, err
 3. Click **🔄 Refresh License Status** (or click **Manage Subscription**).
 4. QuickSnipe will ping ExtensionPay and upgrade your local badge to **PRO** immediately.
 5. If the issue persists, submit a [Billing & License Support Ticket](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml) with your checkout email address.
+
+---
+
+### 9. Chrome Built-in AI (Gemini Nano) shows "Not Available" or "Model Needs Download"
+
+#### Potential Causes:
+- Browser version is older than Chrome 131.
+- Gemini Nano on-device AI experimental flags are not enabled in `chrome://flags`.
+- The on-device model has not finished downloading to your local machine (requires ~1.5–2 GB storage).
+
+#### Solutions:
+1. Check your Chrome version: Navigate to `chrome://settings/help` and verify you are running **Chrome 131 or newer**.
+2. Enable experimental Prompt API flags in Chrome:
+   - Go to `chrome://flags/#prompt-api-for-gemini-nano` and set to **Enabled**.
+   - Go to `chrome://flags/#optimization-guide-on-device-model` and set to **Enabled BypassPerfRequirement**.
+   - Relaunch Chrome.
+3. Verify on-device model download status:
+   - Navigate to `chrome://components`.
+   - Locate **Optimization Guide On Device Model**.
+   - Click **Check for update** and wait for the status to show **Up-to-date**.
+4. If your device does not meet hardware requirements (requires minimum 4GB GPU / VRAM or 16GB system RAM), switch to **Google Gemini** in QuickSnipe Settings for free, instant cloud generation.

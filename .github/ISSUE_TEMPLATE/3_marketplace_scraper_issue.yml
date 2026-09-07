@@ -1,5 +1,5 @@
 name: 🛒 Marketplace Scraper / Selector Breakage
-description: Report when a supported marketplace (Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari) updates their website and scraping fails.
+description: Report when a supported marketplace (Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, Grailed) updates their website and scraping fails.
 title: "[Scraper Issue]: "
 labels: ["scraper", "dom-update", "needs-triage"]
 body:
@@ -19,6 +19,8 @@ body:
         - "Poshmark (poshmark.com)"
         - "Depop (depop.com)"
         - "Mercari (mercari.com)"
+        - "Walmart (walmart.com)"
+        - "Grailed (grailed.com)"
         - "Other Marketplace"
     validations:
       required: true

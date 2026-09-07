@@ -28,11 +28,12 @@ When you open QuickSnipe or trigger an analysis tool on supported e-commerce mar
 
 ---
 
-## 3. Bring Your Own Key (BYOK) AI Integrations
+## 3. On-Device & Bring Your Own Key (BYOK) AI Integrations
 
-QuickSnipe allows you to connect your own API keys for AI generation:
-- **Direct Client-to-Provider Communication:** All AI prompt requests (e.g., Google Gemini, Groq, OpenAI, Anthropic Claude, DeepSeek, OpenRouter) are transmitted directly from your browser client to the official API endpoint of your selected provider over HTTPS.
-- **Encrypted Local Storage:** API keys are stored exclusively in your local `chrome.storage.local` and are never shared with or routed through any third party or developer server.
+QuickSnipe provides zero-setup on-device AI generation as well as direct BYOK connections:
+- **Zero-Key On-Device Chrome Built-in AI:** When using Chrome Built-in AI via Chrome's native Prompt API (`window.ai` / `ai.languageModel` / Gemini Nano), all prompt processing occurs 100% locally on your device within Chrome's sandboxed runtime. Zero prompt text or listing data is transmitted across the network or stored externally.
+- **Direct Client-to-Provider Communication:** For cloud BYOK providers (e.g., Google Gemini, Groq, OpenAI, Anthropic Claude, DeepSeek, OpenRouter), prompt requests are transmitted directly from your browser client to the official API endpoint of your selected provider over secure HTTPS.
+- **Encrypted Local Storage:** Cloud API keys are stored exclusively in your local `chrome.storage.local` and are never shared with or routed through any third party or developer server.
 - **Local Ollama Support:** If you choose Ollama, requests are dispatched locally to `http://localhost:11434` or `http://127.0.0.1:11434` without leaving your computer.
 
 ---

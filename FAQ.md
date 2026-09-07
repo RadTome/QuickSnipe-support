@@ -46,11 +46,19 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 ### Q: Where are my API keys stored?
 **A:** Your API keys are stored exclusively in your local browser's encrypted `chrome.storage.local`. They never touch any developer server or third-party proxy.
 
+### Q: How does Zero-Key Chrome Built-in AI (Gemini Nano) work?
+**A:** If you are running Google Chrome 131+ with Chrome's native Prompt API enabled, QuickSnipe can leverage the local **Gemini Nano** model built right into your browser. It runs 100% on your machine with **zero API keys, zero internet required for generation, and complete privacy**.
+
+### Q: Chrome Built-in AI vs. Cloud BYOK — What is the difference?
+**A:**
+- **Chrome Built-in AI (Gemini Nano)**: Zero setup, zero keys, 100% private and offline-capable for fast single-platform listing drafts. Uses Chrome's compact on-device 3B model.
+- **Cloud BYOK (Gemini Flash, Groq, OpenAI, Claude)**: Free or direct keys from cloud providers. Unlocks pro strategic reasoning, multi-platform simultaneous copy (Omnichannel Transmuter), and deep competitor market velocity intelligence.
+
 ### Q: Can I use QuickSnipe 100% offline with Local AI?
-**A: Yes.** QuickSnipe natively supports **Ollama**. If you run Ollama locally on your computer (`http://localhost:11434`), you can generate listings and analyze text using models like `llama3.3`, `qwen2.5`, or `deepseek-r1:8b` completely offline with zero internet required for the AI engine.
+**A: Yes.** QuickSnipe natively supports both **Chrome Built-in AI (Gemini Nano)** and **Ollama**. If you run Ollama locally on your computer (`http://localhost:11434`), you can generate listings and analyze text using models like `llama3.3`, `qwen2.5`, or `deepseek-r1:8b` completely offline with zero internet required for the AI engine.
 
 ### Q: What happens if I don't enter an API key?
-**A:** QuickSnipe includes a built-in **Smart Local Heuristic Engine**. If no key is configured, the extension automatically falls back to deterministic rule-based generators so you can still use the listing creators, profit calculators, SEO auditors, and text tools immediately.
+**A:** QuickSnipe automatically checks if your browser has **Chrome Built-in AI (Gemini Nano)** available. If ready, it uses on-device AI out of the box with zero keys. If Chrome Built-in AI is not supported on your system, QuickSnipe seamlessly falls back to its deterministic **Smart Local Heuristic Engine** so all listing creators, profit calculators, SEO auditors, and text tools function immediately.
 
 ---
 
@@ -67,6 +75,9 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 7. **Mercari** (Product listings, condition tags, fast-sale hooks)
 8. **Walmart** (Title formatting, key features, shelf keywords, reviews)
 9. **Grailed** (Archive fashion, designer credentials, condition grading)
+
+### Q: How does the Omnichannel Cross-Market Sniper work?
+**A:** When running a search snipe, you can toggle the **Omnichannel Multi-Market** switch to scrape competitor search results across Etsy, eBay, Poshmark, and Mercari simultaneously. QuickSnipe's smart category classifier automatically separates cross-category mismatched listings from pure competitor items so your pricing sweet-spot calculations remain accurate.
 
 ### Q: How does the Competitor Keyword Gap Matrix work?
 **A:** When you are on a search result page, QuickSnipe extracts the top 24 organic ranking competitor listings, tokenizes their titles and tags, and compares them against your product. It highlights the high-value keywords that top sellers are using that you are currently missing, allowing you to click `⚡ Borrow Keywords` to immediately inject them into your listing.

@@ -51,9 +51,9 @@ Chrome automatically updates extensions, but you can force an instant update:
 
 ### What We Actively Support:
 - ✅ Extension installation, sidepanel loading, and user interface rendering.
-- ✅ In-page DOM scrapers for supported marketplaces (**Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari**).
+- ✅ In-page DOM scrapers for supported marketplaces (**Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, Grailed**).
 - ✅ 1-Click Form Autofill engine compatibility with active marketplace listing editors.
-- ✅ BYOK API integrations with Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter, and Ollama.
+- ✅ Zero-key on-device Chrome Built-in AI (Gemini Nano) and BYOK API integrations (Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter, Ollama).
 - ✅ Multi-platform fee calculator presets, Amazon 249B validator, and export tools.
 - ✅ ExtensionPay / Stripe Pro license sync and trial management.
 

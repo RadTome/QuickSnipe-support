@@ -6,7 +6,7 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sniper & Profit Calculator for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.0-blue.svg?logo=googlechrome&logoColor=white)](https://chrome.google.com/webstore)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.0-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
 [![GitHub Issues](https://img.shields.io/github/issues/RadTome/QuickSnipe-support)](https://github.com/RadTome/QuickSnipe-support/issues)
@@ -14,7 +14,7 @@
 [![License](https://img.shields.io/badge/License-Commercial-blue.svg)](SUPPORT.md)
 
 <p align="center">
-  <a href="https://chrome.google.com/webstore"><b>🛒 Chrome Web Store</b></a> •
+  <a href="https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
@@ -83,6 +83,8 @@ Live real-time fee breakdown and unit economic analysis:
 
 ### 6. 🎯 Competitor Sniper & Price Sweet-Spot
 - Scrapes active search result pages to calculate Average Price, Median Price, Minimum Price, and Maximum Price.
+- **Omnichannel Cross-Market Mode**: Query and compare competitor prices across Etsy, eBay, Poshmark, and Mercari simultaneously.
+- **Smart Category Filter**: Automatically isolates matching product types and filters out cross-category noise from pricing statistics.
 - Renders an interactive visual price distribution curve and phrase frequency breakdown.
 
 ### 7. 💬 Customer Review Objection Miner
@@ -140,6 +142,7 @@ QuickSnipe is built on a **100% Client-Side BYOK Architecture**.
 
 | Provider | Recommended Model | Free Tier Available? | Key Signup Link |
 |---|---|:---:|---|
+| **Chrome Built-in AI** *(Zero Setup)* | `gemini-nano` (On-Device) | **100% Free & Private** (Zero keys needed) | Built into Chrome 131+ (Prompt API) |
 | **Google Gemini** *(Recommended)* | `gemini-3.6-flash` / `gemini-2.0-flash` | **Yes** (15 Req/Min free) | [Google AI Studio](https://aistudio.google.com/app/apikey) |
 | **Groq** | `llama-3.3-70b-versatile` | **Yes** (30 Req/Min free) | [Groq Console](https://console.groq.com/keys) |
 | **OpenAI** | `gpt-4o-mini` / `gpt-4o` | Paid developer account | [OpenAI Platform](https://platform.openai.com/api-keys) |
@@ -159,7 +162,7 @@ QuickSnipe is built on a **100% Client-Side BYOK Architecture**.
 
 > [!TIP]
 > **No API Key? No Problem!**  
-> If no API key is configured, QuickSnipe automatically activates its **Smart Local Heuristic Engine**. All listing generators, calculators, and SEO tools function immediately out of the box using built-in keyword tokenization templates.
+> If no cloud API key is configured, QuickSnipe automatically activates **Chrome Built-in AI (Gemini Nano)** when available, or seamlessly falls back to its **Smart Local Heuristic Engine**. All listing generators, calculators, and SEO tools function immediately out of the box with zero setup.
 
 ---
 
@@ -171,7 +174,7 @@ QuickSnipe adheres strictly to Google Chrome Web Store Developer Policies and th
 - **`activeTab`**: Reads public DOM text (titles, prices, bullets, reviews) from the active marketplace tab when you open the sidepanel or click an action button.
 - **`sidePanel`**: Renders the multi-tab Creator Studio dashboard side-by-side with your listing workflow.
 - **`scripting`**: Dispatches form values during 1-Click Form Autofill into your listing editor.
-- **`tabs`**: Detects whether you are currently on Etsy, Amazon, eBay, Shopify, Poshmark, Depop, or Mercari to tailor tools in real time.
+- **`tabs`**: Detects whether you are currently on Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, or Grailed to tailor tools in real time.
 - **`alarms`**: Handles daily usage counter resets at midnight local time.
 - **`contextMenus`**: Allows right-clicking any text on the web to "Save to QuickSnipe Swipe File".
 - **`host_permissions`**: Allows direct HTTPS communication between your browser and official AI endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, or `localhost` for Ollama).
