@@ -1,7 +1,7 @@
 # Privacy Policy for QuickSnipe
 
-**Effective Date:** September 6, 2026  
-**Version:** 1.3.0  
+**Effective Date:** September 10, 2026  
+**Version:** 1.3.1  
 **Repository:** [https://github.com/RadTome/QuickSnipe-support](https://github.com/RadTome/QuickSnipe-support)
 
 QuickSnipe ("we", "our", or "the Extension") is committed to protecting your privacy and personal data. This Privacy Policy explains how QuickSnipe handles user data, browser permissions, and third-party AI integrations in full compliance with Google Chrome Web Store Developer Program Policies.
@@ -48,11 +48,10 @@ In accordance with Google Chrome Web Store Developer Policies, QuickSnipe reques
 | `activeTab` | Accesses the active tab's public DOM when you open the sidepanel or click an action button to analyze listing copy or search results. |
 | `sidePanel` | Displays the Creator Studio dashboard interface seamlessly alongside your active browser tab. |
 | `scripting` | Programmatically injects text extraction and 1-click form autofill utilities on active listing tabs. |
-| `tabs` | Reads active tab URL and title metadata to automatically detect supported marketplaces and adapt features in real time. |
 | `alarms` | Schedules periodic daily usage counter resets at midnight local time. |
 | `contextMenus` | Enables right-click context menu shortcuts to save selected text snippets directly to your local QuickSnipe Swipe File. |
-| `Host Permissions (http://*/*, https://*/*)` | Enables page analysis, image extraction, and 1-click listing form autofill across Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, Grailed, and merchant web pages. |
 | `Host Permissions (Direct AI APIs & Licensing)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`) and ExtensionPay (`extensionpay.com`). |
+| `Optional Host Permissions (http://*/*, https://*/*)` | Requested on-demand only when a user explicitly analyzes custom storefronts or arbitrary web pages outside default marketplace matches. |
 
 ---
 

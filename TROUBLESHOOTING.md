@@ -15,6 +15,8 @@ This guide provides targeted solutions for the most common technical issues, err
 - [7. Ollama Local AI connection refused (`net::ERR_CONNECTION_REFUSED`)](#7-ollama-local-ai-connection-refused-neterr_connection_refused)
 - [8. Upgraded to Pro but badge still says "FREE"](#8-upgraded-to-pro-but-badge-still-says-free)
 - [9. Chrome Built-in AI (Gemini Nano) shows "Not Available" or "Model Needs Download"](#9-chrome-built-in-ai-gemini-nano-shows-not-available-or-model-needs-download)
+- [10. Extension context invalidated / After extension update](#10-extension-context-invalidated--after-extension-update)
+- [11. Floating QuickBar HUD positioning or dismissal](#11-floating-quickbar-hud-positioning-or-dismissal)
 
 ---
 
@@ -52,8 +54,9 @@ This guide provides targeted solutions for the most common technical issues, err
 1. Click inside the active listing editor tab to make sure it has browser focus.
 2. If using Etsy Shop Manager, ensure you are on the **Create/Edit Listing** page.
 3. If using Amazon Seller Central, ensure you are on the **Add Products / Listing Edit** step.
-4. **Fallback Option**: Every generated AI block has a **📋 Copy** button. If the platform is undergoing a major UI update, use 1-click clipboard copy to paste directly into the field while we push a selector patch.
-5. Report the broken selector using our [Marketplace Scraper Issue Form](https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml).
+4. **QuickBar Alternative**: Use the in-page **QuickBar HUD** floating on your editor page. Click `Autofill All` or click the field-specific paste icon.
+5. **Fallback Option**: Every generated AI block has a **📋 Copy** button. If the platform is undergoing a major UI update, use 1-click clipboard copy to paste directly into the field while we push a selector patch.
+6. Report the broken selector using our [Marketplace Scraper Issue Form](https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml).
 
 ---
 
@@ -64,7 +67,7 @@ This guide provides targeted solutions for the most common technical issues, err
 - The API key was revoked, deleted, or entered under the wrong provider in Settings.
 
 #### Solutions:
-1. Open the QuickSnipe Sidepanel and click **⚙ (Settings)**.
+1. Open the QuickSnipe Sidepanel (`Alt+Q`) and click **⚙ (Settings)**.
 2. Double-check that the **Provider** dropdown matches your key (e.g. do not paste a Groq key under OpenAI).
 3. Delete the existing key, re-copy it freshly from your provider's developer console, and paste it back:
    - [Google AI Studio](https://aistudio.google.com/app/apikey)
@@ -85,7 +88,7 @@ This guide provides targeted solutions for the most common technical issues, err
 
 #### Solutions:
 1. Wait 30–60 seconds for the provider rate window to reset, then retry.
-2. In Settings, select a faster/lighter model (e.g., switch from `gemini-3.1-pro-preview` to `gemini-3.6-flash` or `gemini-2.0-flash-lite`).
+2. In Settings, select a faster/lighter model (e.g., switch from preview models to `gemini-3.6-flash` or `gemini-2.0-flash`).
 3. For OpenAI/Anthropic/DeepSeek, verify that your account has available balance on their billing settings page.
 
 ---
@@ -176,3 +179,29 @@ This guide provides targeted solutions for the most common technical issues, err
    - Locate **Optimization Guide On Device Model**.
    - Click **Check for update** and wait for the status to show **Up-to-date**.
 4. If your device does not meet hardware requirements (requires minimum 4GB GPU / VRAM or 16GB system RAM), switch to **Google Gemini** in QuickSnipe Settings for free, instant cloud generation.
+
+---
+
+### 10. Extension context invalidated / After extension update
+
+#### Potential Causes:
+- Chrome auto-updated QuickSnipe in the background while listing tabs remained open.
+- The content script on the existing page lost its active connection to the newly loaded background service worker.
+
+#### Solutions:
+1. Simply refresh the active marketplace tab (`F5` or `Ctrl+R`).
+2. Re-open QuickSnipe using **`Alt+Q`** or click the extension icon.
+3. Your previous session state (scraped items, mined reviews, draft copy) will automatically restore without data loss.
+
+---
+
+### 11. Floating QuickBar HUD positioning or dismissal
+
+#### Potential Causes:
+- The floating in-page QuickBar HUD is covering an editor field or button you need to click.
+
+#### Solutions:
+1. **Instant Minimize**: Press the **`Escape (Esc)`** key to immediately minimize the HUD into a compact unobtrusive floating badge.
+2. **Reposition**: Click and drag the handle on the QuickBar to move it to any corner of your screen.
+3. **Snooze**: Click the dropdown arrow on the QuickBar and select "Snooze for this site" to hide it during this session.
+4. QuickBar state and positions are persisted strictly in isolated extension storage (`chrome.storage.local`) with zero footprint left on the host website.

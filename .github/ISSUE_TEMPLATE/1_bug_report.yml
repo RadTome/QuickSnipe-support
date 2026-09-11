@@ -14,15 +14,18 @@ body:
       description: Which part of the extension is experiencing an issue?
       options:
         - "🤖 AI Studio Listing Generators"
-        - "⚡ 1-Click Form Autofill Engine"
+        - "⚡ 1-Click Form Autofill & In-Page QuickBar"
+        - "📈 Competitor Sales Velocity & Revenue Estimator"
+        - "🎯 Competitor Keyword Gap Matrix & Sniper"
+        - "🏆 Listing Quality Scorecard (LQS)"
+        - "🛡️ Trademark Pre-Flight Guard"
         - "💰 Multi-Platform Profit & Margin Calculator"
-        - "🎯 Competitor Keyword Gap Matrix"
-        - "🎯 Competitor Price Sniper"
         - "💬 Customer Review Objection Miner"
         - "📊 Full-Page SEO & Content Auditor"
         - "🖼️ AI Image Alt-Text Generator"
         - "📦 Amazon Backend Search Terms 249B Validator"
         - "📁 Swipe File & CSV/TSV Export"
+        - "🌓 Themes (Dark / Light Glass / System)"
         - "⚙️ Settings / BYOK Key Manager"
         - "🗗 Sidepanel / Popup / General UI"
     validations:
@@ -31,8 +34,8 @@ body:
     id: extension-version
     attributes:
       label: QuickSnipe Extension Version
-      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.2.0).
-      placeholder: "v1.2.0"
+      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.3.1).
+      placeholder: "v1.3.1"
     validations:
       required: true
   - type: input

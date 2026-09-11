@@ -9,7 +9,8 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛡️ 1. Safety, Bans & Compliance](#-1-safety-bans--compliance)
 - [🤖 2. Bring Your Own Key (BYOK) & AI Questions](#-2-bring-your-own-key-byok--ai-questions)
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
-- [💳 4. Plans, Licensing & Subscriptions](#-4-plans-licensing--subscriptions)
+- [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
+- [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
 
 ---
 
@@ -20,7 +21,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 QuickSnipe operates strictly as a client-side productivity assistant in your local Google Chrome browser.
 - It does **not** use automated headless bots, unauthorized API scrapers, or high-velocity requests.
 - When you open the sidepanel or click a tool, it only inspects the public HTML elements already loaded on your screen.
-- When you use **1-Click Form Autofill**, it acts identically to a human user pasting text into the input fields.
+- When you use **1-Click Form Autofill** or the **In-Page QuickBar**, it acts identically to a human user pasting text into the input fields.
 
 ### Q: Does QuickSnipe store or see my seller account login credentials?
 **A: Never.** QuickSnipe does not have access to passwords, credit card numbers, or session cookies. All actions run in-memory within Chrome.
@@ -76,6 +77,23 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 8. **Walmart** (Title formatting, key features, shelf keywords, reviews)
 9. **Grailed** (Archive fashion, designer credentials, condition grading)
 
+### Q: How does the Competitor Sales Velocity & Gross Revenue Estimator work?
+**A:** When analyzing competing search results or product pages, QuickSnipe inspects review accumulation velocity, recent customer ratings, explicit buyer counts (such as Amazon's "bought in past month" badges), and platform sales signals. It calculates:
+- Estimated monthly unit sales volume.
+- Estimated gross monthly revenue run-rate.
+- Velocity classification badges: **Unicorn 🦄**, **Fast Mover 🔥**, **Steady ⚡**, and **Emerging 🌱**.
+
+### Q: What is the Listing Quality Scorecard (LQS)?
+**A:** The LQS audits your draft listing before you hit publish. It scores attributes from **Grade S (Exceptional)** down to **Grade F**, inspecting:
+- Platform title length constraints (e.g. Etsy 140c, eBay 80c, Amazon 200c).
+- Missing marketplace tags or bullet points.
+- Keyword gap coverage against top ranking search competitors.
+- Price competitiveness relative to the active niche median price.
+- It includes 1-click auto-fix buttons to immediately resolve identified gaps.
+
+### Q: How does the Trademark Pre-Flight Guard work?
+**A:** Before you publish or copy listing copy, QuickSnipe automatically scans your draft titles, bullet points, and tags against common registered trademarks and protected brand terms. If high-risk terms are detected, it alerts you with safe generic replacement suggestions to protect your seller account from intellectual property strikes.
+
 ### Q: How does the Omnichannel Cross-Market Sniper work?
 **A:** When running a search snipe, you can toggle the **Omnichannel Multi-Market** switch to scrape competitor search results across Etsy, eBay, Poshmark, and Mercari simultaneously. QuickSnipe's smart category classifier automatically separates cross-category mismatched listings from pure competitor items so your pricing sweet-spot calculations remain accurate.
 
@@ -86,15 +104,34 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 **A:** Amazon Seller Central strictly enforces a limit of **249 bytes (UTF-8 encoded)** for backend generic keywords. If your backend search terms reach 250 bytes or more, Amazon's indexing system silently **discards the entire string**, causing your product to lose search visibility. QuickSnipe's **Amazon 249B Validator** strips stop words, deduplicates terms, and uses a native UTF-8 byte meter to ensure your terms are always 100% indexed.
 
 ### Q: How does 1-Click Form Autofill work?
-**A:** When editing or creating a listing on Etsy, Amazon, eBay, Shopify, Poshmark, or Depop, click the **⚡ Autofill Form** button in QuickSnipe. QuickSnipe programmatically injects the generated Title, Description, Price, and Tags into the active editor form and dispatches synthetic input events so that React and Vue frameworks register the changes immediately.
+**A:** When editing or creating a listing on Etsy, Amazon, eBay, Shopify, Poshmark, or Depop, click the **⚡ Autofill Form** button in QuickSnipe or in the floating **QuickBar**. QuickSnipe programmatically injects the generated Title, Description, Price, and Tags into the active editor form and dispatches synthetic input events so that React and Vue frameworks register the changes immediately.
 
 ---
 
-## 💳 4. Plans, Licensing & Subscriptions
+## ⌨️ 4. Shortcuts, QuickBar & Themes
+
+### Q: What keyboard shortcuts does QuickSnipe support?
+- **`Alt+Q`** (Mac: `Alt+Q`): Instantly open or toggle the QuickSnipe Chrome Side Panel.
+- **`Ctrl+Shift+S`** (Mac: `Cmd+Shift+S`): Save highlighted web text directly to your local QuickSnipe Swipe File.
+- **`Escape (Esc)`**: Instantly minimize the floating in-page QuickBar HUD.
+
+### Q: What is the floating QuickBar HUD?
+**A:** The QuickBar is an unobtrusive, in-page floating toolbar that appears when you are editing listings on supported marketplace editors. It lets you inject draft copy, borrow keywords, or autofill fields directly without switching away from your editor. It runs within a sandboxed Shadow DOM to prevent CSS conflicts with host websites.
+
+### Q: How do themes work?
+**A:** QuickSnipe includes three visual display modes:
+1. **Cyber Dark**: High-contrast dark mode tailored for late-night listing sessions.
+2. **Light Glass**: Ultra-crisp frosted glass light theme.
+3. **System Sync**: Automatically matches your operating system's light/dark appearance preference.
+You can toggle themes in **Settings ⚙ → Appearance**.
+
+---
+
+## 💳 5. Plans, Licensing & Subscriptions
 
 ### Q: What is the difference between Free and Pro?
 - **Free Plan**: Free forever. Access to listing generators (with standard daily generation quotas), profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
-- **Pro Plan**: Unlimited daily generations, multi-platform competitor snipes, deep review objection miner, 1-click form autofill, priority scraper updates, and unlimited swipe file storage.
+- **Pro Plan**: Unlimited daily generations, multi-platform competitor snipes, sales velocity & revenue run-rates, deep review objection miner, 1-click form autofill & QuickBar, priority scraper updates, and unlimited swipe file storage.
 
 ### Q: How does the 7-day free trial work?
 **A:** When you install QuickSnipe, you receive an automatic 7-day unrestricted trial of all Pro features. No credit card is required to try the standard features.
