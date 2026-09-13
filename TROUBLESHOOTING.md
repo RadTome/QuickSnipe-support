@@ -181,6 +181,7 @@ This guide provides targeted solutions for the most common technical issues, err
    - Locate **Optimization Guide On Device Model**.
    - Click **Check for update** and wait for the status to show **Up-to-date**.
 4. If your device does not meet hardware requirements (requires minimum 4GB GPU / VRAM or 16GB system RAM), switch to **Google Gemini** in QuickSnipe Settings for free, instant cloud generation.
+5. **Slow Generation Notice**: Because Gemini Nano executes on local CPU/RAM without cloud acceleration, generation typically takes 15–30 seconds. We strongly recommend getting a free API key for **Google Gemini** (`gemini-2.0-flash` / `gemini-3.6-flash`) from [Google AI Studio](https://aistudio.google.com/app/apikey) for instant sub-second generations.
 
 ---
 

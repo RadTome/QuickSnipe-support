@@ -55,7 +55,7 @@ Chrome automatically updates extensions, but you can force an instant update:
 - ✅ 1-Click Form Autofill engine compatibility with active marketplace listing editors.
 - ✅ Zero-key on-device Chrome Built-in AI (Gemini Nano) and BYOK API integrations (Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter, Ollama).
 - ✅ Multi-platform fee calculator presets, Amazon 249B validator, and export tools.
-- ✅ ExtensionPay / Stripe Pro license sync and trial management.
+- ✅ ExtensionPay / Stripe Pro license sync and subscription management.
 
 ### What is Out of Scope:
 - ❌ Outages, downtime, or billing issues on third-party AI provider platforms (e.g., OpenAI API outages or Anthropic rate limits).
@@ -77,11 +77,11 @@ To help us fix your issue as quickly as possible:
 
 ---
 
-## 💳 Billing, Trials & Cancellation FAQs
+## 💳 Billing, Plans & Cancellation FAQs
 
 - **How do I manage or cancel my Pro subscription?**  
   Click the **⚙ (Settings)** button in the QuickSnipe sidepanel, then click **Manage Subscription** to open the Stripe self-service portal. You can cancel with 1 click anytime.
-- **What happens after my 7-day free trial?**  
-  If you choose not to upgrade, your account automatically reverts to the **Free Plan** (which includes daily generation quotas and unlimited BYOK use).
+- **How does the daily free allowance work?**  
+  QuickSnipe provides 3 full free competitor snipes every day, a 4th limited snipe, and a 5th basic summary. Quotas reset automatically at midnight local time.
 - **Need a refund?**  
   If you were billed mistakenly or experienced technical issues, open a [Billing Issue Ticket](https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml) within 14 days of purchase for a prompt refund.

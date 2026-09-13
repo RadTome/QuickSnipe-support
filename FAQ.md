@@ -53,8 +53,8 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 
 ### Q: Chrome Built-in AI vs. Cloud BYOK — What is the difference?
 **A:**
-- **Chrome Built-in AI (Gemini Nano)**: Zero setup, zero keys, 100% private and offline-capable for fast single-platform listing drafts. Uses Chrome's compact on-device 3B model.
-- **Cloud BYOK (Gemini Flash, Groq, OpenAI, Claude)**: Free or direct keys from cloud providers. Unlocks pro strategic reasoning, multi-platform simultaneous copy (Omnichannel Transmuter), and deep competitor market velocity intelligence.
+- **Chrome Built-in AI (Gemini Nano)**: Zero setup, zero keys, 100% private and offline-capable. Runs locally on your CPU/RAM, which can be noticeably slow (~10–30s per generation).
+- **Cloud BYOK (Google Gemini, Groq, Claude, OpenAI)**: Free or direct keys from cloud providers. **Blazing fast (<1 second inference)**. We strongly encourage all users to connect a free Google Gemini key from [Google AI Studio](https://aistudio.google.com/app/apikey) for 20x faster speed and superior strategic copy.
 
 ### Q: Can I use QuickSnipe 100% offline with Local AI?
 **A: Yes.** QuickSnipe natively supports both **Chrome Built-in AI (Gemini Nano)** and **Ollama**. If you run Ollama locally on your computer (`http://localhost:11434`), you can generate listings and analyze text using models like `llama3.3`, `qwen2.5`, or `deepseek-r1:8b` completely offline with zero internet required for the AI engine.
@@ -131,11 +131,16 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 ## 💳 5. Plans, Licensing & Subscriptions
 
 ### Q: What is the difference between Free and Pro?
-- **Free Plan**: Free forever. Access to listing generators (with standard daily generation quotas), profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
-- **Pro Plan**: Unlimited daily generations, multi-platform competitor snipes, sales velocity & revenue run-rates, deep review objection miner, 1-click form autofill & QuickBar, priority scraper updates, and unlimited swipe file storage.
+- **Free Plan**: Free forever. Gives you 3 full competitor snipes every day, a 4th limited snipe, and a 5th basic summary before daily reset at midnight local time. Includes access to listing generators, profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
+- **Pro Plan**: Unlimited daily generations, unrestricted competitor snipes, sales velocity & revenue run-rates, deep review objection miner, 1-click form autofill & QuickBar, priority scraper updates, and unlimited swipe file storage.
 
-### Q: How does the 7-day free trial work?
-**A:** When you install QuickSnipe, you receive an automatic 7-day unrestricted trial of all Pro features. No credit card is required to try the standard features.
+### Q: How does the free tier and daily snipe allowance work?
+**A:** QuickSnipe provides an automatic daily free allowance for all sellers with zero credit card required:
+- **Snipes 1 to 3**: 100% full, unrestricted competitor sales velocity, price corridors, and keyword gap analysis every day.
+- **Snipe 4**: Limited competitor results with high-level velocity metrics.
+- **Snipe 5**: Basic summary overview, after which generations pause until midnight local time.
+- **Midnight Reset**: Your daily quota automatically resets every night at midnight local time.
+- Upgrade to Pro anytime directly inside the extension if you need unlimited daily volume.
 
 ### Q: Can I use one Pro license on both my desktop and laptop?
 **A: Yes.** Your Pro license is managed securely via ExtensionPay and linked to your email address. Simply enter the same email on any Chrome browser to activate your license.
