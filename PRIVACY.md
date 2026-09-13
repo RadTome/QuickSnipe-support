@@ -13,7 +13,8 @@ QuickSnipe ("we", "our", or "the Extension") is committed to protecting your pri
 QuickSnipe operates entirely within your local Google Chrome browser:
 - **Zero Personal Data Collection:** We do not collect, track, log, profile, or transmit your personal identity, browsing history, search queries, keystrokes, or seller account credentials.
 - **Zero Developer Servers:** We do not host or operate backend proxy servers, intermediate servers, user databases, or telemetry tracking systems. There is no central developer server capturing your activity.
-- **Local Device Storage:** All extension preferences, user-supplied AI API keys, saved prompts, swipe file snippets, competitor snipes, and daily usage counters are stored strictly on your local machine using Chrome's secure `chrome.storage.local` API.
+- **Local Device Storage & Sandboxing:** All extension preferences, user-supplied AI API keys, saved prompts, swipe file snippets, competitor snipes, and daily usage counters are stored strictly on your local machine using Chrome's secure `chrome.storage.local` API. The floating QuickBar assistant stores its coordinates and snooze states strictly in extension storage, leaving zero storage footprint on merchant host pages.
+- **Offline Feedback Recording:** Feedback submitted through the in-app feedback dialog is saved strictly to your local browser storage. QuickSnipe contacts zero remote feedback or tracking servers. Sellers can copy their feedback and diagnostic context to their clipboard with one click to post on GitHub Discussions.
 
 ---
 
@@ -51,7 +52,7 @@ In accordance with Google Chrome Web Store Developer Policies, QuickSnipe reques
 | `alarms` | Schedules periodic daily usage counter resets at midnight local time. |
 | `contextMenus` | Enables right-click context menu shortcuts to save selected text snippets directly to your local QuickSnipe Swipe File. |
 | `Host Permissions (Direct AI APIs & Licensing)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`) and ExtensionPay (`extensionpay.com`). |
-| `Optional Host Permissions (http://*/*, https://*/*)` | Requested on-demand only when a user explicitly analyzes custom storefronts or arbitrary web pages outside default marketplace matches. |
+| `Optional Host Permissions` *(v1.3.1 legacy; fully purged in upcoming v1.3.2)* | In v1.3.1, requested on-demand only for custom storefront analysis. Purged in v1.3.2 for absolute least-privilege security. |
 
 ---
 

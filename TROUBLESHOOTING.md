@@ -17,6 +17,8 @@ This guide provides targeted solutions for the most common technical issues, err
 - [9. Chrome Built-in AI (Gemini Nano) shows "Not Available" or "Model Needs Download"](#9-chrome-built-in-ai-gemini-nano-shows-not-available-or-model-needs-download)
 - [10. Extension context invalidated / After extension update](#10-extension-context-invalidated--after-extension-update)
 - [11. Floating QuickBar HUD positioning or dismissal](#11-floating-quickbar-hud-positioning-or-dismissal)
+- [12. Light Glass Theme contrast or text legibility](#12-light-glass-theme-contrast-or-text-legibility)
+- [13. Offline feedback recording & copying diagnostics](#13-offline-feedback-recording--copying-diagnostics)
 
 ---
 
@@ -205,3 +207,29 @@ This guide provides targeted solutions for the most common technical issues, err
 2. **Reposition**: Click and drag the handle on the QuickBar to move it to any corner of your screen.
 3. **Snooze**: Click the dropdown arrow on the QuickBar and select "Snooze for this site" to hide it during this session.
 4. QuickBar state and positions are persisted strictly in isolated extension storage (`chrome.storage.local`) with zero footprint left on the host website.
+
+---
+
+### 12. Light Glass Theme contrast or text legibility
+
+#### Potential Causes:
+- Operating system high-contrast mode or browser zoom settings affecting frosted glass opacity.
+- Using earlier versions before the WCAG AAA contrast tokens were unified.
+
+#### Solutions:
+1. In QuickSnipe, go to **Settings ⚙ → Appearance**.
+2. If working in direct sunlight or bright display conditions, verify **Light Glass** mode is selected (or choose **Cyber Dark** for high contrast against white marketplace backdrops).
+3. The upcoming **v1.3.2** update includes unified dark slate typography (`#0f172a` / `#334155`), enhanced border visibility, and high-contrast notice banners throughout Light Glass mode.
+
+---
+
+### 13. Offline feedback recording & copying diagnostics
+
+#### How It Works:
+- QuickSnipe operates with zero remote telemetry or tracking servers.
+- Feedback submitted in the extension is saved strictly to local extension storage.
+- To share feedback with the developer or request follow-up on a bug:
+  1. Submit your rating and thoughts in the feedback modal.
+  2. On the success screen, click **📋 Copy My Feedback**.
+  3. Click **💬 Post on GitHub Discussions ↗** to paste your diagnostics directly into our community thread for direct assistance.
+

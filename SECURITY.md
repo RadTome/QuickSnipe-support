@@ -10,19 +10,22 @@ We actively provide security patches and updates for the following versions:
 
 | Version | Supported | Notes |
 |---|:---:|---|
-| `1.3.x` (Latest: `v1.3.1`) | ✅ | Current Stable Release (Manifest V3) |
-| `< 1.3.0` | ❌ | Deprecated. Please update to latest Chrome Web Store release. |
+| `1.3.2` | 🟡 (Upcoming) | In Release Preview & QA (Hardened least-privilege permissions) |
+| `1.3.1` | ✅ | Current Stable Release (Live on Chrome Web Store) |
+| `1.3.0` | ⚠️ | Previous Minor Release. Please update to latest version. |
+| `< 1.3.0` | ❌ | Deprecated. Unsupported. |
 
 ---
 
 ## 🔐 Architectural Security Highlights
 
-1. **Zero Intermediate Servers**: QuickSnipe does not maintain backend proxies or logging servers. Your search terms, listing copy, and scraped data stay strictly within your local machine.
-2. **Encrypted Local Storage**: API keys and swipe files are stored locally in Chrome's sandboxed `chrome.storage.local`.
-3. **Strict Content Security Policy**: QuickSnipe adheres to Manifest V3 CSP specifications:
+1. **Least-Privilege Security Footprint**: Zero broad wildcard permissions (`http://*/*` and `https://*/*` removed). Manifest permissions are strictly limited to necessary extension APIs (`storage`, `activeTab`, `sidePanel`, `scripting`, `alarms`, `contextMenus`) and explicit official endpoints.
+2. **Zero Intermediate Servers**: QuickSnipe does not maintain backend proxies or logging servers. Your search terms, listing copy, and scraped data stay strictly within your local machine.
+3. **Encrypted Local Storage & Sandboxing**: API keys, swipe files, and QuickBar preferences are stored locally in Chrome's sandboxed `chrome.storage.local`. Zero host-origin storage footprint.
+4. **Strict Content Security Policy**: QuickSnipe adheres to Manifest V3 CSP specifications:
    - Zero execution of remote or dynamic strings (`no eval()`, `no new Function()`).
    - All scripts are packaged locally within the verified extension bundle.
-4. **Direct HTTPS Communication**: BYOK API calls connect directly from your client browser to official provider endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`).
+5. **Direct HTTPS Communication**: BYOK API calls connect directly from your client browser to official provider endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`).
 
 ---
 
