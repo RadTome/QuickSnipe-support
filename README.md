@@ -7,6 +7,7 @@
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.1-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/quicksnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
 [![GitHub Issues](https://img.shields.io/github/issues/RadTome/QuickSnipe-support)](https://github.com/RadTome/QuickSnipe-support/issues)
@@ -14,6 +15,7 @@
 [![License](https://img.shields.io/badge/License-Commercial-blue.svg)](SUPPORT.md)
 
 <p align="center">
+  <a href="https://radtome.github.io/quicksnipe-support/"><b>🌐 Official Website & Live Demos</b></a> •
   <a href="https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
@@ -31,6 +33,7 @@
 
 | Resource | Description | Link |
 |---|---|---|
+| 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/quicksnipe-support](https://radtome.github.io/quicksnipe-support/) |
 | 📋 **Release Notes & Roadmap** | Full changelog for v1.3.1 (Live) and preview of upcoming v1.3.2 | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
