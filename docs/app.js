@@ -218,20 +218,20 @@
 
     let grade = 'F';
     let gradeClass = 'grade-c';
-    let advice = 'Start typing a draft title to see your algorithmic audit...';
+    let advice = 'Start typing a title draft to test length and search limits...';
 
     if (charLen === 0) {
-      grade = '—';
+      grade = '-';
       gradeClass = '';
-      advice = 'Enter your listing draft above to test search indexing and truncation compliance.';
+      advice = 'Type or paste your listing draft above to test length guidelines and search visibility.';
     } else if (charLen > limit.max) {
       grade = 'F';
       gradeClass = 'grade-c';
-      advice = `⚠️ Title exceeds ${limit.name} maximum cutoff by ${charLen - limit.max} characters! Search engines will truncate critical buyer keywords.`;
+      advice = `⚠️ Title exceeds ${limit.name} maximum cutoff by ${charLen - limit.max} characters. Search results will cut off important keywords.`;
     } else if (charLen >= limit.idealMin && charLen <= limit.idealMax) {
       grade = 'S';
       gradeClass = 'grade-s';
-      advice = `✨ Exceptional length optimization! Fits perfectly within ${limit.name} desktop and mobile search viewports without wasted characters.`;
+      advice = `✨ Great length optimization. Fits cleanly within ${limit.name} desktop and mobile search viewports without wasted space.`;
     } else if (charLen >= limit.idealMin - 20) {
       grade = 'A';
       gradeClass = 'grade-a';
