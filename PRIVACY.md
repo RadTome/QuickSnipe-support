@@ -1,7 +1,7 @@
 # Privacy Policy for QuickSnipe
 
-**Effective Date:** September 10, 2026  
-**Version:** 1.3.1  
+**Effective Date:** September 15, 2026  
+**Version:** 1.3.2  
 **Repository:** [https://github.com/RadTome/QuickSnipe-support](https://github.com/RadTome/QuickSnipe-support)
 
 QuickSnipe ("we", "our", or "the Extension") is committed to protecting your privacy and personal data. This Privacy Policy explains how QuickSnipe handles user data, browser permissions, and third-party AI integrations in full compliance with Google Chrome Web Store Developer Program Policies.
@@ -51,8 +51,7 @@ In accordance with Google Chrome Web Store Developer Policies, QuickSnipe reques
 | `scripting` | Programmatically injects text extraction and 1-click form autofill utilities on active listing tabs. |
 | `alarms` | Schedules periodic daily usage counter resets at midnight local time. |
 | `contextMenus` | Enables right-click context menu shortcuts to save selected text snippets directly to your local QuickSnipe Swipe File. |
-| `Host Permissions (Direct AI APIs & Licensing)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`) and ExtensionPay (`extensionpay.com`). |
-| `Optional Host Permissions` *(v1.3.1 legacy; fully purged in upcoming v1.3.2)* | In v1.3.1, requested on-demand only for custom storefront analysis. Purged in v1.3.2 for absolute least-privilege security. |
+| `Host Permissions (Direct AI APIs & Licensing)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`) and ExtensionPay (`extensionpay.com`). Broad wildcard permissions (`http://*/*`, `https://*/*`) and `tabs` are completely purged for absolute least-privilege security. |
 
 ---
 

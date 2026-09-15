@@ -4,10 +4,10 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.3.2] — Upcoming / In Preview
+## 🚀 [v1.3.2] — Current Stable (Live in Chrome Web Store)
 
-> **Status:** Completed in local staging • Preparing Chrome Web Store package submission  
-> **Target Release:** September 2026
+> **Status:** Available now on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Release Date:** September 15, 2026
 
 ### 🛡️ Least-Privilege Security & Sandbox Hardening
 - **Purged Broad Wildcard Host Permissions**: Completely removed `http://*/*` and `https://*/*` from `manifest.json`. Retains only explicit marketplace content script matches and direct official AI/payment endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `extensionpay.com`, `localhost`/`127.0.0.1`).
@@ -34,7 +34,7 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🌟 [v1.3.1] — Current Stable (Live in Chrome Web Store)
+## 🌟 [v1.3.1] — Previous Stable
 
 > **Status:** Available now on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
 > **Release Date:** September 10, 2026

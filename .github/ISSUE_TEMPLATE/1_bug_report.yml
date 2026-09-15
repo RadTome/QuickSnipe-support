@@ -34,8 +34,8 @@ body:
     id: extension-version
     attributes:
       label: QuickSnipe Extension Version
-      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.3.1).
-      placeholder: "v1.3.1"
+      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.3.2).
+      placeholder: "v1.3.2"
     validations:
       required: true
   - type: input

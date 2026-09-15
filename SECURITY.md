@@ -10,8 +10,8 @@ We actively provide security patches and updates for the following versions:
 
 | Version | Supported | Notes |
 |---|:---:|---|
-| `1.3.2` | 🟡 (Upcoming) | In Release Preview & QA (Hardened least-privilege permissions) |
-| `1.3.1` | ✅ | Current Stable Release (Live on Chrome Web Store) |
+| `1.3.2` | ✅ | Current Stable Release (Live on Chrome Web Store) |
+| `1.3.1` | ⚠️ | Previous Stable Release. Please update to latest version. |
 | `1.3.0` | ⚠️ | Previous Minor Release. Please update to latest version. |
 | `< 1.3.0` | ❌ | Deprecated. Unsupported. |
 

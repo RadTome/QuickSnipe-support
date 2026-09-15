@@ -9,7 +9,7 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.1-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -37,7 +37,7 @@
 | Resource | Description | Link |
 |---|---|---|
 | 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
-| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.1 (Live) and preview of upcoming v1.3.2 | [CHANGELOG.md](CHANGELOG.md) |
+| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.2 (Live) and version history | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
@@ -49,26 +49,16 @@
 
 ---
 
-## 🚀 Release Status: v1.3.1 (Live) & Coming in v1.3.2
+## 🚀 Release Status: v1.3.2 (Live in Chrome Web Store)
 
-### 🟢 Current Stable: QuickSnipe v1.3.1 (Published on Chrome Web Store)
-QuickSnipe **v1.3.1** is officially live! Install or update directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa).
+### 🟢 Current Stable: QuickSnipe v1.3.2 (Published on Chrome Web Store)
+QuickSnipe **v1.3.2** is officially live! Install or update directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa).
 
-**Key capabilities live in v1.3.1:**
-- **🤖 On-Device AI with Chrome Built-in AI**: Zero-key, 100% private local listing generation via Gemini Nano (Chrome 131+ Prompt API).
-- **🔑 Expanded BYOK Models**: Instant access to Google Gemini 3.6/2.0 Flash, Groq Llama 3.3 70B, Claude 3.7 Sonnet, OpenAI GPT-4o, DeepSeek V3/R1, OpenRouter, and offline Ollama.
-- **🛒 Walmart & Grailed Integration**: Dedicated scrapers, AI generators, and fee calculator presets for Walmart Marketplace and Grailed Luxury Archive.
-- **📈 Competitor Sales Velocity & Revenue Sniper**: Monthly unit volume and gross revenue run-rates with Unicorn 🦄, Fast Mover 🔥, Steady ⚡, and Emerging 🌱 badges.
-- **🏆 Listing Quality Scorecard (LQS)**: Instant Grade S to F audits with 1-click missing attribute fixes.
-- **⚡ 1-Click Form Autofill & QuickBar HUD**: Native React/Vue-compatible form population on Etsy, Amazon, eBay, Shopify, Poshmark, and Depop.
-- **📦 Amazon 249B Search Term Validator**: Strict UTF-8 byte boundary enforcement with automated stop word cleaner.
-
-### 🔮 What's Coming in v1.3.2 (In Staging & Release Preview)
-The upcoming **v1.3.2** update focuses on accessibility, least-privilege security hardening, and uninterrupted session workflow:
-- **🛡️ Least-Privilege Security**: Complete removal of broad wildcard host permissions (`http://*/*`, `https://*/*`) and `tabs` permission from the manifest for minimal attack surface.
-- **🌓 WCAG AAA High-Contrast Light Glass Theme**: Enhanced typography and semantic tokens across quality notice banners, model tier bars, and large modal dialogs for crystal-clear readability.
-- **⚡ Complete Session State Continuity**: Reopening the sidepanel automatically restores competitor analyses, active queries, mined reviews, and profit calculations with zero data loss.
-- **🎯 Direct Tool Routing**: Creator dashboard quick-action cards route straight into the corresponding studio tool upon launch.
+**Key capabilities live in v1.3.2:**
+- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission from manifest. Active tab inspection strictly via focused `activeTab`.
+- **🌓 WCAG AAA High-Contrast Light Glass Theme**: High-contrast typography (`#0f172a` / `#334155`) across notice banners, AI model tier tags, and modal dialogs.
+- **⚡ Complete Session State Continuity**: Reopening the sidepanel automatically restores competitor analyses, custom queries, mined reviews, and profit calculations without data loss.
+- **🎯 Direct Studio Tool Routing**: Creator dashboard quick-action cards route straight into the corresponding studio tool upon launch.
 - **🔒 Strict Host Storage Sandboxing**: In-page QuickBar positions and snooze preferences save strictly to isolated `chrome.storage.local`, leaving zero footprint on merchant sites.
 - **✍️ Form Autofill Focus Preservation**: 1-Click Fast Fill retains active field focus and cursor position after injection.
 - **♿ W3C APG Accessibility**: Roving `tabindex` arrow-key tab switching, accessible modal dialog focus trapping, and `Escape` key dismissal.
@@ -76,6 +66,15 @@ The upcoming **v1.3.2** update focuses on accessibility, least-privilege securit
 - **📱 320px–360px Narrow Viewport Support**: Header overflow collapse and smooth scroll-snap tab navigation.
 - **🔄 Tab Connection Recovery**: Proactive prompts guide sellers to reload tabs after background service worker updates.
 - **📋 Local Offline Feedback**: Instant local recording with 1-click clipboard export and GitHub Discussions bridging.
+
+### 📦 Previous Major Milestone: v1.3.1
+- **🤖 On-Device AI with Chrome Built-in AI**: Zero-key, 100% private local listing generation via Gemini Nano (Chrome 131+ Prompt API).
+- **🔑 Expanded BYOK Models**: Instant access to Google Gemini 3.6/2.0 Flash, Groq Llama 3.3 70B, Claude 3.7 Sonnet, OpenAI GPT-4o, DeepSeek V3/R1, OpenRouter, and offline Ollama.
+- **🛒 Walmart & Grailed Integration**: Dedicated scrapers, AI generators, and fee calculator presets for Walmart Marketplace and Grailed Luxury Archive.
+- **📈 Competitor Sales Velocity & Revenue Sniper**: Monthly unit volume and gross revenue run-rates with Unicorn 🦄, Fast Mover 🔥, Steady ⚡, and Emerging 🌱 badges.
+- **🏆 Listing Quality Scorecard (LQS)**: Instant Grade S to F audits with 1-click missing attribute fixes.
+- **⚡ 1-Click Form Autofill & QuickBar HUD**: Native React/Vue-compatible form population on Etsy, Amazon, eBay, Shopify, Poshmark, and Depop.
+- **📦 Amazon 249B Search Term Validator**: Strict UTF-8 byte boundary enforcement with automated stop word cleaner.
 
 👉 *For complete version history and detailed change logs, see [CHANGELOG.md](CHANGELOG.md).*
 

@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.3.1 Live & v1.3.2 Upcoming)](#-6-release-updates-v131-live--v132-upcoming)
+- [🚀 6. Release Updates (v1.3.2 Live)](#-6-release-updates-v132-live)
 
 ---
 
@@ -150,22 +150,12 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.3.1 Live & v1.3.2 Upcoming)
+## 🚀 6. Release Updates (v1.3.2 Live)
 
-### Q: What is new in QuickSnipe v1.3.1 (Live in Chrome Web Store)?
-**A:** QuickSnipe v1.3.1 brings major upgrades:
-- **Chrome Built-in AI (Gemini Nano)**: Zero-key on-device generation with complete privacy via Chrome 131+ Prompt API.
-- **Expanded BYOK Models**: Instant support for Google Gemini 3.6/2.0 Flash, Groq Llama 3.3 70B, Claude 3.7 Sonnet, OpenAI GPT-4o, DeepSeek V3/R1, OpenRouter, and offline Ollama.
-- **Walmart & Grailed Support**: Full product scrapers, custom AI templates, and live fee calculator presets.
-- **Competitor Sales Velocity & Revenue Sniper**: Monthly unit volume and gross revenue estimates with Unicorn 🦄, Fast Mover 🔥, Steady ⚡, and Emerging 🌱 badges.
-- **Listing Quality Scorecard (LQS)**: Grade S to F pre-flight audit with 1-click auto-fixes.
-- **1-Click Form Autofill & QuickBar HUD**: In-page floating assistant for Etsy, Amazon, eBay, Shopify, Poshmark, and Depop.
-- **Dual Theme Engine**: Cyber Dark and frosted Light Glass aesthetics.
-
-### Q: What enhancements are coming in v1.3.2?
-**A:** Version 1.3.2 is in release staging and brings:
+### Q: What is new in QuickSnipe v1.3.2 (Live in Chrome Web Store)?
+**A:** QuickSnipe v1.3.2 brings key stability, accessibility, and security upgrades:
 - **Least-Privilege Security Hardening**: Removed all broad wildcard host permissions (`http://*/*`, `https://*/*`) and `tabs` permission from the manifest for minimal footprint.
-- **WCAG AAA High-Contrast Light Glass Theme**: Sharpened contrast typography and semantic tokens across all modals, banners, tier badges, and buttons.
+- **WCAG AAA High-Contrast Light Glass Theme**: Sharpened contrast typography (`#0f172a` / `#334155`) and semantic tokens across all modals, banners, tier badges, and buttons.
 - **Complete Session State Continuity**: Reopening the sidepanel immediately restores active competitor snipes, search queries, mined reviews, and profit calculation states without data loss.
 - **Direct Studio Tool Routing**: Quick-action cards route straight into the target studio tool tab upon launching.
 - **Strict Host Storage Sandboxing**: QuickBar floating position and snooze preferences store strictly in isolated `chrome.storage.local`, leaving zero footprint on merchant sites.
@@ -175,7 +165,17 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 - **320px Responsive Optimization**: Responsive header collapse and scroll-snap navigation for ultra-narrow side panels.
 - **Local Offline Feedback Modal**: In-app feedback saved to local storage with zero tracking servers, plus 1-click clipboard copy for easy GitHub Discussions posting.
 
-### Q: Will updating from 1.3.1 to 1.3.2 erase my API keys, saved prompts, or swipes?
+### Q: What was introduced in v1.3.1?
+**A:** QuickSnipe v1.3.1 brought:
+- **Chrome Built-in AI (Gemini Nano)**: Zero-key on-device generation with complete privacy via Chrome 131+ Prompt API.
+- **Expanded BYOK Models**: Support for Google Gemini 3.6/2.0 Flash, Groq Llama 3.3 70B, Claude 3.7 Sonnet, OpenAI GPT-4o, DeepSeek V3/R1, OpenRouter, and offline Ollama.
+- **Walmart & Grailed Support**: Full product scrapers, custom AI templates, and live fee calculator presets.
+- **Competitor Sales Velocity & Revenue Sniper**: Monthly unit volume and gross revenue estimates with Unicorn 🦄, Fast Mover 🔥, Steady ⚡, and Emerging 🌱 badges.
+- **Listing Quality Scorecard (LQS)**: Grade S to F pre-flight audit with 1-click auto-fixes.
+- **1-Click Form Autofill & QuickBar HUD**: In-page floating assistant for Etsy, Amazon, eBay, Shopify, Poshmark, and Depop.
+- **Dual Theme Engine**: Cyber Dark and frosted Light Glass aesthetics.
+
+### Q: Will updating from older versions to 1.3.2 erase my API keys, saved prompts, or swipes?
 **A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly.
 
 ### Q: Where can I review the complete version history?
