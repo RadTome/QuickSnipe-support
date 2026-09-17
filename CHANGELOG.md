@@ -4,10 +4,30 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
+## 🔮 [v1.3.3] — Upcoming Release (In Review)
+
+> **Status:** Staged for Deployment / Submitted for Chrome Web Store Review  
+> **Release Target:** September 2026
+
+### ⚡ Performance, Ergonomics & Accessibility
+- **Pro Experience Polish**: Cleanly hide all promotional banners, upgrade buttons, and daily usage meters when Pro is activated for an uncluttered workspace.
+- **Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) to replace 143KB parser bundle in popup context, reducing popup load time by ~200ms.
+- **Service Worker Keepalive & 90s Timeout**: Added keepalive port during generation and 90-second client-side timeout with friendly retry guidance to eliminate silent timeouts on long API calls.
+- **Centralized URL Validation**: Unified `isScriptableUrl()` in shared `utils/url-helpers.js` across background, popup, and sidepanel surfaces.
+- **Hardened QuickBar Security**: Replaced `innerHTML` with safe DOM construction and `textContent` in QuickBar status messages.
+- **APG Accessibility & Roving Focus**: Added `tabindex="0"` to all tab panels, `aria-live="polite"` to dynamic result containers (Sniper, Reviews, SEO), and progressbar attributes to popup.
+- **Side Panel Affordances**: Added `↗` visual indicator and descriptive labels to popup action cards indicating they open the Side Panel.
+- **3-Way Theme Cycling**: Quick toggle now cycles smoothly through Dark, Light Glass, and System Auto with high-contrast light mode styling.
+- **Conflict-Free Hotkey**: Changed swipe capture hotkey to `Alt+Shift+S` to prevent collisions with browser "Save As".
+- **Swipe File Zero-State**: Added rich onboarding card with hotkey and right-click hints when no snippets are saved.
+- **Storage Quota Safeguard**: Added 8KB per-item quota error handling and guidance for custom prompt templates.
+
+---
+
 ## 🚀 [v1.3.2] — Current Stable (Live in Chrome Web Store)
 
-> **Status:** Available now on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
-> **Release Date:** September 15, 2026
+> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Release Date:** September 14, 2026
 
 ### 🛡️ Least-Privilege Security & Sandbox Hardening
 - **Purged Broad Wildcard Host Permissions**: Completely removed `http://*/*` and `https://*/*` from `manifest.json`. Retains only explicit marketplace content script matches and direct official AI/payment endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `extensionpay.com`, `localhost`/`127.0.0.1`).

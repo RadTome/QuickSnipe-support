@@ -9,7 +9,8 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.3.3_In_Review-purple.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -37,7 +38,7 @@
 | Resource | Description | Link |
 |---|---|---|
 | 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
-| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.2 (Live) and version history | [CHANGELOG.md](CHANGELOG.md) |
+| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.2 (Live) and v1.3.3 (Upcoming) | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
@@ -49,14 +50,28 @@
 
 ---
 
-## 🚀 Release Status: v1.3.2 (Live in Chrome Web Store)
+## 🚀 Release Status: v1.3.2 (Live) · v1.3.3 (Upcoming)
 
 ### 🟢 Current Stable: QuickSnipe v1.3.2 (Published on Chrome Web Store)
-QuickSnipe **v1.3.2** is officially live! Install or update directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa).
+QuickSnipe **v1.3.2** is the current production version live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa). Install or update directly from the store.
 
-**Key capabilities live in v1.3.2:**
-- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission from manifest. Active tab inspection strictly via focused `activeTab`.
+**Core capabilities in v1.3.2:**
+- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission. Active tab inspection strictly via focused `activeTab`.
 - **🌓 WCAG AAA High-Contrast Light Glass Theme**: High-contrast typography (`#0f172a` / `#334155`) across notice banners, AI model tier tags, and modal dialogs.
+- **⚡ Session Continuity & UI State Preservation**: Reopening sidepanel instantly restores active competitor analyses, search queries, mined review results, and profit calculations without losing progress.
+- **♿ W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` dismissal.
+
+### 🔮 Upcoming Release: QuickSnipe v1.3.3 (Staged / In Review)
+QuickSnipe **v1.3.3** is finalized and currently in review for the Chrome Web Store.
+
+**What is coming in v1.3.3:**
+- **💎 Pro Experience Polish**: All promotional banners, upgrade buttons, and daily usage meters are cleanly hidden once Pro is active.
+- **⚡ Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) replacing 143KB parser bundle in popup context, reducing popup load time by ~200ms.
+- **🔄 Service Worker Keepalive & AI Timeout**: Keepalive connection prevents idle termination during long LLM calls, coupled with a 90-second client-side timeout wrapper.
+- **🛡️ Hardened QuickBar XSS Prevention**: Eliminated `innerHTML` in in-page notifications in favor of safe DOM construction and `textContent`.
+- **♿ APG Accessibility Upgrades**: Added `tabindex="0"` to all tab panels, `aria-live="polite"` to dynamic result containers, and full progressbar attributes in popup.
+- **🎨 3-Way Theme Cycling**: Quick toggle now cycles smoothly through Dark, Light Glass, and System Auto with high-contrast light mode styling.
+- **⌨️ Conflict-Free Hotkey**: Changed swipe capture hotkey to `Alt+Shift+S` to prevent collisions with browser "Save As".
 - **⚡ Complete Session State Continuity**: Reopening the sidepanel automatically restores competitor analyses, custom queries, mined reviews, and profit calculations without data loss.
 - **🎯 Direct Studio Tool Routing**: Creator dashboard quick-action cards route straight into the corresponding studio tool upon launch.
 - **🔒 Strict Host Storage Sandboxing**: In-page QuickBar positions and snooze preferences save strictly to isolated `chrome.storage.local`, leaving zero footprint on merchant sites.

@@ -220,7 +220,7 @@ This guide provides targeted solutions for the most common technical issues, err
 #### Solutions:
 1. In QuickSnipe, go to **Settings ⚙ → Appearance**.
 2. If working in direct sunlight or bright display conditions, verify **Light Glass** mode is selected (or choose **Cyber Dark** for high contrast against white marketplace backdrops).
-3. QuickSnipe **v1.3.2** includes unified dark slate typography (`#0f172a` / `#334155`), enhanced border visibility, and high-contrast notice banners throughout Light Glass mode.
+3. QuickSnipe **v1.3.2** (and upcoming **v1.3.3**) includes unified dark slate typography (`#0f172a` / `#334155`), enhanced border visibility, and high-contrast notice banners throughout Light Glass mode.
 
 ---
 
