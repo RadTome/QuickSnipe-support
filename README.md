@@ -9,7 +9,7 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
 [![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.3.3_In_Review-purple.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
@@ -20,7 +20,7 @@
 
 <p align="center">
   <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website & Live Demos</b></a> •
-  <a href="https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
+  <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
@@ -53,7 +53,7 @@
 ## 🚀 Release Status: v1.3.2 (Live) · v1.3.3 (Upcoming)
 
 ### 🟢 Current Stable: QuickSnipe v1.3.2 (Published on Chrome Web Store)
-QuickSnipe **v1.3.2** is the current production version live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa). Install or update directly from the store.
+QuickSnipe **v1.3.2** is the current production version live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). Install or update directly from the store.
 
 **Core capabilities in v1.3.2:**
 - **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission. Active tab inspection strictly via focused `activeTab`.

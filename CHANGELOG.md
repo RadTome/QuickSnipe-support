@@ -31,7 +31,7 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ## 🚀 [v1.3.2] — Current Stable (Live in Chrome Web Store)
 
-> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)  
 > **Release Date:** September 14, 2026
 
 ### 🛡️ Least-Privilege Security & Sandbox Hardening
@@ -61,7 +61,7 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ## 🌟 [v1.3.1] — Previous Stable
 
-> **Status:** Available now on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Status:** Available now on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)  
 > **Release Date:** September 10, 2026
 
 ### 🤖 Chrome Built-in AI & Expanded BYOK AI Engine

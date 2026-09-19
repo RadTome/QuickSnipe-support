@@ -171,7 +171,7 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 - **Swipe File Guidance**: Added helpful zero-state onboarding card when no snippets are saved.
 
 ### Q: What is the current live version in the Chrome Web Store?
-**A:** QuickSnipe **v1.3.2** is the current stable release live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-1-click-listing-reseller-assistant/aignalgmmlmnmofabamcdngdopabgkaa). It brought least-privilege security hardening (purging broad wildcard permissions), WCAG AAA high-contrast Light Glass mode, complete session state continuity, and W3C APG keyboard navigation.
+**A:** QuickSnipe **v1.3.2** is the current stable release live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). It brought least-privilege security hardening (purging broad wildcard permissions), WCAG AAA high-contrast Light Glass mode, complete session state continuity, and W3C APG keyboard navigation.
 
 ### Q: Will updating from v1.3.2 to v1.3.3 erase my API keys, saved prompts, or swipes?
 **A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly.
