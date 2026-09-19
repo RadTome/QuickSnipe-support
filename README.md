@@ -65,6 +65,7 @@ QuickSnipe **v1.3.2** is the current production version live on the [Chrome Web 
 QuickSnipe **v1.3.3** is finalized and currently in review for the Chrome Web Store.
 
 **What is coming in v1.3.3:**
+- **💰 Pure-Value Pricing Stack**: Introduced $7.99/mo, $49/yr, and $69 one-time lifetime tiers, undercutting legacy tools by 60%+ with zero server token markup.
 - **💎 Pro Experience Polish**: All promotional banners, upgrade buttons, and daily usage meters are cleanly hidden once Pro is active.
 - **⚡ Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) replacing 143KB parser bundle in popup context, reducing popup load time by ~200ms.
 - **🔄 Service Worker Keepalive & AI Timeout**: Keepalive connection prevents idle termination during long LLM calls, coupled with a 90-second client-side timeout wrapper.

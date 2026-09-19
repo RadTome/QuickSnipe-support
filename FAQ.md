@@ -142,6 +142,12 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 - **Midnight Reset**: Your daily quota automatically resets every night at midnight local time.
 - Upgrade to Pro anytime directly inside the extension if you need unlimited daily volume.
 
+### Q: How much does QuickSnipe Pro cost?
+**A:** QuickSnipe is designed with a pure-value pricing model that heavily undercuts traditional seller software ($20–$50/mo):
+- **Pro Monthly**: **$7.99 / month** (includes 7-day free trial). Over 60% cheaper than legacy tools.
+- **Pro Annual**: **$49 / year** (~$4.08/mo). Save nearly 50% compared to monthly.
+- **Lifetime Deal**: **$69 one-time** (Limited Founder Offer). Pay once, keep Pro listing intelligence forever with zero ongoing server markups.
+
 ### Q: Can I use one Pro license on both my desktop and laptop?
 **A: Yes.** Your Pro license is managed securely via ExtensionPay and linked to your email address. Simply enter the same email on any Chrome browser to activate your license.
 
@@ -153,7 +159,8 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 ## 🚀 6. Release Updates (v1.3.2 Live & v1.3.3 Upcoming)
 
 ### Q: What is coming in QuickSnipe v1.3.3 (Upcoming Release)?
-**A:** QuickSnipe **v1.3.3** is the upcoming release currently staged and in review. It focuses on performance, background reliability, Pro experience polish, and interaction ergonomics:
+**A:** QuickSnipe **v1.3.3** is the upcoming release currently staged and in review. It focuses on performance, background reliability, Pro experience polish, new accessible pricing, and interaction ergonomics:
+- **New Value-First Pricing Stack**: Introduced $7.99/month, $49/year, and $69 one-time lifetime tiers that undercut traditional $20–$50/mo tools.
 - **Pro Experience Polish**: Once QuickSnipe Pro is active, all promotional banners, upgrade buttons, and daily usage meters are cleanly hidden for an uncluttered workspace.
 - **Lightweight Popup Boot**: Extracted a minimal site detector (`detect-site.js`, ~500B) replacing the 143KB parser bundle in popup context, accelerating popup opening by ~200ms.
 - **Service Worker Keepalive & AI Timeout**: Added active keepalive port to prevent background worker termination during long AI generations, plus a 90-second client-side timeout wrapper.

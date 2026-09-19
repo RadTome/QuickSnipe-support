@@ -9,6 +9,11 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 > **Status:** Staged for Deployment / Submitted for Chrome Web Store Review  
 > **Release Target:** September 2026
 
+### 💰 Pure-Value Pricing Stack (Competitor Undercut)
+- **$7.99 / Month Pro**: Lowered entry price by over 60% compared to legacy competitor tools ($20–$30/mo), with automatic 7-day trial.
+- **$49 / Year Annual**: Instant ~50% discount (~$4.08/mo) for serious multi-platform sellers locking in annual volume.
+- **$69 One-Time Lifetime Deal**: The ultimate deal for sellers who hate subscriptions—pay once, get permanent multi-platform intelligence powered by zero-markup client-side BYOK AI.
+
 ### ⚡ Performance, Ergonomics & Accessibility
 - **Pro Experience Polish**: Cleanly hide all promotional banners, upgrade buttons, and daily usage meters when Pro is activated for an uncluttered workspace.
 - **Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) to replace 143KB parser bundle in popup context, reducing popup load time by ~200ms.
