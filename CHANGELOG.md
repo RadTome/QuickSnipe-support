@@ -4,10 +4,10 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🔮 [v1.3.3] — Upcoming Release (In Review)
+## 🚀 [v1.3.3] — Current Stable (Live in Chrome Web Store)
 
-> **Status:** Staged for Deployment / Submitted for Chrome Web Store Review  
-> **Release Target:** September 2026
+> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Release Date:** September 22, 2026
 
 ### 💰 Pure-Value Pricing Stack (Competitor Undercut)
 - **$7.99 / Month Pro**: Lowered entry price by over 60% compared to legacy competitor tools ($20–$30/mo), with automatic 7-day trial.
@@ -29,9 +29,9 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.3.2] — Current Stable (Live in Chrome Web Store)
+## 📦 [v1.3.2] — Previous Stable Release
 
-> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Status:** Superceded by v1.3.3  
 > **Release Date:** September 14, 2026
 
 ### 🛡️ Least-Privilege Security & Sandbox Hardening

@@ -9,8 +9,8 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.3.3_In_Review-purple.svg)](CHANGELOG.md)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.3_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Current Stable](https://img.shields.io/badge/Current_Stable-v1.3.3-success.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -38,7 +38,7 @@
 | Resource | Description | Link |
 |---|---|---|
 | 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
-| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.2 (Live) and v1.3.3 (Upcoming) | [CHANGELOG.md](CHANGELOG.md) |
+| 📋 **Release Notes & Roadmap** | Full changelog for v1.3.3 (Live) and version history | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
@@ -50,21 +50,12 @@
 
 ---
 
-## 🚀 Release Status: v1.3.2 (Live) · v1.3.3 (Upcoming)
+## 🚀 Release Status: v1.3.3 (Live on Chrome Web Store)
 
-### 🟢 Current Stable: QuickSnipe v1.3.2 (Published on Chrome Web Store)
-QuickSnipe **v1.3.2** is the current production version live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). Install or update directly from the store.
+### 🟢 Current Stable: QuickSnipe v1.3.3 (Published on Chrome Web Store)
+QuickSnipe **v1.3.3** is the current production version live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). Install or update directly from the store.
 
-**Core capabilities in v1.3.2:**
-- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission. Active tab inspection strictly via focused `activeTab`.
-- **🌓 WCAG AAA High-Contrast Light Glass Theme**: High-contrast typography (`#0f172a` / `#334155`) across notice banners, AI model tier tags, and modal dialogs.
-- **⚡ Session Continuity & UI State Preservation**: Reopening sidepanel instantly restores active competitor analyses, search queries, mined review results, and profit calculations without losing progress.
-- **♿ W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` dismissal.
-
-### 🔮 Upcoming Release: QuickSnipe v1.3.3 (Staged / In Review)
-QuickSnipe **v1.3.3** is finalized and currently in review for the Chrome Web Store.
-
-**What is coming in v1.3.3:**
+**Core capabilities in v1.3.3:**
 - **💰 Pure-Value Pricing Stack**: Introduced $7.99/mo, $49/yr, and $69 one-time lifetime tiers, undercutting legacy tools by 60%+ with zero server token markup.
 - **💎 Pro Experience Polish**: All promotional banners, upgrade buttons, and daily usage meters are cleanly hidden once Pro is active.
 - **⚡ Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) replacing 143KB parser bundle in popup context, reducing popup load time by ~200ms.
@@ -82,6 +73,12 @@ QuickSnipe **v1.3.3** is finalized and currently in review for the Chrome Web St
 - **📱 320px–360px Narrow Viewport Support**: Header overflow collapse and smooth scroll-snap tab navigation.
 - **🔄 Tab Connection Recovery**: Proactive prompts guide sellers to reload tabs after background service worker updates.
 - **📋 Local Offline Feedback**: Instant local recording with 1-click clipboard export and GitHub Discussions bridging.
+
+### 📦 Previous Major Milestone: v1.3.2
+- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission. Active tab inspection strictly via focused `activeTab`.
+- **🌓 WCAG AAA High-Contrast Light Glass Theme**: High-contrast typography (`#0f172a` / `#334155`) across notice banners, AI model tier tags, and modal dialogs.
+- **⚡ Session Continuity & UI State Preservation**: Reopening sidepanel instantly restores active competitor analyses, search queries, mined review results, and profit calculations without losing progress.
+- **♿ W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` dismissal.
 
 ### 📦 Previous Major Milestone: v1.3.1
 - **🤖 On-Device AI with Chrome Built-in AI**: Zero-key, 100% private local listing generation via Gemini Nano (Chrome 131+ Prompt API).

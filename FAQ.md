@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.3.2 Live & v1.3.3 Upcoming)](#-6-release-updates-v132-live--v133-upcoming)
+- [🚀 6. Release Updates (v1.3.3 Live)](#-6-release-updates-v133-live)
 
 ---
 
@@ -156,10 +156,10 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.3.2 Live & v1.3.3 Upcoming)
+## 🚀 6. Release Updates (v1.3.3 Live)
 
-### Q: What is coming in QuickSnipe v1.3.3 (Upcoming Release)?
-**A:** QuickSnipe **v1.3.3** is the upcoming release currently staged and in review. It focuses on performance, background reliability, Pro experience polish, new accessible pricing, and interaction ergonomics:
+### Q: What is new in QuickSnipe v1.3.3 (Current Stable Release)?
+**A:** QuickSnipe **v1.3.3** is the current production release live in the Chrome Web Store. It focuses on performance, background reliability, Pro experience polish, new accessible pricing, and interaction ergonomics:
 - **New Value-First Pricing Stack**: Introduced $7.99/month, $49/year, and $69 one-time lifetime tiers that undercut traditional $20–$50/mo tools.
 - **Pro Experience Polish**: Once QuickSnipe Pro is active, all promotional banners, upgrade buttons, and daily usage meters are cleanly hidden for an uncluttered workspace.
 - **Lightweight Popup Boot**: Extracted a minimal site detector (`detect-site.js`, ~500B) replacing the 143KB parser bundle in popup context, accelerating popup opening by ~200ms.
@@ -171,7 +171,7 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 - **Swipe File Guidance**: Added helpful zero-state onboarding card when no snippets are saved.
 
 ### Q: What is the current live version in the Chrome Web Store?
-**A:** QuickSnipe **v1.3.2** is the current stable release live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). It brought least-privilege security hardening (purging broad wildcard permissions), WCAG AAA high-contrast Light Glass mode, complete session state continuity, and W3C APG keyboard navigation.
+**A:** QuickSnipe **v1.3.3** is the current stable release live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). It delivers the pure-value pricing stack ($7.99/mo, $49/yr, $69 lifetime), lightweight popup boot (~200ms faster), service worker keepalive with 90s timeout, APG accessibility, and Pro experience polish.
 
 ### Q: Will updating from v1.3.2 to v1.3.3 erase my API keys, saved prompts, or swipes?
 **A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly.
