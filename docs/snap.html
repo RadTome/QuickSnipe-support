@@ -221,6 +221,26 @@
       </div>
       Make sure item brand tags, labels, or hallmarks are clearly in frame. QuickSnipe Vision extracts brand, style code, and materials automatically.
     </div>
+
+    <!-- Live Connection Diagnostics Console -->
+    <div class="snap-card" style="padding: 1rem 1.25rem; font-size: 0.75rem;">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+        <span style="font-weight: 700; color: #fff; display: flex; align-items: center; gap: 0.35rem;">
+          <span>🛠️</span> Live Connection Diagnostics
+        </span>
+        <div style="display: flex; gap: 0.5rem;">
+          <button id="btn-copy-diag" type="button" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--accent-cyan); font-size: 0.7rem; border-radius: var(--radius-sm); padding: 0.2rem 0.55rem; cursor: pointer;">📋 Copy Log</button>
+          <button id="btn-clear-diag" type="button" style="background: none; border: none; color: var(--text-dim); font-size: 0.7rem; cursor: pointer;">Clear</button>
+        </div>
+      </div>
+      <div id="diag-summary" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem; margin-bottom: 0.5rem; font-size: 0.7rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 0.45rem 0.6rem; border-radius: var(--radius-sm);">
+        <div>Signaling: <span id="diag-signaling" style="color: var(--accent-amber); font-weight: 600;">Connecting...</span></div>
+        <div>DataChannel: <span id="diag-dc" style="color: var(--accent-amber); font-weight: 600;">Waiting</span></div>
+        <div>ICE State: <span id="diag-ice" style="color: var(--accent-amber); font-weight: 600;">Idle</span></div>
+        <div>Candidates: <span id="diag-candidates" style="color: var(--text-main); font-weight: 600;">0</span></div>
+      </div>
+      <div id="diag-logs" style="background: rgba(0,0,0,0.55); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); padding: 0.5rem 0.6rem; font-family: var(--font-mono); font-size: 0.65rem; color: #94a3b8; max-height: 160px; overflow-y: auto; line-height: 1.45; word-break: break-all;"></div>
+    </div>
   </div>
 
   <footer style="text-align: center; font-size: 0.7rem; color: var(--text-dim); margin-top: 1.5rem;">
@@ -261,11 +281,53 @@
       const btnManualSend = document.getElementById('btn-manual-send');
       const btnSnapAnother = document.getElementById('btn-snap-another');
 
+      const diagSignaling = document.getElementById('diag-signaling');
+      const diagDC = document.getElementById('diag-dc');
+      const diagIce = document.getElementById('diag-ice');
+      const diagCandidates = document.getElementById('diag-candidates');
+      const diagLogs = document.getElementById('diag-logs');
+      const btnCopyDiag = document.getElementById('btn-copy-diag');
+      const btnClearDiag = document.getElementById('btn-clear-diag');
+      let candidateCount = 0;
+
+      function logDiag(msg, type = 'info') {
+        console.log('[QuickSnipe]', msg);
+        if (!diagLogs) return;
+        const time = new Date().toTimeString().split(' ')[0];
+        const color = type === 'error' ? '#f43f5e' : type === 'success' ? '#34d399' : type === 'warn' ? '#fbbf24' : '#94a3b8';
+        const line = document.createElement('div');
+        line.style.color = color;
+        line.style.marginBottom = '2px';
+        line.textContent = `[${time}] ${msg}`;
+        diagLogs.appendChild(line);
+        diagLogs.scrollTop = diagLogs.scrollHeight;
+      }
+
+      btnCopyDiag?.addEventListener('click', async () => {
+        if (!diagLogs) return;
+        try {
+          await navigator.clipboard.writeText(diagLogs.innerText);
+          btnCopyDiag.textContent = '✓ Copied!';
+          setTimeout(() => { btnCopyDiag.textContent = '📋 Copy Log'; }, 2000);
+        } catch (e) {
+          alert('Could not copy automatically. Please select text manually.');
+        }
+      });
+
+      btnClearDiag?.addEventListener('click', () => {
+        if (diagLogs) diagLogs.innerHTML = '';
+        candidateCount = 0;
+        if (diagCandidates) diagCandidates.textContent = '0';
+      });
+
+      logDiag('Initializing Mobile Bridge. Target desktop: #' + sessionId);
+
       if (!sessionId) {
         noSessionCard.classList.remove('hidden');
         activeCard.classList.add('hidden');
         statusDot.className = 'dot error';
         statusText.textContent = 'No Session';
+        logDiag('No session ID found in URL.', 'error');
         return;
       }
 
@@ -292,7 +354,12 @@
         }
 
         updateStatus('connecting', 'Connecting...');
+        if (diagSignaling) {
+          diagSignaling.textContent = 'Connecting...';
+          diagSignaling.style.color = 'var(--accent-amber)';
+        }
         const freshId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
+        logDiag('Created local peer ID: ' + freshId);
 
         try {
           peer = new Peer(freshId, {
@@ -305,37 +372,32 @@
                 { urls: 'stun:stun.l.google.com:19302' },
                 { urls: 'stun:stun1.l.google.com:19302' },
                 { urls: 'stun:stun2.l.google.com:19302' },
-                { urls: 'stun:openrelay.metered.ca:80' },
-                {
-                  urls: 'turn:openrelay.metered.ca:80',
-                  username: 'openrelayproject',
-                  credential: 'openrelayproject'
-                },
-                {
-                  urls: 'turn:openrelay.metered.ca:443',
-                  username: 'openrelayproject',
-                  credential: 'openrelayproject'
-                },
-                {
-                  urls: 'turn:openrelay.metered.ca:443?transport=tcp',
-                  username: 'openrelayproject',
-                  credential: 'openrelayproject'
-                }
+                { urls: 'stun:stun3.l.google.com:19302' },
+                { urls: 'stun:stun4.l.google.com:19302' },
+                { urls: 'stun:stun.cloudflare.com:3478' }
               ]
             }
           });
 
           peer.on('open', function(id) {
-            console.log('[QuickSnipe Mobile] Fresh peer opened:', id, '-> target session:', sessionId);
+            if (diagSignaling) {
+              diagSignaling.textContent = 'Connected (Broker)';
+              diagSignaling.style.color = 'var(--accent-emerald)';
+            }
+            logDiag('Signaling broker connected. Open for pairing.', 'success');
             linkToDesktop();
           });
 
           peer.on('error', function(err) {
-            console.error('[QuickSnipe Mobile] Peer error:', err);
+            logDiag('Peer error: ' + (err.type || 'unknown') + ' - ' + (err.message || err), 'error');
+            if (diagSignaling) {
+              diagSignaling.textContent = 'Error: ' + (err.type || 'fail');
+              diagSignaling.style.color = 'var(--accent-rose)';
+            }
             if (err.type === 'peer-unavailable') {
               updateStatus('error', 'Session Expired');
               if (transferLabel) {
-                transferLabel.textContent = '⚠️ Desktop session not found. Please scan the current QR code on your computer.';
+                transferLabel.textContent = '⚠️ Desktop session #' + sessionId + ' not found. Scan the current QR code on PC.';
                 transferLabel.style.color = 'var(--accent-rose)';
               }
               return;
@@ -344,7 +406,7 @@
             setTimeout(createFreshPeerAndConnect, 3000);
           });
         } catch (err) {
-          console.error('[QuickSnipe Mobile] Peer init error:', err);
+          logDiag('Peer init exception: ' + (err.message || err), 'error');
           setTimeout(createFreshPeerAndConnect, 3000);
         }
       }
@@ -355,11 +417,19 @@
           return;
         }
 
+        logDiag('Initiating WebRTC link to desktop session: #' + sessionId);
+        if (diagDC) {
+          diagDC.textContent = 'Negotiating...';
+          diagDC.style.color = 'var(--accent-amber)';
+        }
+        updateStatus('connecting', 'Linking Desktop...');
+
         let linkTimer = setTimeout(function() {
           if (activeConn && !activeConn.open) {
-            updateStatus('connecting', 'Relay Negotiating...');
+            updateStatus('connecting', 'Negotiating P2P...');
+            logDiag('Handshake taking > 5s. Waiting for ICE candidate exchange...', 'warn');
             if (transferLabel && pendingPhoto) {
-              transferLabel.textContent = '⏳ Negotiating TURN relay... Ensure QuickSnipe sidepanel is open on PC.';
+              transferLabel.textContent = '⏳ Negotiating connection... Ensure QuickSnipe sidepanel is open on PC.';
               transferLabel.style.color = 'var(--accent-amber)';
             }
           }
@@ -370,9 +440,39 @@
             reliable: true
           });
 
+          if (activeConn.peerConnection) {
+            const pc = activeConn.peerConnection;
+            pc.addEventListener('icecandidate', (e) => {
+              if (e.candidate) {
+                candidateCount++;
+                if (diagCandidates) diagCandidates.textContent = candidateCount;
+                const typ = e.candidate.type || 'cand';
+                const proto = e.candidate.protocol || 'udp';
+                logDiag(`ICE Candidate #${candidateCount}: ${typ} (${proto}) ${e.candidate.address || ''}:${e.candidate.port || ''}`);
+              } else {
+                logDiag('ICE candidate gathering completed.');
+              }
+            });
+            pc.addEventListener('iceconnectionstatechange', () => {
+              const state = pc.iceConnectionState;
+              if (diagIce) diagIce.textContent = state;
+              logDiag(`ICE state: ${state}`,
+                state === 'connected' || state === 'completed' ? 'success' :
+                state === 'failed' ? 'error' :
+                state === 'disconnected' ? 'warn' : 'info');
+            });
+            pc.addEventListener('connectionstatechange', () => {
+              logDiag(`PeerConnection state: ${pc.connectionState}`);
+            });
+          }
+
           activeConn.on('open', function() {
             clearTimeout(linkTimer);
-            console.log('[QuickSnipe Mobile] WebRTC data channel OPEN to desktop!');
+            if (diagDC) {
+              diagDC.textContent = 'OPEN';
+              diagDC.style.color = 'var(--accent-emerald)';
+            }
+            logDiag('DataChannel OPEN! Peer-to-peer data pipeline ready.', 'success');
             updateStatus('connected', 'Desktop Ready');
             btnManualSend.classList.add('hidden');
 
@@ -382,12 +482,17 @@
 
             // Auto-send if photo is queued
             if (pendingPhoto && !isTransferring) {
+              logDiag('Sending queued photo to desktop...');
               transmitPhoto(pendingPhoto.data, pendingPhoto.name);
             }
           });
 
           activeConn.on('close', function() {
-            console.log('[QuickSnipe Mobile] Connection closed');
+            logDiag('DataChannel closed by remote or network drop.', 'warn');
+            if (diagDC) {
+              diagDC.textContent = 'Closed';
+              diagDC.style.color = 'var(--accent-rose)';
+            }
             updateStatus('connecting', 'Reconnecting...');
             if (pendingPhoto && !isTransferring) {
               btnManualSend.classList.remove('hidden');
@@ -398,14 +503,14 @@
           });
 
           activeConn.on('error', function(err) {
-            console.error('[QuickSnipe Mobile] Conn error:', err);
+            logDiag('DataChannel error: ' + (err.message || err), 'error');
             updateStatus('error', 'Peer Link Error');
             if (pendingPhoto && !isTransferring) {
               btnManualSend.classList.remove('hidden');
             }
           });
         } catch (err) {
-          console.warn('[QuickSnipe Mobile] linkToDesktop error:', err);
+          logDiag('linkToDesktop exception: ' + (err.message || err), 'error');
           setTimeout(createFreshPeerAndConnect, 2000);
         }
       }
@@ -594,12 +699,15 @@
         const transferId = 'tx_' + Date.now();
         let chunkIndex = 0;
 
+        logDiag('Starting photo transmission: ' + (filename || 'photo.jpg') + ' (' + totalChunks + ' chunks, ~' + Math.round(totalLength / 1024) + ' KB)');
+
         function sendNextChunk() {
           if (!activeConn || !activeConn.open) {
             isTransferring = false;
             transferLabel.textContent = '⚠️ Desktop disconnected. Tap to retry.';
             transferLabel.style.color = 'var(--accent-rose)';
             btnManualSend.classList.remove('hidden');
+            logDiag('DataChannel dropped during chunk ' + chunkIndex + '/' + totalChunks, 'error');
             return;
           }
 
@@ -634,6 +742,7 @@
               transferLabel.style.color = 'var(--accent-emerald)';
               btnManualSend.classList.add('hidden');
               btnSnapAnother.classList.remove('hidden');
+              logDiag('✓ All ' + totalChunks + ' chunks delivered successfully to desktop sidepanel!', 'success');
             }
           } catch (err) {
             console.error('[QuickSnipe Mobile] Chunk send error:', err);
@@ -641,6 +750,7 @@
             transferLabel.textContent = '⚠️ Transfer error. Tap to retry.';
             transferLabel.style.color = 'var(--accent-rose)';
             btnManualSend.classList.remove('hidden');
+            logDiag('Chunk send exception: ' + (err.message || err), 'error');
           }
         }
 
