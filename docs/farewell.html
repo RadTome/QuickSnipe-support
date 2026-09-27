@@ -410,9 +410,9 @@
         });
       });
 
-      // Extract version from URL query string (e.g. ?v=1.3.3 or ?v=1.4.0)
+      // Extract version dynamically passed from extension URL query string (?v=...)
       const urlParams = new URLSearchParams(window.location.search);
-      const appVersion = urlParams.get('v') || '1.3.3';
+      const appVersion = urlParams.get('v') || 'unknown';
 
       // Verified Google Form Endpoint & Entry IDs
       const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSeFasUfU0-HS2rmVHf-L8EJxTq6OKQwhR-iF8NFrdYK3VLyfg/formResponse';
