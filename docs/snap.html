@@ -684,9 +684,9 @@
           return;
         }
 
-        // Tier 2: Cloudflare Bridge (quicksnipe.radtome.com)
+        // Tier 2: Cloudflare Bridge (quicksnipe-bridge.radtome.com)
         // Works 100% across cellular 5G, VPNs, different subnets, corporate firewalls
-        logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe.radtome.com...', 'warn');
+        logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe-bridge.radtome.com...', 'warn');
         sendViaCloudflareBridge(base64Data, filename);
       }
 
@@ -699,7 +699,7 @@
         transferPercent.textContent = '35%';
 
         try {
-          const endpoint = 'https://quicksnipe.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
+          const endpoint = 'https://quicksnipe-bridge.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
           logDiag('Dispatching to: ' + endpoint);
           progressBar.style.width = '65%';
           transferPercent.textContent = '65%';
