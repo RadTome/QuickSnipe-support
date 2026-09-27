@@ -199,6 +199,9 @@
             <div id="progress-bar" class="progress-bar-fill"></div>
           </div>
         </div>
+        <button id="btn-manual-send" type="button" class="hidden" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);">
+          ⚡ Tap to Send to Desktop
+        </button>
         <button id="btn-snap-another" type="button" class="hidden" style="width: 100%; margin-top: 1rem; padding: 0.75rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer;">
           📸 Snap Another Photo
         </button>
@@ -241,6 +244,7 @@
       const transferLabel = document.getElementById('transfer-label');
       const transferPercent = document.getElementById('transfer-percent');
       const progressBar = document.getElementById('progress-bar');
+      const btnManualSend = document.getElementById('btn-manual-send');
       const btnSnapAnother = document.getElementById('btn-snap-another');
 
       if (!sessionId) {
@@ -253,6 +257,9 @@
 
       let peer = null;
       let activeConn = null;
+      let pendingPhoto = null; // { data, name }
+      let isTransferring = false;
+      let reconnectTimer = null;
 
       function updateStatus(state, msg) {
         statusDot.className = 'dot ' + (state === 'connected' ? 'connected' : state === 'error' ? 'error' : '');
@@ -260,63 +267,140 @@
       }
 
       function connectToDesktop() {
-        updateStatus('connecting', 'Connecting...');
-        
-        // Random mobile peer ID
-        const mobilePeerId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
-        
-        peer = new Peer(mobilePeerId, {
-          host: '0.peerjs.com',
-          port: 443,
-          path: '/',
-          secure: true,
-          config: {
-            iceServers: [
-              { urls: 'stun:stun.l.google.com:19302' },
-              { urls: 'stun:global.stun.twilio.com:3478' }
-            ]
+        if (peer && !peer.destroyed) {
+          if (peer.disconnected) {
+            console.log('[QuickSnipe Mobile] Signaler disconnected, reconnecting peer...');
+            peer.reconnect();
+          } else {
+            connectToSession();
           }
-        });
+          return;
+        }
 
-        peer.on('open', function() {
-          console.log('[QuickSnipe Mobile] Peer opened, connecting to desktop session:', sessionId);
-          connectToSession();
-        });
+        updateStatus('connecting', 'Connecting...');
+        const mobilePeerId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
 
-        peer.on('error', function(err) {
-          console.error('[QuickSnipe Mobile] Peer error:', err);
-          updateStatus('error', 'Connection Error');
-          setTimeout(connectToDesktop, 3000);
-        });
+        try {
+          peer = new Peer(mobilePeerId, {
+            host: '0.peerjs.com',
+            port: 443,
+            path: '/',
+            secure: true,
+            config: {
+              iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:global.stun.twilio.com:3478' }
+              ]
+            }
+          });
+
+          peer.on('open', function(id) {
+            console.log('[QuickSnipe Mobile] Peer opened:', id, '-> session:', sessionId);
+            connectToSession();
+          });
+
+          peer.on('disconnected', function() {
+            console.warn('[QuickSnipe Mobile] Peer signaling disconnected, reconnecting...');
+            updateStatus('connecting', 'Reconnecting...');
+            if (peer && !peer.destroyed) {
+              peer.reconnect();
+            }
+          });
+
+          peer.on('error', function(err) {
+            console.error('[QuickSnipe Mobile] Peer error:', err);
+            updateStatus('error', 'Signaling Error');
+            clearTimeout(reconnectTimer);
+            reconnectTimer = setTimeout(connectToDesktop, 3000);
+          });
+        } catch (err) {
+          console.error('[QuickSnipe Mobile] Peer init error:', err);
+          clearTimeout(reconnectTimer);
+          reconnectTimer = setTimeout(connectToDesktop, 3000);
+        }
       }
 
       function connectToSession() {
-        if (!peer || peer.destroyed) return;
-        
-        activeConn = peer.connect(sessionId, {
-          reliable: true
-        });
+        if (!peer || peer.destroyed) {
+          connectToDesktop();
+          return;
+        }
+        if (peer.disconnected) {
+          peer.reconnect();
+          return;
+        }
+
+        if (activeConn) {
+          try { activeConn.close(); } catch (e) {}
+          activeConn = null;
+        }
+
+        updateStatus('connecting', 'Linking Desktop...');
+
+        try {
+          activeConn = peer.connect(sessionId, {
+            reliable: true
+          });
+        } catch (err) {
+          console.warn('[QuickSnipe Mobile] connect error:', err);
+          clearTimeout(reconnectTimer);
+          reconnectTimer = setTimeout(connectToSession, 2000);
+          return;
+        }
 
         activeConn.on('open', function() {
           console.log('[QuickSnipe Mobile] Connected to desktop sidepanel!');
           updateStatus('connected', 'Desktop Ready');
+
           // Send handshake
-          activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
+          try {
+            activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
+          } catch (e) {}
+
+          // Auto-send pending photo if waiting
+          if (pendingPhoto && !isTransferring) {
+            transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+          }
         });
 
         activeConn.on('close', function() {
           console.log('[QuickSnipe Mobile] Connection closed');
           updateStatus('connecting', 'Reconnecting...');
-          setTimeout(connectToSession, 2000);
+          if (pendingPhoto && !isTransferring) {
+            btnManualSend.classList.remove('hidden');
+            transferLabel.textContent = '⏳ Desktop disconnected. Reconnecting...';
+            transferLabel.style.color = 'var(--accent-rose)';
+          }
+          clearTimeout(reconnectTimer);
+          reconnectTimer = setTimeout(connectToSession, 2000);
         });
 
         activeConn.on('error', function(err) {
           console.error('[QuickSnipe Mobile] Conn error:', err);
           updateStatus('error', 'Peer Link Error');
+          if (pendingPhoto && !isTransferring) {
+            btnManualSend.classList.remove('hidden');
+          }
         });
       }
 
-      // Downscale photo client-side to max 1920px for high-speed transmission
+      // Resume connections when user switches back from camera app
+      function handleWakeup() {
+        if (document.visibilityState === 'visible') {
+          console.log('[QuickSnipe Mobile] Tab resumed from background');
+          if (!peer || peer.destroyed) {
+            connectToDesktop();
+          } else if (peer.disconnected) {
+            peer.reconnect();
+          } else if (!activeConn || !activeConn.open) {
+            connectToSession();
+          }
+        }
+      }
+      document.addEventListener('visibilitychange', handleWakeup);
+      window.addEventListener('focus', handleWakeup);
+
+      // Downscale photo client-side to max 1200px @ 0.80 JPEG (~100-140KB)
       function compressAndSendPhoto(file) {
         const reader = new FileReader();
         reader.onload = function(e) {
@@ -324,7 +408,7 @@
           img.onload = function() {
             let width = img.width;
             let height = img.height;
-            const maxDim = 1920;
+            const maxDim = 1200;
             if (width > maxDim || height > maxDim) {
               if (width > height) {
                 height = Math.round((height * maxDim) / width);
@@ -341,56 +425,97 @@
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, width, height);
 
-            // Compress to webp/jpeg 0.88 quality (crystal clear for Vision AI, ~300KB)
-            const base64Data = canvas.toDataURL('image/jpeg', 0.88);
-            
+            const base64Data = canvas.toDataURL('image/jpeg', 0.80);
+            pendingPhoto = { data: base64Data, name: file.name };
+
             // Show preview
             previewImg.src = base64Data;
             previewSection.classList.remove('hidden');
             btnSnapLabel.classList.add('hidden');
-            
-            sendImagePayload(base64Data, file.name);
+            btnSnapAnother.classList.add('hidden');
+
+            transmitPhoto(base64Data, file.name);
           };
           img.src = e.target.result;
         };
         reader.readAsDataURL(file);
       }
 
-      function sendImagePayload(base64Data, filename) {
+      function transmitPhoto(base64Data, filename) {
         if (!activeConn || !activeConn.open) {
-          transferLabel.textContent = '⚠️ Desktop disconnected. Reconnecting...';
-          transferLabel.style.color = 'var(--accent-rose)';
-          connectToSession();
+          transferLabel.textContent = '⏳ Desktop reconnecting... Auto-sending when ready';
+          transferLabel.style.color = 'var(--accent-amber)';
+          btnManualSend.classList.remove('hidden');
+          handleWakeup();
           return;
         }
 
+        isTransferring = true;
+        btnManualSend.classList.add('hidden');
         transferLabel.textContent = '⚡ Transmitting to desktop sidepanel...';
         transferLabel.style.color = 'var(--accent-cyan)';
-        progressBar.style.width = '50%';
-        transferPercent.textContent = '50%';
+        progressBar.style.width = '10%';
+        transferPercent.textContent = '10%';
 
-        try {
-          activeConn.send({
-            type: 'QUICKSNIPE_PHOTO',
-            image: base64Data,
-            name: filename || 'thrift_photo.jpg',
-            size: base64Data.length,
-            timestamp: Date.now()
-          });
+        // Chunked safe transmission: 32KB per chunk prevents WebRTC buffer overflow
+        const CHUNK_SIZE = 32768;
+        const totalLength = base64Data.length;
+        const totalChunks = Math.ceil(totalLength / CHUNK_SIZE);
+        const transferId = 'tx_' + Date.now();
+        let chunkIndex = 0;
 
-          setTimeout(function() {
-            progressBar.style.width = '100%';
-            transferPercent.textContent = '100%';
-            transferLabel.textContent = '✓ Transferred! Check your computer.';
-            transferLabel.style.color = 'var(--accent-emerald)';
-            btnSnapAnother.classList.remove('hidden');
-          }, 350);
+        function sendNextChunk() {
+          if (!activeConn || !activeConn.open) {
+            isTransferring = false;
+            transferLabel.textContent = '⚠️ Desktop disconnected. Tap to retry.';
+            transferLabel.style.color = 'var(--accent-rose)';
+            btnManualSend.classList.remove('hidden');
+            connectToSession();
+            return;
+          }
 
-        } catch (err) {
-          console.error('[QuickSnipe Mobile] Failed to send payload:', err);
-          transferLabel.textContent = '⚠️ Transfer failed. Tap to retry.';
-          transferLabel.style.color = 'var(--accent-rose)';
+          const start = chunkIndex * CHUNK_SIZE;
+          const end = Math.min(start + CHUNK_SIZE, totalLength);
+          const chunkStr = base64Data.slice(start, end);
+
+          try {
+            activeConn.send({
+              type: 'QS_CHUNK',
+              payloadType: 'QUICKSNIPE_PHOTO',
+              id: transferId,
+              name: filename || 'thrift_photo.jpg',
+              index: chunkIndex,
+              total: totalChunks,
+              chunk: chunkStr
+            });
+
+            chunkIndex++;
+            const pct = Math.round((chunkIndex / totalChunks) * 100);
+            progressBar.style.width = pct + '%';
+            transferPercent.textContent = pct + '%';
+
+            if (chunkIndex < totalChunks) {
+              setTimeout(sendNextChunk, 20);
+            } else {
+              isTransferring = false;
+              pendingPhoto = null;
+              progressBar.style.width = '100%';
+              transferPercent.textContent = '100%';
+              transferLabel.textContent = '✓ Transferred! Check your computer.';
+              transferLabel.style.color = 'var(--accent-emerald)';
+              btnManualSend.classList.add('hidden');
+              btnSnapAnother.classList.remove('hidden');
+            }
+          } catch (err) {
+            console.error('[QuickSnipe Mobile] Chunk send error:', err);
+            isTransferring = false;
+            transferLabel.textContent = '⚠️ Transfer error. Tap to retry.';
+            transferLabel.style.color = 'var(--accent-rose)';
+            btnManualSend.classList.remove('hidden');
+          }
         }
+
+        sendNextChunk();
       }
 
       cameraInput.addEventListener('change', function() {
@@ -399,9 +524,17 @@
         }
       });
 
+      btnManualSend.addEventListener('click', function() {
+        if (pendingPhoto) {
+          transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+        }
+      });
+
       btnSnapAnother.addEventListener('click', function() {
         cameraInput.value = '';
+        pendingPhoto = null;
         btnSnapAnother.classList.add('hidden');
+        btnManualSend.classList.add('hidden');
         previewSection.classList.add('hidden');
         btnSnapLabel.classList.remove('hidden');
         progressBar.style.width = '0%';
