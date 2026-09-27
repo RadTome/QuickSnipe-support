@@ -156,25 +156,24 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.3.3 Live)
+## 🚀 6. Release Updates (v1.3.3 Live • v1.4.0 Upcoming)
 
-### Q: What is new in QuickSnipe v1.3.3 (Current Stable Release)?
-**A:** QuickSnipe **v1.3.3** is the current production release live in the Chrome Web Store. It focuses on performance, background reliability, Pro experience polish, new accessible pricing, and interaction ergonomics:
-- **New Value-First Pricing Stack**: Introduced $7.99/month, $49/year, and $69 one-time lifetime tiers that undercut traditional $20–$50/mo tools.
-- **Pro Experience Polish**: Once QuickSnipe Pro is active, all promotional banners, upgrade buttons, and daily usage meters are cleanly hidden for an uncluttered workspace.
-- **Lightweight Popup Boot**: Extracted a minimal site detector (`detect-site.js`, ~500B) replacing the 143KB parser bundle in popup context, accelerating popup opening by ~200ms.
-- **Service Worker Keepalive & AI Timeout**: Added active keepalive port to prevent background worker termination during long AI generations, plus a 90-second client-side timeout wrapper.
-- **QuickBar Security**: Eliminated `innerHTML` in in-page notifications, using safe DOM construction and `textContent` to prevent XSS.
-- **W3C APG Accessibility**: Tab panels now include `tabindex="0"`, dynamic result containers include `aria-live="polite"`, and popup includes full screen reader progressbar roles.
-- **Three-Way Theme Cycling**: Quick toggle now cycles smoothly through Dark, Light Glass, and System Auto with high-contrast light mode styling.
-- **Conflict-Free Hotkey**: Changed swipe capture hotkey to `Alt+Shift+S` to prevent collisions with browser "Save As".
-- **Swipe File Guidance**: Added helpful zero-state onboarding card when no snippets are saved.
+### Q: What is the current published version in the Chrome Web Store?
+**A:** QuickSnipe **v1.3.3** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
 
-### Q: What is the current live version in the Chrome Web Store?
-**A:** QuickSnipe **v1.3.3** is the current stable release live on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). It delivers the pure-value pricing stack ($7.99/mo, $49/yr, $69 lifetime), lightweight popup boot (~200ms faster), service worker keepalive with 90s timeout, APG accessibility, and Pro experience polish.
+### Q: What is coming in QuickSnipe v1.4.0 (Upcoming Major Release)?
+**A:** QuickSnipe **v1.4.0** has been packaged and submitted to the Chrome Web Store (currently in store review). It brings major multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
+- **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Drag & drop product photos or right-click web images ➔ multimodal AI reads maker tags, materials, condition, and details to instantly draft complete listings for Etsy, eBay, and Poshmark with 13 tags and item specifics in 10s.
+- **Walmart & Grailed Support**: Native DOM parsers, sales velocity calculators, and structured listing generators for Walmart Marketplace (`/ip/`) and Grailed archive luxury.
+- **Active Marketplace Toolbar Dot**: An emerald green indicator (`●`) on the extension icon signals when QuickSnipe is active on a supported marketplace tab.
+- **Smart HTTP 429 Quota Fallback**: If your primary cloud BYOK AI hits rate limits (HTTP 429), QuickSnipe automatically falls back to a configured backup model (Groq Llama 3.3 or Chrome Built-in Nano) with transparent notices.
+- **Settings Backup Import & Restore**: Easily migrate or back up your QuickSnipe swipes and preferences, with built-in protection that keeps your active API keys safe from redaction overwrites.
+- **In-App Feature Suggestions**: Submit ideas directly from Settings to our development roadmap.
+- **Branded Farewell Portal**: Friendly, seller-oriented feedback portal (`farewell.html`) powered by Google Forms backend.
+- **Shortcut Pills**: Clear `Alt+Q` (toggle Studio) and `Alt+Shift+S` (Save Swipe) indicators in the UI.
 
-### Q: Will updating from v1.3.2 to v1.3.3 erase my API keys, saved prompts, or swipes?
-**A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly.
+### Q: Will updating to v1.4.0 erase my API keys, saved prompts, or swipes?
+**A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly. You can also use the new **Export / Import Backup** feature in Settings for added peace of mind.
 
 ### Q: Where can I review the complete version history?
 **A:** See the comprehensive [CHANGELOG.md](CHANGELOG.md) for detailed notes on all releases.

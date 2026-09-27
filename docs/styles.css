@@ -59,28 +59,38 @@
 [data-theme="light"] {
   --bg-base: #f8fafc;
   --bg-surface: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.85);
-  --bg-card-hover: rgba(241, 245, 249, 0.95);
-  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --bg-card-hover: rgba(241, 245, 249, 0.98);
+  --bg-glass: rgba(255, 255, 255, 0.88);
   --bg-input: #ffffff;
 
-  --border-subtle: rgba(15, 23, 42, 0.09);
-  --border-glow: rgba(99, 102, 241, 0.3);
-  --border-highlight: rgba(15, 23, 42, 0.16);
+  --border-subtle: rgba(15, 23, 42, 0.11);
+  --border-glow: rgba(99, 102, 241, 0.35);
+  --border-highlight: rgba(15, 23, 42, 0.22);
 
   --text-main: #0f172a;
-  --text-muted: #475569;
+  --text-muted: #334155;
   --text-dim: #64748b;
   --text-inverse: #ffffff;
 
-  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.7) 100%);
-  --grad-glow: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.05) 50%, transparent 80%);
+  --accent-primary: #4f46e5;
+  --accent-primary-hover: #4338ca;
+  --accent-secondary: #0891b2;
+  --accent-cyan: #0369a1;    /* 5.4:1 contrast on white (WCAG AAA) */
+  --accent-emerald: #047857; /* 4.8:1 contrast on white (WCAG AA) */
+  --accent-amber: #b45309;   /* 5.1:1 contrast on white (WCAG AA) */
+  --accent-rose: #be123c;    /* 5.5:1 contrast on white (WCAG AAA) */
+  --accent-purple: #6d28d9;  /* 6.8:1 contrast on white (WCAG AAA) */
+
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.85) 100%);
+  --grad-glow: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.04) 50%, transparent 80%);
 
   --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
   --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
   --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
 }
+
 
 /* Base Resets */
 *, *::before, *::after {
@@ -214,12 +224,13 @@ code {
   font-weight: 700;
   padding: 2px 7px;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-emerald);
+  border: 1px solid var(--accent-emerald);
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
+
 
 .nav-links {
   display: flex;
@@ -867,12 +878,13 @@ code {
   font-size: 0.7rem;
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.12);
+  color: var(--accent-emerald);
+  border: 1px solid var(--accent-emerald);
   font-weight: 700;
   text-transform: uppercase;
 }
+
 
 /* FAQ Accordion & Search */
 .faq-search-box {

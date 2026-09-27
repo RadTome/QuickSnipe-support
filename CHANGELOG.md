@@ -4,9 +4,51 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.3.3] — Current Stable (Live in Chrome Web Store)
+## 🚀 [v1.4.0] — Upcoming Major Release (Packaged & In Store Review)
 
-> **Status:** Available on the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)  
+> **Status:** Release v1.4.0 packaged and submitted to Chrome Web Store (Pending Google Review)  
+> **Target Release Date:** September 2026
+
+### 📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe (Multimodal AI)
+- **Zero-Typing Listing Creation**: Drag & drop any product photo or right-click any image on the web ➔ **"QuickSnipe: Analyze Product Image"**.
+- **Deep Visual Inspection**: Multimodal AI reads visible neck tags, brand logos, hallmarks, fabric textures, colorways, and condition flaws.
+- **Complete Multi-Platform Output in Seconds**:
+  - **3 Tailored Platform Titles**: Etsy (140-char SEO hook), eBay (80-char Cassini keyword density), Poshmark (80-char brand/style hook).
+  - **13 High-Volume Search Tags**: Exactly 13 longtail keywords, strictly under 20 characters for 1-click paste into Etsy.
+  - **Item Specifics Extraction**: Brand, Category, Primary Color, Material, Style Theme, and Condition Grade.
+  - **Buyer Story Description**: 3–4 engaging paragraphs with styling advice, craftsmanship highlights, and care details.
+  - **Pricing & Velocity Appraisal**: Suggested listing price, resale corridor, and demand velocity estimate.
+- **Cloud BYOK Vision Integration**: Powered by Google Gemini (Free Tier), OpenAI GPT-4o / GPT-4o Mini, or Groq Vision.
+
+### 🛒 Multi-Platform Expansion: Walmart & Grailed
+- **Walmart Marketplace Support**: Native DOM parsing for Walmart product listings (`/ip/`) and competitor search pages. Structured title formatting (`Brand + Item Name + Style/Model + Features/Size/Pack`), key feature bullets, and category-tuned sales velocity estimation (25x review multiplier).
+- **Grailed Archive Luxury Support**: Next.js hydration payload extraction for designer & vintage archive menswear listings (`/listings/`) and search grids. Specialized listing generation targeting high-end collector audiences.
+
+### 🟢 Active Marketplace Action Badge
+- **Context-Aware Extension Badge**: Displays a vibrant emerald dot (`●`) and descriptive tooltip in the Chrome toolbar whenever you navigate to any supported marketplace (eBay, Etsy, Poshmark, Amazon, Mercari, Depop, Walmart, Grailed, Shopify).
+- **Update Notice Preservation**: Seamlessly defers to `NEW` update badge when extension updates are pending.
+
+### 🛡️ Smart HTTP 429 Rate-Limit Fallback Guard
+- **Automatic Quota Protection**: When cloud BYOK providers hit rate limits (HTTP 429 / resource exhausted), QuickSnipe detects the error and automatically attempts fallback to a configured backup model (Groq Llama 3.3 or Chrome Built-in Nano).
+- **Transparent Seller Feedback**: Explicitly alerts the seller with warning notices when a fallback response is used, or advises a 60-second cooldown if no secondary provider is configured.
+- **Vision Task Safeguards**: Intelligently routes image tasks away from text-only on-device models.
+
+### 💾 Backup Import & API Key Security
+- **Full Settings & Swipes Restore**: Import JSON backups directly from the Options page to sync preferences, themes, and winning swipe card collections across machines.
+- **Active Key Protection**: Safeguards existing on-device API keys so exported `[REDACTED]` values never overwrite active stored keys.
+
+### 💙 Direct Seller Suggestions & Friendly Farewell Survey
+- **Settings Feature Roadmap Form**: Propose new marketplaces and feature ideas directly from the Settings page—dispatched straight to developer notes with offline backup.
+- **Branded Farewell Experience**: Replaced raw technical survey links with a custom, seller-friendly GitHub Pages farewell portal (`farewell.html`) powered by Google Forms backend.
+
+### ⌨️ Ergonomics & Accessibility
+- **Visible Keyboard Badges**: Added accessible `Alt+Q` (Studio toggle) and `Alt+Shift+S` (Save Swipe) shortcut pills in the sidepanel header, Swipes tab, and Options guide.
+
+---
+
+## 🟢 [v1.3.3] — Current Live Stable Release
+
+> **Status:** Live in Chrome Web Store (Active Production Version)  
 > **Release Date:** September 22, 2026
 
 ### 💰 Pure-Value Pricing Stack (Competitor Undercut)

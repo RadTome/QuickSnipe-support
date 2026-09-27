@@ -220,17 +220,18 @@ This guide provides targeted solutions for the most common technical issues, err
 #### Solutions:
 1. In QuickSnipe, go to **Settings ⚙ → Appearance**.
 2. If working in direct sunlight or bright display conditions, verify **Light Glass** mode is selected (or choose **Cyber Dark** for high contrast against white marketplace backdrops).
-3. QuickSnipe **v1.3.3** (and v1.3.2) includes unified dark slate typography (`#0f172a` / `#334155`), enhanced border visibility, and high-contrast notice banners throughout Light Glass mode.
+3. QuickSnipe **v1.4.0** (and v1.3.3) includes unified dark slate typography (`#0f172a` / `#334155`), enhanced border visibility, and high-contrast notice banners throughout Light Glass mode.
 
 ---
 
-### 13. Offline feedback recording & copying diagnostics
+### 13. Direct developer feedback & feature requests (v1.4.0+)
 
 #### How It Works:
-- QuickSnipe operates with zero remote telemetry or tracking servers.
-- Feedback submitted in the extension is saved strictly to local extension storage.
-- To share feedback with the developer or request follow-up on a bug:
-  1. Submit your rating and thoughts in the feedback modal.
-  2. On the success screen, click **📋 Copy My Feedback**.
-  3. Click **💬 Post on GitHub Discussions ↗** to paste your diagnostics directly into our community thread for direct assistance.
+- QuickSnipe operates with zero remote telemetry, tracking servers, or analytics cookies.
+- In **v1.4.0**, feedback and feature suggestions are submitted securely and directly to the developer via an encrypted Google Forms pipeline.
+- An offline backup queue is automatically maintained in your local `chrome.storage.local.qs_user_feedbacks` so feedback is never lost if offline.
+- To submit feedback or feature requests:
+  1. Click **Feedback** in the sidepanel menu or use the **Feature Suggestions** form in **Settings ⚙**.
+  2. Enter your category, thoughts, and optional email for direct follow-up.
+  3. Click **Submit**—your submission is routed directly to the developer's roadmap.
 

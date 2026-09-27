@@ -1,7 +1,7 @@
 # Privacy Policy for QuickSnipe
 
-**Effective Date:** September 15, 2026  
-**Version:** 1.3.3 (Current Production Release)  
+**Effective Date:** September 27, 2026  
+**Version:** 1.3.3 Live / 1.4.0 Upcoming  
 **Repository:** [https://github.com/RadTome/QuickSnipe-support](https://github.com/RadTome/QuickSnipe-support)
 
 QuickSnipe ("we", "our", or "the Extension") is committed to protecting your privacy and personal data. This Privacy Policy explains how QuickSnipe handles user data, browser permissions, and third-party AI integrations in full compliance with Google Chrome Web Store Developer Program Policies.
@@ -14,7 +14,7 @@ QuickSnipe operates entirely within your local Google Chrome browser:
 - **Zero Personal Data Collection:** We do not collect, track, log, profile, or transmit your personal identity, browsing history, search queries, keystrokes, or seller account credentials.
 - **Zero Developer Servers:** We do not host or operate backend proxy servers, intermediate servers, user databases, or telemetry tracking systems. There is no central developer server capturing your activity.
 - **Local Device Storage & Sandboxing:** All extension preferences, user-supplied AI API keys, saved prompts, swipe file snippets, competitor snipes, and daily usage counters are stored strictly on your local machine using Chrome's secure `chrome.storage.local` API. The floating QuickBar assistant stores its coordinates and snooze states strictly in extension storage, leaving zero storage footprint on merchant host pages.
-- **Offline Feedback Recording:** Feedback submitted through the in-app feedback dialog is saved strictly to your local browser storage. QuickSnipe contacts zero remote feedback or tracking servers. Sellers can copy their feedback and diagnostic context to their clipboard with one click to post on GitHub Discussions.
+- **Voluntary User Feedback Collection:** Feedback, ratings, and diagnostic context submitted through the in-app feedback dialog or inline micro-feedback buttons are securely submitted directly to our Google Forms collection endpoint (`docs.google.com`) to help us improve listing generation quality and diagnose bugs. Feedback history is also saved locally on your device in `chrome.storage.local`. We never collect or transmit seller passwords, financial credentials, private API keys, or background browsing history.
 
 ---
 
@@ -51,7 +51,7 @@ In accordance with Google Chrome Web Store Developer Policies, QuickSnipe reques
 | `scripting` | Programmatically injects text extraction and 1-click form autofill utilities on active listing tabs. |
 | `alarms` | Schedules periodic daily usage counter resets at midnight local time. |
 | `contextMenus` | Enables right-click context menu shortcuts to save selected text snippets directly to your local QuickSnipe Swipe File. |
-| `Host Permissions (Direct AI APIs & Licensing)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`) and ExtensionPay (`extensionpay.com`). Broad wildcard permissions (`http://*/*`, `https://*/*`) and `tabs` are completely purged for absolute least-privilege security. |
+| `Host Permissions (Direct AI APIs, Licensing & Feedback)` | Enables direct client HTTPS communication with official AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`, `localhost`/`127.0.0.1`), ExtensionPay (`extensionpay.com`), and secure voluntary feedback collection (`docs.google.com`). Broad wildcard permissions (`http://*/*`, `https://*/*`) and `tabs` are completely purged for absolute least-privilege security. |
 
 ---
 
