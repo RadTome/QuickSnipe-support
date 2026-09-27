@@ -186,11 +186,13 @@
           </button>
         </div>
 
-        <!-- File Upload Fallback Option -->
+        <!-- File Upload Fallback Option: Native Camera & Gallery Pickers -->
         <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
-        <div style="text-align: center; margin-top: 0.85rem;">
-          <label for="camera-input" style="font-size: 0.8rem; color: var(--accent-cyan); text-decoration: underline; cursor: pointer;">
-            📁 Or upload photo from gallery / files
+        <input type="file" id="gallery-input" accept="image/*" multiple class="hidden">
+        <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.85rem;">
+          <label for="gallery-input" style="font-size: 0.82rem; padding: 0.55rem 1.1rem; border-radius: var(--radius-md); background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600;">
+            <span>🖼️</span>
+            <span>Choose from Photos / Gallery</span>
           </label>
         </div>
       </div>
@@ -212,9 +214,15 @@
         <button id="btn-manual-send" type="button" class="hidden" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);">
           ⚡ Tap to Send to Desktop
         </button>
-        <button id="btn-snap-another" type="button" class="hidden" style="width: 100%; margin-top: 1rem; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer;">
-          📸 Snap Another Photo
-        </button>
+        <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+          <button id="btn-snap-another" type="button" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+            📸 Snap Another
+          </button>
+          <label for="gallery-input" id="btn-gallery-more" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; text-align: center;">
+            <span>🖼️</span>
+            <span>Add from Gallery</span>
+          </label>
+        </div>
       </div>
     </main>
 
@@ -277,6 +285,7 @@
       const shutterControls = document.getElementById('shutter-controls');
       const btnLiveShutter = document.getElementById('btn-live-shutter');
       const cameraInput = document.getElementById('camera-input');
+      const galleryInput = document.getElementById('gallery-input');
       const previewSection = document.getElementById('preview-section');
       const previewImg = document.getElementById('preview-img');
       const transferLabel = document.getElementById('transfer-label');
@@ -284,6 +293,7 @@
       const progressBar = document.getElementById('progress-bar');
       const btnManualSend = document.getElementById('btn-manual-send');
       const btnSnapAnother = document.getElementById('btn-snap-another');
+      const btnGalleryMore = document.getElementById('btn-gallery-more');
 
       const diagSignaling = document.getElementById('diag-signaling');
       const diagDC = document.getElementById('diag-dc');
@@ -589,14 +599,95 @@
           <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; max-width: 260px;">
             Tap below to take a photo or select an existing thrift picture from your device.
           </p>
-          <label for="camera-input" style="padding: 0.75rem 1.5rem; border-radius: var(--radius-md); background: var(--grad-primary); border: none; color: #fff; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: inline-block; margin-top: 0.25rem; box-shadow: var(--shadow-glow);">
-            📸 Snap / Choose Photo
-          </label>
+          <div style="display: flex; gap: 0.5rem; justify-content: center; margin-top: 0.25rem;">
+            <label for="gallery-input" style="padding: 0.75rem 1.25rem; border-radius: var(--radius-md); background: var(--grad-primary); border: none; color: #fff; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: inline-block; box-shadow: var(--shadow-glow);">
+              🖼️ Choose from Gallery
+            </label>
+            <label for="camera-input" style="padding: 0.75rem 1.25rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.9rem; cursor: pointer; display: inline-block;">
+              📸 Native Camera
+            </label>
+          </div>
         `;
       }
 
+      function resizeImageFile(file) {
+        return new Promise(function(resolve, reject) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+              let width = img.width;
+              let height = img.height;
+              const maxDim = 1200;
+              if (width > maxDim || height > maxDim) {
+                if (width > height) {
+                  height = Math.round((height * maxDim) / width);
+                  width = maxDim;
+                } else {
+                  width = Math.round((width * maxDim) / height);
+                  height = maxDim;
+                }
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              if (ctx) {
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg', 0.82));
+              } else {
+                reject(new Error('Canvas context unavailable'));
+              }
+            };
+            img.onerror = reject;
+            img.src = e.target.result;
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+      }
+
+      async function handleMultipleFiles(fileList) {
+        const files = Array.from(fileList || []).filter(f => f.type.startsWith('image/'));
+        if (files.length === 0) return;
+
+        cameraSection.classList.add('hidden');
+        previewSection.classList.remove('hidden');
+        btnSnapAnother.classList.add('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
+        btnManualSend.classList.add('hidden');
+
+        logDiag('Queueing ' + files.length + ' photo(s) for transfer to desktop...');
+
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          transferLabel.textContent = '⚡ Preparing photo ' + (i + 1) + ' of ' + files.length + '...';
+          progressBar.style.width = '20%';
+          transferPercent.textContent = '20%';
+
+          try {
+            const base64Data = await resizeImageFile(file);
+            previewImg.src = base64Data;
+            transferLabel.textContent = '⚡ Sending photo ' + (i + 1) + ' of ' + files.length + ' (' + file.name + ')...';
+            await transmitPhoto(base64Data, file.name);
+          } catch (err) {
+            logDiag('Failed transmitting ' + file.name + ': ' + (err.message || err), 'error');
+          }
+        }
+
+        transferLabel.textContent = files.length > 1 ? '✓ All ' + files.length + ' photos sent to desktop!' : '✓ Transferred! Check your computer.';
+        transferLabel.style.color = 'var(--accent-emerald)';
+        progressBar.style.width = '100%';
+        transferPercent.textContent = '100%';
+        btnManualSend.classList.add('hidden');
+        btnSnapAnother.classList.remove('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
+        logDiag('✓ Finished transfer of ' + files.length + ' photo(s)!', 'success');
+      }
+
       // Live Shutter Click: Capture frame directly from video
-      btnLiveShutter.addEventListener('click', function() {
+      btnLiveShutter.addEventListener('click', async function() {
         if (!liveVideo || !liveVideo.videoWidth) return;
 
         const canvas = document.createElement('canvas');
@@ -620,56 +711,36 @@
         ctx.drawImage(liveVideo, 0, 0, width, height);
 
         const base64Data = canvas.toDataURL('image/jpeg', 0.80);
-        pendingPhoto = { data: base64Data, name: 'camera_snap_' + Date.now() + '.jpg' };
+        const snapName = 'camera_snap_' + Date.now() + '.jpg';
+        pendingPhoto = { data: base64Data, name: snapName };
 
         // Hide camera, show preview
         cameraSection.classList.add('hidden');
         previewImg.src = base64Data;
         previewSection.classList.remove('hidden');
         btnSnapAnother.classList.add('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
 
-        transmitPhoto(base64Data, pendingPhoto.name);
+        try {
+          await transmitPhoto(base64Data, snapName);
+          btnSnapAnother.classList.remove('hidden');
+          if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
+        } catch (e) {
+          btnManualSend.classList.remove('hidden');
+        }
       });
 
-      // Gallery File Input Handler
-      cameraInput.addEventListener('change', function() {
-        if (cameraInput.files && cameraInput.files[0]) {
-          const file = cameraInput.files[0];
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const img = new Image();
-            img.onload = function() {
-              let width = img.width;
-              let height = img.height;
-              const maxDim = 1200;
-              if (width > maxDim || height > maxDim) {
-                if (width > height) {
-                  height = Math.round((height * maxDim) / width);
-                  width = maxDim;
-                } else {
-                  width = Math.round((width * maxDim) / height);
-                  height = maxDim;
-                }
-              }
+      // Gallery File Input Handler (Multi-select, Photo Library)
+      galleryInput?.addEventListener('change', function() {
+        if (galleryInput.files && galleryInput.files.length > 0) {
+          handleMultipleFiles(galleryInput.files);
+        }
+      });
 
-              const canvas = document.createElement('canvas');
-              canvas.width = width;
-              canvas.height = height;
-              canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-
-              const base64Data = canvas.toDataURL('image/jpeg', 0.80);
-              pendingPhoto = { data: base64Data, name: file.name };
-
-              cameraSection.classList.add('hidden');
-              previewImg.src = base64Data;
-              previewSection.classList.remove('hidden');
-              btnSnapAnother.classList.add('hidden');
-
-              transmitPhoto(base64Data, file.name);
-            };
-            img.src = e.target.result;
-          };
-          reader.readAsDataURL(file);
+      // Native Camera Input Fallback Handler
+      cameraInput?.addEventListener('change', function() {
+        if (cameraInput.files && cameraInput.files.length > 0) {
+          handleMultipleFiles(cameraInput.files);
         }
       });
 
@@ -677,20 +748,22 @@
       function transmitPhoto(base64Data, filename) {
         pendingPhoto = { data: base64Data, name: filename };
 
-        // Tier 1: Direct WebRTC DataChannel (same Wi-Fi, 0ms, zero server load)
-        if (activeConn && activeConn.open) {
-          logDiag('Using direct P2P LAN data channel for instant transfer...');
-          sendViaP2PChunks(base64Data, filename);
-          return;
-        }
+        return new Promise(function(resolve, reject) {
+          // Tier 1: Direct WebRTC DataChannel (same Wi-Fi, 0ms, zero server load)
+          if (activeConn && activeConn.open) {
+            logDiag('Using direct P2P LAN data channel for instant transfer...');
+            sendViaP2PChunks(base64Data, filename, resolve, reject);
+            return;
+          }
 
-        // Tier 2: Cloudflare Bridge (quicksnipe-bridge.radtome.com)
-        // Works 100% across cellular 5G, VPNs, different subnets, corporate firewalls
-        logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe-bridge.radtome.com...', 'warn');
-        sendViaCloudflareBridge(base64Data, filename);
+          // Tier 2: Cloudflare Bridge (quicksnipe-bridge.radtome.com)
+          // Works 100% across cellular 5G, VPNs, different subnets, corporate firewalls
+          logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe-bridge.radtome.com...', 'warn');
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+        });
       }
 
-      async function sendViaCloudflareBridge(base64Data, filename) {
+      function sendViaCloudflareBridge(base64Data, filename, resolve, reject) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
         transferLabel.textContent = '⚡ Transmitting via Cloudflare Bridge...';
@@ -698,27 +771,25 @@
         progressBar.style.width = '35%';
         transferPercent.textContent = '35%';
 
-        try {
-          const endpoint = 'https://quicksnipe-bridge.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
-          logDiag('Dispatching to: ' + endpoint);
-          progressBar.style.width = '65%';
-          transferPercent.textContent = '65%';
+        const endpoint = 'https://quicksnipe-bridge.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
+        logDiag('Dispatching to: ' + endpoint);
+        progressBar.style.width = '65%';
+        transferPercent.textContent = '65%';
 
-          const res = await fetch(endpoint, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              type: 'QUICKSNIPE_PHOTO',
-              image: base64Data,
-              name: filename || 'thrift_photo.jpg'
-            })
-          });
-
-          if (!res.ok) {
-            throw new Error('Cloudflare bridge returned HTTP ' + res.status);
-          }
-
-          const result = await res.json();
+        fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            type: 'QUICKSNIPE_PHOTO',
+            image: base64Data,
+            name: filename || 'thrift_photo.jpg'
+          })
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Cloudflare bridge returned HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(result) {
           logDiag('✓ Cloudflare Bridge delivered successfully! (' + (result.delivered || 1) + ' recipient)', 'success');
           isTransferring = false;
           pendingPhoto = null;
@@ -728,16 +799,20 @@
           transferLabel.style.color = 'var(--accent-emerald)';
           btnManualSend.classList.add('hidden');
           btnSnapAnother.classList.remove('hidden');
-        } catch (err) {
+          if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
+          if (resolve) resolve(result);
+        })
+        .catch(function(err) {
           logDiag('Cloudflare bridge upload error: ' + (err.message || err), 'error');
           isTransferring = false;
           transferLabel.textContent = '⚠️ Cloud sync error. Tap to retry.';
           transferLabel.style.color = 'var(--accent-rose)';
           btnManualSend.classList.remove('hidden');
-        }
+          if (reject) reject(err);
+        });
       }
 
-      function sendViaP2PChunks(base64Data, filename) {
+      function sendViaP2PChunks(base64Data, filename, resolve, reject) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
         transferLabel.textContent = '⚡ Transmitting directly over P2P LAN...';
@@ -748,7 +823,7 @@
         const CHUNK_SIZE = 32768;
         const totalLength = base64Data.length;
         const totalChunks = Math.ceil(totalLength / CHUNK_SIZE);
-        const transferId = 'tx_' + Date.now();
+        const transferId = 'tx_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
         let chunkIndex = 0;
 
         logDiag('Starting P2P transmission: ' + (filename || 'photo.jpg') + ' (' + totalChunks + ' chunks, ~' + Math.round(totalLength / 1024) + ' KB)');
@@ -757,7 +832,7 @@
           if (!activeConn || !activeConn.open) {
             isTransferring = false;
             logDiag('P2P connection dropped during transfer. Switching to Cloudflare Bridge...', 'warn');
-            sendViaCloudflareBridge(base64Data, filename);
+            sendViaCloudflareBridge(base64Data, filename, resolve, reject);
             return;
           }
 
@@ -792,13 +867,15 @@
               transferLabel.style.color = 'var(--accent-emerald)';
               btnManualSend.classList.add('hidden');
               btnSnapAnother.classList.remove('hidden');
+              if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
               logDiag('✓ All ' + totalChunks + ' chunks delivered successfully to desktop sidepanel!', 'success');
+              if (resolve) resolve();
             }
           } catch (err) {
             console.error('[QuickSnipe Mobile] Chunk send error:', err);
             isTransferring = false;
             logDiag('P2P chunk exception: ' + (err.message || err) + '. Falling back to Cloudflare...', 'warn');
-            sendViaCloudflareBridge(base64Data, filename);
+            sendViaCloudflareBridge(base64Data, filename, resolve, reject);
           }
         }
 
@@ -819,9 +896,11 @@
 
       // Snap Another Item
       btnSnapAnother.addEventListener('click', function() {
-        cameraInput.value = '';
+        if (cameraInput) cameraInput.value = '';
+        if (galleryInput) galleryInput.value = '';
         pendingPhoto = null;
         btnSnapAnother.classList.add('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
         btnManualSend.classList.add('hidden');
         previewSection.classList.add('hidden');
         cameraSection.classList.remove('hidden');
