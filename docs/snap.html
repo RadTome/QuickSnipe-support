@@ -673,26 +673,74 @@
         }
       });
 
-      // Transmit payload in safe 32KB chunks
+      // Transmit payload: Tier 1 P2P LAN -> Tier 2 Cloudflare Worker Bridge
       function transmitPhoto(base64Data, filename) {
         pendingPhoto = { data: base64Data, name: filename };
 
-        if (!activeConn || !activeConn.open) {
-          transferLabel.textContent = '⏳ Waiting for desktop link (' + sessionId + ')...';
-          transferLabel.style.color = 'var(--accent-amber)';
-          btnManualSend.classList.remove('hidden');
-
-          if (!peer || peer.destroyed) {
-            createFreshPeerAndConnect();
-          } else if (!activeConn) {
-            linkToDesktop();
-          }
+        // Tier 1: Direct WebRTC DataChannel (same Wi-Fi, 0ms, zero server load)
+        if (activeConn && activeConn.open) {
+          logDiag('Using direct P2P LAN data channel for instant transfer...');
+          sendViaP2PChunks(base64Data, filename);
           return;
         }
 
+        // Tier 2: Cloudflare Bridge (quicksnipe.radtome.com)
+        // Works 100% across cellular 5G, VPNs, different subnets, corporate firewalls
+        logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe.radtome.com...', 'warn');
+        sendViaCloudflareBridge(base64Data, filename);
+      }
+
+      async function sendViaCloudflareBridge(base64Data, filename) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
-        transferLabel.textContent = '⚡ Transmitting to desktop sidepanel...';
+        transferLabel.textContent = '⚡ Transmitting via Cloudflare Bridge...';
+        transferLabel.style.color = 'var(--accent-cyan)';
+        progressBar.style.width = '35%';
+        transferPercent.textContent = '35%';
+
+        try {
+          const endpoint = 'https://quicksnipe.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
+          logDiag('Dispatching to: ' + endpoint);
+          progressBar.style.width = '65%';
+          transferPercent.textContent = '65%';
+
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'QUICKSNIPE_PHOTO',
+              image: base64Data,
+              name: filename || 'thrift_photo.jpg'
+            })
+          });
+
+          if (!res.ok) {
+            throw new Error('Cloudflare bridge returned HTTP ' + res.status);
+          }
+
+          const result = await res.json();
+          logDiag('✓ Cloudflare Bridge delivered successfully! (' + (result.delivered || 1) + ' recipient)', 'success');
+          isTransferring = false;
+          pendingPhoto = null;
+          progressBar.style.width = '100%';
+          transferPercent.textContent = '100%';
+          transferLabel.textContent = '✓ Transferred! Check your computer.';
+          transferLabel.style.color = 'var(--accent-emerald)';
+          btnManualSend.classList.add('hidden');
+          btnSnapAnother.classList.remove('hidden');
+        } catch (err) {
+          logDiag('Cloudflare bridge upload error: ' + (err.message || err), 'error');
+          isTransferring = false;
+          transferLabel.textContent = '⚠️ Cloud sync error. Tap to retry.';
+          transferLabel.style.color = 'var(--accent-rose)';
+          btnManualSend.classList.remove('hidden');
+        }
+      }
+
+      function sendViaP2PChunks(base64Data, filename) {
+        isTransferring = true;
+        btnManualSend.classList.add('hidden');
+        transferLabel.textContent = '⚡ Transmitting directly over P2P LAN...';
         transferLabel.style.color = 'var(--accent-cyan)';
         progressBar.style.width = '10%';
         transferPercent.textContent = '10%';
@@ -703,15 +751,13 @@
         const transferId = 'tx_' + Date.now();
         let chunkIndex = 0;
 
-        logDiag('Starting photo transmission: ' + (filename || 'photo.jpg') + ' (' + totalChunks + ' chunks, ~' + Math.round(totalLength / 1024) + ' KB)');
+        logDiag('Starting P2P transmission: ' + (filename || 'photo.jpg') + ' (' + totalChunks + ' chunks, ~' + Math.round(totalLength / 1024) + ' KB)');
 
         function sendNextChunk() {
           if (!activeConn || !activeConn.open) {
             isTransferring = false;
-            transferLabel.textContent = '⚠️ Desktop disconnected. Tap to retry.';
-            transferLabel.style.color = 'var(--accent-rose)';
-            btnManualSend.classList.remove('hidden');
-            logDiag('DataChannel dropped during chunk ' + chunkIndex + '/' + totalChunks, 'error');
+            logDiag('P2P connection dropped during transfer. Switching to Cloudflare Bridge...', 'warn');
+            sendViaCloudflareBridge(base64Data, filename);
             return;
           }
 
@@ -751,10 +797,8 @@
           } catch (err) {
             console.error('[QuickSnipe Mobile] Chunk send error:', err);
             isTransferring = false;
-            transferLabel.textContent = '⚠️ Transfer error. Tap to retry.';
-            transferLabel.style.color = 'var(--accent-rose)';
-            btnManualSend.classList.remove('hidden');
-            logDiag('Chunk send exception: ' + (err.message || err), 'error');
+            logDiag('P2P chunk exception: ' + (err.message || err) + '. Falling back to Cloudflare...', 'warn');
+            sendViaCloudflareBridge(base64Data, filename);
           }
         }
 
