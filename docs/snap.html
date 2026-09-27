@@ -60,35 +60,15 @@
     .dot.error {
       background: var(--accent-rose);
     }
-    .snap-btn-trigger {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      padding: 2.5rem 1.5rem;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
-      border: 2px dashed rgba(99, 102, 241, 0.5);
-      border-radius: var(--radius-lg);
-      cursor: pointer;
-      transition: var(--transition-fast);
-      text-align: center;
-      user-select: none;
-    }
-    .snap-btn-trigger:active {
-      transform: scale(0.98);
-      border-color: var(--accent-secondary);
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.2) 100%);
-    }
     .snap-icon-circle {
-      width: 64px;
-      height: 64px;
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
       background: var(--grad-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.75rem;
       box-shadow: var(--shadow-glow);
     }
     .preview-box {
@@ -100,7 +80,7 @@
     }
     .preview-img {
       width: 100%;
-      height: 240px;
+      height: 260px;
       object-fit: contain;
       display: block;
     }
@@ -167,26 +147,49 @@
 
     <!-- Main Active Card -->
     <main id="active-card" class="snap-card">
-      <div style="margin-bottom: 1.25rem;">
+      <div style="margin-bottom: 1rem;">
         <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0 0 0.25rem 0;">Snap Product Photo</h2>
         <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
           Photos sync directly to your computer's QuickSnipe AI Studio over secure peer-to-peer.
         </p>
       </div>
 
-      <!-- File Trigger Input -->
-      <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
-      
-      <label id="btn-snap-label" for="camera-input" class="snap-btn-trigger">
-        <div class="snap-icon-circle">📸</div>
-        <div>
-          <div style="font-size: 1.05rem; font-weight: 700; color: #fff;">Take Photo / Pick Image</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Opens your phone's camera instantly</div>
+      <!-- Live Viewfinder Section -->
+      <div id="camera-section">
+        <div id="viewfinder-box" class="preview-box" style="height: 290px; position: relative; background: #000; display: flex; align-items: center; justify-content: center;">
+          <video id="live-video" autoplay playsinline muted style="width: 100%; height: 100%; object-fit: cover;"></video>
+          <canvas id="snapshot-canvas" class="hidden"></canvas>
+
+          <!-- Permission / Tap to Start Overlay -->
+          <div id="camera-prompt" style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(30,41,59,0.95)); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1.5rem; text-align: center; gap: 0.75rem;">
+            <div class="snap-icon-circle">📸</div>
+            <div style="font-weight: 700; color: #fff; font-size: 1.05rem;">Start Live Camera</div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); max-width: 240px;">Stays directly inside browser so computer connection never drops</div>
+            <button id="btn-activate-camera" type="button" style="margin-top: 0.25rem; padding: 0.75rem 1.5rem; border-radius: var(--radius-md); background: var(--grad-primary); border: none; color: #fff; font-weight: 700; font-size: 0.9rem; cursor: pointer; box-shadow: var(--shadow-glow);">
+              Open Viewfinder
+            </button>
+          </div>
         </div>
-      </label>
+
+        <!-- Live Shutter Button -->
+        <div id="shutter-controls" class="hidden" style="margin-top: 0.85rem;">
+          <button id="btn-live-shutter" type="button" style="width: 100%; padding: 0.9rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%); border: none; color: #022c22; font-weight: 800; font-size: 1.05rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);">
+            <span>📸</span>
+            <span>Snap Photo Now</span>
+          </button>
+        </div>
+
+        <!-- File Upload Fallback Option -->
+        <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
+        <div style="text-align: center; margin-top: 0.85rem;">
+          <label for="camera-input" style="font-size: 0.8rem; color: var(--accent-cyan); text-decoration: underline; cursor: pointer;">
+            📁 Or upload photo from gallery / files
+          </label>
+        </div>
+      </div>
 
       <!-- Uploading / Preview State -->
-      <div id="preview-section" class="hidden" style="margin-top: 1.25rem;">
+      <div id="preview-section" class="hidden" style="margin-top: 0.5rem;">
         <div class="preview-box">
           <img id="preview-img" class="preview-img" alt="Captured Product">
         </div>
@@ -202,7 +205,7 @@
         <button id="btn-manual-send" type="button" class="hidden" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);">
           ⚡ Tap to Send to Desktop
         </button>
-        <button id="btn-snap-another" type="button" class="hidden" style="width: 100%; margin-top: 1rem; padding: 0.75rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+        <button id="btn-snap-another" type="button" class="hidden" style="width: 100%; margin-top: 1rem; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer;">
           📸 Snap Another Photo
         </button>
       </div>
@@ -232,13 +235,17 @@
         sessionId = (params.get('sid') || params.get('session') || '').trim();
       }
 
-      const statusBadge = document.getElementById('status-badge');
       const statusDot = document.getElementById('status-dot');
       const statusText = document.getElementById('status-text');
       const noSessionCard = document.getElementById('no-session-card');
       const activeCard = document.getElementById('active-card');
+      const cameraSection = document.getElementById('camera-section');
+      const liveVideo = document.getElementById('live-video');
+      const cameraPrompt = document.getElementById('camera-prompt');
+      const btnActivateCamera = document.getElementById('btn-activate-camera');
+      const shutterControls = document.getElementById('shutter-controls');
+      const btnLiveShutter = document.getElementById('btn-live-shutter');
       const cameraInput = document.getElementById('camera-input');
-      const btnSnapLabel = document.getElementById('btn-snap-label');
       const previewSection = document.getElementById('preview-section');
       const previewImg = document.getElementById('preview-img');
       const transferLabel = document.getElementById('transfer-label');
@@ -259,29 +266,29 @@
       let activeConn = null;
       let pendingPhoto = null; // { data, name }
       let isTransferring = false;
-      let reconnectTimer = null;
+      let videoStream = null;
 
       function updateStatus(state, msg) {
         statusDot.className = 'dot ' + (state === 'connected' ? 'connected' : state === 'error' ? 'error' : '');
         statusText.textContent = msg;
       }
 
-      function connectToDesktop() {
-        if (peer && !peer.destroyed) {
-          if (peer.disconnected) {
-            console.log('[QuickSnipe Mobile] Signaler disconnected, reconnecting peer...');
-            peer.reconnect();
-          } else {
-            connectToSession();
-          }
-          return;
+      // Fresh peer connection lifecycle
+      function createFreshPeerAndConnect() {
+        if (activeConn) {
+          try { activeConn.close(); } catch (e) {}
+          activeConn = null;
+        }
+        if (peer) {
+          try { peer.destroy(); } catch (e) {}
+          peer = null;
         }
 
         updateStatus('connecting', 'Connecting...');
-        const mobilePeerId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
+        const freshId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
 
         try {
-          peer = new Peer(mobilePeerId, {
+          peer = new Peer(freshId, {
             host: '0.peerjs.com',
             port: 443,
             path: '/',
@@ -295,44 +302,33 @@
           });
 
           peer.on('open', function(id) {
-            console.log('[QuickSnipe Mobile] Peer opened:', id, '-> session:', sessionId);
-            connectToSession();
-          });
-
-          peer.on('disconnected', function() {
-            console.warn('[QuickSnipe Mobile] Peer signaling disconnected, reconnecting...');
-            updateStatus('connecting', 'Reconnecting...');
-            if (peer && !peer.destroyed) {
-              peer.reconnect();
-            }
+            console.log('[QuickSnipe Mobile] Fresh peer opened:', id, '-> target session:', sessionId);
+            linkToDesktop();
           });
 
           peer.on('error', function(err) {
             console.error('[QuickSnipe Mobile] Peer error:', err);
-            updateStatus('error', 'Signaling Error');
-            clearTimeout(reconnectTimer);
-            reconnectTimer = setTimeout(connectToDesktop, 3000);
+            if (err.type === 'peer-unavailable') {
+              updateStatus('error', 'Session Expired');
+              if (transferLabel) {
+                transferLabel.textContent = '⚠️ Desktop session not found. Please scan the current QR code on your computer.';
+                transferLabel.style.color = 'var(--accent-rose)';
+              }
+              return;
+            }
+            updateStatus('error', 'Link Error');
+            setTimeout(createFreshPeerAndConnect, 3000);
           });
         } catch (err) {
           console.error('[QuickSnipe Mobile] Peer init error:', err);
-          clearTimeout(reconnectTimer);
-          reconnectTimer = setTimeout(connectToDesktop, 3000);
+          setTimeout(createFreshPeerAndConnect, 3000);
         }
       }
 
-      function connectToSession() {
+      function linkToDesktop() {
         if (!peer || peer.destroyed) {
-          connectToDesktop();
+          createFreshPeerAndConnect();
           return;
-        }
-        if (peer.disconnected) {
-          peer.reconnect();
-          return;
-        }
-
-        if (activeConn) {
-          try { activeConn.close(); } catch (e) {}
-          activeConn = null;
         }
 
         updateStatus('connecting', 'Linking Desktop...');
@@ -341,112 +337,174 @@
           activeConn = peer.connect(sessionId, {
             reliable: true
           });
+
+          activeConn.on('open', function() {
+            console.log('[QuickSnipe Mobile] WebRTC data channel OPEN to desktop!');
+            updateStatus('connected', 'Desktop Ready');
+            btnManualSend.classList.add('hidden');
+
+            try {
+              activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
+            } catch (e) {}
+
+            // Auto-send if photo is queued
+            if (pendingPhoto && !isTransferring) {
+              transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+            }
+          });
+
+          activeConn.on('close', function() {
+            console.log('[QuickSnipe Mobile] Connection closed');
+            updateStatus('connecting', 'Reconnecting...');
+            if (pendingPhoto && !isTransferring) {
+              btnManualSend.classList.remove('hidden');
+              transferLabel.textContent = '⏳ Desktop disconnected. Reconnecting...';
+              transferLabel.style.color = 'var(--accent-rose)';
+            }
+            setTimeout(createFreshPeerAndConnect, 2000);
+          });
+
+          activeConn.on('error', function(err) {
+            console.error('[QuickSnipe Mobile] Conn error:', err);
+            updateStatus('error', 'Peer Link Error');
+            if (pendingPhoto && !isTransferring) {
+              btnManualSend.classList.remove('hidden');
+            }
+          });
         } catch (err) {
-          console.warn('[QuickSnipe Mobile] connect error:', err);
-          clearTimeout(reconnectTimer);
-          reconnectTimer = setTimeout(connectToSession, 2000);
-          return;
+          console.warn('[QuickSnipe Mobile] linkToDesktop error:', err);
+          setTimeout(createFreshPeerAndConnect, 2000);
         }
-
-        activeConn.on('open', function() {
-          console.log('[QuickSnipe Mobile] Connected to desktop sidepanel!');
-          updateStatus('connected', 'Desktop Ready');
-
-          // Send handshake
-          try {
-            activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
-          } catch (e) {}
-
-          // Auto-send pending photo if waiting
-          if (pendingPhoto && !isTransferring) {
-            transmitPhoto(pendingPhoto.data, pendingPhoto.name);
-          }
-        });
-
-        activeConn.on('close', function() {
-          console.log('[QuickSnipe Mobile] Connection closed');
-          updateStatus('connecting', 'Reconnecting...');
-          if (pendingPhoto && !isTransferring) {
-            btnManualSend.classList.remove('hidden');
-            transferLabel.textContent = '⏳ Desktop disconnected. Reconnecting...';
-            transferLabel.style.color = 'var(--accent-rose)';
-          }
-          clearTimeout(reconnectTimer);
-          reconnectTimer = setTimeout(connectToSession, 2000);
-        });
-
-        activeConn.on('error', function(err) {
-          console.error('[QuickSnipe Mobile] Conn error:', err);
-          updateStatus('error', 'Peer Link Error');
-          if (pendingPhoto && !isTransferring) {
-            btnManualSend.classList.remove('hidden');
-          }
-        });
       }
 
-      // Resume connections when user switches back from camera app
+      // Resume connections when user switches back from background
       function handleWakeup() {
         if (document.visibilityState === 'visible') {
           console.log('[QuickSnipe Mobile] Tab resumed from background');
-          if (!peer || peer.destroyed) {
-            connectToDesktop();
-          } else if (peer.disconnected) {
-            peer.reconnect();
-          } else if (!activeConn || !activeConn.open) {
-            connectToSession();
+          if (!activeConn || !activeConn.open) {
+            createFreshPeerAndConnect();
           }
         }
       }
       document.addEventListener('visibilitychange', handleWakeup);
       window.addEventListener('focus', handleWakeup);
 
-      // Downscale photo client-side to max 1200px @ 0.80 JPEG (~100-140KB)
-      function compressAndSendPhoto(file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const img = new Image();
-          img.onload = function() {
-            let width = img.width;
-            let height = img.height;
-            const maxDim = 1200;
-            if (width > maxDim || height > maxDim) {
-              if (width > height) {
-                height = Math.round((height * maxDim) / width);
-                width = maxDim;
-              } else {
-                width = Math.round((width * maxDim) / height);
-                height = maxDim;
-              }
-            }
-
-            const canvas = document.createElement('canvas');
-            canvas.width = width;
-            canvas.height = height;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
-
-            const base64Data = canvas.toDataURL('image/jpeg', 0.80);
-            pendingPhoto = { data: base64Data, name: file.name };
-
-            // Show preview
-            previewImg.src = base64Data;
-            previewSection.classList.remove('hidden');
-            btnSnapLabel.classList.add('hidden');
-            btnSnapAnother.classList.add('hidden');
-
-            transmitPhoto(base64Data, file.name);
-          };
-          img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
+      // Start in-browser camera viewfinder
+      async function startLiveCamera() {
+        try {
+          if (videoStream) {
+            videoStream.getTracks().forEach(t => t.stop());
+          }
+          videoStream = await navigator.mediaDevices.getUserMedia({
+            video: {
+              facingMode: { ideal: 'environment' },
+              width: { ideal: 1920 },
+              height: { ideal: 1080 }
+            },
+            audio: false
+          });
+          liveVideo.srcObject = videoStream;
+          await liveVideo.play().catch(() => {});
+          cameraPrompt.classList.add('hidden');
+          shutterControls.classList.remove('hidden');
+        } catch (err) {
+          console.warn('[QuickSnipe Mobile] Camera access error:', err);
+          cameraPrompt.innerHTML = `
+            <div style="font-size: 2rem;">📷</div>
+            <div style="font-weight: 700; color: #fff;">Camera Access Needed</div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Tap below to upload from your photo gallery instead.</p>
+            <label for="camera-input" style="padding: 0.65rem 1.25rem; border-radius: var(--radius-md); background: var(--grad-primary); border: none; color: #fff; font-weight: 700; font-size: 0.85rem; cursor: pointer; display: inline-block; margin-top: 0.5rem;">
+              Choose From Gallery
+            </label>
+          `;
+        }
       }
 
+      // Live Shutter Click: Capture frame directly from video
+      btnLiveShutter.addEventListener('click', function() {
+        if (!liveVideo || !liveVideo.videoWidth) return;
+
+        const canvas = document.createElement('canvas');
+        let width = liveVideo.videoWidth;
+        let height = liveVideo.videoHeight;
+        const maxDim = 1200;
+
+        if (width > maxDim || height > maxDim) {
+          if (width > height) {
+            height = Math.round((height * maxDim) / width);
+            width = maxDim;
+          } else {
+            width = Math.round((width * maxDim) / height);
+            height = maxDim;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(liveVideo, 0, 0, width, height);
+
+        const base64Data = canvas.toDataURL('image/jpeg', 0.80);
+        pendingPhoto = { data: base64Data, name: 'camera_snap_' + Date.now() + '.jpg' };
+
+        // Hide camera, show preview
+        cameraSection.classList.add('hidden');
+        previewImg.src = base64Data;
+        previewSection.classList.remove('hidden');
+        btnSnapAnother.classList.add('hidden');
+
+        transmitPhoto(base64Data, pendingPhoto.name);
+      });
+
+      // Gallery File Input Handler
+      cameraInput.addEventListener('change', function() {
+        if (cameraInput.files && cameraInput.files[0]) {
+          const file = cameraInput.files[0];
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+              let width = img.width;
+              let height = img.height;
+              const maxDim = 1200;
+              if (width > maxDim || height > maxDim) {
+                if (width > height) {
+                  height = Math.round((height * maxDim) / width);
+                  width = maxDim;
+                } else {
+                  width = Math.round((width * maxDim) / height);
+                  height = maxDim;
+                }
+              }
+
+              const canvas = document.createElement('canvas');
+              canvas.width = width;
+              canvas.height = height;
+              canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+
+              const base64Data = canvas.toDataURL('image/jpeg', 0.80);
+              pendingPhoto = { data: base64Data, name: file.name };
+
+              cameraSection.classList.add('hidden');
+              previewImg.src = base64Data;
+              previewSection.classList.remove('hidden');
+              btnSnapAnother.classList.add('hidden');
+
+              transmitPhoto(base64Data, file.name);
+            };
+            img.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Transmit payload in safe 32KB chunks
       function transmitPhoto(base64Data, filename) {
         if (!activeConn || !activeConn.open) {
-          transferLabel.textContent = '⏳ Desktop reconnecting... Auto-sending when ready';
+          transferLabel.textContent = '⏳ Desktop reconnecting... Tap to retry';
           transferLabel.style.color = 'var(--accent-amber)';
           btnManualSend.classList.remove('hidden');
-          handleWakeup();
+          createFreshPeerAndConnect();
           return;
         }
 
@@ -457,7 +515,6 @@
         progressBar.style.width = '10%';
         transferPercent.textContent = '10%';
 
-        // Chunked safe transmission: 32KB per chunk prevents WebRTC buffer overflow
         const CHUNK_SIZE = 32768;
         const totalLength = base64Data.length;
         const totalChunks = Math.ceil(totalLength / CHUNK_SIZE);
@@ -470,7 +527,7 @@
             transferLabel.textContent = '⚠️ Desktop disconnected. Tap to retry.';
             transferLabel.style.color = 'var(--accent-rose)';
             btnManualSend.classList.remove('hidden');
-            connectToSession();
+            createFreshPeerAndConnect();
             return;
           }
 
@@ -518,31 +575,42 @@
         sendNextChunk();
       }
 
-      cameraInput.addEventListener('change', function() {
-        if (cameraInput.files && cameraInput.files[0]) {
-          compressAndSendPhoto(cameraInput.files[0]);
-        }
-      });
-
+      // Manual retry send button
       btnManualSend.addEventListener('click', function() {
         if (pendingPhoto) {
-          transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+          if (!activeConn || !activeConn.open) {
+            transferLabel.textContent = '🔄 Reconnecting to desktop...';
+            createFreshPeerAndConnect();
+          } else {
+            transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+          }
         }
       });
 
+      // Snap Another Item
       btnSnapAnother.addEventListener('click', function() {
         cameraInput.value = '';
         pendingPhoto = null;
         btnSnapAnother.classList.add('hidden');
         btnManualSend.classList.add('hidden');
         previewSection.classList.add('hidden');
-        btnSnapLabel.classList.remove('hidden');
+        cameraSection.classList.remove('hidden');
         progressBar.style.width = '0%';
         transferPercent.textContent = '0%';
+        if (!videoStream) {
+          startLiveCamera();
+        }
       });
 
+      btnActivateCamera.addEventListener('click', function() {
+        startLiveCamera();
+      });
+
+      // Try starting camera right away
+      startLiveCamera();
+
       // Kick off connection
-      connectToDesktop();
+      createFreshPeerAndConnect();
     })();
   </script>
 </body>
