@@ -127,7 +127,7 @@
         </svg>
         <div>
           <h1 style="font-size: 1.1rem; font-weight: 800; margin: 0; line-height: 1.2;">QuickSnipe</h1>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Mobile Camera Bridge</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Mobile Camera Bridge <span id="session-tag" style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 600;"></span></span>
         </div>
       </div>
       <div id="status-badge" class="status-pill">
@@ -237,6 +237,10 @@
 
       const statusDot = document.getElementById('status-dot');
       const statusText = document.getElementById('status-text');
+      const sessionTag = document.getElementById('session-tag');
+      if (sessionTag && sessionId) {
+        sessionTag.textContent = '#' + sessionId;
+      }
       const noSessionCard = document.getElementById('no-session-card');
       const activeCard = document.getElementById('active-card');
       const cameraSection = document.getElementById('camera-section');
@@ -536,11 +540,18 @@
 
       // Transmit payload in safe 32KB chunks
       function transmitPhoto(base64Data, filename) {
+        pendingPhoto = { data: base64Data, name: filename };
+
         if (!activeConn || !activeConn.open) {
-          transferLabel.textContent = '⏳ Desktop reconnecting... Tap to retry';
+          transferLabel.textContent = '⏳ Waiting for desktop link (' + sessionId + ')...';
           transferLabel.style.color = 'var(--accent-amber)';
           btnManualSend.classList.remove('hidden');
-          createFreshPeerAndConnect();
+
+          if (!peer || peer.destroyed) {
+            createFreshPeerAndConnect();
+          } else if (!activeConn) {
+            linkToDesktop();
+          }
           return;
         }
 
@@ -563,7 +574,6 @@
             transferLabel.textContent = '⚠️ Desktop disconnected. Tap to retry.';
             transferLabel.style.color = 'var(--accent-rose)';
             btnManualSend.classList.remove('hidden');
-            createFreshPeerAndConnect();
             return;
           }
 
@@ -615,7 +625,7 @@
       btnManualSend.addEventListener('click', function() {
         if (pendingPhoto) {
           if (!activeConn || !activeConn.open) {
-            transferLabel.textContent = '🔄 Reconnecting to desktop...';
+            transferLabel.textContent = '🔄 Reconnecting to desktop (' + sessionId + ')...';
             createFreshPeerAndConnect();
           } else {
             transmitPhoto(pendingPhoto.data, pendingPhoto.name);
