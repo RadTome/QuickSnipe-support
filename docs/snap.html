@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>QuickSnipe — Mobile Photo Sync</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/png" href="assets/icon-48.png">
@@ -302,8 +305,22 @@
                 { urls: 'stun:stun.l.google.com:19302' },
                 { urls: 'stun:stun1.l.google.com:19302' },
                 { urls: 'stun:stun2.l.google.com:19302' },
-                { urls: 'stun:stun.cloudflare.com:3478' },
-                { urls: 'stun:global.stun.twilio.com:3478' }
+                { urls: 'stun:openrelay.metered.ca:80' },
+                {
+                  urls: 'turn:openrelay.metered.ca:80',
+                  username: 'openrelayproject',
+                  credential: 'openrelayproject'
+                },
+                {
+                  urls: 'turn:openrelay.metered.ca:443',
+                  username: 'openrelayproject',
+                  credential: 'openrelayproject'
+                },
+                {
+                  urls: 'turn:openrelay.metered.ca:443?transport=tcp',
+                  username: 'openrelayproject',
+                  credential: 'openrelayproject'
+                }
               ]
             }
           });
@@ -338,7 +355,15 @@
           return;
         }
 
-        updateStatus('connecting', 'Linking Desktop...');
+        let linkTimer = setTimeout(function() {
+          if (activeConn && !activeConn.open) {
+            updateStatus('connecting', 'Relay Negotiating...');
+            if (transferLabel && pendingPhoto) {
+              transferLabel.textContent = '⏳ Negotiating TURN relay... Ensure QuickSnipe sidepanel is open on PC.';
+              transferLabel.style.color = 'var(--accent-amber)';
+            }
+          }
+        }, 5000);
 
         try {
           activeConn = peer.connect(sessionId, {
@@ -346,6 +371,7 @@
           });
 
           activeConn.on('open', function() {
+            clearTimeout(linkTimer);
             console.log('[QuickSnipe Mobile] WebRTC data channel OPEN to desktop!');
             updateStatus('connected', 'Desktop Ready');
             btnManualSend.classList.add('hidden');
