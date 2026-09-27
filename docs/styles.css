@@ -423,6 +423,7 @@ code {
 .text-gradient {
   background: var(--grad-primary);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -885,7 +886,6 @@ code {
   font-size: 0.88rem;
   color: var(--text-muted);
   margin-top: 14px;
-  space-y: 8px;
 }
 
 .marketplace-bullets li {
