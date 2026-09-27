@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>QuickSnipe — Mobile Photo Sync</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/icon-48.png">
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.25rem;
+      background: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+    .snap-container {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .snap-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-md);
+    }
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-amber);
+    }
+    .dot.connected {
+      background: var(--accent-emerald);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+    }
+    .dot.error {
+      background: var(--accent-rose);
+    }
+    .snap-btn-trigger {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2.5rem 1.5rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.1) 100%);
+      border: 2px dashed rgba(99, 102, 241, 0.5);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      text-align: center;
+      user-select: none;
+    }
+    .snap-btn-trigger:active {
+      transform: scale(0.98);
+      border-color: var(--accent-secondary);
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.2) 100%);
+    }
+    .snap-icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--grad-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: var(--shadow-glow);
+    }
+    .preview-box {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-highlight);
+      background: #000;
+      position: relative;
+    }
+    .preview-img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      display: block;
+    }
+    .progress-bar-bg {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.75rem;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--grad-primary);
+      transition: width 0.2s ease;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="snap-container">
+    <!-- Header -->
+    <header class="flex items-center justify-between py-2">
+      <div class="flex items-center gap-2">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" class="shrink-0">
+          <defs>
+            <linearGradient id="spG" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#4F46E5"/>
+              <stop offset="40%" stop-color="#7C3AED"/>
+              <stop offset="75%" stop-color="#E11D48"/>
+              <stop offset="100%" stop-color="#FB7185"/>
+            </linearGradient>
+            <linearGradient id="spSpark" x1="8" y1="7" x2="16" y2="18" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#FDE047"/>
+              <stop offset="50%" stop-color="#F59E0B"/>
+              <stop offset="100%" stop-color="#EF4444"/>
+            </linearGradient>
+          </defs>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M 12 4 C 6.75 4 2.5 8.25 2.5 13.5 C 2.5 18.75 6.75 23 12 23 C 14.3 23 16.4 22.15 18 20.75 L 19.6 22.35 C 20.3 23.05 21.5 22.55 21.5 21.55 L 21.5 19.4 C 21.5 19.15 21.4 18.9 21.2 18.7 L 19.5 17 C 20.5 15.9 21.5 14.7 21.5 13.5 C 21.5 8.25 17.25 4 12 4 Z M 12 8.5 C 14.76 8.5 17 10.74 17 13.5 C 17 16.26 14.76 18.5 12 18.5 C 9.24 18.5 7 16.26 7 13.5 C 7 10.74 9.24 8.5 12 8.5 Z" fill="url(#spG)"/>
+          <path d="M 12.8 6.5 L 8.8 12.8 H 11.8 L 10.2 18.5 L 15.8 12.2 H 12.8 L 14.5 6.5 Z" fill="url(#spSpark)"/>
+        </svg>
+        <div>
+          <h1 style="font-size: 1.1rem; font-weight: 800; margin: 0; line-height: 1.2;">QuickSnipe</h1>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Mobile Camera Bridge</span>
+        </div>
+      </div>
+      <div id="status-badge" class="status-pill">
+        <span id="status-dot" class="dot"></span>
+        <span id="status-text">Connecting...</span>
+      </div>
+    </header>
+
+    <!-- Session Warning Card (Shown if URL has no hash) -->
+    <div id="no-session-card" class="snap-card hidden" style="border-color: rgba(244, 63, 94, 0.4);">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⚠️</div>
+      <h2 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: var(--accent-rose);">No Active Session Found</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+        Please open QuickSnipe sidepanel on your computer, navigate to <strong>AI Studio → Photo-to-Listing</strong>, and scan the QR code with your phone camera.
+      </p>
+    </div>
+
+    <!-- Main Active Card -->
+    <main id="active-card" class="snap-card">
+      <div style="margin-bottom: 1.25rem;">
+        <h2 style="font-size: 1.25rem; font-weight: 800; margin: 0 0 0.25rem 0;">Snap Product Photo</h2>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">
+          Photos sync directly to your computer's QuickSnipe AI Studio over secure peer-to-peer.
+        </p>
+      </div>
+
+      <!-- File Trigger Input -->
+      <input type="file" id="camera-input" accept="image/*" capture="environment" class="hidden">
+      
+      <label id="btn-snap-label" for="camera-input" class="snap-btn-trigger">
+        <div class="snap-icon-circle">📸</div>
+        <div>
+          <div style="font-size: 1.05rem; font-weight: 700; color: #fff;">Take Photo / Pick Image</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Opens your phone's camera instantly</div>
+        </div>
+      </label>
+
+      <!-- Uploading / Preview State -->
+      <div id="preview-section" class="hidden" style="margin-top: 1.25rem;">
+        <div class="preview-box">
+          <img id="preview-img" class="preview-img" alt="Captured Product">
+        </div>
+        <div style="margin-top: 0.75rem;">
+          <div class="flex items-center justify-between" style="font-size: 0.8rem;">
+            <span id="transfer-label" style="font-weight: 600; color: var(--accent-cyan);">⚡ Sending to your desktop...</span>
+            <span id="transfer-percent" style="font-family: var(--font-mono); color: var(--text-muted);">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="progress-bar" class="progress-bar-fill"></div>
+          </div>
+        </div>
+        <button id="btn-snap-another" type="button" class="hidden" style="width: 100%; margin-top: 1rem; padding: 0.75rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+          📸 Snap Another Photo
+        </button>
+      </div>
+    </main>
+
+    <!-- Tips Card -->
+    <div class="snap-card" style="padding: 1rem 1.25rem; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+      <div style="font-weight: 700; color: #fff; margin-bottom: 0.25rem; display: flex; items-center; gap: 0.35rem;">
+        <span>💡</span> Pro Thrift Sourcing Tip
+      </div>
+      Make sure item brand tags, labels, or hallmarks are clearly in frame. QuickSnipe Vision extracts brand, style code, and materials automatically.
+    </div>
+  </div>
+
+  <footer style="text-align: center; font-size: 0.7rem; color: var(--text-dim); margin-top: 1.5rem;">
+    🔒 End-to-end peer encrypted. Zero image storage on external servers.
+  </footer>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // Parse Session ID from hash or query
+      let sessionId = window.location.hash ? window.location.hash.replace('#', '').trim() : '';
+      if (!sessionId) {
+        const params = new URLSearchParams(window.location.search);
+        sessionId = (params.get('sid') || params.get('session') || '').trim();
+      }
+
+      const statusBadge = document.getElementById('status-badge');
+      const statusDot = document.getElementById('status-dot');
+      const statusText = document.getElementById('status-text');
+      const noSessionCard = document.getElementById('no-session-card');
+      const activeCard = document.getElementById('active-card');
+      const cameraInput = document.getElementById('camera-input');
+      const btnSnapLabel = document.getElementById('btn-snap-label');
+      const previewSection = document.getElementById('preview-section');
+      const previewImg = document.getElementById('preview-img');
+      const transferLabel = document.getElementById('transfer-label');
+      const transferPercent = document.getElementById('transfer-percent');
+      const progressBar = document.getElementById('progress-bar');
+      const btnSnapAnother = document.getElementById('btn-snap-another');
+
+      if (!sessionId) {
+        noSessionCard.classList.remove('hidden');
+        activeCard.classList.add('hidden');
+        statusDot.className = 'dot error';
+        statusText.textContent = 'No Session';
+        return;
+      }
+
+      let peer = null;
+      let activeConn = null;
+
+      function updateStatus(state, msg) {
+        statusDot.className = 'dot ' + (state === 'connected' ? 'connected' : state === 'error' ? 'error' : '');
+        statusText.textContent = msg;
+      }
+
+      function connectToDesktop() {
+        updateStatus('connecting', 'Connecting...');
+        
+        // Random mobile peer ID
+        const mobilePeerId = 'qs_m_' + Math.random().toString(36).substring(2, 9);
+        
+        peer = new Peer(mobilePeerId, {
+          host: '0.peerjs.com',
+          port: 443,
+          path: '/',
+          secure: true,
+          config: {
+            iceServers: [
+              { urls: 'stun:stun.l.google.com:19302' },
+              { urls: 'stun:global.stun.twilio.com:3478' }
+            ]
+          }
+        });
+
+        peer.on('open', function() {
+          console.log('[QuickSnipe Mobile] Peer opened, connecting to desktop session:', sessionId);
+          connectToSession();
+        });
+
+        peer.on('error', function(err) {
+          console.error('[QuickSnipe Mobile] Peer error:', err);
+          updateStatus('error', 'Connection Error');
+          setTimeout(connectToDesktop, 3000);
+        });
+      }
+
+      function connectToSession() {
+        if (!peer || peer.destroyed) return;
+        
+        activeConn = peer.connect(sessionId, {
+          reliable: true
+        });
+
+        activeConn.on('open', function() {
+          console.log('[QuickSnipe Mobile] Connected to desktop sidepanel!');
+          updateStatus('connected', 'Desktop Ready');
+          // Send handshake
+          activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
+        });
+
+        activeConn.on('close', function() {
+          console.log('[QuickSnipe Mobile] Connection closed');
+          updateStatus('connecting', 'Reconnecting...');
+          setTimeout(connectToSession, 2000);
+        });
+
+        activeConn.on('error', function(err) {
+          console.error('[QuickSnipe Mobile] Conn error:', err);
+          updateStatus('error', 'Peer Link Error');
+        });
+      }
+
+      // Downscale photo client-side to max 1920px for high-speed transmission
+      function compressAndSendPhoto(file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            let width = img.width;
+            let height = img.height;
+            const maxDim = 1920;
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Compress to webp/jpeg 0.88 quality (crystal clear for Vision AI, ~300KB)
+            const base64Data = canvas.toDataURL('image/jpeg', 0.88);
+            
+            // Show preview
+            previewImg.src = base64Data;
+            previewSection.classList.remove('hidden');
+            btnSnapLabel.classList.add('hidden');
+            
+            sendImagePayload(base64Data, file.name);
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function sendImagePayload(base64Data, filename) {
+        if (!activeConn || !activeConn.open) {
+          transferLabel.textContent = '⚠️ Desktop disconnected. Reconnecting...';
+          transferLabel.style.color = 'var(--accent-rose)';
+          connectToSession();
+          return;
+        }
+
+        transferLabel.textContent = '⚡ Transmitting to desktop sidepanel...';
+        transferLabel.style.color = 'var(--accent-cyan)';
+        progressBar.style.width = '50%';
+        transferPercent.textContent = '50%';
+
+        try {
+          activeConn.send({
+            type: 'QUICKSNIPE_PHOTO',
+            image: base64Data,
+            name: filename || 'thrift_photo.jpg',
+            size: base64Data.length,
+            timestamp: Date.now()
+          });
+
+          setTimeout(function() {
+            progressBar.style.width = '100%';
+            transferPercent.textContent = '100%';
+            transferLabel.textContent = '✓ Transferred! Check your computer.';
+            transferLabel.style.color = 'var(--accent-emerald)';
+            btnSnapAnother.classList.remove('hidden');
+          }, 350);
+
+        } catch (err) {
+          console.error('[QuickSnipe Mobile] Failed to send payload:', err);
+          transferLabel.textContent = '⚠️ Transfer failed. Tap to retry.';
+          transferLabel.style.color = 'var(--accent-rose)';
+        }
+      }
+
+      cameraInput.addEventListener('change', function() {
+        if (cameraInput.files && cameraInput.files[0]) {
+          compressAndSendPhoto(cameraInput.files[0]);
+        }
+      });
+
+      btnSnapAnother.addEventListener('click', function() {
+        cameraInput.value = '';
+        btnSnapAnother.classList.add('hidden');
+        previewSection.classList.add('hidden');
+        btnSnapLabel.classList.remove('hidden');
+        progressBar.style.width = '0%';
+        transferPercent.textContent = '0%';
+      });
+
+      // Kick off connection
+      connectToDesktop();
+    })();
+  </script>
+</body>
+</html>
