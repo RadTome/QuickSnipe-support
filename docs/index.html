@@ -129,22 +129,22 @@
   <!-- Sticky Glass Navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand-link">
-        <img src="assets/icon.png" alt="QuickSnipe Icon" class="brand-icon" width="38" height="38">
-        <span class="brand-title">
-          QuickSnipe
-          <span class="badge-version">v1.3.3 Live</span>
-          <span class="badge-version" style="background: rgba(99, 102, 241, 0.12); color: var(--accent-primary); border: 1px solid var(--accent-primary);">v1.4.0 Upcoming</span>
-        </span>
-      </a>
+      <div class="header-brand-group">
+        <a href="#" class="brand-link">
+          <img src="assets/icon.png" alt="QuickSnipe Icon" class="brand-icon" width="32" height="32">
+          <span class="brand-title">QuickSnipe</span>
+        </a>
+        <span class="badge-version"><span class="status-dot"></span>v1.3.3 Live</span>
+        <a href="#vision-snipe" class="badge-upcoming-pill" title="Jump to upcoming v1.4.0 preview">⚡ v1.4.0 Preview</a>
+      </div>
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#features" class="nav-link">Features</a></li>
-          <li><a href="#sandbox" class="nav-link">Live Sandboxes</a></li>
+          <li><a href="#sandbox" class="nav-link">Sandboxes</a></li>
           <li><a href="#comparison" class="nav-link">Compare</a></li>
           <li><a href="#marketplaces" class="nav-link">Marketplaces</a></li>
-          <li><a href="#ai-options" class="nav-link">AI Options</a></li>
+          <li><a href="#ai-options" class="nav-link">AI Setup</a></li>
           <li><a href="#faq" class="nav-link">FAQ</a></li>
           <li><a href="https://github.com/RadTome/QuickSnipe-support" target="_blank" rel="noopener noreferrer"
               class="nav-link">GitHub ↗</a></li>
@@ -798,91 +798,92 @@
   <section id="ai-options" class="section-padding">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Direct AI Pricing</span>
-        <h2 class="section-title">Choose Your AI: Free Built-In or Connect Your Own</h2>
+        <span class="section-eyebrow">Zero Token Markup</span>
+        <h2 class="section-title">Choose Your AI: On-Device, Free Tiers, or Connect Your Own</h2>
         <p class="section-desc">
-          Other seller apps charge $50 to $99 every month for AI tokens. QuickSnipe lets you use free built-in models
-          or connect your own account to pay pennies directly to providers.
+          Other seller apps charge $50 to $99 every month for AI tokens. QuickSnipe lets you run free local models on your device, use free provider tiers, or connect your existing API keys for fractions of a cent with zero middlemen markup.
         </p>
       </div>
 
       <div class="byok-grid">
-        <!-- Option 1: Instant Built-In Engine -->
+        <!-- Option 1: Chrome Built-in AI (Gemini Nano) -->
         <div class="byok-card" style="border-color: var(--border-glow); box-shadow: 0 0 20px rgba(99, 102, 241, 0.12);">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <strong style="font-size: 1.1rem; color: var(--accent-cyan);">Instant Built-in Engine ⭐</strong>
-            <span class="byok-badge-free">Zero Setup Required</span>
+            <strong style="font-size: 1.1rem; color: var(--accent-cyan);">Chrome Built-in AI ⭐</strong>
+            <span class="byok-badge-free">Zero Keys • On-Device</span>
           </div>
           <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            No account or technical keys required. QuickSnipe includes built-in listing generators, margin calculators,
-            and SEO checkers ready to work immediately on day 1.
+            Built directly into Google Chrome (<code>window.ai</code> / Prompt API). Runs 100% offline on your device GPU/NPU with zero external network requests, zero accounts, and zero API setup.
           </p>
-          <div style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 600;">Works right out of the box</div>
+          <div style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 600;">Runs locally on device • 100% Private</div>
         </div>
 
-        <!-- Option 2: Google Gemini -->
+        <!-- Option 2: Google Gemini (Free BYOK) -->
         <div class="byok-card" style="border-color: rgba(99, 102, 241, 0.4);">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <strong style="font-size: 1.1rem; color: var(--accent-cyan);">Google Gemini</strong>
             <span class="byok-badge-free" style="background: rgba(99, 102, 241, 0.12); color: var(--accent-primary); border-color: var(--accent-primary);">Fast & Free Tier</span>
           </div>
           <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            100% free tier from Google with no credit card required. Creates complete titles, descriptions, and tags
-            in under 1 second with high writing quality.
+            100% free developer key from Google AI Studio. Powers high-speed listing generation and multimodal Photo-to-Listing Vision Snipe with generous 15 req/min quota.
           </p>
-          <div style="font-size: 0.8rem; color: var(--text-dim);">Recommended for fastest speed</div>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">Recommended for fastest speed & Vision</div>
         </div>
 
+        <!-- Option 3: Groq (Llama 3.3) -->
+        <div class="byok-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <strong style="font-size: 1.1rem; color: var(--text-main);">Groq (Llama 3.3)</strong>
+            <span class="byok-badge-free" style="background: rgba(16, 185, 129, 0.12); color: var(--accent-emerald); border-color: var(--accent-emerald);">⚡ Ultra-Fast</span>
+          </div>
+          <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
+            Lightning-fast inference engine running Meta Llama 3.3. Outputs 3-platform listings, 13 tags, and item specifics in under 1 second with generous free console tier.
+          </p>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">30 free req/min • Sub-second generation</div>
+        </div>
 
-        <!-- Option 3: OpenAI / ChatGPT -->
+        <!-- Option 4: OpenAI (ChatGPT) -->
         <div class="byok-card">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <strong style="font-size: 1.1rem; color: var(--text-main);">OpenAI (ChatGPT)</strong>
             <span class="badge-tag">Popular Choice</span>
           </div>
           <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            Connect your own OpenAI account directly. Generates listings for fractions of a cent per item with zero
-            subscription markups.
+            Connect your own OpenAI developer account directly. Generates listings for fractions of a cent per item with zero subscription markups using GPT-4o and GPT-4o-mini.
           </p>
           <div style="font-size: 0.8rem; color: var(--text-dim);">Direct connection, pennies per month</div>
         </div>
 
-        <!-- Option 4: Anthropic Claude -->
+        <!-- Option 5: Anthropic Claude -->
         <div class="byok-card">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
             <strong style="font-size: 1.1rem; color: var(--text-main);">Anthropic Claude</strong>
-            <span class="badge-tag">Natural Writing</span>
+            <span class="badge-tag">Nuanced Copy</span>
           </div>
           <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            Renowned for natural, compelling copywriting and nuanced brand tone. Excellent for vintage fashion, crafts,
-            and unique closet finds.
+            Renowned for natural, compelling copywriting and nuanced brand tone. Excellent for vintage fashion, crafts, and unique closet finds using Claude 3.7 & 3.5.
           </p>
-          <div style="font-size: 0.8rem; color: var(--text-dim);">High-detail descriptive writing</div>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">High-detail descriptive storytelling</div>
         </div>
 
-        <!-- Option 5: Chrome Built-in AI -->
+        <!-- Option 6: DeepSeek & Local Ollama -->
         <div class="byok-card">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <strong style="font-size: 1.1rem; color: var(--text-main);">Chrome Built-in AI</strong>
-            <span class="byok-badge-free">Offline & Private</span>
+            <strong style="font-size: 1.1rem; color: var(--text-main);">DeepSeek & Local Ollama</strong>
+            <span class="badge-tag">Budget & Local</span>
           </div>
           <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            Built directly into Google Chrome. Runs completely offline on your device with no external network calls.
+            Use ultra-low-cost DeepSeek reasoning models (V3 & R1) or connect your local Ollama instance (<code>localhost:11434</code>) for private, self-hosted offline AI.
           </p>
-          <div style="font-size: 0.8rem; color: var(--text-dim);">Runs locally on your laptop or PC</div>
+          <div style="font-size: 0.8rem; color: var(--text-dim);">DeepSeek V3/R1 & Localhost Ollama</div>
         </div>
+      </div>
 
-        <!-- Option 6: DeepSeek AI -->
-        <div class="byok-card">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
-            <strong style="font-size: 1.1rem; color: var(--text-main);">DeepSeek AI</strong>
-            <span class="badge-tag">Ultra-Low Cost</span>
-          </div>
-          <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 14px;">
-            Fast, capable reasoning models at near-zero cost per generation. Great for competitor pricing analysis and
-            keyword breakdowns.
-          </p>
-          <div style="font-size: 0.8rem; color: var(--text-dim);">High performance, near-zero cost</div>
+      <!-- Core Heuristics Callout -->
+      <div style="margin-top: 24px; padding: 16px 22px; border-radius: 12px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.25); display: flex; align-items: center; gap: 14px; max-width: 900px; margin-left: auto; margin-right: auto;">
+        <span style="font-size: 1.6rem; flex-shrink: 0;">🛠️</span>
+        <div style="font-size: 0.9rem; color: var(--text-main); line-height: 1.5;">
+          <strong>Zero AI required for core reseller tools:</strong> Multi-platform fee calculators (Etsy, eBay, Amazon, Poshmark), profit margin snipers, sales velocity estimators, and Listing Quality audits work 100% out of the box on day 1 with <strong>zero AI keys or setup needed</strong>.
         </div>
       </div>
 
