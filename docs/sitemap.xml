@@ -2,8 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://radtome.github.io/QuickSnipe-support/</loc>
-    <lastmod>2026-09-15</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://radtome.github.io/QuickSnipe-support/snap.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://radtome.github.io/QuickSnipe-support/farewell.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>
+
