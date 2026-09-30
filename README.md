@@ -9,8 +9,8 @@
 
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.3.3_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.4.0_Preview-purple.svg)](CHANGELOG.md)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.0_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Release Notes](https://img.shields.io/badge/Release-v1.4.0_Vision_Snipe-purple.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -20,7 +20,7 @@
 
 <p align="center">
   <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website & Live Demos</b></a> •
-  <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store (v1.3.3 Live)</b></a> •
+  <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store (v1.4.0 Live)</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
@@ -50,15 +50,12 @@
 
 ---
 
-## 🚀 Release Status: v1.3.3 Live • v1.4.0 Coming Soon
+## 🚀 Release Status: v1.4.0 Live Production Release
 
-### 🟢 Current Live Release: QuickSnipe v1.3.3
-QuickSnipe **v1.3.3** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
+### 🟢 Current Live Release: QuickSnipe v1.4.0
+QuickSnipe **v1.4.0** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). All existing users will automatically receive this update via Chrome.
 
-### 🔥 Upcoming Blockbuster Release: QuickSnipe v1.4.0 (In Store Review)
-QuickSnipe **v1.4.0** has been packaged and submitted to the Chrome Web Store. All users with v1.3.3 installed will automatically upgrade as soon as review completes!
-
-**Sneak Peek Highlights in v1.4.0:**
+**Key Highlights in v1.4.0:**
 - **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Turn any product photo into a finished multi-platform listing in seconds. Drag & drop an image or right-click any web photo ➔ multimodal AI inspects logos, care tags, materials, and condition, then automatically drafts optimized titles for Etsy, eBay, and Poshmark, 13 compliant tags, item specifics, a buyer story pitch, and pricing appraisal.
 - **🛒 Walmart & Grailed Expansion**: Native DOM parser and listing generator for Walmart product pages (`/ip/`) with 25x review velocity estimation, plus Next.js hydration payload extraction for Grailed archive luxury listings.
 - **🟢 Active Marketplace Tab Badge**: Chrome toolbar icon displays an emerald dot (`●`) and contextual seller tooltip whenever you are browsing a supported marketplace.

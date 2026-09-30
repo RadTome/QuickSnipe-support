@@ -4,10 +4,10 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.0] — Upcoming Major Release (Packaged & In Store Review)
+## 🚀 [v1.4.0] — Official Production Release (Live in Chrome Web Store)
 
-> **Status:** Release v1.4.0 packaged and submitted to Chrome Web Store (Pending Google Review)  
-> **Target Release Date:** September 2026
+> **Status:** Live in Chrome Web Store (Approved & Published)  
+> **Release Date:** September 2026
 
 ### 📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe (Multimodal AI)
 - **Zero-Typing Listing Creation**: Drag & drop any product photo or right-click any image on the web ➔ **"QuickSnipe: Analyze Product Image"**.
@@ -46,7 +46,7 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🟢 [v1.3.3] — Current Live Stable Release
+## 🟢 [v1.3.3] — Previous Stable Release
 
 > **Status:** Live in Chrome Web Store (Active Production Version)  
 > **Release Date:** September 22, 2026

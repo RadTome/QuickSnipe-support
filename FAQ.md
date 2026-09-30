@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.3.3 Live)](#-6-release-updates-v133-live)
+- [🚀 6. Release Updates (v1.4.0 Live)](#-6-release-updates-v140-live)
 
 ---
 
@@ -156,13 +156,13 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.3.3 Live • v1.4.0 Upcoming)
+## 🚀 6. Release Updates (v1.4.0 Live)
 
 ### Q: What is the current published version in the Chrome Web Store?
-**A:** QuickSnipe **v1.3.3** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
+**A:** QuickSnipe **v1.4.0** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
 
-### Q: What is coming in QuickSnipe v1.4.0 (Upcoming Major Release)?
-**A:** QuickSnipe **v1.4.0** has been packaged and submitted to the Chrome Web Store (currently in store review). It brings major multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
+### Q: What is new in QuickSnipe v1.4.0?
+**A:** QuickSnipe **v1.4.0** is our blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
 - **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Drag & drop product photos or right-click web images ➔ multimodal AI reads maker tags, materials, condition, and details to instantly draft complete listings for Etsy, eBay, and Poshmark with 13 tags and item specifics in 10s.
 - **Walmart & Grailed Support**: Native DOM parsers, sales velocity calculators, and structured listing generators for Walmart Marketplace (`/ip/`) and Grailed archive luxury.
 - **Active Marketplace Toolbar Dot**: An emerald green indicator (`●`) on the extension icon signals when QuickSnipe is active on a supported marketplace tab.

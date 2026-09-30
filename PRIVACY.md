@@ -1,7 +1,7 @@
 # Privacy Policy for QuickSnipe
 
 **Effective Date:** September 27, 2026  
-**Version:** 1.3.3 Live / 1.4.0 Upcoming  
+**Version:** 1.4.0 Live  
 **Repository:** [https://github.com/RadTome/QuickSnipe-support](https://github.com/RadTome/QuickSnipe-support)
 
 QuickSnipe ("we", "our", or "the Extension") is committed to protecting your privacy and personal data. This Privacy Policy explains how QuickSnipe handles user data, browser permissions, and third-party AI integrations in full compliance with Google Chrome Web Store Developer Program Policies.
