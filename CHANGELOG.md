@@ -20,6 +20,14 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
   - **Pricing & Velocity Appraisal**: Suggested listing price, resale corridor, and demand velocity estimate.
 - **Cloud BYOK Vision Integration**: Powered by Google Gemini (Free Tier), OpenAI GPT-4o / GPT-4o Mini, or Groq Vision.
 
+### 📱 KILLER FEATURE: Instant Mobile QR Photo Sync (`snap.html`)
+- **Zero Mobile App Installation**: No App Store or Google Play downloads required. Click **"Snap on Phone (QR)"** in the QuickSnipe sidepanel on your PC, point your iPhone or Android camera at the QR code, and launch the companion web portal (`snap.html`) directly in mobile Safari or Chrome.
+- **Real-Time Peer-to-Peer Streaming**: High-resolution thrift and product photos stream directly from your mobile camera to your desktop browser in real time via encrypted WebRTC data channels.
+- **Cloudflare Worker Durable Object Fallback Bridge**: Automated WebSocket bridge routing via `quicksnipe-bridge.radtome.com` ensures 100% connection reliability across distinct subnets, corporate Wi-Fi, and mobile cellular data (LTE/5G).
+- **In-Browser Camera Viewfinder**: Live camera feed with instant shutter button, tap-to-focus, and auto-orientation correction so your desktop connection never drops while sourcing.
+- **Multi-Image Camera Roll Gallery Queue**: Select up to 10 photos simultaneously from your phone's photo library with sequential transfer progress indicators and status badges.
+- **Live Diagnostics Console**: Real-time WebRTC ICE candidate tracking, DataChannel state display, signaling status, and 1-click clipboard diagnostic log export.
+
 ### 🛒 Multi-Platform Expansion: Walmart & Grailed
 - **Walmart Marketplace Support**: Native DOM parsing for Walmart product listings (`/ip/`) and competitor search pages. Structured title formatting (`Brand + Item Name + Style/Model + Features/Size/Pack`), key feature bullets, and category-tuned sales velocity estimation (25x review multiplier).
 - **Grailed Archive Luxury Support**: Next.js hydration payload extraction for designer & vintage archive menswear listings (`/listings/`) and search grids. Specialized listing generation targeting high-end collector audiences.

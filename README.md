@@ -38,6 +38,7 @@
 | Resource | Description | Link |
 |---|---|---|
 | 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
+| 📱 **Mobile Snap Companion** | Instant QR photo capture companion with P2P stream to desktop (zero app install) | [radtome.github.io/QuickSnipe-support/snap.html](https://radtome.github.io/QuickSnipe-support/snap.html) |
 | 📋 **Release Notes & Roadmap** | Full changelog for v1.4.0 and version history | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
@@ -56,7 +57,8 @@
 QuickSnipe **v1.4.0** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). All existing users will automatically receive this update via Chrome.
 
 **Key Highlights in v1.4.0:**
-- **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Turn any product photo into a finished multi-platform listing in seconds. Drag & drop an image or right-click any web photo ➔ multimodal AI inspects logos, care tags, materials, and condition, then automatically drafts optimized titles for Etsy, eBay, and Poshmark, 13 compliant tags, item specifics, a buyer story pitch, and pricing appraisal.
+- **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe & Real-Time Mobile QR Sync**: Turn any product photo into a finished multi-platform listing in seconds. Drag & drop an image, right-click any web photo, or **scan a dynamic QR code on your phone (`snap.html`) to beam photos directly from your mobile camera to your desktop browser with ZERO mobile app installs**. Multimodal AI inspects logos, care tags, materials, and condition, then automatically drafts optimized titles for Etsy, eBay, and Poshmark, 13 compliant tags, item specifics, a buyer story pitch, and pricing appraisal.
+- **📱 Real-Time WebRTC & Cloudflare Sync Bridge**: Instant phone-to-PC photo transfer over encrypted peer-to-peer data channels backed by a dedicated Cloudflare Worker Durable Object WebSocket bridge fallback. Supports live viewfinder shooting and multi-image photo gallery queues.
 - **🛒 Walmart & Grailed Expansion**: Native DOM parser and listing generator for Walmart product pages (`/ip/`) with 25x review velocity estimation, plus Next.js hydration payload extraction for Grailed archive luxury listings.
 - **🟢 Active Marketplace Tab Badge**: Chrome toolbar icon displays an emerald dot (`●`) and contextual seller tooltip whenever you are browsing a supported marketplace.
 - **🛡️ Smart HTTP 429 Rate-Limit Fallback**: Automatically falls back to a configured backup model (Groq Llama 3.3 or Chrome Built-in Nano) when quota is exhausted, with transparent seller notices.
@@ -111,61 +113,70 @@ Instead of paying $20–$99/month for multiple bloated SaaS tools that store you
 
 ## 💎 Core Feature Breakdown
 
-| 🤖 AI Studio | 📈 Sales Velocity & Sniper | 💬 Reviews | 🏆 Quality & SEO | 🔧 Tools & QuickBar |
+| 🤖 AI Studio & Vision | 📈 Sales Velocity & Sniper | 💬 Reviews | 🏆 Quality & SEO | 🔧 Tools & QuickBar |
 |:---:|:---:|:---:|:---:|:---:|
-| **10+ AI Generators**<br>Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, Grailed | **Revenue & Velocity Sniper**<br>Monthly unit sales, revenue run-rates & velocity tiers | **Review Miner**<br>Scrapes 1–3 star complaints on competitor items | **Listing Quality Scorecard (LQS)**<br>Grade S to F audits with instant 1-click fixes | **Profit Calculator**<br>Live fees, margins, ROI & breakeven prices |
-| **Omnichannel Transmuter**<br>Generates platform-tailored packs in 1 pass | **Price Sweet-Spot**<br>Median, Min, Max & price distribution curves | **Objection Slayer**<br>Converts buyer objections into FAQs | **Trademark Pre-Flight Guard**<br>Flags IP risks and protected brand names | **In-Page QuickBar**<br>Floating 1-click form autofill HUD |
-| **On-Device / BYOK**<br>Chrome Built-in AI or Gemini, Groq, OpenAI, Claude | **Keyword Gap Matrix**<br>Venn analysis vs top 24 ranking competitors | **Social & Ads Kit**<br>Instagram, TikTok, Pinterest & paid search copy | **Readability & Meta Audit**<br>Flesch-Kincaid grade & image alt-tags | **Amazon 249B Validator**<br>Strict UTF-8 byte meter & stop word cleaner |
+| **Photo-to-Listing Vision**<br>Multimodal tag, fabric & brand reader | **Revenue & Velocity Sniper**<br>Monthly unit sales, revenue run-rates & velocity tiers | **Review Miner**<br>Scrapes 1–3 star complaints on competitor items | **Listing Quality Scorecard (LQS)**<br>Grade S to F audits with instant 1-click fixes | **Profit Calculator**<br>Live fees, margins, ROI & breakeven prices |
+| **Mobile QR Photo Sync**<br>Instant phone-to-PC camera beam (no app) | **Price Sweet-Spot**<br>Median, Min, Max & price distribution curves | **Objection Slayer**<br>Converts buyer objections into FAQs | **Trademark Pre-Flight Guard**<br>Flags IP risks and protected brand names | **In-Page QuickBar**<br>Floating 1-click form autofill HUD |
+| **10+ AI Generators**<br>Etsy, Amazon, eBay, Shopify, Poshmark... | **Keyword Gap Matrix**<br>Venn analysis vs top 24 ranking competitors | **Social & Ads Kit**<br>Instagram, TikTok, Pinterest & paid search copy | **Readability & Meta Audit**<br>Flesch-Kincaid grade & image alt-tags | **1-Click Form Autofill**<br>Populates titles, tags & descriptions |
+| **Omnichannel Transmuter**<br>Generates platform-tailored packs in 1 pass | **Omnichannel Cross-Market**<br>Simultaneous price snipes across 4 markets | **Review Pain Extraction**<br>Sizing, material & packing flaw summaries | **Amazon 249B Validator**<br>Strict UTF-8 byte meter & stop word cleaner | **Persistent Swipe File**<br>1-Click CSV/Sheets export & state restore |
 
-### 1. ⚡ 1-Click Form Autofill Engine & In-Page QuickBar
+### 1. 📱 Snap on Phone: Instant QR Code Mobile Photo Sync & Multimodal Vision Snipe
+Photograph thrift items, apparel, vintage goods, or craft inventory on your smartphone and watch them land on your desktop monitor in real time—with **Zero App Store Downloads**, **Zero Account Signups**, and **Zero Cables**.
+- **Instant Dynamic QR Code**: Click **Snap on Phone (QR)** in the QuickSnipe sidepanel under **AI Studio → Photo-to-Listing**. A temporary, secure pairing QR code is generated on screen.
+- **Native Phone Camera Scan**: Point your iPhone or Android camera at the QR code. It opens QuickSnipe's high-speed companion web portal (`snap.html`) directly in Safari or Chrome.
+- **Direct P2P WebRTC & Cloudflare Bridge**: Photos stream directly from your phone camera to your computer screen in seconds over encrypted peer-to-peer data channels, backed by a dedicated Cloudflare Worker Durable Object WebSocket bridge fallback.
+- **Live Viewfinder & Multi-Image Gallery**: Snap photos live in-browser or batch select up to 10 photos from your phone's photo library.
+- **Multimodal AI Listing Generation**: In under 10 seconds, QuickSnipe's Vision AI analyzes maker tags, materials, sponsor patches, hallmarks, and condition, drafting complete listings for Etsy (140-char title + 13 tags), eBay (80-char title + item specifics), and Poshmark.
+
+### 2. ⚡ 1-Click Form Autofill Engine & In-Page QuickBar
 Push AI-generated Title, Price, Description, and Tags directly into active listing creation and edit forms on **Etsy Shop Manager, Amazon Seller Central, eBay Selling, Shopify Admin, Poshmark, and Depop**.
 - **Floating QuickBar HUD**: In-page quick-action assistant for rapid form mapping without switching windows. Press `Esc` to instantly minimize.
 - Uses native `HTMLInputElement.prototype` setters and dispatches synthetic `input`, `change`, and `blur` events so React, Vue, and Angular internal form states update immediately.
 
-### 2. 📈 Competitor Sales Velocity & Gross Revenue Estimator
+### 3. 📈 Competitor Sales Velocity & Gross Revenue Estimator
 Uncover what competing listings are generating in monthly volume and gross revenue:
 - Estimates monthly unit sales and gross revenue run-rates using category-specific review-velocity models and explicit recent buyer indicators.
 - Assigns actionable velocity tier badges: **Unicorn 🦄**, **Fast Mover 🔥**, **Steady ⚡**, and **Emerging 🌱**.
 - Includes niche revenue aggregates and 1-click CSV/Sheets TSV export.
 
-### 3. 🏆 Listing Quality Scorecard (LQS) & Pre-Flight Guard
+### 4. 🏆 Listing Quality Scorecard (LQS) & Pre-Flight Guard
 - Pre-flight diagnostic engine audits listing drafts with letter grades from **Grade S (Exceptional)** down to **Grade F (Critical Issues)**.
 - Analyzes title truncation across platforms, tag count limits, keyword density, and pricing corridors vs. competitor medians.
 - Provides instant 1-click auto-fix remedies for missing attributes.
 
-### 4. 🛡️ Trademark Pre-Flight Guard
+### 5. 🛡️ Trademark Pre-Flight Guard
 - Scans draft titles, bullets, and tags against high-risk intellectual property and protected brand names before publishing.
 - Flags potential infringement terms and suggests safe generic merchandising alternatives to help keep your seller account compliant.
 
-### 5. 💰 Multi-Platform Profit & Margin Calculator
+### 6. 💰 Multi-Platform Profit & Margin Calculator
 Live real-time fee breakdown and unit economic analysis:
 - **Metrics Calculated**: Platform Fees, Payment Processing Fees, Listing Fees, Shipping & Packaging, Cost of Goods Sold (COGS), Advertising / Offsite Ads, FBA Fees.
 - **Outputs**: Total Costs ($), Net Profit ($), Profit Margin (%), Return on Investment (ROI %), and Breakeven Sale Price ($).
 - **`⚡ Pull Page Price`**: Automatically extracts the active item's price directly from the page DOM with one click.
 
-### 6. 🎯 Competitor Keyword Gap Matrix & Price Sniper
+### 7. 🎯 Competitor Keyword Gap Matrix & Price Sniper
 - Scrapes the top 24 organic search competitor listings on Etsy, Amazon, eBay, and Mercari.
 - Runs Venn set analysis comparing your active listing against competitor keywords.
 - Calculates competitor adoption percentage share and isolates high-frequency keywords you are missing with a 1-click `⚡ Borrow Keywords` injection button.
 - **Omnichannel Cross-Market Mode**: Query and compare competitor prices across Etsy, eBay, Poshmark, and Mercari simultaneously with smart category noise filtering.
 
-### 7. 💬 Customer Review Objection Miner
+### 8. 💬 Customer Review Objection Miner
 - Scrapes 1–3 star customer reviews on competitor listings.
 - Identifies recurring buyer pain points, product flaws, sizing confusion, or packaging gripes.
 - Generates 3 counter-objection value propositions and copy-ready FAQ sections to bulletproof your own listing.
 
-### 8. 🔍 Full-Page SEO & Content Auditor
+### 9. 🔍 Full-Page SEO & Content Auditor
 - Analyzes listing copy for readability: **Flesch-Kincaid Reading Grade Level**, **Reading Ease Score**, word count, and syllable distribution.
 - Audits Title Length vs. platform maximums (e.g. Etsy 140c, eBay 80c, Amazon 200c, Walmart 178c).
 - Scrapes and verifies OpenGraph (`og:title`, `og:image`) and Twitter Card meta tags.
 - **AI Image Alt-Text Generator**: Scrapes product gallery images and generates 5 keyword-rich accessible alt tags.
 
-### 9. 📦 Amazon Backend Search Terms 249-Byte Validator
+### 10. 📦 Amazon Backend Search Terms 249-Byte Validator
 - Strictly enforces Amazon Seller Central's $\le 249$ UTF-8 byte boundary using native `TextEncoder`.
 - Strips Amazon stop words (`and`, `with`, `for`, `the`, `from`, `this`, `that`, `a`, `an`, `in`, `of`, `to`), punctuation, and redundant terms.
 - Features a live color-coded byte progress meter gauge.
 
-### 10. 🚀 10+ Specialized AI Studio Generators & Omnichannel Transmuter
+### 11. 🚀 10+ Specialized AI Studio Generators & Omnichannel Transmuter
 - **Etsy Power Listing**: 140-char high-converting title, 13 rank-ready tags (≤20 chars), structured markdown description.
 - **Amazon FBA Listing**: 200-char brand title, 5 benefit-driven feature bullet points, 249-byte search terms.
 - **eBay Cassini Optimizer**: 80-char character-dense title, structured item specifics, item description.
@@ -178,7 +189,7 @@ Live real-time fee breakdown and unit economic analysis:
 - **Omnichannel Transmuter**: Reformat a single product draft into customized, platform-compliant listing packs across multiple selling channels in one pass.
 - **3-Platform Social Kit & Paid Ads**: Hooks for Instagram Reels, TikTok, Pinterest SEO pins, and high-ROAS ad copy.
 
-### 11. 📁 Local Swipe File & Export Suite
+### 12. 📁 Local Swipe File & Export Suite
 - Save winning titles, competitor phrases, and generated copy snippets directly to your local persistent Swipe File.
 - 1-click **CSV download** and **Google Sheets / Excel TSV clipboard copy** for offline spreadsheets.
 - **Session State Restoration**: Reopening the sidepanel immediately restores active competitor snipes, mined reviews, and audit data without losing your progress.

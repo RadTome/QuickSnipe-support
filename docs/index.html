@@ -178,7 +178,7 @@
 
       <p class="hero-subtitle">
         The fast listing assistant and price research side panel for <strong>Etsy, Amazon, eBay, Poshmark, Shopify, Mercari, Depop, Walmart, and Grailed</strong>.
-        <strong>Multimodal Photo-to-Listing AI</strong>, instant 1-click form autofill, sales velocity estimates, listing quality audits, and live fee calculations.
+        <strong>Multimodal Photo-to-Listing AI with Instant Phone-to-Desktop QR Sync</strong>, instant 1-click form autofill, sales velocity estimates, listing quality audits, and live fee calculations.
         <strong>100% Private in your browser. Free daily tier, or Pro at $7.99/mo, $49/yr, or $69 Lifetime Deal.</strong>
       </p>
 
@@ -256,6 +256,11 @@
               <td><strong>📸 Photo-to-Listing Vision</strong></td>
               <td class="col-highlight"><strong>Built-in Multimodal Vision</strong> (Drag & drop or right-click any photo to auto-generate Etsy, eBay & Poshmark titles, 13 tags, attributes & story description)</td>
               <td>Not available or requires expensive $50+/mo standalone AI software</td>
+            </tr>
+            <tr>
+              <td><strong>📱 Phone-to-Desktop Photo Sync</strong></td>
+              <td class="col-highlight"><strong>Instant QR Code Sync</strong> (Zero mobile app needed—scan dynamic QR with iPhone/Android camera to stream photos straight into desktop sidepanel via P2P WebRTC & Cloudflare bridge)</td>
+              <td>Manual AirDrop, slow Google Drive folders, emailing photos to yourself, or clunky external apps</td>
             </tr>
             <tr>
               <td><strong>Data Privacy & Security</strong></td>
@@ -446,10 +451,10 @@
         <!-- 3-Step Value Cards -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
           <div class="glass-card" style="padding: 24px; border-radius: 14px;">
-            <div style="font-size: 2rem; margin-bottom: 12px;">📷</div>
-            <h3 style="font-size: 1.15rem; margin: 0 0 8px; color: var(--text-main);">1. AI Studio Photo Snipe</h3>
+            <div style="font-size: 2rem; margin-bottom: 12px;">📱</div>
+            <h3 style="font-size: 1.15rem; margin: 0 0 8px; color: var(--text-main);">1. Mobile QR Sync or Drag & Drop</h3>
             <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
-              In the AI Studio tab, select <strong>Photo-to-Listing Snipe</strong>. Drag & drop local photos, 1-click attach in-page photos, or right-click any image ➔ <strong>"QuickSnipe: Analyze Product Image"</strong>.
+              In AI Studio, select <strong>Photo-to-Listing</strong>. Click <strong>"Snap on Phone (QR)"</strong> to beam photos straight from your phone, drag & drop local images, or right-click any web photo ➔ <strong>"QuickSnipe: Analyze Product Image"</strong>.
             </p>
           </div>
 
@@ -467,6 +472,82 @@
             <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin: 0;">
               Instantly outputs <strong>Etsy</strong> (140-char title + 13 tags), <strong>eBay</strong> (80-char title + specifics), and <strong>Poshmark</strong> hooks with suggested pricing.
             </p>
+          </div>
+        </div>
+
+        <!-- KILLER FEATURE SPOTLIGHT: Instant Mobile QR Phone Sync -->
+        <div class="glass-card" style="padding: 32px; border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.4); background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08), transparent 50%), var(--bg-card); box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.12);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35); flex-shrink: 0;">
+                📱
+              </div>
+              <div>
+                <span class="badge-tag" style="background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border-color: rgba(56, 189, 248, 0.3); font-size: 0.75rem;">🔥 KILLER FEATURE • ZERO MOBILE APP INSTALL</span>
+                <h3 style="font-size: 1.45rem; margin: 4px 0 0; color: var(--text-main); font-weight: 800;">
+                  Snap on Phone: Real-Time Mobile QR Code Photo Transfer
+                </h3>
+              </div>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="snap.html" target="_blank" class="btn btn-secondary btn-sm" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-cyan);">
+                <span>📱 Test Mobile Companion App ↗</span>
+              </a>
+              <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+                <span>⚡ Install v1.4.0 Live</span>
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; max-width: 960px;">
+            Reselling thrift finds, vintage clothes, sneakers, or handmade crafts? Stop emailing photos to yourself, wrestling with AirDrop timeouts, or managing clunky cloud drives. With QuickSnipe v1.4.0, click <strong>"Snap on Phone (QR)"</strong> in the sidepanel, point your phone at the screen, and photograph your inventory. Photos stream straight from your mobile camera to your desktop browser in real time via secure peer-to-peer WebRTC!
+          </p>
+
+          <!-- 4-Step Interactive Flow Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 1</span>
+                <span style="font-size: 1.1rem;">🖥️</span>
+              </div>
+              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Open Dynamic QR</strong>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                Click <strong>Snap on Phone</strong> inside the QuickSnipe sidepanel on your PC to generate a secure pairing QR code.
+              </p>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 2</span>
+                <span style="font-size: 1.1rem;">📸</span>
+              </div>
+              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Scan with Phone</strong>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                Point your iPhone or Android camera at the QR code. Opens the instant companion web app in Safari or Chrome—no App Store download needed.
+              </p>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 3</span>
+                <span style="font-size: 1.1rem;">⚡</span>
+              </div>
+              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Snap or Pick Gallery</strong>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                Use the in-browser live viewfinder to snap tags, labels, and condition, or select multiple photos from your phone's photo library.
+              </p>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; border-color: rgba(16, 185, 129, 0.35);">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-emerald); font-size: 0.85rem;">STEP 4</span>
+                <span style="font-size: 1.1rem;">🚀</span>
+              </div>
+              <strong style="color: var(--accent-emerald); font-size: 0.95rem; display: block; margin-bottom: 6px;">Instant P2P AI Draft</strong>
+              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+                Photos beam straight to your PC via peer-to-peer WebRTC & Cloudflare bridge. Multimodal AI crafts Etsy, eBay, and Poshmark drafts in 10s!
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -501,8 +582,8 @@
             <img src="assets/slide_photo_to_listing_vision.png" alt="QuickSnipe Photo-to-Listing Vision Interface" loading="lazy">
             <div class="carousel-caption">
               <div>
-                <strong style="color: var(--text-main); font-size: 1.1rem;">📸 Photo-to-Listing Vision Snipe (v1.4.0 Live)</strong>
-                <p style="font-size: 0.88rem; margin-top: 4px;">Live now in v1.4.0! Multimodal AI inspects photos to draft complete Etsy, eBay, and Poshmark listings with 13 tags and item specifics in 10s.</p>
+                <strong style="color: var(--text-main); font-size: 1.1rem;">📸 Photo-to-Listing Vision & Mobile QR Sync (v1.4.0 Live)</strong>
+                <p style="font-size: 0.88rem; margin-top: 4px;">Live now in v1.4.0! Multimodal AI inspects photos to draft complete Etsy, eBay, and Poshmark listings with 13 tags and item specifics in 10s. Beam photos directly from your phone camera with dynamic QR code sync—zero app install required!</p>
               </div>
               <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
                 target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Install v1.4.0 Live ↗</a>
@@ -1060,7 +1141,25 @@
             <span class="faq-icon">▼</span>
           </button>
           <div class="faq-answer">
-            <p><strong>QuickSnipe v1.4.0 is the currently published, live release on the Chrome Web Store!</strong> It introduces our blockbuster <strong>Photo-to-Listing Vision Snipe</strong> (multimodal visual inspection to draft full listings from item photos), native Walmart Marketplace & Grailed luxury archive parsing, active toolbar indicators, smart HTTP 429 quota failover to backup models, settings backup & restore, and quick hotkeys. All existing users receive this update automatically via Google Chrome.</p>
+            <p><strong>QuickSnipe v1.4.0 is the currently published, live release on the Chrome Web Store!</strong> It introduces our blockbuster <strong>Photo-to-Listing Vision Snipe</strong> with <strong>Instant Mobile QR Photo Sync</strong> (multimodal visual inspection to draft full listings from phone or desktop photos), native Walmart Marketplace & Grailed luxury archive parsing, active toolbar indicators, smart HTTP 429 quota failover to backup models, settings backup & restore, and quick hotkeys. All existing users receive this update automatically via Google Chrome.</p>
+          </div>
+        </div>
+
+        <!-- Q7: Mobile QR Code Photo Sync -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How does the Mobile QR Code Photo Sync work, and do I need to install a phone app?</span>
+            <span class="faq-icon">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p><strong>Zero mobile app install required!</strong> You never have to download anything from the Apple App Store or Google Play.</p>
+            <ul style="margin: 8px 0 0 18px; line-height: 1.6;">
+              <li><strong>Scan to Connect</strong>: In QuickSnipe sidepanel under <strong>AI Studio → Photo-to-Listing</strong>, click <strong>Snap on Phone (QR)</strong>. A secure session QR code appears instantly.</li>
+              <li><strong>Instant Mobile Companion</strong>: Point your iPhone or Android camera at the QR code. It opens our lightweight companion app (<code>snap.html</code>) directly in Safari or Chrome.</li>
+              <li><strong>Live Viewfinder or Gallery</strong>: Use the in-browser live viewfinder or pick multiple photos from your camera roll.</li>
+              <li><strong>Real-Time P2P Streaming</strong>: Photos transfer directly to your desktop browser via peer-to-peer WebRTC (backed by a high-availability Cloudflare Worker Durable Object bridge fallback).</li>
+              <li><strong>Instant AI Listing Draft</strong>: QuickSnipe Vision AI reads clothing tags, hallmarks, materials, and condition—drafting 3-platform listings for Etsy, eBay, and Poshmark in 10s!</li>
+            </ul>
           </div>
         </div>
       </div>

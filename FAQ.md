@@ -164,6 +164,7 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 ### Q: What is new in QuickSnipe v1.4.0?
 **A:** QuickSnipe **v1.4.0** is our blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
 - **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Drag & drop product photos or right-click web images ➔ multimodal AI reads maker tags, materials, condition, and details to instantly draft complete listings for Etsy, eBay, and Poshmark with 13 tags and item specifics in 10s.
+- **📱 KILLER FEATURE: Mobile QR Photo Sync (`snap.html`)**: Scan a dynamic QR code on your iPhone or Android to stream photos directly into your desktop sidepanel in real time over peer-to-peer WebRTC & Cloudflare bridge—**with zero mobile app installation**.
 - **Walmart & Grailed Support**: Native DOM parsers, sales velocity calculators, and structured listing generators for Walmart Marketplace (`/ip/`) and Grailed archive luxury.
 - **Active Marketplace Toolbar Dot**: An emerald green indicator (`●`) on the extension icon signals when QuickSnipe is active on a supported marketplace tab.
 - **Smart HTTP 429 Quota Fallback**: If your primary cloud BYOK AI hits rate limits (HTTP 429), QuickSnipe automatically falls back to a configured backup model (Groq Llama 3.3 or Chrome Built-in Nano) with transparent notices.
@@ -171,6 +172,24 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 - **In-App Feature Suggestions**: Submit ideas directly from Settings to our development roadmap.
 - **Branded Farewell Portal**: Friendly, seller-oriented feedback portal (`farewell.html`) powered by Google Forms backend.
 - **Shortcut Pills**: Clear `Alt+Q` (toggle Studio) and `Alt+Shift+S` (Save Swipe) indicators in the UI.
+
+### Q: How does the Mobile QR Code Photo Sync work?
+**A:** QuickSnipe links your phone camera to your desktop browser in 3 seconds:
+1. Open QuickSnipe on your PC and navigate to **AI Studio → Photo-to-Listing**.
+2. Click **Snap on Phone (QR)** to display a temporary, secure pairing QR code.
+3. Open your iPhone or Android camera app and point it at the QR code.
+4. Tap the link to open the instant web portal (`snap.html`) in your mobile browser.
+5. Snap photos using the live viewfinder or select multiple photos from your camera roll.
+6. The images stream directly into your desktop sidepanel via encrypted peer-to-peer WebRTC, and Vision AI instantly drafts your multi-channel listings!
+
+### Q: Do I need to install an iOS or Android app to use Mobile Photo Sync?
+**A: No.** There is zero app download or installation required. The mobile companion runs 100% inside your standard mobile browser (Safari on iOS, Chrome on Android). You don't need an Apple App Store or Google Play account, and no sign-in credentials are required.
+
+### Q: Can I transfer multiple photos at once from my phone?
+**A: Yes.** In the mobile companion portal, tap **"Choose from Photos / Gallery"** to select multiple photos simultaneously from your phone's photo library. QuickSnipe queues them up and transfers them sequentially with a real-time progress bar.
+
+### Q: Is my phone's photo data secure and private during transfer?
+**A: Yes, 100% private.** Photos transfer directly from your phone to your computer over encrypted WebRTC data channels. They are not stored on any remote cloud database or public image servers. If cross-network firewall conditions require the Cloudflare bridge fallback, images pass in-memory through an encrypted WebSocket session and are discarded immediately upon desktop delivery.
 
 ### Q: Will updating to v1.4.0 erase my API keys, saved prompts, or swipes?
 **A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly. You can also use the new **Export / Import Backup** feature in Settings for added peace of mind.

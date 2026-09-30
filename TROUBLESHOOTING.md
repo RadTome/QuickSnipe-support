@@ -18,7 +18,8 @@ This guide provides targeted solutions for the most common technical issues, err
 - [10. Extension context invalidated / After extension update](#10-extension-context-invalidated--after-extension-update)
 - [11. Floating QuickBar HUD positioning or dismissal](#11-floating-quickbar-hud-positioning-or-dismissal)
 - [12. Light Glass Theme contrast or text legibility](#12-light-glass-theme-contrast-or-text-legibility)
-- [13. Offline feedback recording & copying diagnostics](#13-offline-feedback-recording--copying-diagnostics)
+- [13. Direct developer feedback & feature requests (v1.4.0+)](#13-direct-developer-feedback--feature-requests-v140)
+- [14. Mobile QR Photo Sync: Connection or Transfer Diagnostics](#14-mobile-qr-photo-sync-connection-or-transfer-diagnostics)
 
 ---
 
@@ -234,4 +235,30 @@ This guide provides targeted solutions for the most common technical issues, err
   1. Click **Feedback** in the sidepanel menu or use the **Feature Suggestions** form in **Settings ⚙**.
   2. Enter your category, thoughts, and optional email for direct follow-up.
   3. Click **Submit**—your submission is routed directly to the developer's roadmap.
+
+---
+
+### 14. Mobile QR Photo Sync: Connection or Transfer Diagnostics
+
+#### Potential Issues & Symptoms:
+- Phone camera opens `snap.html`, but status shows "Connecting..." or "Desktop session not found".
+- Photo transfer sits at 0% or says "Negotiating P2P...".
+- Camera permission prompt does not appear in mobile browser.
+
+#### Solutions & Best Practices:
+1. **Keep QuickSnipe Sidepanel Open on Desktop**:
+   - The desktop sidepanel must remain actively open during QR generation and transfer. If you close the sidepanel or switch Chrome windows, the active WebRTC session will disconnect.
+2. **Wi-Fi & VPN Configuration**:
+   - For fastest peer-to-peer data channel transfer (<1s), ensure your mobile phone and PC are connected to the **same local Wi-Fi network**.
+   - If either device has an active **VPN** (e.g. NordVPN, Mullvad, corporate VPN) or custom private DNS / ad-blocker enabled, disable it temporarily, as aggressive firewalls can block UDP WebRTC ICE candidates.
+3. **Automated Cloudflare Bridge Fallback**:
+   - If peer-to-peer WebRTC cannot traverse your router's NAT, QuickSnipe automatically falls back to an encrypted Cloudflare Worker Durable Object WebSocket bridge (`quicksnipe-bridge.radtome.com`). Look at the live status badge—once it turns green (`Desktop Ready`), transfers will complete seamlessly even across mobile cellular data (LTE/5G).
+4. **Camera Permissions in Mobile Safari / Chrome**:
+   - **iOS Safari**: Go to **Settings → Safari → Camera** and set to "Ask" or "Allow". If prompted on `snap.html`, tap **Allow**.
+   - **Android Chrome**: Tap the lock/tune icon next to the address bar ➔ **Permissions → Camera** ➔ **Allow**.
+   - **Gallery Alternative**: If you prefer not to use live camera view, tap **"Choose from Photos / Gallery"** to pick existing photos directly from your phone's photo library.
+5. **Live Connection Diagnostics Console**:
+   - At the bottom of `snap.html`, inspect the **Live Connection Diagnostics** panel.
+   - If issues persist, tap **📋 Copy Log** to export the ICE candidate and DataChannel logs, then submit a [Bug Report](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml).
+
 
