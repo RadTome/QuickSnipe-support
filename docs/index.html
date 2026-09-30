@@ -512,7 +512,7 @@
         </div>
 
         <!-- KILLER FEATURE SPOTLIGHT: Instant Mobile QR Phone Sync -->
-        <div class="glass-card" style="padding: 32px; border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.4); background: radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.08), transparent 50%), var(--bg-card); box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.12);">
+        <div class="glass-card" style="padding: 32px; border-radius: 18px; border: 1px solid rgba(56, 189, 248, 0.4); box-shadow: var(--shadow-md), 0 0 30px rgba(56, 189, 248, 0.12);">
           <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 20px;">
             <div style="display: flex; align-items: center; gap: 14px;">
               <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35); flex-shrink: 0;">
@@ -525,62 +525,59 @@
                 </h3>
               </div>
             </div>
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="snap.html" target="_blank" class="btn btn-secondary btn-sm" style="border-color: rgba(56, 189, 248, 0.4); color: var(--accent-cyan);">
-                <span>📱 Test Mobile Companion App ↗</span>
-              </a>
+            <div>
               <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                 <span>⚡ Install v1.4.0 Live</span>
               </a>
             </div>
           </div>
 
-          <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; max-width: 960px;">
+          <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px; max-width: 960px;">
             Reselling thrift finds, vintage clothes, sneakers, or handmade crafts? Stop emailing photos to yourself, wrestling with AirDrop timeouts, or managing clunky cloud drives. With QuickSnipe v1.4.0, click <strong>"Snap on Phone (QR)"</strong> in the sidepanel, point your phone at the screen, and photograph your inventory. Photos stream straight from your mobile camera to your desktop browser in real time via secure peer-to-peer WebRTC!
           </p>
 
           <!-- 4-Step Interactive Flow Grid -->
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
-            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+            <div class="step-flow-card">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 1</span>
                 <span style="font-size: 1.1rem;">🖥️</span>
               </div>
-              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Open Dynamic QR</strong>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+              <strong>Open Dynamic QR</strong>
+              <p>
                 Click <strong>Snap on Phone</strong> inside the QuickSnipe sidepanel on your PC to generate a secure pairing QR code.
               </p>
             </div>
 
-            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+            <div class="step-flow-card">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 2</span>
                 <span style="font-size: 1.1rem;">📸</span>
               </div>
-              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Scan with Phone</strong>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+              <strong>Scan with Phone</strong>
+              <p>
                 Point your iPhone or Android camera at the QR code. Opens the instant companion web app in Safari or Chrome—no App Store download needed.
               </p>
             </div>
 
-            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px;">
+            <div class="step-flow-card">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-cyan); font-size: 0.85rem;">STEP 3</span>
                 <span style="font-size: 1.1rem;">⚡</span>
               </div>
-              <strong style="color: var(--text-main); font-size: 0.95rem; display: block; margin-bottom: 6px;">Snap or Pick Gallery</strong>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+              <strong>Snap or Pick Gallery</strong>
+              <p>
                 Use the in-browser live viewfinder to snap tags, labels, and condition, or select multiple photos from your phone's photo library.
               </p>
             </div>
 
-            <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; border-color: rgba(16, 185, 129, 0.35);">
+            <div class="step-flow-card" style="border-color: rgba(16, 185, 129, 0.4);">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <span style="font-family: var(--font-mono); font-weight: 800; color: var(--accent-emerald); font-size: 0.85rem;">STEP 4</span>
                 <span style="font-size: 1.1rem;">🚀</span>
               </div>
-              <strong style="color: var(--accent-emerald); font-size: 0.95rem; display: block; margin-bottom: 6px;">Instant P2P AI Draft</strong>
-              <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; margin: 0;">
+              <strong style="color: var(--accent-emerald);">Instant P2P AI Draft</strong>
+              <p>
                 Photos beam straight to your PC via peer-to-peer WebRTC & Cloudflare bridge. Multimodal AI crafts Etsy, eBay, and Poshmark drafts in 10s!
               </p>
             </div>
@@ -712,36 +709,33 @@
       </div>
 
       <!-- Step-by-Step "How It Works" Tutorial Container -->
-      <div class="glass-card" style="padding: 30px; border-radius: 16px; max-width: 1000px; margin: 0 auto; background: rgba(0, 0, 0, 0.35);">
-        <h3 style="font-size: 1.35rem; color: var(--text-main); margin-bottom: 16px; text-align: center;">
+      <div class="tutorial-flow-box">
+        <h3>
           4 Steps: How to Send Photos from Phone to Computer with QuickSnipe
         </h3>
-        <ol style="margin: 0; padding-left: 20px; line-height: 1.8; font-size: 0.92rem; color: var(--text-muted);">
+        <ol>
           <li>
-            <strong style="color: var(--text-main);">Step 1 — Open QuickSnipe on your computer:</strong>
-            Launch Google Chrome, open the QuickSnipe sidepanel (<code>Alt+Q</code>), click <strong>AI Studio</strong>, and select <strong>Photo-to-Listing</strong>. Click <strong>"Snap on Phone (QR)"</strong> to show your unique encrypted session QR code.
+            <strong>Step 1 — Open QuickSnipe on your computer:</strong>
+            Launch Google Chrome, open the QuickSnipe sidepanel (<code>Alt+Q</code>), click <strong>AI Studio</strong>, and select <strong>Photo-to-Listing</strong>. Click <strong>"Snap on Phone (QR)"</strong> to display your unique pairing QR code.
           </li>
           <li>
-            <strong style="color: var(--text-main);">Step 2 — Scan with your phone's native camera:</strong>
-            Open your iPhone or Android camera app and point it at the QR code on your PC monitor. Tap the notification banner to open the companion web app (<code>snap.html</code>) in Safari or Chrome. No app download or account signup is required.
+            <strong>Step 2 — Scan with your phone's native camera:</strong>
+            Open your iPhone or Android camera app and point it at the QR code on your PC monitor. Tap the notification banner to open the companion web app in Safari or Chrome. No app download or account signup is required.
           </li>
           <li>
-            <strong style="color: var(--text-main);">Step 3 — Snap photos or pick from your phone gallery:</strong>
-            Use the live camera shutter to photograph your item, or tap <strong>"Choose from Photos / Gallery"</strong> to upload up to 10 existing photos simultaneously.
+            <strong>Step 3 — Snap photos or pick from your phone gallery:</strong>
+            Use the live in-browser camera shutter to photograph your item, or tap <strong>"Choose from Photos / Gallery"</strong> to upload up to 10 existing photos simultaneously.
           </li>
           <li>
-            <strong style="color: var(--text-main);">Step 4 — Watch photos appear on your PC instantly:</strong>
+            <strong>Step 4 — Watch photos appear on your PC instantly:</strong>
             Photos stream directly to your desktop monitor over encrypted peer-to-peer data channels. QuickSnipe Vision AI instantly reads the photos and generates your complete multi-platform listing draft in 10 seconds!
           </li>
         </ol>
 
-        <div style="margin-top: 24px; text-align: center; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+        <div style="margin-top: 26px; text-align: center; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
           <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
             target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-            <span>⚡ Install QuickSnipe for Chrome (Free)</span>
-          </a>
-          <a href="snap.html" target="_blank" class="btn btn-secondary btn-sm">
-            <span>📱 Test Drive Mobile Snap Companion ↗</span>
+            <span>⚡ Add QuickSnipe to Chrome (Free)</span>
           </a>
         </div>
       </div>
@@ -1348,7 +1342,7 @@
             <p><strong>Zero mobile app install required!</strong> You never have to download anything from the Apple App Store or Google Play.</p>
             <ul style="margin: 8px 0 0 18px; line-height: 1.6;">
               <li><strong>Scan to Connect</strong>: In QuickSnipe sidepanel under <strong>AI Studio → Photo-to-Listing</strong>, click <strong>Snap on Phone (QR)</strong>. A secure session QR code appears instantly.</li>
-              <li><strong>Instant Mobile Companion</strong>: Point your iPhone or Android camera at the QR code. It opens our lightweight companion app (<code>snap.html</code>) directly in Safari or Chrome.</li>
+              <li><strong>Instant Mobile Companion</strong>: Point your iPhone or Android camera at the QR code. It opens our lightweight companion app directly in Safari or Chrome.</li>
               <li><strong>Live Viewfinder or Gallery</strong>: Use the in-browser live viewfinder or pick multiple photos from your camera roll.</li>
               <li><strong>Real-Time P2P Streaming</strong>: Photos transfer directly to your desktop browser via peer-to-peer WebRTC (backed by a high-availability Cloudflare Worker Durable Object bridge fallback).</li>
               <li><strong>Instant AI Listing Draft</strong>: QuickSnipe Vision AI reads clothing tags, hallmarks, materials, and condition—drafting 3-platform listings for Etsy, eBay, and Poshmark in 10s!</li>
