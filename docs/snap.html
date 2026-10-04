@@ -822,7 +822,16 @@
 
       // Transmit payload: Tier 1 P2P LAN -> Tier 2 Cloudflare Worker Bridge
       function transmitPhoto(base64Data, filename) {
-        pendingPhoto = { data: base64Data, name: filename };
+        // One id per queued photo, reused across every retry of that photo. The
+        // desktop uses it to drop a repeat upload instead of attaching the same
+        // picture twice.
+        if (!pendingPhoto || pendingPhoto.data !== base64Data) {
+          pendingPhoto = {
+            data: base64Data,
+            name: filename,
+            id: 'ph_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8)
+          };
+        }
 
         return new Promise(function(resolve, reject) {
           // Tier 1: Direct WebRTC DataChannel (same Wi-Fi, 0ms, zero server load)
@@ -839,6 +848,46 @@
         });
       }
 
+      // Retry policy for the Cloudflare Bridge tier. A "queued, not delivered"
+      // response is recoverable: the desktop queues the photo for a short window
+      // in case its socket is reconnecting, so retry briefly before giving up
+      // with an honest message rather than a green lie.
+      var CLOUD_UPLOAD_ATTEMPTS = 3;
+      var CLOUD_UPLOAD_RETRY_MS = 1500;
+
+      function postPhotoToBridge(base64Data, filename, transferId) {
+        var endpoint = 'https://quicksnipe-bridge.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
+        var body = {
+          type: 'QUICKSNIPE_PHOTO',
+          image: base64Data,
+          name: filename || 'thrift_photo.jpg'
+        };
+        // Stable across retries so the desktop can recognise the repeat and drop
+        // it instead of attaching the same photo twice.
+        if (transferId) body.id = transferId;
+
+        return fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        }).then(function(res) {
+          if (!res.ok) throw new Error('Cloudflare bridge returned HTTP ' + res.status);
+          return res.json();
+        });
+      }
+
+      function markTransferSucceeded(result) {
+        isTransferring = false;
+        pendingPhoto = null;
+        progressBar.style.width = '100%';
+        transferPercent.textContent = '100%';
+        transferLabel.textContent = '✓ Transferred! Check your computer.';
+        transferLabel.style.color = 'var(--accent-emerald)';
+        btnManualSend.classList.add('hidden');
+        btnSnapAnother.classList.remove('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
+      }
+
       function sendViaCloudflareBridge(base64Data, filename, resolve, reject) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
@@ -846,46 +895,63 @@
         transferLabel.style.color = 'var(--accent-cyan)';
         progressBar.style.width = '35%';
         transferPercent.textContent = '35%';
+        logDiag('Dispatching to the Cloudflare Bridge...');
 
-        const endpoint = 'https://quicksnipe-bridge.radtome.com/api/snap/upload?sid=' + encodeURIComponent(sessionId);
-        logDiag('Dispatching to: ' + endpoint);
-        progressBar.style.width = '65%';
-        transferPercent.textContent = '65%';
+        var attempt = 0;
 
-        fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            type: 'QUICKSNIPE_PHOTO',
-            image: base64Data,
-            name: filename || 'thrift_photo.jpg'
-          })
-        })
-        .then(function(res) {
-          if (!res.ok) throw new Error('Cloudflare bridge returned HTTP ' + res.status);
-          return res.json();
-        })
-        .then(function(result) {
-          logDiag('✓ Cloudflare Bridge delivered successfully! (' + (result.delivered || 1) + ' recipient)', 'success');
-          isTransferring = false;
-          pendingPhoto = null;
-          progressBar.style.width = '100%';
-          transferPercent.textContent = '100%';
-          transferLabel.textContent = '✓ Transferred! Check your computer.';
-          transferLabel.style.color = 'var(--accent-emerald)';
-          btnManualSend.classList.add('hidden');
-          btnSnapAnother.classList.remove('hidden');
-          if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
-          if (resolve) resolve(result);
-        })
-        .catch(function(err) {
-          logDiag('Cloudflare bridge upload error: ' + (err.message || err), 'error');
-          isTransferring = false;
-          transferLabel.textContent = '⚠️ Cloud sync error. Tap to retry.';
-          transferLabel.style.color = 'var(--accent-rose)';
-          btnManualSend.classList.remove('hidden');
-          if (reject) reject(err);
-        });
+        function tryUpload() {
+          attempt++;
+          var pct = Math.min(90, 30 + attempt * 15);
+          progressBar.style.width = pct + '%';
+          transferPercent.textContent = pct + '%';
+
+          postPhotoToBridge(base64Data, filename, pendingPhoto && pendingPhoto.id)
+            .then(function(result) {
+              // `delivered` is the only evidence the desktop actually received the
+              // photo. Coercing a missing or zero count into a success is what made
+              // a lost photo look transferred, so it is read strictly here.
+              var delivered = result && Number(result.delivered);
+              if (!isFinite(delivered) || delivered < 0) delivered = 0;
+
+              if (delivered > 0) {
+                markTransferSucceeded(result);
+                logDiag('✓ Cloudflare Bridge delivered to the desktop (' + delivered + ' recipient).', 'success');
+                if (resolve) resolve(result);
+                return;
+              }
+
+              if (attempt < CLOUD_UPLOAD_ATTEMPTS) {
+                logDiag(
+                  'Desktop is not listening yet; the photo is queued. Retry ' +
+                    attempt + '/' + CLOUD_UPLOAD_ATTEMPTS + '...',
+                  'warn'
+                );
+                transferLabel.textContent =
+                  '⏳ Waiting for your computer (' + attempt + '/' + CLOUD_UPLOAD_ATTEMPTS + ')…';
+                transferLabel.style.color = 'var(--accent-amber)';
+                setTimeout(tryUpload, CLOUD_UPLOAD_RETRY_MS);
+                return;
+              }
+
+              isTransferring = false;
+              transferLabel.textContent =
+                '⚠️ Your computer did not receive this. Keep QuickSnipe open on it, then tap retry.';
+              transferLabel.style.color = 'var(--accent-rose)';
+              btnManualSend.classList.remove('hidden');
+              logDiag('✗ Giving up: the desktop never acknowledged the photo.', 'error');
+              if (reject) reject(new Error('Desktop not reachable'));
+            })
+            .catch(function(err) {
+              isTransferring = false;
+              logDiag('Cloudflare bridge upload error: ' + (err.message || err), 'error');
+              transferLabel.textContent = '⚠️ Cloud sync error. Tap to retry.';
+              transferLabel.style.color = 'var(--accent-rose)';
+              btnManualSend.classList.remove('hidden');
+              if (reject) reject(err);
+            });
+        }
+
+        tryUpload();
       }
 
       function sendViaP2PChunks(base64Data, filename, resolve, reject) {
@@ -935,17 +1001,10 @@
             if (chunkIndex < totalChunks) {
               setTimeout(sendNextChunk, 20);
             } else {
-              isTransferring = false;
-              pendingPhoto = null;
-              progressBar.style.width = '100%';
-              transferPercent.textContent = '100%';
-              transferLabel.textContent = '✓ Transferred! Check your computer.';
-              transferLabel.style.color = 'var(--accent-emerald)';
-              btnManualSend.classList.add('hidden');
-              btnSnapAnother.classList.remove('hidden');
-              if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
-              logDiag('✓ All ' + totalChunks + ' chunks delivered successfully to desktop sidepanel!', 'success');
-              if (resolve) resolve();
+              // Every byte is now written to the socket, which still proves nothing:
+              // the desktop may fail to reassemble, decode, or attach it. Wait for
+              // its explicit acknowledgement before claiming the photo arrived.
+              awaitDesktopAck(base64Data, filename, resolve, reject);
             }
           } catch (err) {
             console.error('[QuickSnipe Mobile] Chunk send error:', err);
@@ -956,6 +1015,51 @@
         }
 
         sendNextChunk();
+      }
+
+      function awaitDesktopAck(base64Data, filename, resolve, reject) {
+        var ackTimeout = null;
+        var settled = false;
+
+        function onData(data) {
+          if (settled) return;
+          if (data && data.type === 'QS_ACK') {
+            settled = true;
+            cleanup();
+            logDiag('✓ Desktop confirmed receipt of photo! (' + (data.count || 1) + ' attached)', 'success');
+            markTransferSucceeded();
+            if (resolve) resolve(data);
+          }
+        }
+
+        function cleanup() {
+          if (ackTimeout) {
+            clearTimeout(ackTimeout);
+            ackTimeout = null;
+          }
+          if (activeConn) {
+            try {
+              if (typeof activeConn.off === 'function') {
+                activeConn.off('data', onData);
+              }
+            } catch (e) {}
+          }
+        }
+
+        ackTimeout = setTimeout(function() {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          logDiag('Direct P2P transfer timed out waiting for desktop confirmation. Trying Cloudflare Bridge...', 'warn');
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+        }, 5000);
+
+        if (activeConn && activeConn.open) {
+          activeConn.on('data', onData);
+        } else {
+          cleanup();
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+        }
       }
 
       // Manual retry send button
