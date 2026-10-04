@@ -516,11 +516,16 @@
 
         let linkTimer = setTimeout(function() {
           if (activeConn && !activeConn.open) {
-            updateStatus('connecting', 'Negotiating P2P...');
-            logDiag('Handshake taking > 5s. Waiting for ICE candidate exchange...', 'warn');
-            if (transferLabel && pendingPhoto) {
-              transferLabel.textContent = '⏳ Negotiating connection... Ensure QuickSnipe sidepanel is open on PC.';
-              transferLabel.style.color = 'var(--accent-amber)';
+            logDiag('Direct P2P handshake taking > 5s. Falling back to Cloud Bridge...', 'info');
+            updateStatus('connected', 'Cloud Bridge Ready');
+            if (diagDC) {
+              diagDC.textContent = 'Cloud Relay';
+              diagDC.style.color = 'var(--accent-cyan)';
+            }
+            if (transferLabel && pendingPhoto && !isTransferring) {
+              transferLabel.textContent = '⚡ Cloud Bridge ready. Transmitting photo...';
+              transferLabel.style.color = 'var(--accent-cyan)';
+              transmitPhoto(pendingPhoto.data, pendingPhoto.name);
             }
           }
         }, 5000);
@@ -550,6 +555,14 @@
                 state === 'connected' || state === 'completed' ? 'success' :
                 state === 'failed' ? 'error' :
                 state === 'disconnected' ? 'warn' : 'info');
+              if (state === 'failed' || state === 'disconnected') {
+                logDiag('Direct P2P unavailable. Cloud Bridge active as fallback.', 'info');
+                updateStatus('connected', 'Cloud Bridge Ready');
+                if (diagDC) {
+                  diagDC.textContent = 'Cloud Relay';
+                  diagDC.style.color = 'var(--accent-cyan)';
+                }
+              }
             });
             pc.addEventListener('connectionstatechange', () => {
               logDiag(`PeerConnection state: ${pc.connectionState}`);
@@ -559,7 +572,7 @@
           activeConn.on('open', function() {
             clearTimeout(linkTimer);
             if (diagDC) {
-              diagDC.textContent = 'OPEN';
+              diagDC.textContent = 'OPEN (Direct)';
               diagDC.style.color = 'var(--accent-emerald)';
             }
             logDiag('DataChannel OPEN! Peer-to-peer data pipeline ready.', 'success');
@@ -580,21 +593,16 @@
           activeConn.on('close', function() {
             logDiag('DataChannel closed by remote or network drop.', 'warn');
             if (diagDC) {
-              diagDC.textContent = 'Closed';
-              diagDC.style.color = 'var(--accent-rose)';
+              diagDC.textContent = 'Closed (Cloud Relay active)';
+              diagDC.style.color = 'var(--accent-cyan)';
             }
-            updateStatus('connecting', 'Reconnecting...');
-            if (pendingPhoto && !isTransferring) {
-              btnManualSend.classList.remove('hidden');
-              transferLabel.textContent = '⏳ Desktop disconnected. Reconnecting...';
-              transferLabel.style.color = 'var(--accent-rose)';
-            }
-            setTimeout(createFreshPeerAndConnect, 2000);
+            updateStatus('connected', 'Cloud Bridge Ready');
+            logDiag('Direct P2P closed. Cloud Bridge is active and ready for transfers.', 'info');
           });
 
           activeConn.on('error', function(err) {
-            logDiag('DataChannel error: ' + (err.message || err), 'error');
-            updateStatus('error', 'Peer Link Error');
+            logDiag('DataChannel error: ' + (err.message || err) + '. Falling back to Cloud Bridge.', 'warn');
+            updateStatus('connected', 'Cloud Bridge Ready');
             if (pendingPhoto && !isTransferring) {
               btnManualSend.classList.remove('hidden');
             }
