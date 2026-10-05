@@ -10,7 +10,7 @@
 ### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.0_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Release Notes](https://img.shields.io/badge/Release-v1.4.0_Vision_Snipe-purple.svg)](CHANGELOG.md)
+[![Release Notes](https://img.shields.io/badge/Release-v1.4.1_Bridge_Snipe-purple.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -20,7 +20,7 @@
 
 <p align="center">
   <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website & Live Demos</b></a> •
-  <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store (v1.4.0 Live)</b></a> •
+  <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
@@ -39,7 +39,7 @@
 |---|---|---|
 | 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
 | 📱 **Mobile Snap Companion** | Instant QR photo capture companion with P2P stream to desktop (zero app install) | [radtome.github.io/QuickSnipe-support/snap.html](https://radtome.github.io/QuickSnipe-support/snap.html) |
-| 📋 **Release Notes & Roadmap** | Full changelog for v1.4.0 and version history | [CHANGELOG.md](CHANGELOG.md) |
+| 📋 **Release Notes & Roadmap** | Full changelog for v1.4.1 and version history | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
@@ -51,10 +51,21 @@
 
 ---
 
-## 🚀 Release Status: v1.4.0 Live Production Release
+## 🚀 Release Status: v1.4.1 Production Release
 
-### 🟢 Current Live Release: QuickSnipe v1.4.0
-QuickSnipe **v1.4.0** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). All existing users will automatically receive this update via Chrome.
+### 🟢 Current Release: QuickSnipe v1.4.1
+QuickSnipe **v1.4.1** is packaged and prepared for Chrome Web Store rollout. All existing users will automatically receive this update via Google Chrome.
+
+**Key Highlights in v1.4.1:**
+- **🌐 Cloudflare Worker Durable Object Bridge & P2P Failover**: Added dedicated Cloudflare Worker Durable Object WebSocket relay (`quicksnipe-bridge.radtome.com`) as an automated fallback when direct WebRTC P2P ICE negotiation fails across restrictive corporate firewalls, distinct subnets, or mobile cellular connections (LTE/5G). Ephemeral session tokens with 60-second automatic purge.
+- **🔍 Multi-Platform DOM Scraper Modernization & Drift Hardening**: Re-architected DOM scrapers across all 9 supported marketplaces with centralized target schemas (`parser-targets.mjs`), automated canary drift detection tool (`test-parser-drift-tool.js`), refreshable fixtures, and noise-stripping canonical title parser.
+- **🛡️ Security Hardening & DOM Sanitization**: Comprehensive DOM injection hardening in sidepanel and floating QuickBar HUD, strict URL/text sanitization, and active API key overwrite protection during backup restores.
+- **💰 Multi-Platform Profit Calculator Verification**: Validated fee calculation engine with comprehensive test coverage across all 9 supported marketplaces.
+- **🎨 UI Ergonomics & State Stability**: Stabilized feedback modal height, centered success confirmation view without layout jumps, and theme contrast enhancements across Light Glass and Cyber Dark modes.
+- **🧪 381 Unit Tests**: Expanded test coverage from 294 tests across 17 files to **381 unit tests across 20 test files** with 100% pass rate.
+
+### 📦 Previous Major Milestone: v1.4.0
+QuickSnipe **v1.4.0** was the blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics. Available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
 
 **Key Highlights in v1.4.0:**
 - **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe & Real-Time Mobile QR Sync**: Turn any product photo into a finished multi-platform listing in seconds. Drag & drop an image, right-click any web photo, or **scan a dynamic QR code on your phone (`snap.html`) to beam photos directly from your mobile camera to your desktop browser with ZERO mobile app installs**. Multimodal AI inspects logos, care tags, materials, and condition, then automatically drafts optimized titles for Etsy, eBay, and Poshmark, 13 compliant tags, item specifics, a buyer story pitch, and pricing appraisal.

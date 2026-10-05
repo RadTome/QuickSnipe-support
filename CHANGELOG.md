@@ -4,7 +4,49 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.0] — Official Production Release (Live in Chrome Web Store)
+## 🚀 [v1.4.1] — Production Release (Current)
+
+> **Status:** Packaged & Ready for Web Store Rollout  
+> **Release Date:** October 2026
+
+### 🌐 Cloudflare Worker Durable Object Bridge & P2P Failover
+- **Resilient Mobile-to-Desktop Sync**: Added dedicated Cloudflare Worker Durable Object WebSocket relay (`quicksnipe-bridge.radtome.com`) as an automated fallback when direct WebRTC P2P ICE negotiation fails across restrictive corporate firewalls, distinct subnets, or mobile cellular connections (LTE/5G).
+- **Ephemeral Session Security**: End-to-end ephemeral session IDs, strict origin validation, token verification, and 60-second automatic message purge. Zero persistent storage of seller photos on remote servers.
+- **Failover Connection Diagnostics**: Real-time connection state indicators in mobile companion (`snap.html`) and desktop sidepanel console displaying direct P2P vs. Cloud Bridge mode.
+
+### 🔍 Multi-Platform DOM Scraper Modernization & Drift Hardening
+- **Modular Parser Target Engine**: Re-architected DOM scrapers across all 9 supported marketplaces (Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, Grailed) with centralized schema definitions (`scripts/lib/parser-targets.mjs`).
+- **Automated Canary Drift Detection**: Added automated fixture drift validation tool and canary fixtures (`test/fixtures/fixture-manifest.json`, `test/fixtures/title-noise-canary.json`) to detect and alert on marketplace markup changes before they impact sellers.
+- **Noise-Stripping Canonical Title Parser**: Enhanced title extraction to automatically strip promotional noise, seller emoji prefixes, and spam keywords for clean, platform-compliant product titles.
+- **Dual-Mode CI / Home Parser Validation**: Added `--fail-on-bot-block=true` strict flag and offline canary fallback modes (`validate:parsers`, `validate:parsers:strict`, `parsers:refresh`).
+
+### 🛡️ Security Hardening & DOM Sanitization
+- **Injection Hardening**: Audited and fortified sidepanel and floating QuickBar HUD against DOM injection and untrusted attribute manipulation.
+- **Strict URL & Input Sanitization**: Programmatic escaping for rendered product titles, tags, and external marketplace links.
+- **API Key Overwrite Safeguards**: Options backup restore strictly prevents `[REDACTED]` exported tokens from overwriting active stored keys.
+
+### 💰 Multi-Platform Profit Calculator Verification
+- **Full-Spectrum Fee Calculations**: Validated fee structures, category commissions, transaction fees, and breakeven calculations across all 9 marketplaces with comprehensive unit tests (`test/test-fee-math.js`).
+
+### 🎨 UI Ergonomics & State Stability
+- **Stabilized Feedback Modal**: Fixed modal height and centered confirmation screen to eliminate vertical layout jumps upon submission.
+- **Theme Contrast Polish**: Enhanced typography readability and border clarity in frosted Light Glass and Cyber Dark modes.
+- **Dynamic Version Reflection**: Extension version dynamically resolves across service worker, options, and sidepanel interfaces.
+
+### 🧪 Comprehensive Automated Test Expansion
+- **Suite Expansion**: Test coverage expanded from 294 tests across 17 files to **381 unit tests across 20 test files** with 100% pass rate.
+- **New Test Suites**:
+  - `test-bridge-security.js`: Cloudflare bridge token safety, origin checking, and CSRF protection.
+  - `test-snap-transport.js`: WebRTC P2P vs. Durable Object WebSocket failover transport.
+  - `test-photo-images.js`: Batch multimodal vision ingestion, resolution, and orientation handling.
+  - `test-photo-save.js`: Local photo asset download and disk persistence.
+  - `test-parser-drift-tool.js`: Scraper selector drift and canary health monitoring.
+  - `test-injection-hardening.js`: DOM sanitization and untrusted text escaping.
+  - `test-fee-math.js`: Multi-platform fee schedules, profit margin, and breakeven math.
+
+---
+
+## 🚀 [v1.4.0] — Previous Stable Release (Live in Chrome Web Store)
 
 > **Status:** Live in Chrome Web Store (Approved & Published)  
 > **Release Date:** September 2026

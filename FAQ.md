@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.4.0 Live)](#-6-release-updates-v140-live)
+- [🚀 6. Release Updates (v1.4.1 / v1.4.0)](#-6-release-updates-v141--v140)
 
 ---
 
@@ -156,13 +156,22 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.4.0 Live)
+## 🚀 6. Release Updates (v1.4.1 / v1.4.0)
 
-### Q: What is the current published version in the Chrome Web Store?
-**A:** QuickSnipe **v1.4.0** is the currently published, live production release available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
+### Q: What is the current version of QuickSnipe?
+**A:** QuickSnipe **v1.4.1** is the current production release packaged for Chrome Web Store rollout, succeeding the live **v1.4.0** release. All existing users receive updates automatically via Google Chrome.
 
-### Q: What is new in QuickSnipe v1.4.0?
-**A:** QuickSnipe **v1.4.0** is our blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
+### Q: What is new in QuickSnipe v1.4.1?
+**A:** QuickSnipe **v1.4.1** strengthens reliability, cross-network resilience, and scraper stability:
+- **🌐 Cloudflare Worker Durable Object Relay**: Automatic failover relay (`quicksnipe-bridge.radtome.com`) ensures mobile photo sync connects 100% reliably even when direct WebRTC P2P ICE fails across restrictive NAT/cellular (LTE/5G). Ephemeral session tokens with 60s automatic purge.
+- **🔍 Scraper Modernization & Drift Hardening**: Re-engineered DOM scrapers across all 9 marketplaces with modular target schemas (`parser-targets.mjs`), automated canary drift detection tool (`test-parser-drift-tool.js`), refreshable fixtures, and noise-stripping canonical title cleaner.
+- **🛡️ DOM Injection & Security Hardening**: Comprehensive audit and sanitization across sidepanel and QuickBar HUD preventing DOM injection vulnerabilities.
+- **💰 Fee Math Verification**: Comprehensive test coverage across all 9 marketplace fee structures, commissions, and breakeven formulas.
+- **🎨 UI Stability**: Stabilized feedback modal height, centered confirmation view, and contrast polish.
+- **🧪 381 Unit Tests**: Test suite expanded from 294 to 381 unit tests across 20 files with 100% pass rate.
+
+### Q: What was new in QuickSnipe v1.4.0?
+**A:** QuickSnipe **v1.4.0** was our blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics:
 - **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe**: Drag & drop product photos or right-click web images ➔ multimodal AI reads maker tags, materials, condition, and details to instantly draft complete listings for Etsy, eBay, and Poshmark with 13 tags and item specifics in 10s.
 - **📱 KILLER FEATURE: Mobile QR Photo Sync (`snap.html`)**: Scan a dynamic QR code on your iPhone or Android to stream photos directly into your desktop sidepanel in real time over peer-to-peer WebRTC & Cloudflare bridge—**with zero mobile app installation**.
 - **Walmart & Grailed Support**: Native DOM parsers, sales velocity calculators, and structured listing generators for Walmart Marketplace (`/ip/`) and Grailed archive luxury.
