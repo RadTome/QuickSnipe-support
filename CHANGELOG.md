@@ -4,10 +4,10 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.2] — Production Release (Current)
+## 🚀 [v1.4.2] — Upcoming Production Release (Submitted)
 
-> **Status:** Production Release Prepared for Chrome Web Store  
-> **Release Date:** October 2026
+> **Status:** Officially Submitted to Chrome Web Store (Pending Store Review)  
+> **Release Date:** October 2026 (Coming Soon)
 
 ### 🌐 1-Click Omnichannel Cross-Lister & Floating QuickBar HUD
 - **Omnichannel Cross-Listing Generation**: Reformat any active product listing into platform-compliant drafts tailored specifically for **Etsy, eBay, Poshmark, Mercari, and Depop** in a single pass.
@@ -40,9 +40,9 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.1] — Previous Production Release
+## 🚀 [v1.4.1] — Current Stable Release (Live in Chrome Web Store)
 
-> **Status:** Packaged & Ready for Web Store Rollout  
+> **Status:** Live in Chrome Web Store (Approved & Published)  
 > **Release Date:** October 2026
 
 ### 🌐 Cloudflare Worker Durable Object Bridge & P2P Failover
