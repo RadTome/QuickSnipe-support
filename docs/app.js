@@ -253,6 +253,82 @@
   lqsPlatformSelect?.addEventListener('change', auditTitle);
   auditTitle();
 
+  // 3b. Interactive USPS 16 oz Shipping Ounce Trap Radar Simulator
+  const sotWeightInput = document.getElementById('sot-weight-input');
+  const sotStatusBadge = document.getElementById('sot-status-badge');
+  const sotRateTier = document.getElementById('sot-rate-tier');
+  const sotEstCost = document.getElementById('sot-est-cost');
+  const sotSavingsVal = document.getElementById('sot-savings-val');
+  const sotAdviceText = document.getElementById('sot-advice-text');
+  const sotMeterFill = document.getElementById('sot-meter-fill');
+
+  function auditShippingWeight() {
+    const weight = parseFloat(sotWeightInput?.value) || 0;
+    const cliff = 15.99;
+    const maxScale = 32.0;
+    const fillPct = Math.min(100, Math.max(0, (weight / maxScale) * 100));
+
+    if (sotMeterFill) {
+      sotMeterFill.style.width = `${fillPct}%`;
+      sotMeterFill.style.background = weight > cliff ? 'var(--accent-rose)' : 'var(--accent-emerald)';
+    }
+
+    if (weight <= 0) {
+      if (sotStatusBadge) {
+        sotStatusBadge.textContent = 'Enter Weight';
+        sotStatusBadge.className = 'badge-tag';
+      }
+      if (sotRateTier) sotRateTier.textContent = '—';
+      if (sotEstCost) sotEstCost.textContent = '$0.00';
+      if (sotSavingsVal) sotSavingsVal.textContent = '$0.00';
+      if (sotAdviceText) sotAdviceText.textContent = 'Enter total packaged shipping weight in ounces to check against USPS cliff thresholds.';
+      return;
+    }
+
+    if (weight <= 15.99) {
+      const estMin = 4.15 + (weight / 16) * 1.30;
+      if (sotStatusBadge) {
+        sotStatusBadge.textContent = '✅ Safe Zone (Under 16 oz)';
+        sotStatusBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+        sotStatusBadge.style.color = 'var(--accent-emerald)';
+        sotStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+      }
+      if (sotRateTier) sotRateTier.textContent = 'USPS Ground Advantage (Commercial First-Class Tier)';
+      if (sotEstCost) sotEstCost.textContent = `~$${estMin.toFixed(2)}`;
+      if (sotSavingsVal) {
+        sotSavingsVal.textContent = '+$4.20 Saved';
+        sotSavingsVal.style.color = 'var(--accent-emerald)';
+      }
+      const marginBuffer = (15.99 - weight).toFixed(1);
+      if (sotAdviceText) {
+        sotAdviceText.innerHTML = `✨ <strong>Safe shipping tier!</strong> You are <strong>${marginBuffer} oz</strong> below the 16 oz cliff. Keeping packaging under 16 oz saves $3.60 to $5.50+ compared to 1–2 lb heavy parcel rates!`;
+      }
+    } else {
+      const overOz = (weight - 15.99).toFixed(1);
+      const estJump = 8.85 + Math.floor((weight - 16) / 16) * 1.50;
+      const penalty = estJump - 5.45;
+
+      if (sotStatusBadge) {
+        sotStatusBadge.textContent = `⚠️ TRAP TRIGGERED (+${overOz} oz)`;
+        sotStatusBadge.style.background = 'rgba(244, 63, 94, 0.18)';
+        sotStatusBadge.style.color = 'var(--accent-rose)';
+        sotStatusBadge.style.borderColor = 'rgba(244, 63, 94, 0.5)';
+      }
+      if (sotRateTier) sotRateTier.textContent = 'USPS 1-2 lb Tier Leap (Heavy / Priority Rate)';
+      if (sotEstCost) sotEstCost.textContent = `~$${estJump.toFixed(2)}`;
+      if (sotSavingsVal) {
+        sotSavingsVal.textContent = `-$${penalty.toFixed(2)} Lost Margin`;
+        sotSavingsVal.style.color = 'var(--accent-rose)';
+      }
+      if (sotAdviceText) {
+        sotAdviceText.innerHTML = `🚨 <strong>Ounce Trap Alert:</strong> You are just <strong>${overOz} oz</strong> over 15.9 oz. This triggers a <strong>$${penalty.toFixed(2)} rate spike</strong>! Quick fix: Switch from a box to a polymailer or trim packaging to save $${penalty.toFixed(2)} instantly!`;
+      }
+    }
+  }
+
+  sotWeightInput?.addEventListener('input', auditShippingWeight);
+  auditShippingWeight();
+
   // 4. Feature Showcase Carousel
   const carouselTabs = document.querySelectorAll('.carousel-tab-btn');
   const carouselSlides = document.querySelectorAll('.carousel-slide');

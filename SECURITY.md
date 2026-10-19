@@ -10,10 +10,11 @@ We actively provide security patches and updates for the following versions:
 
 | Version | Supported | Notes |
 |---|:---:|---|
-| `1.4.0` | ✅ | Current Live Production Release (Chrome Web Store) |
-| `1.3.3` | ✅ | Supported Stable Release |
-| `1.3.2` | ⚠️ | Previous Release. Please update to latest version. |
-| `< 1.3.2` | ❌ | Deprecated. Unsupported. |
+| `1.4.2` | ✅ | Current Production Release (Chrome Web Store) |
+| `1.4.1` | ✅ | Supported Stable Release |
+| `1.4.0` | ✅ | Supported Stable Release |
+| `1.3.x` | ⚠️ | Previous Release. Please update to latest version. |
+| `< 1.3.0` | ❌ | Deprecated. Unsupported. |
 
 ---
 

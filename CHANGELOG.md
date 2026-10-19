@@ -4,7 +4,43 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.1] — Production Release (Current)
+## 🚀 [v1.4.2] — Production Release (Current)
+
+> **Status:** Production Release Prepared for Chrome Web Store  
+> **Release Date:** October 2026
+
+### 🌐 1-Click Omnichannel Cross-Lister & Floating QuickBar HUD
+- **Omnichannel Cross-Listing Generation**: Reformat any active product listing into platform-compliant drafts tailored specifically for **Etsy, eBay, Poshmark, Mercari, and Depop** in a single pass.
+- **1-Click Batch Image ZIP Downloader**: Extract all full-resolution product gallery images directly from the page DOM and package them into an uncompressed ZIP file for instant desktop saving—eliminating manual image-by-image downloads.
+- **Floating QuickBar Form Autofill**: In-page QuickBar overlay automatically detects active marketplace listing creation forms (Etsy Shop Manager, eBay Selling, Poshmark Closet, Mercari, Depop) and auto-populates Title, Description, Tags, Category, and Price in 1 click with native event dispatch.
+- **Save $30–$60/mo**: Directly eliminates the need for expensive external cross-listing subscriptions like Vendoo or List Perfectly.
+
+### ⚖️ USPS 16 oz Shipping Ounce Trap Advisor
+- **Live 16 oz Cliff Radar**: Monitors packaged item shipping weight and alerts sellers at the critical 15.9 oz threshold before purchasing commercial postage.
+- **Avoid $4.40+ Surcharges**: Prevents single-order profit loss caused by 0.1–0.2 oz overage triggering the leap from USPS Ground Advantage Commercial First-Class tier ($4.15–$5.50) into 1–2 lb heavy parcel / Priority rates ($8.75–$12.50+).
+- **Actionable Packaging Optimization**: Dynamically recommends lightweight polymailers or cardboard trimming when items are slightly over the cliff, saving $3.60 to $6.00+ on every shipment.
+
+### 📊 Sourcing & Flip Tracker CRM (IRS Schedule C Tax Ready)
+- **Local-First Inventory Management**: Sandboxed inventory CRM stored 100% locally on device in `chrome.storage.local`. Log thrift store hauls, garage sale finds, estate sales, and retail arbitrage buys.
+- **Automated Profit & ROI Metrics**: Records Cost of Goods Sold (COGS), purchase venue, target listing price, sold date, platform fees, net dollar take-home, and return on investment (ROI%).
+- **1-Click Schedule C CSV Export**: Formats all inventory, costs, and profit calculations into an accountant-ready CSV spreadsheet designed for IRS Schedule C tax filing.
+- **Zero Cloud Lock-In**: Your sensitive supplier locations, purchase prices, and profit margins are never transmitted to any external server or cloud database.
+
+### 🤝 Buyer Offer Negotiator & Counteroffer Matrix
+- **Real Take-Home Cash Calculation**: Instant margin audit when buyers submit offers on eBay, Poshmark, Mercari, or Depop. Deducts platform commissions and shipping fees against original COGS.
+- **3-Tier Sweet-Spot Counteroffer Matrix**: Automatically calculates and recommends **Aggressive**, **Balanced (Sweet-Spot)**, and **Walkaway Floor** counteroffers to maximize sale conversion while protecting profit margins.
+
+### 📷 Barcode & UPC Scanner (On-Device Vision)
+- **Instant Product Identification**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods using your computer webcam or uploaded image.
+- **Client-Side Canvas Processing**: Barcode detection operates 100% locally in browser memory without sending video feeds across the network.
+
+### 🧪 Test Suite Expansion (429 Unit Tests across 25 Suites)
+- **100% Green Automated Tests**: Test coverage expanded from 381 to **429 unit tests across 25 test files** with 0 failures, covering all new v1.4.2 cross-lister, shipping math, flip tracker routines, and multi-platform listing editor form autofill canaries (`test/test-editor-autofill.js`).
+- **Automated Editor Form Drift Tooling**: Added `npm run validate:editors` (`scripts/validate-editor-autofill.mjs`) and canary editor fixtures for Etsy, eBay, Poshmark, Mercari, Depop, Shopify, and Grailed to prevent silent selector drift on seller creation pages.
+
+---
+
+## 🚀 [v1.4.1] — Previous Production Release
 
 > **Status:** Packaged & Ready for Web Store Rollout  
 > **Release Date:** October 2026

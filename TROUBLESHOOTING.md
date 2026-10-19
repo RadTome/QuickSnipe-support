@@ -20,6 +20,9 @@ This guide provides targeted solutions for the most common technical issues, err
 - [12. Light Glass Theme contrast or text legibility](#12-light-glass-theme-contrast-or-text-legibility)
 - [13. Direct developer feedback & feature requests (v1.4.0+)](#13-direct-developer-feedback--feature-requests-v140)
 - [14. Mobile QR Photo Sync: Connection or Transfer Diagnostics](#14-mobile-qr-photo-sync-connection-or-transfer-diagnostics)
+- [15. Cross-Lister: Batch Image ZIP Download Blocked or Incomplete](#15-cross-lister-batch-image-zip-download-blocked-or-incomplete)
+- [16. Sourcing & Flip Tracker CRM: Data Backup & Schedule C CSV Export](#16-sourcing--flip-tracker-crm-data-backup--schedule-c-csv-export)
+- [17. Barcode & UPC Scanner: Camera Permissions & Scan Diagnostics](#17-barcode--upc-scanner-camera-permissions--scan-diagnostics)
 
 ---
 
@@ -260,5 +263,60 @@ This guide provides targeted solutions for the most common technical issues, err
 5. **Live Connection Diagnostics Console**:
    - At the bottom of `snap.html`, inspect the **Live Connection Diagnostics** panel.
    - If issues persist, tap **📋 Copy Log** to export the ICE candidate and DataChannel logs, then submit a [Bug Report](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml).
+
+---
+
+### 15. Cross-Lister: Batch Image ZIP Download Blocked or Incomplete
+
+#### Potential Causes:
+- Chrome blocked multiple automatic file downloads or popups.
+- The product listing page has not finished loading all high-resolution image assets.
+- Third-party browser extensions (such as aggressive ad-blockers or download managers) intercepted the blob URL.
+
+#### Solutions & Best Practices:
+1. **Check Chrome Automatic Download Permissions**:
+   - If a prompt appears in the address bar asking to allow downloads, click **Allow**.
+   - You can verify settings in Chrome under `chrome://settings/content/automaticDownloads`.
+2. **Client-Side Blob Generation**:
+   - QuickSnipe downloads images directly from their CDN sources into local browser memory and bundles them using JSZip into a single `.zip` file on your device. Zero external image relay servers are used.
+   - For listings with 15+ high-res images, allow 2–3 seconds for memory packaging before clicking away from the tab.
+3. **Fallback Image Extraction**:
+   - If a specific platform's CDN blocks direct blob fetching due to strict CORS headers, right-click the image on the page and select "Save image as...", or use QuickSnipe's **Mobile QR Photo Sync** (`snap.html`) to re-photograph or upload originals directly from your phone.
+
+---
+
+### 16. Sourcing & Flip Tracker CRM: Data Backup & Schedule C CSV Export
+
+#### Potential Causes:
+- Browser cache/history clearing unintentionally purged extension storage.
+- Opening exported CSV in Excel shows corrupted characters or incorrect column wrapping.
+
+#### Solutions & Best Practices:
+1. **Local-First Storage Guarantee**:
+   - All inventory entries, purchase receipts, COGS, sourcing locations, and tax records are stored 100% locally in `chrome.storage.local`. QuickSnipe never syncs your sensitive financial ledgers to any external cloud database.
+2. **Preventing Accidental Data Loss**:
+   - When clearing Chrome browsing data, **uncheck "Cookies and other site data" / "Hosted app data"** to avoid wiping extension local storage.
+   - Regularly export a backup snapshot using **Settings ⚙ → Export / Import Backup** and save the JSON file to your local drive or cloud storage.
+3. **IRS Schedule C CSV Formatting**:
+   - The exported `.csv` file uses standard UTF-8 encoding with standard comma delimiters.
+   - In **Microsoft Excel**: If currency columns format as plain text, select the column and format as `Currency ($)`. In **Google Sheets** or **Apple Numbers**, the file imports natively with complete formula headers.
+
+---
+
+### 17. Barcode & UPC Scanner: Camera Permissions & Scan Diagnostics
+
+#### Potential Causes:
+- Chrome camera permission is blocked or denied for extension views.
+- Barcode is blurry, poorly lit, or reflecting harsh glare on glossy shrink-wrap.
+
+#### Solutions & Best Practices:
+1. **Camera Permission Grant**:
+   - Ensure Chrome has operating system permission to access your webcam (Windows Settings → Privacy & Security → Camera).
+   - If prompted by Chrome, click **Allow** for QuickSnipe camera access.
+2. **Optimal Scanning Distance & Lighting**:
+   - Hold the barcode parallel to your camera, approximately 4 to 8 inches away.
+   - If scanning shiny packaging or cellophane wrap, tilt the box slightly (15–20 degrees) away from direct overhead light to avoid glare whitewashing the UPC barcode lines.
+3. **Hardware Fallback**:
+   - If your PC webcam lacks auto-focus, you can either enter the 12-digit UPC manually into the comp search bar or use **Mobile QR Photo Sync** on your phone to capture the barcode with your high-resolution phone camera.
 
 

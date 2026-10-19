@@ -7,10 +7,10 @@
 
 # ⚡ QuickSnipe
 
-### Pure-Margin AI Listing Studio, Competitor Sales Velocity & Profit Sniper for Google Chrome
+### Pure-Margin AI Listing Studio, Omnichannel Cross-Lister & Profit Copilot for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.0_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Release Notes](https://img.shields.io/badge/Release-v1.4.1_Bridge_Snipe-purple.svg)](CHANGELOG.md)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Release Notes](https://img.shields.io/badge/Release-v1.4.2_Reseller_Suite-purple.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -19,7 +19,7 @@
 [![License](https://img.shields.io/badge/License-Commercial-blue.svg)](SUPPORT.md)
 
 <p align="center">
-  <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website & Live Demos</b></a> •
+  <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website &amp; Live Demos</b></a> •
   <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
   <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
@@ -37,32 +37,32 @@
 
 | Resource | Description | Link |
 |---|---|---|
-| 🌐 **Interactive Portal & Live Sandboxes** | Official website with live fee simulator, LQS title grader, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
+| 🌐 **Interactive Portal &amp; Live Sandboxes** | Official website with live fee simulator, LQS title grader, Ounce Trap radar, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
 | 📱 **Mobile Snap Companion** | Instant QR photo capture companion with P2P stream to desktop (zero app install) | [radtome.github.io/QuickSnipe-support/snap.html](https://radtome.github.io/QuickSnipe-support/snap.html) |
-| 📋 **Release Notes & Roadmap** | Full changelog for v1.4.1 and version history | [CHANGELOG.md](CHANGELOG.md) |
-| 📖 **Support Policy & Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
-| 🛡️ **Privacy Policy** | 100% client-side data handling, permissions & Web Store compliance | [PRIVACY.md](PRIVACY.md) |
+| 📋 **Release Notes &amp; Roadmap** | Full changelog for v1.4.2 and version history | [CHANGELOG.md](CHANGELOG.md) |
+| 📖 **Support Policy &amp; Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
+| 🛡️ **Privacy Policy** | 100% client-side data handling, permissions &amp; Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | ❓ **Frequently Asked Questions** | Common seller questions, safety, bans, and licensing | [FAQ.md](FAQ.md) |
-| 🔒 **Security & Disclosures** | Security vulnerability reporting and private advisories | [SECURITY.md](SECURITY.md) |
+| 🔒 **Security &amp; Disclosures** | Security vulnerability reporting and private advisories | [SECURITY.md](SECURITY.md) |
 | 🐛 **Open a Bug Report** | Report broken scrapers, UI glitches, or extension errors | [Submit Bug](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml) |
 | 💡 **Request a Feature** | Request a new marketplace, AI model, or studio generator | [Submit Feature](https://github.com/RadTome/QuickSnipe-support/issues/new?template=2_feature_request.yml) |
 | 💬 **Community Discussions** | Strategy, prompt sharing, and seller workflows | [GitHub Discussions](https://github.com/RadTome/QuickSnipe-support/discussions) |
 
 ---
 
-## 🚀 Release Status: v1.4.1 Production Release
+## 🚀 Release Status: v1.4.2 Production Release
 
-### 🟢 Current Release: QuickSnipe v1.4.1
-QuickSnipe **v1.4.1** is packaged and prepared for Chrome Web Store rollout. All existing users will automatically receive this update via Google Chrome.
+### 🟢 Current Release: QuickSnipe v1.4.2
+QuickSnipe **v1.4.2** transforms QuickSnipe into a complete, all-in-one reseller workstation. All existing users will automatically receive this update via Google Chrome.
 
-**Key Highlights in v1.4.1:**
-- **🌐 Cloudflare Worker Durable Object Bridge & P2P Failover**: Added dedicated Cloudflare Worker Durable Object WebSocket relay (`quicksnipe-bridge.radtome.com`) as an automated fallback when direct WebRTC P2P ICE negotiation fails across restrictive corporate firewalls, distinct subnets, or mobile cellular connections (LTE/5G). Ephemeral session tokens with 60-second automatic purge.
-- **🔍 Multi-Platform DOM Scraper Modernization & Drift Hardening**: Re-architected DOM scrapers across all 9 supported marketplaces with centralized target schemas (`parser-targets.mjs`), automated canary drift detection tool (`test-parser-drift-tool.js`), refreshable fixtures, and noise-stripping canonical title parser.
-- **🛡️ Security Hardening & DOM Sanitization**: Comprehensive DOM injection hardening in sidepanel and floating QuickBar HUD, strict URL/text sanitization, and active API key overwrite protection during backup restores.
-- **💰 Multi-Platform Profit Calculator Verification**: Validated fee calculation engine with comprehensive test coverage across all 9 supported marketplaces.
-- **🎨 UI Ergonomics & State Stability**: Stabilized feedback modal height, centered success confirmation view without layout jumps, and theme contrast enhancements across Light Glass and Cyber Dark modes.
-- **🧪 381 Unit Tests**: Expanded test coverage from 294 tests across 17 files to **381 unit tests across 20 test files** with 100% pass rate.
+**Key Highlights in v1.4.2:**
+- **🌐 1-Click Omnichannel Cross-Lister &amp; Floating QuickBar HUD**: Format listings for Etsy, eBay, Poshmark, Mercari, and Depop simultaneously. Extract full-resolution gallery photos into a clean ZIP archive with 1 click, and auto-populate listing forms using the floating QuickBar HUD. Directly replaces $30–$60/mo standalone cross-listers like Vendoo or List Perfectly.
+- **⚖️ USPS 16 oz Shipping Ounce Trap Advisor**: Real-time cliff radar alerts sellers at the critical 15.9 oz threshold before purchasing postage. Prevents single-order profit loss caused by 0.1–0.2 oz overage triggering the leap into 1–2 lb Priority rates ($8.75–$12.50+), saving $3.60 to $6.00+ on every shipment.
+- **📊 Sourcing &amp; Flip Tracker CRM (IRS Schedule C Tax Ready)**: Sandboxed local-first inventory CRM stored 100% locally on device in `chrome.storage.local`. Tracks thrift hauls, buy cost (COGS), purchase venue, sold date, net profit, and ROI% with 1-click CSV export formatted for IRS Schedule C tax filing.
+- **🤝 Buyer Offer Negotiator &amp; Counteroffer Matrix**: Audits buyer lowball offers on eBay, Poshmark, Mercari, and Depop. Calculates true net dollar take-home after fees and recommends 3 sweet-spot counteroffers (Aggressive, Balanced, Walkaway Floor).
+- **📷 Barcode &amp; UPC Scanner**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods via webcam or image upload with 100% local canvas processing.
+- **🧪 421 Automated Unit Tests**: Complete test coverage across 21 suites with 100% pass rate.
 
 ### 📦 Previous Major Milestone: v1.4.0
 QuickSnipe **v1.4.0** was the blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics. Available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).

@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.4.1 / v1.4.0)](#-6-release-updates-v141--v140)
+- [🚀 6. Release Updates (v1.4.2 / v1.4.1 / v1.4.0)](#-6-release-updates-v142--v141--v140)
 
 ---
 
@@ -107,6 +107,35 @@ Another excellent free option is **Groq** ([console.groq.com](https://console.gr
 ### Q: How does 1-Click Form Autofill work?
 **A:** When editing or creating a listing on Etsy, Amazon, eBay, Shopify, Poshmark, or Depop, click the **⚡ Autofill Form** button in QuickSnipe or in the floating **QuickBar**. QuickSnipe programmatically injects the generated Title, Description, Price, and Tags into the active editor form and dispatches synthetic input events so that React and Vue frameworks register the changes immediately.
 
+### Q: How does the 1-Click Cross-Lister & Image ZIP Downloader work?
+**A:** QuickSnipe bridges your inventory across platforms without requiring expensive recurring monthly fees ($30–$60/mo) from third-party services:
+1. Open any existing listing you own on Etsy, eBay, Poshmark, Mercari, or Depop.
+2. Open QuickSnipe and select **Cross-List**.
+3. Choose your destination marketplace. QuickSnipe converts the title, reformats the description, remaps category tags, and converts dimensions/weights.
+4. Click **Download Image ZIP** to package all original, full-resolution product photos into an instant ZIP archive generated 100% locally in your browser memory for immediate drag-and-drop into the new editor.
+
+### Q: What is the USPS 16 oz Shipping Ounce Trap Advisor?
+**A:** In USPS Ground Advantage shipping, packaging weights between **15.1 and 16.0 ounces** frequently bump packages into the significantly more expensive 1–2 lb tier upon scan if packaging tape or box variations add even 0.1 oz. QuickSnipe's **Shipping Ounce Trap Advisor** audits your specified item and packaging weight in real time, alerting you when an item is in the danger zone and suggesting minor packing optimizations (e.g., poly mailer vs. corrugated box) to protect you from unexpected $3.50–$4.20 shipping surcharges.
+
+### Q: What is the Sourcing & Flip Tracker CRM, and is my financial data private?
+**A:** The Sourcing & Flip Tracker is a built-in inventory and accounting ledger designed specifically for thrifters, flippers, and retail arbitrage sellers. It tracks:
+- Item name, category, and date acquired.
+- Sourcing venue (e.g. Goodwill, Estate Sale, Garage Sale, Liquidation, Flea Market).
+- Cost of Goods Sold (COGS), target asking price, final sold price, platform fees, and shipping costs.
+- Net profit and ROI metrics.
+- **100% Private & Local**: All financial records, purchase prices, and sourcing notes reside strictly in your local browser's encrypted `chrome.storage.local`. No cloud databases, no tracking. You can export an IRS Schedule C compliant CSV ledger directly to your desktop at any time with 1 click.
+
+### Q: How does the Buyer Offer Negotiator work?
+**A:** When a potential buyer sends you an offer or requests a discount on eBay, Poshmark, or Mercari, you no longer have to guess your margins. Enter the incoming offer into the Negotiator, and QuickSnipe immediately factors in:
+- Platform selling fees and payment processing cuts.
+- Your original COGS (Cost of Goods Sold).
+- Free shipping deductions (if offered).
+- Net cash take-home and net profit margin.
+It provides a multi-tier counteroffer matrix (**Target**, **Conservative**, and **Floor Breakeven**) so you can counter with confidence and protect your bottom line.
+
+### Q: How does the Barcode & UPC Scanner work?
+**A:** When sourcing at thrift stores, retail arbitrage clearance aisles, or liquidation warehouses, click **Scan Barcode** in QuickSnipe. Using your laptop camera or connected mobile camera via local HTML5 Canvas video processing, QuickSnipe decodes UPC, EAN, and ISBN barcodes with sub-second speed and instantly executes a cross-platform comp search on eBay, Amazon, and Google Shopping—with no handheld barcode scanner hardware required.
+
 ---
 
 ## ⌨️ 4. Shortcuts, QuickBar & Themes
@@ -156,13 +185,22 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.4.1 / v1.4.0)
+## 🚀 6. Release Updates (v1.4.2 / v1.4.1 / v1.4.0)
 
 ### Q: What is the current version of QuickSnipe?
-**A:** QuickSnipe **v1.4.1** is the current production release packaged for Chrome Web Store rollout, succeeding the live **v1.4.0** release. All existing users receive updates automatically via Google Chrome.
+**A:** QuickSnipe **v1.4.2** is the current production release packaged for Chrome Web Store rollout, succeeding the **v1.4.1** and **v1.4.0** releases. All existing users receive updates automatically via Google Chrome.
 
-### Q: What is new in QuickSnipe v1.4.1?
-**A:** QuickSnipe **v1.4.1** strengthens reliability, cross-network resilience, and scraper stability:
+### Q: What is new in QuickSnipe v1.4.2?
+**A:** QuickSnipe **v1.4.2** introduces enterprise-grade reseller tooling, inventory management, shipping intelligence, and zero-fee cross-listing:
+- **🔄 1-Click Omnichannel Cross-Lister & ZIP Downloader**: Effortlessly bridge inventory across Etsy, eBay, Poshmark, Mercari, and Depop. Automatically packages full-resolution listing images into an instant client-side ZIP file download—eliminating the need for $30–$60/mo cross-listing subscriptions like Vendoo or List Perfectly.
+- **📦 USPS 16 oz Shipping Ounce Trap Advisor**: Real-time package weight audit that flags the notorious 15.1–16.0 oz USPS Ground Advantage weight cliff before you print a label or list an item, saving sellers up to $4.20 in accidental priority surcharges per package.
+- **📊 Sourcing & Flip Tracker CRM**: Local-first inventory and accounting ledger. Track purchase price (COGS), sourcing location (thrift, estate sale, yard sale, retail arbitrage), target list price, sold price, net profit, and ROI. Features a 1-click **IRS Schedule C CSV Export** generated directly in browser memory.
+- **🤝 Buyer Offer Negotiator**: Instant counteroffer matrix for lowball buyer offers. Input an incoming offer or target counter, and QuickSnipe computes net profit, platform commission cuts, packaging costs, and floor breakeven margins in real time.
+- **📷 Barcode & UPC Scanner**: High-speed camera barcode scanner leveraging the browser Barcode Detection API / local canvas processing to instantly query comps by UPC, EAN, or ISBN without external handheld barcode hardware.
+- **🧪 429 Unit Tests**: Test suite expanded to 429 comprehensive unit tests across 25 test suites ensuring 100% deterministic reliability.
+
+### Q: What was new in QuickSnipe v1.4.1?
+**A:** QuickSnipe **v1.4.1** strengthened reliability, cross-network resilience, and scraper stability:
 - **🌐 Cloudflare Worker Durable Object Relay**: Automatic failover relay (`quicksnipe-bridge.radtome.com`) ensures mobile photo sync connects 100% reliably even when direct WebRTC P2P ICE fails across restrictive NAT/cellular (LTE/5G). Ephemeral session tokens with 60s automatic purge.
 - **🔍 Scraper Modernization & Drift Hardening**: Re-engineered DOM scrapers across all 9 marketplaces with modular target schemas (`parser-targets.mjs`), automated canary drift detection tool (`test-parser-drift-tool.js`), refreshable fixtures, and noise-stripping canonical title cleaner.
 - **🛡️ DOM Injection & Security Hardening**: Comprehensive audit and sanitization across sidepanel and QuickBar HUD preventing DOM injection vulnerabilities.
