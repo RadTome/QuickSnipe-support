@@ -1,0 +1,209 @@
+# QuickSnipe — Comprehensive Knowledge Base & System Specification
+
+> Complete documentation, feature breakdown, platform compatibility guide, pricing specifications, and step-by-step reseller workflows for QuickSnipe (Google Chrome Sidepanel Extension).
+
+## Table of Contents
+1. Executive Summary & Product Architecture
+2. Key Problem Solved & Target Market
+3. Core Feature Specifications
+   - 1-Click Omnichannel Cross-Lister & Floating QuickBar HUD
+   - USPS 16-Ounce Ground Advantage Shipping Trap Radar
+   - Reseller Sourcing & Flip Tracker CRM (IRS Schedule C Ready)
+   - Buyer Offer Negotiator & Sweet-Spot Counteroffer Matrix
+   - Multimodal Photo-to-Listing Vision AI
+   - QuickSnipe Snap: Real-Time Phone-to-PC Mobile WebRTC Sync
+   - Barcode & UPC Scanner
+   - Listing Quality Scorecard (LQS) & Byte Boundary Analyzer
+   - Real-Time Fee & Margin Simulator
+4. Supported E-Commerce Platforms & Specifics
+5. Pricing, Licensing & ExtensionPay Integration
+6. Privacy, Security & Technical Architecture
+7. Step-by-Step User Workflows
+8. Frequently Asked Questions (FAQ)
+9. Official Links & Resources
+
+---
+
+## 1. Executive Summary & Product Architecture
+
+QuickSnipe is a Manifest V3 Google Chrome extension engineered specifically for high-volume multi-channel e-commerce sellers, thrift flippers, vintage dealers, and online merchants. It runs directly inside Google Chrome's native sidepanel context (`sidepanel.html`), ensuring an uninterrupted workflow without obscuring marketplace product tabs.
+
+### Technical Highlights
+- **Architecture**: Manifest V3, 100% Client-Side.
+- **Storage**: Isolated `chrome.storage.local` with zero remote cloud server database reliance.
+- **AI Engine Support**:
+  - Offline local execution via **Chrome Built-in AI (Gemini Nano)** using the Chrome 131+ Prompt API.
+  - Multi-provider Bring-Your-Own-Key (BYOK) support for Google Gemini (Flash 2.0 / 3.6), OpenAI (GPT-4o), Anthropic (Claude 3.7 Sonnet), Groq (Llama 3.3 70B), DeepSeek (V3/R1), OpenRouter, and local offline Ollama instances.
+  - Automatic smart rate-limit fallback (HTTP 429 handler routing to secondary backup models).
+- **DOM & Extraction Engine**: Zero external scraper dependencies; operates via focused `activeTab` DOM parser scripts compatible with React and Vue marketplace frontends.
+- **Licensing Engine**: Powered securely by ExtensionPay (`https://extensionpay.com/`), processing stripe payments with zero access to user payment credentials.
+
+---
+
+## 2. Key Problem Solved & Target Market
+
+### The Problem
+Professional and part-time e-commerce sellers cross-list inventory across multiple platforms (Etsy, eBay, Poshmark, Mercari, Depop) to maximize buyer exposure. Historically, sellers have been forced to pay $30 to $150 per month for cloud-based cross-listing software (such as Vendoo, List Perfectly, or Crosslist). These tools introduce:
+1. High recurring monthly costs that eat into gross margins.
+2. Cloud vendor lock-in where inventory data is trapped in external proprietary databases.
+3. Slow browser context-switching between separate web applications and merchant tabs.
+4. Hidden shipping fee leaks, such as the USPS 16-ounce Ground Advantage cliff that wipes out profits on lightweight packages.
+
+### QuickSnipe Solution
+QuickSnipe combines cross-listing, shipping ounce analysis, inventory tracking, offer negotiation, and photo vision AI into a single browser extension with a generous free daily tier and an accessible one-time lifetime or low-cost upgrade option.
+
+---
+
+## 3. Core Feature Specifications
+
+### 3.1 1-Click Omnichannel Cross-Lister & Floating QuickBar HUD
+- **Omnichannel Extraction**: One click extracts product title, description, category, tags, pricing, and high-resolution photo URLs from the active listing.
+- **Batch Photo ZIP Downloader**: Bundles all gallery photos into a single ZIP archive on your local disk in 1 click, bypassing right-click restrictions on modern marketplaces.
+- **Floating QuickBar HUD**: An unobtrusive overlay bar appears on destination listing creation pages. Sellers click 1-Click Fast Fill to auto-populate title, description, tags, price, and condition into native React/Vue form fields without losing focus.
+
+### 3.2 USPS 16-Ounce Ground Advantage Shipping Trap Radar
+- **The Cliff Mechanics**: Under USPS commercial Ground Advantage pricing, packages between 4.0 and 15.9 ounces qualify for low-cost First-Class pricing (typically $4.15–$5.50 depending on shipping zone). Once package weight reaches 16.0 ounces (even 16.1 oz), it falls into the 1 to 2 lb tier ($8.75–$12.50+).
+- **The Radar**: When a seller enters or scans package weight, QuickSnipe alerts them if the item is in the "Danger Zone" (14.5–16.5 oz).
+- **Actionable Optimization**: Recommends lightweight poly mailers (saving 1.5–2.5 oz compared to corrugated cardboard boxes) or trimming internal void fill to bring the shipment safely below 15.9 oz, saving $3.60 to $6.00+ on a single order.
+
+### 3.3 Sourcing & Flip Tracker CRM (IRS Schedule C Ready)
+- **Local-First Sandboxing**: All inventory items, purchase venues, and financial records stay exclusively on the seller's computer inside `chrome.storage.local`.
+- **Key Metrics Tracked**:
+  - Purchase Date & Sourcing Location (Goodwill, Salvation Army, Estate Sale, Garage Sale, Retail Arbitrage)
+  - Cost of Goods Sold (COGS)
+  - Target Asking Price & Actual Sold Price
+  - Marketplace Platform & Associated Commission / Processing Fees
+  - Shipping Paid vs. Shipping Charged
+  - Net Profit Dollar Take-Home & Net ROI%
+- **Tax Readiness**: 1-click export to CSV structured for easy import into IRS Form 1040 Schedule C (Profit or Loss From Business).
+
+### 3.4 Buyer Offer Negotiator & Counteroffer Matrix
+- **Auditing Lowball Offers**: When an offer arrives on eBay, Poshmark, Mercari, or Depop, sellers input the offer amount.
+- **Fee Net Calculation**: QuickSnipe calculates actual dollar margin after subtracting marketplace commission, processing percentage, flat transaction costs, and seller-paid shipping discounts.
+- **3-Tier Counteroffer Matrix**:
+  - **Aggressive Tier**: Maximizes net profit while remaining within standard buyer threshold.
+  - **Balanced Tier**: Empirically proven sweet spot for balancing sales conversion rate with profit margin.
+  - **Walkaway Floor**: Sets the hard break-even floor based on COGS, preventing emotional sellers from accepting loss-making deals.
+
+### 3.5 Multimodal Photo-to-Listing Vision AI
+- **Inputs**: Drag-and-drop photos, web images via right-click context menu, or live phone camera feeds.
+- **Analysis**: Detects item type, brand, care instructions, material compositions, vintage era markers, condition flaws, and aesthetics.
+- **Outputs**:
+  - Tailored marketplace titles (Etsy 140 char, eBay 80 char, Poshmark 50 char)
+  - 13 SEO search tags
+  - Complete structured bulleted item specifics
+  - Professional description with emotional buyer pitch
+  - Suggested pricing range based on detected brand tier
+
+### 3.6 QuickSnipe Snap: Mobile QR Photo Companion (`snap.html`)
+- **Zero App Installation**: No iOS App Store or Google Play download required.
+- **Instant Pairing**: Desktop extension displays a dynamic pairing QR code. Scanning with any smartphone camera immediately opens `https://radtome.github.io/QuickSnipe-support/snap.html` in mobile Safari or Chrome.
+- **High-Speed P2P Stream**: Establishes an encrypted peer-to-peer WebRTC data channel directly between phone and PC, backed by a Cloudflare Worker Durable Object fallback bridge.
+- **Live Viewfinder & Gallery**: Photograph thrift finds or inventory directly in the browser; images stream to the desktop PC sidepanel in under 3 seconds.
+
+### 3.7 Barcode & UPC Scanner
+- Built-in canvas scanner decodes 1D and 2D barcodes (UPC-A, EAN-13, ISBN) using computer vision without server transmission.
+
+### 3.8 Listing Quality Scorecard (LQS) & Byte Boundary Analyzer
+- **LQS Score (Grade S to F)**: Audits title length, keyword placement, description structure, tag utilization, and photo quantity against marketplace algorithm criteria (Cassini for eBay, Etsy Search, Amazon A9/Cosmo).
+- **Amazon 249-Byte Checker**: Amazon strictly truncates backend search terms at 249 bytes (not characters). QuickSnipe measures exact UTF-8 byte weight and eliminates prohibited punctuation and stop words automatically.
+
+### 3.9 Marketplace Fee & Margin Simulator
+Interactive simulation engine supporting all 9 major platforms:
+- **Etsy**: 6.5% transaction fee + 3% + $0.25 payment processing + $0.20 listing fee.
+- **Amazon**: Category referral percentage (typically 15%) + FBA / FBM cost breakdown.
+- **eBay**: 13.25% + $0.30 standard final value fee + category variances.
+- **Poshmark**: Flat $2.95 for sales under $15; flat 20% for sales $15 and above.
+- **Mercari**: Supports legacy 10% fee and modern fee updates.
+- **Depop**: 0% selling fee in US/UK markets + standard payment processing.
+- **Shopify**: 2.9% + $0.30 credit card processing + plan overhead.
+- **Walmart**: Category referral matrix (6% to 15%).
+- **Grailed**: 9% seller commission + 3.49% + $0.49 processing fee.
+
+---
+
+## 4. Supported E-Commerce Platforms
+
+| Marketplace | Scraping & Extraction | 1-Click Form Autofill | Fee Calculator Preset |
+|---|---|---|---|
+| **Etsy** | Full listing metadata & tags | React form autofill HUD | Yes (6.5% + 3% + $0.25 + $0.20) |
+| **eBay** | Full active listing specs | Cassini-compliant autofill | Yes (13.25% + $0.30) |
+| **Poshmark** | Listing & Closet scraping | Poshmark form auto-populate | Yes ($2.95 / 20%) |
+| **Mercari** | Title, photos, specifics | Mercari web listing fill | Yes (0% or 10%) |
+| **Depop** | In-depth fashion tags | Depop web listing fill | Yes (0% selling fee) |
+| **Amazon** | ASIN, BSR & 249-byte checker | Manual copy / byte meter | Yes (Category referral) |
+| **Shopify** | Product handle & tags | Shopify Admin form fill | Yes (2.9% + $0.30) |
+| **Walmart** | Product `/ip/` pages | Manual copy cards | Yes (Referral matrix) |
+| **Grailed** | Next.js luxury archive data | Manual copy cards | Yes (9% + processing) |
+
+---
+
+## 5. Pricing, Licensing & ExtensionPay Integration
+
+QuickSnipe adheres to a transparent, reseller-friendly pricing philosophy:
+- **Free Daily Tier**: Completely free daily snipes, cross-lists, and calculations every day for casual sellers.
+- **Pro Monthly**: $7.99/month for unlimited snipes, high-volume cross-listing, and advanced CRM tools.
+- **Pro Annual**: $49.00/year (saves 48% vs monthly).
+- **Pro Lifetime Deal**: $69.00 one-time payment for perpetual access to all current and future Pro features.
+- **Zero Token Markup**: Users connecting their own API keys (OpenAI, Gemini, Anthropic, Groq) pay raw API wholesale pricing (fractions of a cent per listing) directly to the AI providers.
+
+---
+
+## 6. Privacy, Security & Technical Architecture
+
+- **Manifest V3 Compliant**: Uses modern Chrome Service Workers with strict least-privilege permissions (`activeTab`, `storage`, `sidePanel`).
+- **No Third-Party Telemetry**: QuickSnipe contains zero tracking scripts, Google Analytics, or external marketing pixels inside the extension package.
+- **Strict Host Storage Sandboxing**: Floating QuickBar state and user preferences are saved strictly to `chrome.storage.local`. No cookies, localStorage entries, or trackers are injected into host merchant websites.
+- **W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` key dismissal.
+
+---
+
+## 7. Step-by-Step User Workflows
+
+### How to 1-Click Cross-List an Item
+1. Open any active listing you own on Etsy, eBay, Poshmark, Mercari, or Depop in Google Chrome.
+2. Open QuickSnipe from the Chrome sidepanel.
+3. Click **Cross-List**. QuickSnipe parses all photos, descriptions, and item specifics.
+4. Click **Download ZIP** to save all high-resolution product photos.
+5. Open the target marketplace's "Create Listing" page.
+6. The floating **QuickBar HUD** appears automatically. Click **1-Click Fast Fill** to populate the listing.
+7. Drop your downloaded photos into the marketplace upload box, review, and publish.
+
+### How to Avoid the USPS 16 oz Ground Advantage Cliff
+1. Weigh your item with anticipated packaging materials on a digital postal scale.
+2. If the scale reads between 14.5 and 16.5 oz, open QuickSnipe's **Shipping Ounce Trap Radar**.
+3. If weight exceeds 15.9 oz (e.g., 16.1 oz), replace a cardboard box with a tear-proof lightweight poly mailer or bubble mailer.
+4. Verify the new total weight drops below 15.9 oz.
+5. Purchase commercial Ground Advantage postage at the First-Class rate ($4.50–$5.50) instead of the Priority 1–2 lb rate ($9.50+), instantly saving $4.00–$6.00+ on that sale.
+
+### How to Transfer Photos via QuickSnipe Snap
+1. In the QuickSnipe sidepanel on your PC, select **Snap on Phone (QR)**.
+2. Scan the on-screen QR code with your iPhone or Android camera.
+3. The browser companion opens instantly at `https://radtome.github.io/QuickSnipe-support/snap.html` (no app download needed).
+4. Take photos using the live camera viewfinder or select photos from your camera roll.
+5. Photos stream directly to your desktop PC over encrypted WebRTC in seconds, ready for Vision AI listing creation.
+
+---
+
+## 8. Frequently Asked Questions (FAQ)
+
+### Is QuickSnipe safe to use on Etsy, eBay, and Poshmark?
+Yes. QuickSnipe runs 100% locally in your browser. It does not use automated bots, headless browsers, or unauthorized scraping networks that trigger account flags. When it fills listing forms, it does so through native DOM interactions equivalent to user typing.
+
+### Do I need a paid API key to use QuickSnipe?
+No. You can use QuickSnipe's free tier with built-in daily quotas, or use Google's free on-device **Chrome Built-in AI (Gemini Nano)** with zero API keys and 100% offline privacy. Power users who want to use specific models can plug in their own OpenAI, Gemini, Claude, Groq, or Ollama keys.
+
+### Does QuickSnipe store my inventory or sales data on a server?
+No. All inventory records, COGS, sales numbers, and flip CRM data are stored locally in Chrome's sandboxed storage on your device.
+
+---
+
+## 9. Official Links & Resources
+
+- **Chrome Web Store Listing**: https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa
+- **Official Portal & Web Tools**: https://radtome.github.io/QuickSnipe-support/
+- **Mobile QR Photo Companion**: https://radtome.github.io/QuickSnipe-support/snap.html
+- **Compact LLM Context (`llms.txt`)**: https://radtome.github.io/QuickSnipe-support/llms.txt
+- **Machine-Readable AI Manifest**: https://radtome.github.io/QuickSnipe-support/ai-manifest.json
+- **GitHub Repository**: https://github.com/RadTome/QuickSnipe-support
+- **Support & Issues**: https://github.com/RadTome/QuickSnipe-support/issues

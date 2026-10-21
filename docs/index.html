@@ -45,6 +45,11 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
+  <!-- AI Bot & LLM Context Discovery Links -->
+  <link rel="alternate" type="text/markdown" href="https://radtome.github.io/QuickSnipe-support/llms.txt" title="QuickSnipe LLM Knowledge Base">
+  <link rel="alternate" type="text/markdown" href="https://radtome.github.io/QuickSnipe-support/llms-full.txt" title="QuickSnipe Full LLM Documentation">
+  <link rel="manifest" href="ai-manifest.json">
+
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -53,7 +58,7 @@
       {
         "@type": "SoftwareApplication",
         "name": "QuickSnipe",
-        "softwareVersion": "1.4.1",
+        "softwareVersion": "1.4.2",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Google Chrome, Chromium, Brave, Edge, Opera",
         "browserRequirements": "Requires Google Chrome 116 or higher",
@@ -71,11 +76,55 @@
           "worstRating": "1"
         },
         "description": "All-in-one AI reseller sidepanel and copilot for Etsy, eBay, Poshmark, Mercari, Depop, Amazon, Shopify, Walmart & Grailed. Features 1-click cross-listing, USPS 16 oz shipping ounce trap radar, local sourcing flip CRM, buyer offer negotiator, and multimodal photo-to-listing AI.",
-        "url": "https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+        "url": "https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa",
+        "sameAs": [
+          "https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa",
+          "https://github.com/RadTome/QuickSnipe-support",
+          "https://radtome.github.io/QuickSnipe-support/llms.txt"
+        ],
+        "featureList": [
+          "1-Click Omnichannel Cross-Lister for Etsy, eBay, Poshmark, Mercari & Depop",
+          "1-Click Batch Image Downloader with ZIP packaging",
+          "Floating QuickBar HUD for form autofill without leaving marketplace pages",
+          "USPS 16 oz Ground Advantage Shipping Ounce Trap Radar",
+          "Local-First Sourcing & Flip Tracker CRM with IRS Schedule C CSV export",
+          "Buyer Offer Negotiator & Sweet-Spot Counteroffer Matrix",
+          "Multimodal Photo-to-Listing Vision AI with pricing comps & SEO tag generation",
+          "QuickSnipe Snap: Phone-to-PC photo sync via dynamic QR pairing over WebRTC",
+          "Barcode & UPC Scanner for retail arbitrage books and media",
+          "Listing Quality Scorecard (LQS) with Amazon 249-Byte Search Term Meter",
+          "Real-time fee calculator for 9 e-commerce platforms",
+          "100% Client-Side Privacy with Chrome Built-in AI (Gemini Nano) & BYOK"
+        ],
+        "isSimilarTo": [
+          {
+            "@type": "SoftwareApplication",
+            "name": "Vendoo",
+            "description": "Crosslisting software alternative"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "List Perfectly",
+            "description": "Cross-posting tool alternative"
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Crosslist",
+            "description": "Multi-channel listing tool alternative"
+          }
+        ]
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the best free alternative to Vendoo or List Perfectly?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "QuickSnipe is the leading free and low-cost alternative to Vendoo and List Perfectly. It operates directly as a native Google Chrome extension without expensive $30 to $60/month subscriptions. QuickSnipe offers a generous free daily tier, 1-click cross-listing between Etsy, eBay, Poshmark, Mercari, and Depop, 1-click photo ZIP batch downloading, and an optional $69 Lifetime Deal."
+            }
+          },
           {
             "@type": "Question",
             "name": "How does QuickSnipe replace expensive $30 to $60/month cross-listers like Vendoo or List Perfectly?",
@@ -150,6 +199,33 @@
             "@type": "HowToStep",
             "name": "Instant P2P Transfer & Vision AI Listing",
             "text": "Photos beam directly to your PC monitor over WebRTC data channels, and Vision AI instantly drafts complete marketplace listings."
+          }
+        ]
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to 1-Click Cross-List Between Marketplaces Free",
+        "description": "Step-by-step guide to cross-listing products from Etsy to eBay, Poshmark, Mercari, or Depop using QuickSnipe for Chrome.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Open Source Product Page",
+            "text": "Navigate to your active listing on Etsy, eBay, Poshmark, Mercari, or Depop in Google Chrome."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Click Cross-List in QuickSnipe",
+            "text": "Open the QuickSnipe sidepanel and click Cross-List to extract titles, descriptions, item specifics, and high-res photos."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Download Photo ZIP Bundle",
+            "text": "Click Download ZIP to extract all original product images in 1 click to your local computer."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Autofill Target Marketplace via QuickBar HUD",
+            "text": "Open the destination marketplace listing creation page. Click 1-Click Fast Fill on the floating QuickBar HUD, upload your photos, and publish."
           }
         ]
       },

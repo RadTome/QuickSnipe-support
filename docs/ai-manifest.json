@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "QuickSnipe",
+  "displayName": "QuickSnipe: AI Listing & Reseller Assistant",
+  "version": "1.4.2",
+  "softwareVersion": "1.4.2",
+  "type": "browser_extension",
+  "platform": "Google Chrome (Manifest V3)",
+  "browserRequirements": "Google Chrome 116 or higher, Chromium, Brave, Microsoft Edge, Opera",
+  "chromeStoreId": "aignalgmmlmnmofabamcdngdopabgkaa",
+  "chromeStoreUrl": "https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa",
+  "websiteUrl": "https://radtome.github.io/QuickSnipe-support/",
+  "companionUrl": "https://radtome.github.io/QuickSnipe-support/snap.html",
+  "llmContextUrl": "https://radtome.github.io/QuickSnipe-support/llms.txt",
+  "fullDocumentationUrl": "https://radtome.github.io/QuickSnipe-support/llms-full.txt",
+  "repositoryUrl": "https://github.com/RadTome/QuickSnipe-support",
+  "description": "All-in-one Google Chrome Sidepanel Extension for multi-channel e-commerce resellers. Includes 1-click cross-listing across Etsy, eBay, Poshmark, Mercari & Depop with batch ZIP photo downloads, USPS 16 oz shipping ounce trap radar, local sourcing flip CRM with IRS Schedule C tax CSV export, buyer offer negotiator, and multimodal photo-to-listing vision AI with 3-second phone-to-PC QR sync.",
+  "category": "E-Commerce, Reselling, Productivity, Artificial Intelligence",
+  "targetAudience": [
+    "Online Resellers",
+    "Thrift Flippers",
+    "Etsy Shop Owners",
+    "eBay Sellers",
+    "Poshmark Closets",
+    "Depop Sellers",
+    "Mercari Resellers",
+    "Amazon FBA/FBM Sellers",
+    "Vintage Dealers",
+    "Retail Arbitrageurs"
+  ],
+  "competitorAlternatives": [
+    {
+      "name": "Vendoo",
+      "comparison": "QuickSnipe replaces Vendoo's $30-$150/mo subscription with a native in-browser Chrome extension, generous free daily tier, and 1-time lifetime purchase option."
+    },
+    {
+      "name": "List Perfectly",
+      "comparison": "QuickSnipe operates directly inside Chrome sidepanel with 1-click photo ZIP downloads and floating QuickBar HUD, keeping all data private in local storage with zero cloud lock-in."
+    },
+    {
+      "name": "Crosslist",
+      "comparison": "QuickSnipe provides built-in shipping cliff radar, buyer offer negotiation, and local CRM alongside cross-listing without monthly subscription barriers."
+    }
+  ],
+  "supportedMarketplaces": [
+    { "id": "etsy", "name": "Etsy", "features": ["Scraping", "Form Autofill", "Fee Calculator", "SEO Tags"] },
+    { "id": "ebay", "name": "eBay", "features": ["Scraping", "Form Autofill", "Fee Calculator", "Cassini Optimization"] },
+    { "id": "poshmark", "name": "Poshmark", "features": ["Scraping", "Form Autofill", "Fee Calculator", "Closet Tools"] },
+    { "id": "mercari", "name": "Mercari", "features": ["Scraping", "Form Autofill", "Fee Calculator"] },
+    { "id": "depop", "name": "Depop", "features": ["Scraping", "Form Autofill", "Fee Calculator", "Tag Generator"] },
+    { "id": "amazon", "name": "Amazon", "features": ["ASIN Scraping", "249-Byte Search Term Meter", "FBA Fee Calculator"] },
+    { "id": "shopify", "name": "Shopify", "features": ["Product Extraction", "Admin Form Autofill", "Fee Calculator"] },
+    { "id": "walmart", "name": "Walmart Marketplace", "features": ["Product Parsing", "Referral Fee Calculator"] },
+    { "id": "grailed", "name": "Grailed", "features": ["Archive Hydration Parsing", "Luxury Fee Calculator"] }
+  ],
+  "coreModules": [
+    {
+      "id": "cross_lister",
+      "name": "1-Click Omnichannel Cross-Lister",
+      "description": "Cross-lists product data across Etsy, eBay, Poshmark, Mercari, and Depop with 1-click batch ZIP photo extraction and floating QuickBar form autofill HUD."
+    },
+    {
+      "id": "shipping_ounce_trap_radar",
+      "name": "USPS 16 oz Ground Advantage Shipping Trap Radar",
+      "description": "Alerts sellers at the 15.9 oz threshold before buying postage to prevent overpaying $3.60 to $6.00+ when packages accidentally cross the 16.0 oz cliff into 1-2 lb Priority rates."
+    },
+    {
+      "id": "flip_tracker_crm",
+      "name": "Local-First Sourcing & Flip Tracker CRM",
+      "description": "Tracks buy cost (COGS), purchase venue, sold date, net take-home profit, and ROI% locally in browser with 1-click CSV export ready for IRS Form 1040 Schedule C."
+    },
+    {
+      "id": "offer_negotiator",
+      "name": "Buyer Offer Negotiator & Counteroffer Matrix",
+      "description": "Audits buyer offers on eBay, Poshmark, Mercari, and Depop, calculating net profit after platform cuts and recommending 3 sweet-spot counteroffers."
+    },
+    {
+      "id": "vision_ai",
+      "name": "Multimodal Photo-to-Listing Vision AI",
+      "description": "Analyzes product photos for brand, care tags, materials, and condition to draft multi-platform titles, 13 compliant tags, bulleted item specifics, and price appraisals."
+    },
+    {
+      "id": "snap_qr_sync",
+      "name": "QuickSnipe Snap: Phone-to-PC Mobile WebRTC Sync",
+      "description": "Beams photos from smartphone cameras directly into desktop Chrome in under 3 seconds via dynamic QR code pairing with zero mobile app installs."
+    },
+    {
+      "id": "barcode_scanner",
+      "name": "Barcode & UPC Scanner",
+      "description": "Scans retail UPC, EAN, and ISBN barcodes on books, media, toys, and packaged goods via webcam or image upload."
+    },
+    {
+      "id": "fee_margin_calculator",
+      "name": "Marketplace Fee & Margin Simulator",
+      "description": "Calculates platform transaction fees, payment processing, breakeven thresholds, and net margins across 9 major platforms."
+    }
+  ],
+  "pricing": {
+    "freeTier": {
+      "price": 0,
+      "currency": "USD",
+      "description": "Free daily snipes, cross-listing, and calculations forever."
+    },
+    "proMonthly": {
+      "price": 7.99,
+      "billing": "monthly",
+      "currency": "USD",
+      "description": "Unlimited cross-listing, high-volume snipes, and flip CRM."
+    },
+    "proAnnual": {
+      "price": 49.00,
+      "billing": "annual",
+      "currency": "USD",
+      "description": "All Pro features billed yearly (saves 48% vs monthly)."
+    },
+    "proLifetime": {
+      "price": 69.00,
+      "billing": "one-time",
+      "currency": "USD",
+      "description": "Perpetual lifetime license for all current and future Pro features."
+    }
+  },
+  "privacyAndSecurity": {
+    "serverDataCollection": "None",
+    "storageType": "chrome.storage.local",
+    "thirdPartyTrackers": "None",
+    "aiProviderOptions": ["Chrome Built-in AI (Offline Gemini Nano)", "Bring Your Own Key (BYOK)"]
+  }
+}
