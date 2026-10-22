@@ -1354,8 +1354,24 @@ code {
 }
 
 /* ==========================================================================
-   Upcoming Release Showcase (v1.4.2 Submitted)
+   Release Showcase (v1.4.2 Live in Web Store)
    ========================================================================== */
+
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(16, 185, 129, 0.14);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  white-space: nowrap;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
 
 .badge-submitted {
   display: inline-flex;
@@ -1417,6 +1433,10 @@ code {
   width: 100%;
   height: 3px;
   background: var(--grad-primary);
+}
+
+.upcoming-stage-card.stage-live::before {
+  background: linear-gradient(90deg, #10b981 0%, #6366f1 100%);
 }
 
 .upcoming-stage-card.stage-submitted::before {

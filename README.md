@@ -9,8 +9,8 @@
 
 ### Pure-Margin AI Listing Studio, Omnichannel Cross-Lister & Profit Copilot for Google Chrome
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.1_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.4.2_Submitted-amber.svg)](CHANGELOG.md)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Latest Release](https://img.shields.io/badge/Release-v1.4.2_Current-success.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -39,7 +39,7 @@
 |---|---|---|
 | 🌐 **Interactive Portal &amp; Live Sandboxes** | Official website with live fee simulator, LQS title grader, Ounce Trap radar, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
 | 📱 **Mobile Snap Companion** | Instant QR photo capture companion with P2P stream to desktop (zero app install) | [radtome.github.io/QuickSnipe-support/snap.html](https://radtome.github.io/QuickSnipe-support/snap.html) |
-| 📋 **Release Notes &amp; Roadmap** | Full changelog for upcoming v1.4.2 and version history | [CHANGELOG.md](CHANGELOG.md) |
+| 📋 **Release Notes &amp; Roadmap** | Full changelog for v1.4.2 and version history | [CHANGELOG.md](CHANGELOG.md) |
 | 📖 **Support Policy &amp; Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions &amp; Web Store compliance | [PRIVACY.md](PRIVACY.md) |
 | 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
@@ -51,18 +51,24 @@
 
 ---
 
-## 🚀 Release Status: v1.4.2 Submitted (v1.4.1 Live)
+## 🚀 Release Status: v1.4.2 Live in Chrome Web Store
 
-### ⏳ Upcoming Release: QuickSnipe v1.4.2 (Submitted to Chrome Web Store)
-QuickSnipe **v1.4.2** has been packaged, tested across **429 automated unit tests**, and officially submitted to the Google Chrome Web Store for review. Once approved by Google, all current users and new installs of **v1.4.1** will automatically receive this update via Google Chrome with zero data loss or configuration needed.
+### ⚡ Current Production Release: QuickSnipe v1.4.2
+QuickSnipe **v1.4.2** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)! Packaged and validated across **429 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
 
-**What's Coming Up in v1.4.2:**
+**What's New in v1.4.2:**
 - **🌐 1-Click Omnichannel Cross-Lister &amp; Floating QuickBar HUD**: Format listings for Etsy, eBay, Poshmark, Mercari, and Depop simultaneously. Extract full-resolution gallery photos into a clean ZIP archive with 1 click, and auto-populate listing forms using the floating QuickBar HUD. Directly replaces $30–$60/mo standalone cross-listers like Vendoo or List Perfectly.
 - **⚖️ USPS 16 oz Shipping Ounce Trap Advisor**: Real-time cliff radar alerts sellers at the critical 15.9 oz threshold before purchasing postage. Prevents single-order profit loss caused by 0.1–0.2 oz overage triggering the leap into 1–2 lb Priority rates ($8.75–$12.50+), saving $3.60 to $6.00+ on every shipment.
 - **📊 Sourcing &amp; Flip Tracker CRM (IRS Schedule C Tax Ready)**: Sandboxed local-first inventory CRM stored 100% locally on device in `chrome.storage.local`. Tracks thrift hauls, buy cost (COGS), purchase venue, sold date, net profit, and ROI% with 1-click CSV export formatted for IRS Schedule C tax filing.
 - **🤝 Buyer Offer Negotiator &amp; Counteroffer Matrix**: Audits buyer lowball offers on eBay, Poshmark, Mercari, and Depop. Calculates true net dollar take-home after fees and recommends 3 sweet-spot counteroffers (Aggressive, Balanced, Walkaway Floor).
 - **📷 Barcode &amp; UPC Scanner**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods via webcam or image upload with 100% local canvas processing.
 - **🧪 429 Automated Unit Tests**: Complete test coverage across 25 suites with 100% pass rate.
+
+### 📦 Previous Major Milestone: v1.4.1
+QuickSnipe **v1.4.1** strengthened cross-network resilience, scraper stability, and DOM security:
+- **🌐 Cloudflare Worker Durable Object Relay**: Automatic failover relay (`quicksnipe-bridge.radtome.com`) ensures mobile photo sync connects 100% reliably when direct WebRTC P2P ICE fails across restrictive cellular or firewall networks.
+- **🔍 Scraper Modernization &amp; Drift Hardening**: Re-engineered DOM scrapers across all 9 marketplaces with modular target schemas, automated canary drift detection, and noise-stripping canonical title cleaner.
+- **🛡️ DOM Injection &amp; Security Hardening**: Comprehensive audit and sanitization across sidepanel and QuickBar HUD preventing DOM injection vulnerabilities.
 
 ### 📦 Previous Major Milestone: v1.4.0
 QuickSnipe **v1.4.0** was the blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics. Available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).

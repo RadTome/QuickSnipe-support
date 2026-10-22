@@ -188,9 +188,9 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 ## 🚀 6. Release Updates (v1.4.2 / v1.4.1 / v1.4.0)
 
 ### Q: What is the current version of QuickSnipe?
-**A:** QuickSnipe **v1.4.1** is the current live production release available in the Chrome Web Store. **v1.4.2** has been officially submitted and is currently pending review by the Google Chrome Web Store team. All existing users and new installs will receive the v1.4.2 update automatically via Google Chrome once approved.
+**A:** QuickSnipe **v1.4.2** is the current live production release available in the Chrome Web Store. All existing users and new installs receive the v1.4.2 update automatically via Google Chrome with zero data loss or configuration needed.
 
-### Q: What is coming up in QuickSnipe v1.4.2?
+### Q: What is new in QuickSnipe v1.4.2?
 **A:** QuickSnipe **v1.4.2** introduces enterprise-grade reseller tooling, inventory management, shipping intelligence, and zero-fee cross-listing:
 - **🔄 1-Click Omnichannel Cross-Lister & ZIP Downloader**: Effortlessly bridge inventory across Etsy, eBay, Poshmark, Mercari, and Depop. Automatically packages full-resolution listing images into an instant client-side ZIP file download—eliminating the need for $30–$60/mo cross-listing subscriptions like Vendoo or List Perfectly.
 - **📦 USPS 16 oz Shipping Ounce Trap Advisor**: Real-time package weight audit that flags the notorious 15.1–16.0 oz USPS Ground Advantage weight cliff before you print a label or list an item, saving sellers up to $4.20 in accidental priority surcharges per package.
