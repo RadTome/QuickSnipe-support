@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>Free Reseller Fee Calculator (eBay, Poshmark, Etsy) | QuickSnipe</title>
+  <meta name="title" content="Free Reseller Fee Calculator (eBay, Poshmark, Etsy) | QuickSnipe">
+  <meta name="description"
+    content="Calculate real net profits across eBay, Poshmark, Etsy, Mercari & Amazon. Accurate 2026 platform commission, transaction fee & breakeven calculator. 100% free.">
+  <meta name="keywords"
+    content="ebay poshmark mercari fee calculator, reseller fee calculator 2026, free ebay profit calculator, etsy fee calculator, poshmark profit calculator, mercari fee calculator, depop fees, reseller margin calculator, breakeven price calculator">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="RadTome / QuickSnipe">
+  <link rel="canonical" href="https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html">
+
+  <!-- Favicon & Touch Icons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/icon-48.png">
+  <link rel="icon" type="image/png" sizes="128x128" href="assets/icon-128.png">
+  <link rel="apple-touch-icon" href="assets/icon-128.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html">
+  <meta property="og:title" content="Free Reseller Fee Calculator (eBay, Poshmark, Etsy) | QuickSnipe">
+  <meta property="og:description"
+    content="Calculate real net profits across eBay, Poshmark, Etsy, Mercari & Amazon. Accurate 2026 platform commission, transaction fee & breakeven calculator. 100% free.">
+  <meta property="og:image" content="https://radtome.github.io/QuickSnipe-support/assets/github-social-preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html">
+  <meta property="twitter:title" content="Free Reseller Fee Calculator (eBay, Poshmark, Etsy) | QuickSnipe">
+  <meta property="twitter:description"
+    content="Calculate real net profits across eBay, Poshmark, Etsy, Mercari & Amazon. Accurate 2026 platform commission, transaction fee & breakeven calculator. 100% free.">
+  <meta property="twitter:image" content="https://radtome.github.io/QuickSnipe-support/assets/github-social-preview.png">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "QuickSnipe Reseller Fee & Profit Calculator",
+        "url": "https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "ratingCount": "62",
+          "bestRating": "5"
+        },
+        "description": "Free real-time fee and profit margin calculator for eBay, Poshmark, Etsy, Mercari, Depop, Amazon, Shopify, Walmart, and Grailed."
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://radtome.github.io/QuickSnipe-support/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Marketplace Fee Calculator",
+            "item": "https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Sticky Glass Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="header-brand-group">
+        <a href="index.html" class="brand-link">
+          <img src="assets/icon.png" alt="QuickSnipe Icon" class="brand-icon" width="32" height="32">
+          <span class="brand-title">QuickSnipe</span>
+        </a>
+        <span class="badge-version"><span class="status-dot"></span>Free Tool</span>
+      </div>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="marketplace-fee-calculator.html" class="nav-link" style="color: var(--accent-primary); font-weight: 700;">Fee Calculator</a></li>
+          <li><a href="listing-title-grader.html" class="nav-link">Title Grader</a></li>
+          <li><a href="shipping-weight-calculator.html" class="nav-link">Shipping Radar</a></li>
+          <li><a href="vendoo-alternative-byok.html" class="nav-link">Vendoo Alt</a></li>
+          <li><a href="index.html#cross-lister" class="nav-link">Cross-Lister</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle-btn" class="btn-theme-toggle" aria-label="Toggle display theme">🌙</button>
+        <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+          target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          <span>⚡ Add to Chrome Free</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" style="padding-bottom: 40px;">
+    <div class="container">
+      <div class="hero-pill">
+        <span>💰 2026 Reseller Commission & Profit Engine</span>
+        <span style="opacity: 0.5;">•</span>
+        <span style="color: var(--accent-emerald); font-weight: 700;">100% Free • No Sign-Up</span>
+      </div>
+
+      <h1 class="hero-title" style="font-size: 2.7rem;">
+        Multi-Platform Reseller Fee &amp; Profit Calculator<br>
+        <span class="text-gradient">Know Your True Net Profit Before You List</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Calculate exact seller fees, commissions, payment processing charges, and breakeven prices across <strong>eBay, Poshmark, Etsy, Mercari, Depop, Amazon, Shopify, Walmart &amp; Grailed</strong>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Section -->
+  <section class="section-padding" style="padding-top: 10px;">
+    <div class="container" style="max-width: 860px;">
+      <div class="sandbox-box" style="box-shadow: var(--shadow-lg), var(--shadow-glow);">
+        <div class="sandbox-header">
+          <h2 class="sandbox-title" style="font-size: 1.5rem;">📊 Live Reseller Profit &amp; Fee Simulator</h2>
+          <span class="badge-tag">9 Platforms Supported</span>
+        </div>
+        <p style="font-size: 0.92rem; color: var(--text-muted); margin-bottom: 22px;">
+          Adjust listing price, buyer shipping, item acquisition cost (COGS), and out-of-pocket shipping to calculate true net take-home cash and your required breakeven sale price.
+        </p>
+
+        <div class="form-group">
+          <label class="form-label" for="calc-platform">Select Selling Marketplace</label>
+          <select id="calc-platform" class="form-select" style="font-size: 1rem; padding: 12px 14px;">
+            <option value="ebay" selected>eBay (13.25% final value + $0.30 fixed fee)</option>
+            <option value="poshmark">Poshmark (20% standard flat commission / $2.95 under $15)</option>
+            <option value="etsy">Etsy (6.5% transaction + $0.20 listing + 3% + $0.25 payment)</option>
+            <option value="mercari">Mercari (2.9% + $0.50 payment processing)</option>
+            <option value="depop">Depop (3.3% + $0.45 payment processing)</option>
+            <option value="amazon">Amazon FBM/FBA (15% standard referral fee)</option>
+            <option value="shopify">Shopify DTC (2.9% + $0.30 payment processing)</option>
+            <option value="walmart">Walmart Marketplace (15% standard referral)</option>
+            <option value="grailed">Grailed Luxury (9% commission + 3.49% + $0.49)</option>
+          </select>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="calc-sale-price">Listing Price ($)</label>
+            <input type="number" id="calc-sale-price" class="form-input" value="48.00" step="0.50" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="calc-shipping-charged">Buyer Paid Shipping ($)</label>
+            <input type="number" id="calc-shipping-charged" class="form-input" value="4.99" step="0.50" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="calc-cogs">Item Cost (COGS) ($)</label>
+            <input type="number" id="calc-cogs" class="form-input" value="12.00" step="0.50" min="0">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="calc-shipping-cost">Your Actual Shipping Cost ($)</label>
+            <input type="number" id="calc-shipping-cost" class="form-input" value="4.50" step="0.50" min="0">
+          </div>
+        </div>
+
+        <div class="calc-results-grid" style="margin-top: 24px;">
+          <div class="calc-stat-box">
+            <div class="calc-stat-label">Total Platform Fees</div>
+            <div id="calc-result-fees" class="calc-stat-val" style="color: var(--accent-rose);">$7.32</div>
+          </div>
+          <div class="calc-stat-box">
+            <div class="calc-stat-label">Net Take-Home Cash</div>
+            <div id="calc-result-profit" class="calc-stat-val val-profit">$29.17</div>
+          </div>
+          <div class="calc-stat-box">
+            <div class="calc-stat-label">Net Profit Margin</div>
+            <div id="calc-result-margin" class="calc-stat-val">55.0%</div>
+          </div>
+          <div class="calc-stat-box">
+            <div class="calc-stat-label">Breakeven Minimum Price</div>
+            <div id="calc-result-breakeven" class="calc-stat-val">$19.37</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Callout Banner -->
+      <div class="glass-card" style="margin-top: 36px; padding: 28px; border-radius: 18px; border: 1px solid var(--accent-primary); background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.12), transparent 50%), var(--bg-card); text-align: center;">
+        <span class="badge-tag" style="background: rgba(99, 102, 241, 0.2); color: var(--accent-primary); border-color: var(--accent-primary); margin-bottom: 12px; display: inline-block;">
+          ⚡ Auto-Pull Prices Directly From Listing Tabs
+        </span>
+        <h3 style="font-size: 1.4rem; color: var(--text-main); margin: 6px 0 10px;">
+          Tired of typing prices into a website calculator?
+        </h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted); max-width: 620px; margin: 0 auto 20px; line-height: 1.55;">
+          With the <strong>QuickSnipe Chrome Extension</strong>, the fee calculator lives directly in your sidepanel. Open any product page on eBay, Etsy, or Poshmark and click <strong>⚡ Pull Page Price</strong> to calculate margins instantly without switching tabs.
+        </p>
+        <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+          target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-md">
+          <span>⚡ Add QuickSnipe to Chrome — 100% Free</span>
+        </a>
+      </div>
+
+      <!-- Detailed 2026 Fee Guide for SEO Authority -->
+      <div style="margin-top: 50px;">
+        <h2 style="font-size: 1.8rem; color: var(--text-main); margin-bottom: 18px;">
+          2026 Reseller Marketplace Fee Comparison Guide
+        </h2>
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Marketplace</th>
+                <th>Standard Commission</th>
+                <th>Payment Processing</th>
+                <th>Listing Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>eBay</strong></td>
+                <td>13.25% (most categories)</td>
+                <td>Included in final value</td>
+                <td>250 free/mo, then $0.35</td>
+              </tr>
+              <tr>
+                <td><strong>Poshmark</strong></td>
+                <td>20% flat ($2.95 under $15)</td>
+                <td>Included in commission</td>
+                <td>$0.00</td>
+              </tr>
+              <tr>
+                <td><strong>Etsy</strong></td>
+                <td>6.5% transaction fee</td>
+                <td>3.0% + $0.25</td>
+                <td>$0.20 per 4-month renewal</td>
+              </tr>
+              <tr>
+                <td><strong>Mercari</strong></td>
+                <td>0% seller fee</td>
+                <td>2.9% + $0.50</td>
+                <td>$0.00</td>
+              </tr>
+              <tr>
+                <td><strong>Depop</strong></td>
+                <td>0% selling fee (US)</td>
+                <td>3.3% + $0.45</td>
+                <td>$0.00</td>
+              </tr>
+              <tr>
+                <td><strong>Amazon</strong></td>
+                <td>15% average referral fee</td>
+                <td>Included</td>
+                <td>$0.99/item or $39.99/mo</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Bottom Bar -->
+  <div id="sticky-install-bar" class="sticky-install-bar">
+    <div class="container sticky-install-inner">
+      <div class="sticky-bar-info">
+        <img src="assets/icon.png" alt="QuickSnipe" class="sticky-bar-icon" width="28" height="28">
+        <div>
+          <div class="sticky-bar-title">QuickSnipe for Chrome</div>
+          <div class="sticky-bar-rating">⭐⭐⭐⭐⭐ 5.0 Rating • Live Margin &amp; Fee HUD</div>
+        </div>
+      </div>
+      <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+        target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+        <span>⚡ Add to Chrome Free</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>© 2026 QuickSnipe / RadTome. 100% Client-Side Privacy. No seller data is sent to external servers.</p>
+      <div class="footer-bottom-links">
+        <a href="index.html">Home</a>
+        <a href="marketplace-fee-calculator.html">Fee Calculator</a>
+        <a href="listing-title-grader.html">Title Grader</a>
+        <a href="shipping-weight-calculator.html">Shipping Radar</a>
+        <a href="vendoo-alternative-byok.html">Vendoo Alt</a>
+        <a href="PRIVACY.md">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,13 +1,13 @@
 <div align="center">
 
 <a href="https://radtome.github.io/QuickSnipe-support/">
-  <img src="assets/github-social-preview.png" alt="QuickSnipe — Pure-Margin AI Reseller Studio & Profit Sniper" width="840" style="max-width: 100%; border-radius: 14px;" />
+  <img src="assets/github-social-preview.png" alt="QuickSnipe — Reseller Suite & Profit Copilot" width="840" style="max-width: 100%; border-radius: 14px;" />
 </a>
 <br><br>
 
-# ⚡ QuickSnipe
+# ⚡ QuickSnipe — Support & Documentation Repository
 
-### Pure-Margin AI Listing Studio, Omnichannel Cross-Lister & Profit Copilot for Google Chrome
+### Official Developer Documentation, Issue Tracker & Diagnostic Hub
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
 [![Latest Release](https://img.shields.io/badge/Release-v1.4.2_Current-success.svg)](CHANGELOG.md)
@@ -21,7 +21,7 @@
 <p align="center">
   <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Official Website &amp; Live Demos</b></a> •
   <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🛒 Chrome Web Store</b></a> •
-  <a href="#-quick-navigation"><b>⚡ Navigation</b></a> •
+  <a href="#-repository-navigation"><b>⚡ Navigation</b></a> •
   <a href="TROUBLESHOOTING.md"><b>🛠️ Troubleshooting</b></a> •
   <a href="FAQ.md"><b>❓ FAQs</b></a> •
   <a href="PRIVACY.md"><b>🛡️ Privacy Policy</b></a> •
@@ -33,16 +33,29 @@
 
 </div>
 
-## ⚡ Quick Navigation
+> [!IMPORTANT]
+> ### 🌐 Looking for the Web Tools & Interactive Calculators?
+> **This repository is dedicated to technical issue tracking, developer documentation, and support.**  
+> For the interactive calculator suite, title quality grader, live sandboxes, and full feature tour, visit our live web portal:  
+> 👉 **[https://radtome.github.io/QuickSnipe-support/](https://radtome.github.io/QuickSnipe-support/)**
+> 
+> * **[Marketplace Fee & Profit Simulator](https://radtome.github.io/QuickSnipe-support/marketplace-fee-calculator.html)** — Calculate net profits for eBay, Poshmark, Mercari, Etsy & Amazon.
+> * **[Listing Title SEO & Character Grader](https://radtome.github.io/QuickSnipe-support/listing-title-grader.html)** — Audit 80-char eBay and 140-char Etsy titles in real time.
+> * **[USPS Shipping Weight & Ounce Trap Calculator](https://radtome.github.io/QuickSnipe-support/shipping-weight-calculator.html)** — Avoid the 16 oz Ground Advantage cliff before buying postage.
+> * **[Free Vendoo & List Perfectly Alternative Guide](https://radtome.github.io/QuickSnipe-support/vendoo-alternative-byok.html)** — Replace $30–$60/mo subscriptions with BYOK client-side architecture.
+
+---
+
+## ⚡ Repository Navigation
 
 | Resource | Description | Link |
 |---|---|---|
-| 🌐 **Interactive Portal &amp; Live Sandboxes** | Official website with live fee simulator, LQS title grader, Ounce Trap radar, and BYOK setup | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
+| 🌐 **Live Web Portal &amp; Sandboxes** | Official interactive web calculators and feature previews | [radtome.github.io/QuickSnipe-support](https://radtome.github.io/QuickSnipe-support/) |
 | 📱 **Mobile Snap Companion** | Instant QR photo capture companion with P2P stream to desktop (zero app install) | [radtome.github.io/QuickSnipe-support/snap.html](https://radtome.github.io/QuickSnipe-support/snap.html) |
 | 📋 **Release Notes &amp; Roadmap** | Full changelog for v1.4.2 and version history | [CHANGELOG.md](CHANGELOG.md) |
-| 📖 **Support Policy &amp; Channels** | How to get support, SLA, and response guidelines | [SUPPORT.md](SUPPORT.md) |
+| 📖 **Support Policy &amp; SLA** | Support channels, response timelines, and ticketing policies | [SUPPORT.md](SUPPORT.md) |
 | 🛡️ **Privacy Policy** | 100% client-side data handling, permissions &amp; Web Store compliance | [PRIVACY.md](PRIVACY.md) |
-| 🛠️ **Troubleshooting Guide** | Step-by-step diagnostics for scraping, API keys, and autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
+| 🛠️ **Troubleshooting Guide** | Diagnostics for scrapers, API keys, and DOM form autofill | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) |
 | ❓ **Frequently Asked Questions** | Common seller questions, safety, bans, and licensing | [FAQ.md](FAQ.md) |
 | 🔒 **Security &amp; Disclosures** | Security vulnerability reporting and private advisories | [SECURITY.md](SECURITY.md) |
 | 🐛 **Open a Bug Report** | Report broken scrapers, UI glitches, or extension errors | [Submit Bug](https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml) |
@@ -53,188 +66,24 @@
 
 ## 🚀 Release Status: v1.4.2 Live in Chrome Web Store
 
-### ⚡ Current Production Release: QuickSnipe v1.4.2
-QuickSnipe **v1.4.2** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)! Packaged and validated across **429 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
+QuickSnipe **v1.4.2** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). Packaged and validated across **429 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
 
-**What's New in v1.4.2:**
-- **🌐 1-Click Omnichannel Cross-Lister &amp; Floating QuickBar HUD**: Format listings for Etsy, eBay, Poshmark, Mercari, and Depop simultaneously. Extract full-resolution gallery photos into a clean ZIP archive with 1 click, and auto-populate listing forms using the floating QuickBar HUD. Directly replaces $30–$60/mo standalone cross-listers like Vendoo or List Perfectly.
-- **⚖️ USPS 16 oz Shipping Ounce Trap Advisor**: Real-time cliff radar alerts sellers at the critical 15.9 oz threshold before purchasing postage. Prevents single-order profit loss caused by 0.1–0.2 oz overage triggering the leap into 1–2 lb Priority rates ($8.75–$12.50+), saving $3.60 to $6.00+ on every shipment.
-- **📊 Sourcing &amp; Flip Tracker CRM (IRS Schedule C Tax Ready)**: Sandboxed local-first inventory CRM stored 100% locally on device in `chrome.storage.local`. Tracks thrift hauls, buy cost (COGS), purchase venue, sold date, net profit, and ROI% with 1-click CSV export formatted for IRS Schedule C tax filing.
-- **🤝 Buyer Offer Negotiator &amp; Counteroffer Matrix**: Audits buyer lowball offers on eBay, Poshmark, Mercari, and Depop. Calculates true net dollar take-home after fees and recommends 3 sweet-spot counteroffers (Aggressive, Balanced, Walkaway Floor).
-- **📷 Barcode &amp; UPC Scanner**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods via webcam or image upload with 100% local canvas processing.
-- **🧪 429 Automated Unit Tests**: Complete test coverage across 25 suites with 100% pass rate.
+**Technical Highlights in v1.4.2:**
+- **Omnichannel Cross-Lister & Floating QuickBar HUD**: Format listings for Etsy, eBay, Poshmark, Mercari, and Depop simultaneously. Extract full-resolution gallery photos into a clean ZIP archive with 1 click, and auto-populate listing forms via the floating QuickBar HUD.
+- **USPS 16 oz Shipping Ounce Trap Advisor**: Real-time cliff radar alerts sellers at the critical 15.9 oz threshold before purchasing postage. Prevents 0.1–0.2 oz overages from triggering 1–2 lb Priority rates.
+- **Sourcing & Flip Tracker CRM**: Local-first inventory CRM stored 100% on device in `chrome.storage.local`. Tracks thrift hauls, buy cost (COGS), purchase venue, sold date, net profit, and ROI% with 1-click IRS Schedule C CSV export.
+- **Buyer Offer Negotiator & Counteroffer Matrix**: Audits buyer lowball offers on eBay, Poshmark, Mercari, and Depop. Calculates true net dollar take-home after fees and recommends 3 sweet-spot counteroffers.
+- **Barcode & UPC Scanner**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods via webcam or image upload with local canvas processing.
 
-### 📦 Previous Major Milestone: v1.4.1
-QuickSnipe **v1.4.1** strengthened cross-network resilience, scraper stability, and DOM security:
-- **🌐 Cloudflare Worker Durable Object Relay**: Automatic failover relay (`quicksnipe-bridge.radtome.com`) ensures mobile photo sync connects 100% reliably when direct WebRTC P2P ICE fails across restrictive cellular or firewall networks.
-- **🔍 Scraper Modernization &amp; Drift Hardening**: Re-engineered DOM scrapers across all 9 marketplaces with modular target schemas, automated canary drift detection, and noise-stripping canonical title cleaner.
-- **🛡️ DOM Injection &amp; Security Hardening**: Comprehensive audit and sanitization across sidepanel and QuickBar HUD preventing DOM injection vulnerabilities.
-
-### 📦 Previous Major Milestone: v1.4.0
-QuickSnipe **v1.4.0** was the blockbuster release introducing multimodal AI capabilities, multi-platform expansion, resilient AI routing, backup tools, and seller ergonomics. Available directly in the [Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).
-
-**Key Highlights in v1.4.0:**
-- **📸 BLOCKBUSTER: Photo-to-Listing Vision Snipe & Real-Time Mobile QR Sync**: Turn any product photo into a finished multi-platform listing in seconds. Drag & drop an image, right-click any web photo, or **scan a dynamic QR code on your phone (`snap.html`) to beam photos directly from your mobile camera to your desktop browser with ZERO mobile app installs**. Multimodal AI inspects logos, care tags, materials, and condition, then automatically drafts optimized titles for Etsy, eBay, and Poshmark, 13 compliant tags, item specifics, a buyer story pitch, and pricing appraisal.
-- **📱 Real-Time WebRTC & Cloudflare Sync Bridge**: Instant phone-to-PC photo transfer over encrypted peer-to-peer data channels backed by a dedicated Cloudflare Worker Durable Object WebSocket bridge fallback. Supports live viewfinder shooting and multi-image photo gallery queues.
-- **🛒 Walmart & Grailed Expansion**: Native DOM parser and listing generator for Walmart product pages (`/ip/`) with 25x review velocity estimation, plus Next.js hydration payload extraction for Grailed archive luxury listings.
-- **🟢 Active Marketplace Tab Badge**: Chrome toolbar icon displays an emerald dot (`●`) and contextual seller tooltip whenever you are browsing a supported marketplace.
-- **🛡️ Smart HTTP 429 Rate-Limit Fallback**: Automatically falls back to a configured backup model (Groq Llama 3.3 or Chrome Built-in Nano) when quota is exhausted, with transparent seller notices.
-- **💾 Backup Import & Restore**: Export and import full QuickSnipe settings and swipe collections, with active API key preservation to prevent redaction overwrite.
-- **💙 Direct In-App Feature Suggestions**: Send marketplace and feature ideas straight from the Settings page to our development roadmap.
-- **👋 Branded Farewell Experience**: Replaced raw technical survey links with a custom, seller-friendly GitHub Pages farewell portal (`farewell.html`).
-- **⌨️ Keyboard Badges & Ergonomics**: Added visible `Alt+Q` (Studio toggle) and `Alt+Shift+S` (Save Swipe) badges across the sidepanel header, Swipes tab, and Settings guide.
-- **💰 Pure-Value Pricing Stack**: Introduced $7.99/mo, $49/yr, and $69 one-time lifetime tiers, undercutting legacy tools by 60%+ with zero server token markup.
-- **💎 Pro Experience Polish**: All promotional banners, upgrade buttons, and daily usage meters are cleanly hidden once Pro is active.
-- **⚡ Lightweight Popup Boot**: Extracted minimal site detector `utils/detect-site.js` (~500B) replacing 143KB parser bundle in popup context, reducing popup load time by ~200ms.
-- **🔄 Service Worker Keepalive & AI Timeout**: Keepalive connection prevents idle termination during long LLM calls, coupled with a 90-second client-side timeout wrapper.
-- **🛡️ Hardened QuickBar XSS Prevention**: Eliminated `innerHTML` in in-page notifications in favor of safe DOM construction and `textContent`.
-- **♿ APG Accessibility Upgrades**: Added `tabindex="0"` to all tab panels, `aria-live="polite"` to dynamic result containers, and full progressbar attributes in popup.
-- **🎨 3-Way Theme Cycling**: Quick toggle now cycles smoothly through Dark, Light Glass, and System Auto with high-contrast light mode styling.
-- **⌨️ Conflict-Free Hotkey**: Changed swipe capture hotkey to `Alt+Shift+S` to prevent collisions with browser "Save As".
-- **⚡ Complete Session State Continuity**: Reopening the sidepanel automatically restores competitor analyses, custom queries, mined reviews, and profit calculations without data loss.
-- **🎯 Direct Studio Tool Routing**: Creator dashboard quick-action cards route straight into the corresponding studio tool upon launch.
-- **🔒 Strict Host Storage Sandboxing**: In-page QuickBar positions and snooze preferences save strictly to isolated `chrome.storage.local`, leaving zero footprint on merchant sites.
-- **✍️ Form Autofill Focus Preservation**: 1-Click Fast Fill retains active field focus and cursor position after injection.
-- **♿ W3C APG Accessibility**: Roving `tabindex` arrow-key tab switching, accessible modal dialog focus trapping, and `Escape` key dismissal.
-- **🪟 Pointer-Capture Dragging**: Shadow DOM event boundary and pointer capture prevent mouse-drop issues over iframes.
-- **📱 320px–360px Narrow Viewport Support**: Header overflow collapse and smooth scroll-snap tab navigation.
-- **🔄 Tab Connection Recovery**: Proactive prompts guide sellers to reload tabs after background service worker updates.
-- **📋 Local Offline Feedback**: Instant local recording with 1-click clipboard export and GitHub Discussions bridging.
-
-### 📦 Previous Major Milestone: v1.3.2
-- **🛡️ Least-Privilege Security Hardening**: Purged broad wildcard host permissions (`http://*/*`, `https://*/*`) and unneeded `tabs` permission. Active tab inspection strictly via focused `activeTab`.
-- **🌓 WCAG AAA High-Contrast Light Glass Theme**: High-contrast typography (`#0f172a` / `#334155`) across notice banners, AI model tier tags, and modal dialogs.
-- **⚡ Session Continuity & UI State Preservation**: Reopening sidepanel instantly restores active competitor analyses, search queries, mined review results, and profit calculations without losing progress.
-- **♿ W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` dismissal.
-
-### 📦 Previous Major Milestone: v1.3.1
-- **🤖 On-Device AI with Chrome Built-in AI**: Zero-key, 100% private local listing generation via Gemini Nano (Chrome 131+ Prompt API).
-- **🔑 Expanded BYOK Models**: Instant access to Google Gemini 3.6/2.0 Flash, Groq Llama 3.3 70B, Claude 3.7 Sonnet, OpenAI GPT-4o, DeepSeek V3/R1, OpenRouter, and offline Ollama.
-- **🛒 Walmart & Grailed Integration**: Dedicated scrapers, AI generators, and fee calculator presets for Walmart Marketplace and Grailed Luxury Archive.
-- **📈 Competitor Sales Velocity & Revenue Sniper**: Monthly unit volume and gross revenue run-rates with Unicorn 🦄, Fast Mover 🔥, Steady ⚡, and Emerging 🌱 badges.
-- **🏆 Listing Quality Scorecard (LQS)**: Instant Grade S to F audits with 1-click missing attribute fixes.
-- **⚡ 1-Click Form Autofill & QuickBar HUD**: Native React/Vue-compatible form population on Etsy, Amazon, eBay, Shopify, Poshmark, and Depop.
-- **📦 Amazon 249B Search Term Validator**: Strict UTF-8 byte boundary enforcement with automated stop word cleaner.
-
-👉 *For complete version history and detailed change logs, see [CHANGELOG.md](CHANGELOG.md).*
-
----
-
-## 📖 What is QuickSnipe?
-
-**QuickSnipe** is a high-performance **Google Chrome Sidepanel Extension (Manifest V3)** built specifically for multi-channel e-commerce sellers across **Etsy, Amazon, eBay, Shopify, Poshmark, Depop, Mercari, Walmart, and Grailed**.
-
-Instead of paying $20–$99/month for multiple bloated SaaS tools that store your seller data on third-party servers, QuickSnipe runs **100% locally in your browser** with zero cloud server overhead, zero subscription lock-in, and zero latency.
-
----
-
-## 💎 Core Feature Breakdown
-
-| 🤖 AI Studio & Vision | 📈 Sales Velocity & Sniper | 💬 Reviews | 🏆 Quality & SEO | 🔧 Tools & QuickBar |
-|:---:|:---:|:---:|:---:|:---:|
-| **Photo-to-Listing Vision**<br>Multimodal tag, fabric & brand reader | **Revenue & Velocity Sniper**<br>Monthly unit sales, revenue run-rates & velocity tiers | **Review Miner**<br>Scrapes 1–3 star complaints on competitor items | **Listing Quality Scorecard (LQS)**<br>Grade S to F audits with instant 1-click fixes | **Profit Calculator**<br>Live fees, margins, ROI & breakeven prices |
-| **Mobile QR Photo Sync**<br>Instant phone-to-PC camera beam (no app) | **Price Sweet-Spot**<br>Median, Min, Max & price distribution curves | **Objection Slayer**<br>Converts buyer objections into FAQs | **Trademark Pre-Flight Guard**<br>Flags IP risks and protected brand names | **In-Page QuickBar**<br>Floating 1-click form autofill HUD |
-| **10+ AI Generators**<br>Etsy, Amazon, eBay, Shopify, Poshmark... | **Keyword Gap Matrix**<br>Venn analysis vs top 24 ranking competitors | **Social & Ads Kit**<br>Instagram, TikTok, Pinterest & paid search copy | **Readability & Meta Audit**<br>Flesch-Kincaid grade & image alt-tags | **1-Click Form Autofill**<br>Populates titles, tags & descriptions |
-| **Omnichannel Transmuter**<br>Generates platform-tailored packs in 1 pass | **Omnichannel Cross-Market**<br>Simultaneous price snipes across 4 markets | **Review Pain Extraction**<br>Sizing, material & packing flaw summaries | **Amazon 249B Validator**<br>Strict UTF-8 byte meter & stop word cleaner | **Persistent Swipe File**<br>1-Click CSV/Sheets export & state restore |
-
-### 1. 📱 Snap on Phone: Instant QR Code Mobile Photo Sync & Multimodal Vision Snipe
-Photograph thrift items, apparel, vintage goods, or craft inventory on your smartphone and watch them land on your desktop monitor in real time—with **Zero App Store Downloads**, **Zero Account Signups**, and **Zero Cables**.
-- **Instant Dynamic QR Code**: Click **Snap on Phone (QR)** in the QuickSnipe sidepanel under **AI Studio → Photo-to-Listing**. A temporary, secure pairing QR code is generated on screen.
-- **Native Phone Camera Scan**: Point your iPhone or Android camera at the QR code. It opens QuickSnipe's high-speed companion web portal (`snap.html`) directly in Safari or Chrome.
-- **Direct P2P WebRTC & Cloudflare Bridge**: Photos stream directly from your phone camera to your computer screen in seconds over encrypted peer-to-peer data channels, backed by a dedicated Cloudflare Worker Durable Object WebSocket bridge fallback.
-- **Live Viewfinder & Multi-Image Gallery**: Snap photos live in-browser or batch select up to 10 photos from your phone's photo library.
-- **Multimodal AI Listing Generation**: In under 10 seconds, QuickSnipe's Vision AI analyzes maker tags, materials, sponsor patches, hallmarks, and condition, drafting complete listings for Etsy (140-char title + 13 tags), eBay (80-char title + item specifics), and Poshmark.
-
-### 2. ⚡ 1-Click Form Autofill Engine & In-Page QuickBar
-Push AI-generated Title, Price, Description, and Tags directly into active listing creation and edit forms on **Etsy Shop Manager, Amazon Seller Central, eBay Selling, Shopify Admin, Poshmark, and Depop**.
-- **Floating QuickBar HUD**: In-page quick-action assistant for rapid form mapping without switching windows. Press `Esc` to instantly minimize.
-- Uses native `HTMLInputElement.prototype` setters and dispatches synthetic `input`, `change`, and `blur` events so React, Vue, and Angular internal form states update immediately.
-
-### 3. 📈 Competitor Sales Velocity & Gross Revenue Estimator
-Uncover what competing listings are generating in monthly volume and gross revenue:
-- Estimates monthly unit sales and gross revenue run-rates using category-specific review-velocity models and explicit recent buyer indicators.
-- Assigns actionable velocity tier badges: **Unicorn 🦄**, **Fast Mover 🔥**, **Steady ⚡**, and **Emerging 🌱**.
-- Includes niche revenue aggregates and 1-click CSV/Sheets TSV export.
-
-### 4. 🏆 Listing Quality Scorecard (LQS) & Pre-Flight Guard
-- Pre-flight diagnostic engine audits listing drafts with letter grades from **Grade S (Exceptional)** down to **Grade F (Critical Issues)**.
-- Analyzes title truncation across platforms, tag count limits, keyword density, and pricing corridors vs. competitor medians.
-- Provides instant 1-click auto-fix remedies for missing attributes.
-
-### 5. 🛡️ Trademark Pre-Flight Guard
-- Scans draft titles, bullets, and tags against high-risk intellectual property and protected brand names before publishing.
-- Flags potential infringement terms and suggests safe generic merchandising alternatives to help keep your seller account compliant.
-
-### 6. 💰 Multi-Platform Profit & Margin Calculator
-Live real-time fee breakdown and unit economic analysis:
-- **Metrics Calculated**: Platform Fees, Payment Processing Fees, Listing Fees, Shipping & Packaging, Cost of Goods Sold (COGS), Advertising / Offsite Ads, FBA Fees.
-- **Outputs**: Total Costs ($), Net Profit ($), Profit Margin (%), Return on Investment (ROI %), and Breakeven Sale Price ($).
-- **`⚡ Pull Page Price`**: Automatically extracts the active item's price directly from the page DOM with one click.
-
-### 7. 🎯 Competitor Keyword Gap Matrix & Price Sniper
-- Scrapes the top 24 organic search competitor listings on Etsy, Amazon, eBay, and Mercari.
-- Runs Venn set analysis comparing your active listing against competitor keywords.
-- Calculates competitor adoption percentage share and isolates high-frequency keywords you are missing with a 1-click `⚡ Borrow Keywords` injection button.
-- **Omnichannel Cross-Market Mode**: Query and compare competitor prices across Etsy, eBay, Poshmark, and Mercari simultaneously with smart category noise filtering.
-
-### 8. 💬 Customer Review Objection Miner
-- Scrapes 1–3 star customer reviews on competitor listings.
-- Identifies recurring buyer pain points, product flaws, sizing confusion, or packaging gripes.
-- Generates 3 counter-objection value propositions and copy-ready FAQ sections to bulletproof your own listing.
-
-### 9. 🔍 Full-Page SEO & Content Auditor
-- Analyzes listing copy for readability: **Flesch-Kincaid Reading Grade Level**, **Reading Ease Score**, word count, and syllable distribution.
-- Audits Title Length vs. platform maximums (e.g. Etsy 140c, eBay 80c, Amazon 200c, Walmart 178c).
-- Scrapes and verifies OpenGraph (`og:title`, `og:image`) and Twitter Card meta tags.
-- **AI Image Alt-Text Generator**: Scrapes product gallery images and generates 5 keyword-rich accessible alt tags.
-
-### 10. 📦 Amazon Backend Search Terms 249-Byte Validator
-- Strictly enforces Amazon Seller Central's $\le 249$ UTF-8 byte boundary using native `TextEncoder`.
-- Strips Amazon stop words (`and`, `with`, `for`, `the`, `from`, `this`, `that`, `a`, `an`, `in`, `of`, `to`), punctuation, and redundant terms.
-- Features a live color-coded byte progress meter gauge.
-
-### 11. 🚀 10+ Specialized AI Studio Generators & Omnichannel Transmuter
-- **Etsy Power Listing**: 140-char high-converting title, 13 rank-ready tags (≤20 chars), structured markdown description.
-- **Amazon FBA Listing**: 200-char brand title, 5 benefit-driven feature bullet points, 249-byte search terms.
-- **eBay Cassini Optimizer**: 80-char character-dense title, structured item specifics, item description.
-- **Shopify DTC Landing Page**: Above-the-fold headline, customer hooks, benefit pillars, objection-killing FAQ.
-- **Poshmark Closet Listing**: Closet-optimized title, brand/size tags, bundle incentive hooks.
-- **Depop Aesthetic Listing**: Vintage/streetwear hashtags, condition notes, measurement hooks.
-- **Mercari Fast-Sale Listing**: Clear condition description, item keywords, fast-shipping badges.
-- **Walmart Marketplace**: Shelf-ready title, key feature bullets, and category taxonomy.
-- **Grailed Archive Luxury**: Condition grading, designer credentials, and collector styling details.
-- **Omnichannel Transmuter**: Reformat a single product draft into customized, platform-compliant listing packs across multiple selling channels in one pass.
-- **3-Platform Social Kit & Paid Ads**: Hooks for Instagram Reels, TikTok, Pinterest SEO pins, and high-ROAS ad copy.
-
-### 12. 📁 Local Swipe File & Export Suite
-- Save winning titles, competitor phrases, and generated copy snippets directly to your local persistent Swipe File.
-- 1-click **CSV download** and **Google Sheets / Excel TSV clipboard copy** for offline spreadsheets.
-- **Session State Restoration**: Reopening the sidepanel immediately restores active competitor snipes, mined reviews, and audit data without losing your progress.
-- **Triple Theme Engine**: Seamlessly switch between **Cyber Dark**, frosted **Light Glass**, or automatic **System OS Sync**.
-
----
-
-## 🛒 Supported Marketplaces Matrix
-
-| Platform | Product Scraping | Search Grid Scraping | Review Mining | 1-Click Form Autofill | Fee Calculator Preset |
-|---|:---:|:---:|:---:|:---:|:---:|
-| **Etsy** | ✅ | ✅ | ✅ | ✅ | ✅ (6.5% + $0.20 + 3% + $0.25) |
-| **Amazon** | ✅ | ✅ | ✅ | ✅ | ✅ (15% Referral + FBA) |
-| **eBay** | ✅ | ✅ | ✅ | ✅ | ✅ (13.25% + $0.30) |
-| **Shopify** | ✅ | ✅ | ✅ | ✅ | ✅ (2.9% + $0.30) |
-| **Poshmark** | ✅ | ✅ | ❌ | ✅ | ✅ ($2.95 or 20%) |
-| **Depop** | ✅ | ✅ | ❌ | ✅ | ✅ (3.3% + $0.45) |
-| **Mercari** | ✅ | ✅ | ❌ | ✅ | ✅ (2.9% + $0.50) |
-| **Walmart** | ✅ | ✅ | ✅ | ✅ | ✅ (15% Referral) |
-| **Grailed** | ✅ | ✅ | ✅ | ✅ | ✅ (9% Commission + 3.49%) |
+*For complete version history and legacy releases (v1.4.1, v1.4.0, v1.3.2), see [CHANGELOG.md](CHANGELOG.md).*
 
 ---
 
 ## 🛡️ Bring Your Own Key (BYOK) AI Setup Guide
 
-QuickSnipe is built on a **100% Client-Side BYOK Architecture**.
+QuickSnipe is built on a **100% Client-Side BYOK Architecture**:
 - Your API keys are stored exclusively in your local browser storage (`chrome.storage.local`).
-- Requests travel directly from your browser to the official provider endpoint via HTTPS.
+- Requests travel directly from your browser to official provider endpoints via HTTPS.
 - **Zero middleman servers. Zero tracking. Zero subscription markups on AI tokens.**
 
 ### Supported AI Providers
@@ -250,23 +99,18 @@ QuickSnipe is built on a **100% Client-Side BYOK Architecture**.
 | **OpenRouter** | `google/gemini-2.0-flash-001` (200+ models) | Pay-as-you-go | [OpenRouter Keys](https://openrouter.ai/keys) |
 | **Ollama** | `llama3.3` / `deepseek-r1:8b` / `qwen2.5` | **100% Free & Offline** | [Ollama.com](https://ollama.com/) |
 
-### How to Configure Your API Key
+### Configuring Your API Key in the Extension
 
-1. Open QuickSnipe Sidepanel in Chrome by clicking the extension icon or pressing **`Alt+Q`** (`Ctrl+Shift+S` to save selected text to Swipes).
+1. Open QuickSnipe Sidepanel in Chrome by clicking the extension icon or pressing **`Alt+Q`**.
 2. Click the **⚙ (Settings)** button in the top right header.
 3. Select your preferred **AI Provider** from the dropdown.
 4. Paste your API key into the input field.
 5. Choose your target model and click **Save Settings**.
-6. The green checkmark will confirm successful connection.
-
-> [!TIP]
-> **No API Key? No Problem — But Free Cloud BYOK is 20x Faster!**  
-> If no cloud API key is configured, QuickSnipe can activate **Chrome Built-in AI (Gemini Nano)** when available, or seamlessly fall back to its **Smart Local Heuristic Engine**.  
-> *Performance Note:* Because on-device Gemini Nano runs on your local CPU/RAM without cloud GPU acceleration, generation can be noticeably slow (~15–30s). We strongly recommend connecting a free **Google Gemini** key from [Google AI Studio](https://aistudio.google.com/app/apikey) (15 req/min free, zero credit card) for sub-second generation speed and superior conversion copy.
+6. A green checkmark confirms successful connection.
 
 ---
 
-## 🔒 Privacy & Permissions Disclosures
+## 🔒 Privacy & Permissions Architecture
 
 QuickSnipe adheres strictly to Google Chrome Web Store Developer Policies and the principle of least privilege:
 
