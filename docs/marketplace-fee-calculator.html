@@ -89,25 +89,71 @@
 
 <body>
 
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Sticky Glass Navigation -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="header-brand-group">
-        <a href="index.html" class="brand-link">
+        <a href="index.html" class="brand-link" aria-label="QuickSnipe Home">
           <img src="assets/icon.png" alt="QuickSnipe Icon" class="brand-icon" width="32" height="32">
           <span class="brand-title">QuickSnipe</span>
         </a>
-        <span class="badge-version"><span class="status-dot"></span>Free Tool</span>
+        <span class="badge-version"><span class="status-dot" aria-hidden="true"></span>Free Tool</span>
       </div>
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="marketplace-fee-calculator.html" class="nav-link" style="color: var(--accent-primary); font-weight: 700;">Fee Calculator</a></li>
-          <li><a href="listing-title-grader.html" class="nav-link">Title Grader</a></li>
-          <li><a href="shipping-weight-calculator.html" class="nav-link">Shipping Radar</a></li>
-          <li><a href="vendoo-alternative-byok.html" class="nav-link">Vendoo Alt</a></li>
+          <li><a href="index.html#v142-features" class="nav-link">What's New <span class="nav-link-badge">v1.4.2</span></a></li>
           <li><a href="index.html#cross-lister" class="nav-link">Cross-Lister</a></li>
+          <li class="nav-item-dropdown">
+            <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true" aria-controls="tools-dropdown-menu" style="color: var(--accent-primary); font-weight: 700;">
+              <span>Free Tools</span>
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="2 4 6 8 10 4"></polyline>
+              </svg>
+            </button>
+            <ul id="tools-dropdown-menu" class="dropdown-menu" role="menu">
+              <li role="none">
+                <a role="menuitem" href="marketplace-fee-calculator.html" class="dropdown-item active" aria-current="page">
+                  <span class="dropdown-icon" aria-hidden="true">🧮</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Fee Calculator</span>
+                    <span class="dropdown-desc">Net profit &amp; breakeven for 9 platforms</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="listing-title-grader.html" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">⚡</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Title Grader</span>
+                    <span class="dropdown-desc">Amazon 249-byte &amp; SEO character meter</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="shipping-weight-calculator.html" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">⚖️</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Shipping Radar</span>
+                    <span class="dropdown-desc">USPS 16 oz Ground Advantage cliff alerts</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="vendoo-alternative-byok.html" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">🔄</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Vendoo Alternative</span>
+                    <span class="dropdown-desc">Why switch from $30/mo to client-side BYOK</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="index.html#faq" class="nav-link">FAQ</a></li>
         </ul>
       </nav>
 
@@ -115,14 +161,68 @@
         <button id="theme-toggle-btn" class="btn-theme-toggle" aria-label="Toggle display theme">🌙</button>
         <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
           target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <span>⚡ Add to Chrome Free</span>
+          <span>⚡ Add to Chrome</span>
         </a>
+        <button id="mobile-menu-btn" class="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
 
+  <!-- Accessible Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" hidden>
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+    <div class="mobile-nav-panel">
+      <div class="mobile-nav-header">
+        <a href="index.html" class="brand-link">
+          <img src="assets/icon.png" alt="QuickSnipe Icon" class="brand-icon" width="28" height="28">
+          <span class="brand-title">QuickSnipe</span>
+        </a>
+        <button id="mobile-menu-close" class="btn-close-mobile" aria-label="Close navigation menu">✕</button>
+      </div>
+      <nav class="mobile-nav-body">
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Core Reseller Suite</span>
+          <ul class="mobile-links-list">
+            <li><a href="index.html#v142-features" class="mobile-link">🚀 What's New in v1.4.2</a></li>
+            <li><a href="index.html#cross-lister" class="mobile-link">⚡ 1-Click Omnichannel Cross-Lister</a></li>
+            <li><a href="index.html#flip-crm" class="mobile-link">📊 Local-First Flip CRM</a></li>
+            <li><a href="index.html#transfer-photos-phone-to-pc" class="mobile-link">📱 Snap Phone-to-PC (QR)</a></li>
+          </ul>
+        </div>
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Free Web Calculators</span>
+          <ul class="mobile-links-list">
+            <li><a href="marketplace-fee-calculator.html" class="mobile-link active" aria-current="page">🧮 9-Platform Fee &amp; Profit Calculator</a></li>
+            <li><a href="listing-title-grader.html" class="mobile-link">⚡ Listing Title Grader &amp; Byte Meter</a></li>
+            <li><a href="shipping-weight-calculator.html" class="mobile-link">⚖️ USPS 16 oz Shipping Trap Radar</a></li>
+            <li><a href="vendoo-alternative-byok.html" class="mobile-link">🔄 QuickSnipe vs Vendoo (BYOK)</a></li>
+          </ul>
+        </div>
+        <div class="mobile-nav-section">
+          <span class="mobile-section-label">Support &amp; Community</span>
+          <ul class="mobile-links-list">
+            <li><a href="index.html#faq" class="mobile-link">❓ Frequently Asked Questions</a></li>
+            <li><a href="https://github.com/RadTome/QuickSnipe-support" target="_blank" rel="noopener noreferrer" class="mobile-link">🐙 GitHub Repository ↗</a></li>
+          </ul>
+        </div>
+        <div class="mobile-nav-cta">
+          <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+            target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+            <span>⚡ Add to Chrome — It's Free</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
   <!-- Hero Section -->
-  <section class="hero" style="padding-bottom: 40px;">
+  <section class="hero" id="main-content" style="padding-bottom: 40px;">
     <div class="container">
       <div class="hero-pill">
         <span>💰 2026 Reseller Commission & Profit Engine</span>

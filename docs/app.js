@@ -36,6 +36,157 @@
     applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
   });
 
+  // 1b. Accessible Navigation (Dropdowns & Mobile Menu Drawer)
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const mobileMenuCloseBtn = document.getElementById('mobile-menu-close');
+
+  function openMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.hidden = false;
+    void mobileNavDrawer.offsetWidth; // Force reflow for CSS transition
+    mobileNavDrawer.classList.add('is-open');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      mobileMenuBtn.setAttribute('aria-label', 'Close navigation menu');
+    }
+    document.body.style.overflow = 'hidden';
+    mobileMenuCloseBtn?.focus();
+  }
+
+  function closeMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.classList.remove('is-open');
+    if (mobileMenuBtn) {
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      mobileMenuBtn.setAttribute('aria-label', 'Open navigation menu');
+    }
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      if (!mobileNavDrawer.classList.contains('is-open')) {
+        mobileNavDrawer.hidden = true;
+      }
+    }, 280);
+    mobileMenuBtn?.focus();
+  }
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = mobileNavDrawer?.classList.contains('is-open');
+    if (isOpen) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
+
+  mobileMenuCloseBtn?.addEventListener('click', closeMobileNav);
+  mobileNavBackdrop?.addEventListener('click', closeMobileNav);
+
+  // Close mobile nav when clicking any link inside
+  mobileNavDrawer?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
+  });
+
+  // Accessible Desktop Dropdowns
+  const dropdownToggles = document.querySelectorAll('.nav-dropdown-btn');
+
+  dropdownToggles.forEach(btn => {
+    const menuId = btn.getAttribute('aria-controls');
+    const menu = menuId ? document.getElementById(menuId) : btn.nextElementSibling;
+
+    function toggleDropdown(open) {
+      const willOpen = open !== undefined ? open : btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      if (menu) {
+        menu.classList.toggle('is-open', willOpen);
+      }
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDropdown();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleDropdown(true);
+        const firstLink = menu?.querySelector('a');
+        firstLink?.focus();
+      } else if (e.key === 'Escape') {
+        toggleDropdown(false);
+        btn.focus();
+      }
+    });
+
+    menu?.addEventListener('keydown', (e) => {
+      const items = Array.from(menu.querySelectorAll('a'));
+      const currentIndex = items.indexOf(document.activeElement);
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = (currentIndex + 1) % items.length;
+        items[nextIndex]?.focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = (currentIndex - 1 + items.length) % items.length;
+        items[prevIndex]?.focus();
+      } else if (e.key === 'Escape') {
+        toggleDropdown(false);
+        btn.focus();
+      }
+    });
+  });
+
+  // Global keydown listeners (Escape to close mobile nav/dropdowns, Tab trap in mobile drawer)
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mobileNavDrawer?.classList.contains('is-open')) {
+        closeMobileNav();
+      }
+      dropdownToggles.forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+        const menuId = btn.getAttribute('aria-controls');
+        const menu = menuId ? document.getElementById(menuId) : btn.nextElementSibling;
+        menu?.classList.remove('is-open');
+      });
+    }
+
+    // Trap focus inside mobile drawer if open
+    if (e.key === 'Tab' && mobileNavDrawer?.classList.contains('is-open')) {
+      const focusableEls = mobileNavDrawer.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusableEls.length === 0) return;
+      const firstEl = focusableEls[0];
+      const lastEl = focusableEls[focusableEls.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
+    }
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    dropdownToggles.forEach(btn => {
+      const container = btn.closest('.nav-item-dropdown');
+      if (container && !container.contains(e.target)) {
+        btn.setAttribute('aria-expanded', 'false');
+        const menuId = btn.getAttribute('aria-controls');
+        const menu = menuId ? document.getElementById(menuId) : btn.nextElementSibling;
+        menu?.classList.remove('is-open');
+      }
+    });
+  });
+
   // 2. Interactive Fee & Profit Margin Simulator
   const platformFeeFormulas = {
     etsy: {
