@@ -188,12 +188,12 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.4.3 Upcoming / v1.4.2 / v1.4.1 / v1.4.0)
+## 🚀 6. Release Updates (v1.4.3 / v1.4.2 / v1.4.1 / v1.4.0)
 
 ### Q: What is the current version of QuickSnipe?
-**A:** QuickSnipe **v1.4.2** is currently live in the Chrome Web Store. **v1.4.3** is staged and packaged as an upcoming major update, validated across **436 automated unit tests**. Existing users will receive v1.4.3 automatically upon store approval.
+**A:** QuickSnipe **v1.4.3** is the current live production release available directly in the Chrome Web Store. All existing installs receive this update automatically via Google Chrome with zero data loss or configuration needed.
 
-### Q: What is new in the upcoming QuickSnipe v1.4.3 release?
+### Q: What is new in QuickSnipe v1.4.3?
 **A:** QuickSnipe **v1.4.3** introduces automated background sourcing, deep historical sold analytics, inventory velocity math, and bulk operations:
 - **📡 Deal Radar (Background Watchlist & Competitor Shop Watch)**: Periodically scans marketplaces for underpriced inventory meeting your max landed buy price and profit floor. Includes competitor shop watches for price cuts and restocks!
 - **🎯 Sold Comp Oracle & Smart Pricing Engine**: Evaluates true completed sales with landed prices, 0.88x Best Offer strikethrough math, 1.5x IQR statistical outlier elimination, and 3 price bands (Quick Sale, Market Median, Top Dollar).

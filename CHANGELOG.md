@@ -4,9 +4,10 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.3] — Upcoming Major Release (Staged for Chrome Web Store)
+## 🚀 [v1.4.3] — Current Stable Release (Live in Chrome Web Store)
 
-> **Status:** Staged / Release Candidate (Target Release: November 2026)  
+> **Status:** Live in Chrome Web Store (Approved & Published)  
+> **Release Date:** November 2026  
 > **Pre-Flight Validation:** All 436 automated unit tests & Chrome Web Store compliance audits green (0 failures)
 
 ### 📡 Deal Radar — Saved Searches That Hunt For You & Competitor Shop Watch
