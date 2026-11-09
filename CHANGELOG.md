@@ -4,7 +4,19 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.3] — Current Stable Release (Live in Chrome Web Store)
+## 🚀 [v1.4.4] — Current Stable Release (Live in Chrome Web Store)
+
+> **Status:** Live in Chrome Web Store (Hotfix Release)  
+> **Release Date:** November 2026  
+> **Pre-Flight Validation:** All automated unit tests & Chrome Web Store compliance audits green (0 failures)
+
+### 🐛 Hotfix & Checkout Improvements
+- **Welcome Onboarding ExtPay Integration**: Loaded `ExtPay.js` and `payment.js` in `welcome/welcome.html`. Resolved 404 "API key required" error when clicking "Activate Free Month of Pro" (`FOUNDER30`) on the new install onboarding screen.
+- **Fail-safe Payment Routing**: Updated checkout handlers across all views to use `globalThis.QSPayment.openPaymentPage()`, falling back to `chrome.runtime.openOptionsPage()` instead of raw unparameterized checkout endpoints.
+
+---
+
+## 🚀 [v1.4.3] — Stable Release
 
 > **Status:** Live in Chrome Web Store (Approved & Published)  
 > **Release Date:** November 2026  

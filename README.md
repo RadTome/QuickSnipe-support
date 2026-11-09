@@ -9,8 +9,8 @@
 
 ### Official Developer Documentation, Issue Tracker & Diagnostic Hub
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.3_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Latest Release](https://img.shields.io/badge/Release-v1.4.3_Current-success.svg)](CHANGELOG.md)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.4_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Latest Release](https://img.shields.io/badge/Release-v1.4.4_Current-success.svg)](CHANGELOG.md)
 [![Automated Tests](https://img.shields.io/badge/Tests-436_Passed_100%25-success.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
@@ -65,11 +65,12 @@
 
 ---
 
-## 🚀 Release Status: v1.4.3 Live in Chrome Web Store
+## 🚀 Release Status: v1.4.4 Live in Chrome Web Store
 
-QuickSnipe **v1.4.3** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)! Packaged and validated across **436 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
+QuickSnipe **v1.4.4** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)! Packaged and validated across **436 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
 
-**Technical Highlights in v1.4.3:**
+**Technical Highlights in v1.4.4:**
+- 🐛 **Welcome Screen ExtPay Integration**: Properly loads ExtPay and Payment Manager in the onboarding tab, ensuring 1-click Pro activations (`FOUNDER30`) open seamless checkout without API key 404 errors.
 - 📡 **Deal Radar (Background Watchlist & Shop Watch)**: Set max buy prices, expected resale, and negative keywords. QuickSnipe scans marketplaces in the background, pinging you when underpriced inventory drops. Watch competitor shops for restocks and price cuts!
 - 🎯 **Sold Comp Oracle & Smart Pricing Engine**: Calculates real landed sold comps with 0.88x Best Offer strikethrough math and 1.5x IQR outlier removal. Delivers Quick Sale, Market Median, and Top Dollar price corridors.
 - ⚡ **Sell-Through Rate (STR) & BOLO Sourcing Radar**: Evaluates inventory turnover velocity (Unicorn 🦄, Hot Flip 🔥, Steady ⚡, Thrift Trap ⚠️) and calculates maximum buy prices for 3x ROI before you spend a dime at thrift stores or estate sales.
