@@ -2,8 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "QuickSnipe",
   "displayName": "QuickSnipe: AI Listing & Reseller Assistant",
-  "version": "1.4.2",
-  "softwareVersion": "1.4.2",
+  "version": "1.4.3",
+  "softwareVersion": "1.4.3",
   "type": "browser_extension",
   "platform": "Google Chrome (Manifest V3)",
   "browserRequirements": "Google Chrome 116 or higher, Chromium, Brave, Microsoft Edge, Opera",
@@ -58,6 +58,26 @@
       "id": "cross_lister",
       "name": "1-Click Omnichannel Cross-Lister",
       "description": "Cross-lists product data across Etsy, eBay, Poshmark, Mercari, and Depop with 1-click batch ZIP photo extraction and floating QuickBar form autofill HUD."
+    },
+    {
+      "id": "deal_radar",
+      "name": "Deal Radar — Background Watchlist & Shop Watch",
+      "description": "Scans marketplaces in the background for underpriced inventory matching target buy price, expected resale value, and negative keywords. Watches competitor storefronts for price drops, restocks, and new listings with desktop notification alerts."
+    },
+    {
+      "id": "sold_comp_oracle",
+      "name": "Sold Comp Oracle & Smart Pricing Engine",
+      "description": "Evaluates historical completed marketplace sales with true landed pricing, 0.88x Best Offer strikethrough math, 1.5x IQR statistical outlier elimination, and 3 price bands (Quick Sale, Market Median, Top Dollar)."
+    },
+    {
+      "id": "str_sourcing_radar",
+      "name": "Sell-Through Rate (STR) & BOLO Sourcing Radar",
+      "description": "Calculates active vs. sold inventory turnover ratios (Unicorn, Hot Flip, Steady, Thrift Trap) and evaluates sourcing deals at thrift stores and yard sales with 3x ROI max buy calculations."
+    },
+    {
+      "id": "bulk_listing_studio",
+      "name": "Bulk Listing Studio — CSV/TSV Batch Queue",
+      "description": "Imports inventory spreadsheets, validates platform-specific character and tag limits, and powers high-velocity multi-platform listing with Paste & Next workflow."
     },
     {
       "id": "shipping_ounce_trap_radar",

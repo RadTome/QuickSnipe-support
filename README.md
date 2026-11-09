@@ -10,7 +10,8 @@
 ### Official Developer Documentation, Issue Tracker & Diagnostic Hub
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.2_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Latest Release](https://img.shields.io/badge/Release-v1.4.2_Current-success.svg)](CHANGELOG.md)
+[![Upcoming Release](https://img.shields.io/badge/Upcoming-v1.4.3_Staged-orange.svg)](CHANGELOG.md)
+[![Automated Tests](https://img.shields.io/badge/Tests-436_Passed_100%25-success.svg)](CHANGELOG.md)
 [![Website](https://img.shields.io/badge/Official_Site-Live_Portal-success.svg)](https://radtome.github.io/QuickSnipe-support/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 [![BYOK Architecture](https://img.shields.io/badge/Architecture-100%25_BYOK_%26_Client--Side-purple.svg)](#-bring-your-own-key-byok-ai-setup-guide)
@@ -64,18 +65,27 @@
 
 ---
 
-## 🚀 Release Status: v1.4.2 Live in Chrome Web Store
+## 🚀 Release Status: v1.4.2 Live in Chrome Web Store • v1.4.3 Upcoming Staged
 
-QuickSnipe **v1.4.2** is officially approved, published, and live directly in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa). Packaged and validated across **429 automated unit tests**, all existing users receive this update automatically via Google Chrome with zero data loss or configuration needed.
+QuickSnipe **v1.4.2** is currently live and approved in the [Google Chrome Web Store](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa).  
+**QuickSnipe v1.4.3** is staged and packaged for release, passing all **436 automated unit tests across 26 test suites** with zero failures!
 
-**Technical Highlights in v1.4.2:**
+> ### 🔥 UPCOMING IN v1.4.3: The Reseller Automation Powerhouse
+> - 📡 **Deal Radar (Background Watchlist & Shop Watch)**: Set max buy prices, expected resale, and negative keywords. QuickSnipe scans marketplaces in the background, pinging you when underpriced inventory drops. Watch competitor shops for restocks and price cuts!
+> - 🎯 **Sold Comp Oracle & Smart Pricing Engine**: Calculates real landed sold comps with 0.88x Best Offer strikethrough math and 1.5x IQR outlier removal. Provides Quick Sale, Market Median, and Top Dollar price corridors.
+> - ⚡ **Sell-Through Rate (STR) & BOLO Sourcing Radar**: Evaluates inventory turnover velocity (Unicorn 🦄, Hot Flip 🔥, Steady ⚡, Thrift Trap ⚠️) and calculates maximum buy prices for 3x ROI before you spend a dime at thrift stores or estate sales.
+> - 📦 **Bulk Listing Studio**: Import inventory CSV/TSV spreadsheets and rip through 50+ listings with our high-speed "Paste & Next" batch runner.
+> - 📊 **Inventory Aging & Schedule C Tax Rollup**: Dead stock alerts (>90d) and 1-click accountant-ready annual tax rollup CSVs directly from your local Flip Tracker.
+> - 🚀 **Launch Week Turbo Trial**: Every new user gets **7 full days of unlocked Pro mode** (unlimited generations ∞, no signup, no credit card required) right after install!
+
+**Technical Highlights in Current Live v1.4.2:**
 - **Omnichannel Cross-Lister & Floating QuickBar HUD**: Format listings for Etsy, eBay, Poshmark, Mercari, and Depop simultaneously. Extract full-resolution gallery photos into a clean ZIP archive with 1 click, and auto-populate listing forms via the floating QuickBar HUD.
 - **USPS 16 oz Shipping Ounce Trap Advisor**: Real-time cliff radar alerts sellers at the critical 15.9 oz threshold before purchasing postage. Prevents 0.1–0.2 oz overages from triggering 1–2 lb Priority rates.
 - **Sourcing & Flip Tracker CRM**: Local-first inventory CRM stored 100% on device in `chrome.storage.local`. Tracks thrift hauls, buy cost (COGS), purchase venue, sold date, net profit, and ROI% with 1-click IRS Schedule C CSV export.
 - **Buyer Offer Negotiator & Counteroffer Matrix**: Audits buyer lowball offers on eBay, Poshmark, Mercari, and Depop. Calculates true net dollar take-home after fees and recommends 3 sweet-spot counteroffers.
 - **Barcode & UPC Scanner**: Scan retail UPC, EAN, and ISBN barcodes on books, electronics, toys, and packaged goods via webcam or image upload with local canvas processing.
 
-*For complete version history and legacy releases (v1.4.1, v1.4.0, v1.3.2), see [CHANGELOG.md](CHANGELOG.md).*
+*For complete version history and upcoming details, see [CHANGELOG.md](CHANGELOG.md).*
 
 ---
 

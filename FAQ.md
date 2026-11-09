@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.4.2 / v1.4.1 / v1.4.0)](#-6-release-updates-v142--v141--v140)
+- [🚀 6. Release Updates (v1.4.3 Upcoming / v1.4.2 / v1.4.1 / v1.4.0)](#-6-release-updates-v143-upcoming--v142--v141--v140)
 
 ---
 
@@ -159,6 +159,9 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ## 💳 5. Plans, Licensing & Subscriptions
 
+### Q: What is Launch Week Turbo mode?
+**A:** When you first install QuickSnipe, your first 7 days run in **Launch Week Turbo Mode**! You receive 100% unrestricted Pro access—unlimited daily listing generations (∞), full cross-lister, Deal Radar, Sold Comps, and advanced tools—with zero credit card, zero account registration, and zero setup. An amber `TURBO · Nd` countdown appears in your header. After day 7, your account seamlessly transitions to the generous Free daily tier. On day 8, a one-time founder banner offers code `FOUNDER30` to claim your first month of Pro free!
+
 ### Q: What is the difference between Free and Pro?
 - **Free Plan**: Free forever. Gives you 3 full competitor snipes every day, a 4th limited snipe, and a 5th basic summary before daily reset at midnight local time. Includes access to listing generators, profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
 - **Pro Plan**: Unlimited daily generations, unrestricted competitor snipes, sales velocity & revenue run-rates, deep review objection miner, 1-click form autofill & QuickBar, priority scraper updates, and unlimited swipe file storage.
@@ -185,10 +188,46 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.4.2 / v1.4.1 / v1.4.0)
+## 🚀 6. Release Updates (v1.4.3 Upcoming / v1.4.2 / v1.4.1 / v1.4.0)
 
 ### Q: What is the current version of QuickSnipe?
-**A:** QuickSnipe **v1.4.2** is the current live production release available in the Chrome Web Store. All existing users and new installs receive the v1.4.2 update automatically via Google Chrome with zero data loss or configuration needed.
+**A:** QuickSnipe **v1.4.2** is currently live in the Chrome Web Store. **v1.4.3** is staged and packaged as an upcoming major update, validated across **436 automated unit tests**. Existing users will receive v1.4.3 automatically upon store approval.
+
+### Q: What is new in the upcoming QuickSnipe v1.4.3 release?
+**A:** QuickSnipe **v1.4.3** introduces automated background sourcing, deep historical sold analytics, inventory velocity math, and bulk operations:
+- **📡 Deal Radar (Background Watchlist & Competitor Shop Watch)**: Periodically scans marketplaces for underpriced inventory meeting your max landed buy price and profit floor. Includes competitor shop watches for price cuts and restocks!
+- **🎯 Sold Comp Oracle & Smart Pricing Engine**: Evaluates true completed sales with landed prices, 0.88x Best Offer strikethrough math, 1.5x IQR statistical outlier elimination, and 3 price bands (Quick Sale, Market Median, Top Dollar).
+- **⚡ Sell-Through Rate (STR) & BOLO Sourcing Radar**: Active vs. sold inventory turnover ratios (Unicorn 🦄, Hot Flip 🔥, Steady ⚡, Thrift Trap ⚠️) and automated 3x ROI max buy price calculations.
+- **📦 Bulk Listing Studio**: Import RFC-4180 CSV/TSV spreadsheets of inventory and execute 1-click form population with the "Paste & Next" batch runner.
+- **📊 Inventory Aging Buckets & Schedule C Tax Rollup**: Stale inventory tracking (>90d Dead Stock) and 1-click accountant-ready IRS Schedule C tax CSV exports.
+- **🚀 Launch Week Turbo Trial**: 7 days of unrestricted Pro access for every new user out of the box with zero card required.
+- **🏆 Daily Habit Streaks & Honor Roll Badges**: Habit hooks and client-side achievement milestones.
+- **🎨 WCAG 2.1 AA Contrast Polish**: Fully refreshed button and theme contrast across Light Glass and Cyber Dark modes.
+
+### Q: How does Deal Radar work?
+**A:** Deal Radar transforms QuickSnipe from a passive tool into an active sourcing copilot:
+1. Define a rule with your search query, marketplace, maximum landed buy price, expected resale value, and negative exclusion keywords (e.g. "broken, parts, lot").
+2. QuickSnipe's background scheduler (`qs_radar_scan`) periodically checks the marketplace.
+3. When matching items are found under your price threshold, Deal Radar alerts you via desktop notification and a badge count on the extension icon.
+4. Each alert card lets you **Run Sold Comps**, **Log Sourced** (saving directly to Flip Tracker CRM), or **Snooze 3d**.
+5. You can also turn on **Watch Shop** to snapshot competitor seller stores and get notified when they drop prices or list new inventory!
+
+### Q: What is the Sold Comp Oracle, and why is it better than looking at asking prices?
+**A:** Active listings only tell you what sellers *hope* to get, which often results in stale inventory. The **Sold Comp Oracle**:
+- Normalizes real historical completed transactions.
+- Factors in actual shipping costs for true *landed* sale values.
+- Automatically detects accepted Best Offers with strikethrough prices and applies a data-backed 0.88x discount factor.
+- Removes statistical anomalies using 1.5x Interquartile Range (IQR) outlier pruning, filtering out damaged parts or multi-item lots.
+- Generates 3 actionable price corridors: **Quick Sale (25th percentile)** for fast cash turnover, **Market Median (50th percentile)** for balanced speed/margin, and **Patient Top Dollar (75th percentile)** for rare/mint collectibles.
+
+### Q: What is Sell-Through Rate (STR) and how does Sourcing Radar help in the field?
+**A:** Sell-Through Rate (STR) measures market demand: `(Sold Items / Active Items) * 100`.
+- If a vintage jacket has 150 sold listings and 100 active listings, STR is **150% (Unicorn 🦄)**—demand heavily outpaces supply.
+- If a mass-produced item has 5 sold and 100 active, STR is **5% (Thrift Trap ⚠️)**—the market is saturated, and the item will likely sit for months.
+- When you input a thrift store tag price into the Sourcing Radar, it automatically factors in platform commissions and gives an instant verdict: **STRONG BUY ✅** (hitting 3x ROI target), **EVALUATE 🔍**, or **SATURATED / THRIFT TRAP ❌**.
+
+### Q: What is Bulk Listing Studio?
+**A:** If you source inventory in batches or manage an inventory spreadsheet, Bulk Listing Studio imports your CSV or TSV files directly into Chrome. It automatically maps fields, checks platform character and tag constraints, and queues up items. You can open any marketplace form and use **Paste & Next** to autofill, advance, and list items in seconds. Free users can queue up to 10 items; Pro users can queue up to 500 items per batch.
 
 ### Q: What is new in QuickSnipe v1.4.2?
 **A:** QuickSnipe **v1.4.2** introduces enterprise-grade reseller tooling, inventory management, shipping intelligence, and zero-fee cross-listing:

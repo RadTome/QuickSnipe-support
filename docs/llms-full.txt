@@ -120,6 +120,35 @@ Interactive simulation engine supporting all 9 major platforms:
 - **Walmart**: Category referral matrix (6% to 15%).
 - **Grailed**: 9% seller commission + 3.49% + $0.49 processing fee.
 
+### 3.10 Deal Radar — Saved Searches That Hunt For You & Shop Watch
+- **Background Watchlist**: Define search queries, maximum landed buy price, expected resale value, and negative exclusion keywords. QuickSnipe's background scheduler (`qs_radar_scan`) checks marketplaces automatically and alerts sellers via desktop notifications and extension icon badges.
+- **Competitor Shop Watch**: Snapshot competitor storefronts to monitor price cuts, restocks, and newly listed items in real time.
+- **Alert Actions**: Each alert card features 1-click **Run Sold Comps**, **Log Sourced** (saving directly to Flip Tracker CRM), and **Snooze 3d**.
+- **Auto-Suggest & Pre-fill**: Converts successful sniper searches into radar rules with 1 click based on median pricing, or pre-fills parameters with a single button.
+
+### 3.11 Sold Comp Oracle & Smart Pricing Engine
+- **True Landed Sold Comps**: Normalizes historical completed sales by incorporating buyer shipping fees.
+- **0.88x Best Offer Strikethrough**: Detects accepted Best Offers with strikethrough prices and applies a data-backed 0.88x discount factor.
+- **1.5x IQR Outlier Pruning**: Interquartile Range (IQR) filtering eliminates broken parts, junk, and multi-unit lots from statistical corridors.
+- **3-Tier Price Recommendations**: Provides **Quick Sale (25th percentile)**, **Market Median (50th percentile)**, and **Patient Top Dollar (75th percentile)** with seasonality and 90-day velocity projections.
+
+### 3.12 Sell-Through Rate (STR) & BOLO Sourcing Radar
+- **Demand Turnover Calculation**: Calculates `(Sold / Active) * 100` and categorizes into velocity tiers: Unicorn 🦄 (100%+), Hot Flip 🔥 (50–99%), Steady Mover ⚡ (20–49%), Slow (10–19%), and Thrift Trap ⚠️ (<10%).
+- **Sourcing Deal Evaluator**: Input target resale price and thrift tag cost; factors in platform commissions and shipping to generate instant verdicts: **STRONG BUY ✅**, **EVALUATE 🔍**, **SATURATED / THRIFT TRAP ❌**, or **GUARANTEED LOSS 🛑**.
+
+### 3.13 Bulk Listing Studio — CSV/TSV Import & Batch Queue
+- **Spreadsheet Parsing**: Ingests RFC-4180 CSV/TSV spreadsheets with automatic column mapping.
+- **Platform Constraint Validation**: Enforces platform-specific constraints (eBay 80c, Etsy 13 tags, Amazon 249B, Depop 5 hashtags).
+- **Paste & Next Batch Runner**: Injects listing copy into marketplace editor forms and advances through the queue in seconds. Free (10 items) vs. Pro (500 items).
+
+### 3.14 Inventory Aging & IRS Schedule C Tax Rollup
+- **Aging Buckets**: Automatically categorizes unsold inventory into Fresh (<30d), Active (30–60d), Aging (60–90d), and Dead Stock (>90d warning).
+- **Annual Schedule C Tax Rollup**: Summarizes Gross Receipts, COGS, Selling Fees, Shipping Deductions, and Net Profit by tax year, with 1-click export to accountant-ready CSV spreadsheets.
+
+### 3.15 Launch Week Turbo Trial & Early Adopter Perks
+- **7-Day Turbo Mode**: Every new install receives 7 days of unrestricted Pro access (unlimited generations ∞, no signup, no credit card required).
+- **Founder Promotion**: Day 8 introduces code `FOUNDER30` granting 1st month Pro free.
+
 ---
 
 ## 4. Supported E-Commerce Platforms

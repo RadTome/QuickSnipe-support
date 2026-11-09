@@ -1,7 +1,7 @@
 # Privacy Policy for QuickSnipe
 
-**Effective Date:** October 22, 2026  
-**Version:** 1.4.2 (Live Production Release) | Active Web Store Version: 1.4.2  
+**Effective Date:** November 2026  
+**Version:** 1.4.3 (Release Candidate) | Active Web Store Version: 1.4.2  
 **Repository:** [https://github.com/RadTome/QuickSnipe-support](https://github.com/RadTome/QuickSnipe-support)
 
 QuickSnipe ("we", "our", or "the Extension") is committed to protecting your privacy and personal data. This Privacy Policy explains how QuickSnipe handles user data, browser permissions, and third-party AI integrations in full compliance with Google Chrome Web Store Developer Program Policies.
@@ -16,6 +16,8 @@ QuickSnipe operates primarily within your local Google Chrome browser:
 - **Disclosed Network Endpoints:** QuickSnipe is local-first, but it is not literally serverless, and we want to be exact about that. Three categories of network request can occur, each described in full below: (a) direct HTTPS calls from your browser to the AI provider **you** configure (Section 3); (b) an optional, developer-operated Cloudflare relay used only for the "Snap on Phone" photo feature (Section 3); and (c) web font requests made by the extension's own pages (Section 4). We operate no personalized backend, no activity log, and no central server that receives your browsing.
 - **Local Device Storage & Sandboxing:** All extension preferences, user-supplied AI API keys, saved prompts, swipe file snippets, competitor snipes, and daily usage counters are stored strictly on your local machine using Chrome's secure `chrome.storage.local` API. The floating QuickBar assistant stores its coordinates and snooze states strictly in extension storage, leaving zero storage footprint on merchant host pages.
 - **Sourcing & Flip Tracker CRM Privacy (COGS & Taxes):** All inventory items, Cost of Goods Sold (COGS), sourcing venues (thrift stores, garage sales, estate sales), listing status, target prices, sold dates, and profit margins are stored 100% locally on your machine in `chrome.storage.local`. QuickSnipe never transmits, synchronizes, or exposes your supplier sources, inventory, or financial earnings to any remote server or cloud database. IRS Schedule C tax CSV exports are generated entirely on-device in browser memory.
+- **Deal Radar & Competitor Shop Watch Privacy:** All saved search rules, price floors, expected resale targets, negative keywords, and competitor shop snapshot baselines reside strictly in local `chrome.storage.local`. Periodic background evaluations happen directly against public HTML in your browser without logging or transmitting your sourcing criteria to any server.
+- **Bulk Listing Studio Privacy (CSV/TSV Ingestion):** Spreadsheets imported for bulk listing generation are parsed entirely on-device in client-side memory (`utils/csv-import.js`). No file content, inventory lines, or base64 image data are ever transmitted to remote databases.
 - **Voluntary User Feedback Collection:** Feedback, ratings, and diagnostic context submitted through the in-app feedback dialog or inline micro-feedback buttons are securely submitted directly to our Google Forms collection endpoint (`docs.google.com`) to help us improve listing generation quality and diagnose bugs. Feedback history is also saved locally on your device in `chrome.storage.local`. We never collect or transmit seller passwords, financial credentials, private API keys, or background browsing history.
 
 ---

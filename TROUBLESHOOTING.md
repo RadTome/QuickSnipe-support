@@ -23,6 +23,9 @@ This guide provides targeted solutions for the most common technical issues, err
 - [15. Cross-Lister: Batch Image ZIP Download Blocked or Incomplete](#15-cross-lister-batch-image-zip-download-blocked-or-incomplete)
 - [16. Sourcing & Flip Tracker CRM: Data Backup & Schedule C CSV Export](#16-sourcing--flip-tracker-crm-data-backup--schedule-c-csv-export)
 - [17. Barcode & UPC Scanner: Camera Permissions & Scan Diagnostics](#17-barcode--upc-scanner-camera-permissions--scan-diagnostics)
+- [18. Deal Radar: Notifications & Background Scan Diagnostics (v1.4.3+)](#18-deal-radar-notifications--background-scan-diagnostics-v143)
+- [19. Bulk Listing Studio: CSV Import & Column Mapping (v1.4.3+)](#19-bulk-listing-studio-csv-import--column-mapping-v143)
+- [20. Launch Week Turbo Mode & Promo Code Activation (v1.4.3+)](#20-launch-week-turbo-mode--promo-code-activation-v143)
 
 ---
 
@@ -318,5 +321,58 @@ This guide provides targeted solutions for the most common technical issues, err
    - If scanning shiny packaging or cellophane wrap, tilt the box slightly (15–20 degrees) away from direct overhead light to avoid glare whitewashing the UPC barcode lines.
 3. **Hardware Fallback**:
    - If your PC webcam lacks auto-focus, you can either enter the 12-digit UPC manually into the comp search bar or use **Mobile QR Photo Sync** on your phone to capture the barcode with your high-resolution phone camera.
+
+---
+
+### 18. Deal Radar: Notifications & Background Scan Diagnostics (v1.4.3+)
+
+#### Potential Causes:
+- Chrome desktop notifications permission has not been granted.
+- Operating system "Do Not Disturb" / Focus Assist is suppressing popups.
+- Radar scan matches were previously viewed and dismissed (stored in 500-ID ring buffer).
+
+#### Solutions & Best Practices:
+1. **Grant Desktop Notifications**:
+   - When enabling notifications in Deal Radar, Chrome displays an optional permissions prompt (`optional_permissions: ["notifications"]`). Click **Allow**.
+   - If previously denied: click the lock/sliders icon in your Chrome address bar or go to `chrome://settings/content/notifications` and ensure notifications are permitted for QuickSnipe.
+2. **500-ID Ring Buffer Deduplication**:
+   - QuickSnipe remembers the last 500 alerted items to prevent nagging duplicate pings for the same listing.
+   - If you want fresh alerts on previously seen items, clear or edit the rule in **Tools → Deal Radar**.
+3. **Quiet Hours & Scan Schedule**:
+   - Deal Radar respects configured quiet hours so late-night background scans don't wake you up. Alerts found during quiet hours will appear on the extension icon badge without audio chimes.
+
+---
+
+### 19. Bulk Listing Studio: CSV Import & Column Mapping (v1.4.3+)
+
+#### Potential Causes:
+- Spreadsheet was saved in non-standard encoding or contains unescaped delimiter commas.
+- Required column headers (Title, Description, Price) were not mapped.
+
+#### Solutions & Best Practices:
+1. **RFC-4180 Standard Formatting**:
+   - Export your inventory spreadsheet from Google Sheets, Excel, or Numbers as standard **CSV (Comma Delimited)** with UTF-8 encoding.
+   - If titles contain commas, ensure they are enclosed in double quotes (standard spreadsheet export handles this automatically).
+2. **Auto-Mapping Fallback**:
+   - QuickSnipe automatically recognizes common header variations (`Item Title`, `Product Name`, `Listing Title`, `Price`, `Asking Price`, `MSRP`, `Tags`, `Keywords`).
+   - If a column header is unusual, use the dropdown selector in Bulk Studio to match it manually before importing into the queue.
+3. **Queue Limits**:
+   - The Free daily tier supports queuing up to 10 batch items.
+   - Pro tier supports queuing up to 500 batch items per file.
+
+---
+
+### 20. Launch Week Turbo Mode & Promo Code Activation (v1.4.3+)
+
+#### Potential Causes:
+- User is within their first 7 days and sees an amber `TURBO · Nd` badge rather than `FREE` or `PRO`.
+- Day 8 promo code `FOUNDER30` was entered incorrectly.
+
+#### Clarifications & Solutions:
+1. **What is Turbo Mode?**:
+   - All newly installed QuickSnipe users receive **7 full days of Turbo Mode** with unlimited daily listing generations (∞) and full Pro features with zero credit card required. This is intentional to let you experience the full power of QuickSnipe.
+2. **Redeeming FOUNDER30**:
+   - On day 8 after Turbo concludes, click the founder banner or go to **Settings ⚙ → Upgrade to Pro**.
+   - Enter promo code `FOUNDER30` to claim your first month of Pro free!
 
 

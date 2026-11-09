@@ -4,7 +4,70 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.2] — Current Stable Release (Live in Chrome Web Store)
+## 🚀 [v1.4.3] — Upcoming Major Release (Staged for Chrome Web Store)
+
+> **Status:** Staged / Release Candidate (Target Release: November 2026)  
+> **Pre-Flight Validation:** All 436 automated unit tests & Chrome Web Store compliance audits green (0 failures)
+
+### 📡 Deal Radar — Saved Searches That Hunt For You & Competitor Shop Watch
+- **Automated Background Deal Radar**: Save high-yield search rules (max landed buy price, expected resale value, target net profit, negative keyword exclusions). A persistent background scheduler (`qs_radar_scan`) periodically scans marketplaces so underpriced flips find you without all-day manual refreshing.
+- **Competitor Shop Watch**: Snapshot competitor storefronts (`createShopWatch`, `evaluateShopSnapshot`) to track sudden price drops, inventory restocks, and newly listed items in real time.
+- **500-ID FIFO Ring Buffer & Instant Actions**: Scanned items deduplicate against a local 500-ID ring buffer. Dispatches optional desktop notifications and updates the extension toolbar badge. Each match card features 1-click actions: **Run Sold Comps**, **Log Sourced** (injects straight into Flip Tracker CRM), or **Snooze 3d**.
+- **Radar Auto-Suggest & Smart Pre-fill**:
+  - After any successful Sniper search, an inline card (`#btn-sn-radar-add`) offers to convert the search into a Deal Radar rule with 1 click, deriving buy/resale floors from the scan's actual median price (60% buy / 125% resale). Features a 24-hour cooldown to stay unobtrusive.
+  - In the Radar tab, **Pre-fill from Last Snipe** (`#btn-radar-prefill-last`) re-populates query, landed buy price, estimated resale, and marketplace with a single click.
+
+### 🎯 Sold Comp Oracle & Smart Pricing Engine (`utils/sold-comps.js`)
+- **True Landed Sold Comps**: Normalizes historical completed sales by factoring in buyer shipping charges for accurate net comps.
+- **0.88x Best Offer Strikethrough Math**: Detects accepted Best Offers with strikethrough pricing and applies an empirical 0.88x discount factor to reflect true negotiated transaction values rather than inflated asking prices.
+- **1.5x IQR Statistical Outlier Rejection**: Employs Interquartile Range (IQR) filtering to automatically prune junk/for-parts items and wholesale bulk lots from market calculations.
+- **3-Tier Price Corridors**: Delivers **Quick Sale (25th percentile)**, **Market Median (50th percentile)**, and **Patient Top Dollar (75th percentile)** pricing suggestions with confidence scoring, seasonality flags, and 90-day velocity projections.
+- **Zero Hallucination Guardrail**: When live sold data is unavailable, the Oracle reports unknown status rather than fabricating comps or metrics.
+
+### ⚡ Sell-Through Rate (STR) & BOLO Sourcing Radar (`utils/str-radar.js`)
+- **Active vs. Sold Inventory Turnover**: Computes true sell-through rate percentage (`soldCount / activeCount * 100`) to expose market demand before spending capital.
+- **Dynamic Turnover Velocity Tiers**:
+  - **Unicorn 🦄 (100%+)**: Extreme demand; items sell faster than new listings appear.
+  - **Hot Flip 🔥 (50–99%)**: High-velocity turnover; fast inventory churn.
+  - **Steady Mover ⚡ (20–49%)**: Reliable baseline staple.
+  - **Slow (10–19%)**: High competition or sluggish demand.
+  - **Thrift Trap ⚠️ (<10%)**: Saturated inventory with weak buyer absorption; flags high risk.
+- **Sourcing Deal Evaluator (3x ROI Target)**: Input target sell price and thrift tag cost; factors in platform fees (including Poshmark's flat $2.95 sub-$15 fee structure) and buyer shipping to render instant verdicts: **STRONG BUY ✅**, **EVALUATE 🔍**, **SATURATED / THRIFT TRAP ❌**, or **GUARANTEED LOSS 🛑**.
+- **1-Click Comp Links**: Generates instant direct links to active and sold queries on eBay, Poshmark, and Mercari.
+
+### 📦 Bulk Listing Studio — CSV/TSV Import & Fast Batch Queue
+- **Spreadsheet Ingestion**: Import inventory records from RFC-4180 compliant CSV or TSV spreadsheets (`utils/csv-import.js`). Auto-maps columns (Title, Description, Category, Tags, Price, Images).
+- **Multi-Platform Constraint Validation**: Enforces platform rules prior to generation (eBay 80-char limit, Etsy 13 tags ≤20 chars, Amazon 249-byte ceiling, Depop 5 hashtags).
+- **High-Velocity "Paste & Next" Workflow**: Interactive batch queue runner (`utils/batch-queue.js`) with instant form injection and automated queue advancement for 50+ listings in record time. Enforces 10-item Free tier vs. 500-item Pro queue allowance.
+
+### 📊 Flip Tracker Upgrades: Inventory Aging Buckets & Schedule C Tax Rollup
+- **Inventory Aging & Stale Stock Alerts**: Classifies unlisted and active inventory into actionable aging buckets: Fresh (<30d), Active (30–60d), Aging (60–90d), and Dead Stock (>90d warning).
+- **IRS Schedule C Tax Rollup**: Annual financial rollup calculating Gross Receipts, COGS, Platform Selling Fees, Shipping Deductions, Net Profit, and ROI% by calendar tax year. Exports accountant-ready Schedule C CSV and monthly P&L spreadsheets in 1 click.
+
+### 🚀 Launch Week Turbo Trial & Early Adopter Perks
+- **7-Day Turbo Mode for All New Users**: Free users experience 7 full days of unrestricted Pro access immediately upon install — unlimited daily generations (∞), full cross-lister, and unlocked tools with zero credit card or account registration required (`isTurboActive()`).
+- **Amber Turbo Header Badge**: Header displays `TURBO · Nd` countdown. Seamlessly reverts to free daily limits after day 7.
+- **Day 8 Founder Offer (`FOUNDER30`)**: On day 8, a one-time inline banner introduces `FOUNDER30` (1st month Pro free) to keep listing momentum high.
+
+### 🏆 Gamification & Ergonomic Delights
+- **Daily Habit Streak (`#sp-streak-badge`)**: Header streak badge celebrates consecutive active days (listing, sniping, comping), encouraging regular listing habits.
+- **Honor Roll Badges (`🏆 N`)**: 100% client-side milestone achievements (First Flip, Deal Hunter, Radar Champion, Sniper Ace, Streak Master, Power Seller).
+- **Comeback Banner (`#sp-comeback-bar`)**: Warmly welcomes returning sellers after 3+ days of absence with contextual updates (saved searches watching, pending flips needing listings).
+- **Match My Copied Style Memory**: Learns personal formatting and tone from copied generation history.
+- **Unified Multi-Platform Workspace Tabs**: Clean, categorized tabs for Etsy, eBay, Poshmark, Mercari, Depop, Amazon, and Shopify.
+- **Section-Level Regenerate & 3 Title Variants**: Fine-tune specific listing sections and cycle through title hooks without regenerating entire descriptions.
+
+### 🎨 WCAG 2.1 AA Accessibility & Visual Overhaul
+- **High-Contrast Button Palette**: All primary interaction surfaces updated to #4f46e5 / #4338ca (≥6.3:1 contrast ratio) ensuring flawless legibility across Light Glass and Cyber Dark themes.
+- **Streamlined Welcome Experience**: Fast-loading, distraction-free onboarding with instant demo sandbox.
+- **Automated UI Audit Guard**: Integrated Playwright-based UI test harness (`scripts/validate-ui.mjs`, `scripts/ui-audit-baseline.json`) guarding against layout shifts and accessibility regressions.
+
+### 🧪 Test Suite Expansion (436 Unit Tests across 26 Suites)
+- **100% Test Coverage**: Expanded test suite to **436 automated unit tests across 26 test suites** with 0 failures, covering Sold Comps, Deal Radar, STR Sourcing, Bulk Studio, and Promo activation.
+
+---
+
+## 🚀 [v1.4.2] — Previous Stable Release (Live in Chrome Web Store)
 
 > **Status:** Live in Chrome Web Store (Approved & Published)  
 > **Release Date:** October 2026

@@ -172,6 +172,41 @@
     .hidden {
       display: none !important;
     }
+    .editor-btn {
+      flex: 1 1 0;
+      min-height: 40px;
+      padding: 0.55rem 0.35rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-highlight);
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      touch-action: manipulation;
+    }
+    .editor-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    .crop-handle {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-cyan);
+      border: 2px solid #0f172a;
+      box-sizing: border-box;
+      touch-action: none;
+    }
+    .crop-handle[data-handle="nw"] { left: -11px; top: -11px; cursor: nwse-resize; }
+    .crop-handle[data-handle="ne"] { right: -11px; top: -11px; cursor: nesw-resize; }
+    .crop-handle[data-handle="sw"] { left: -11px; bottom: -11px; cursor: nesw-resize; }
+    .crop-handle[data-handle="se"] { right: -11px; bottom: -11px; cursor: nwse-resize; }
   </style>
 </head>
 <body>
@@ -272,28 +307,61 @@
         </div>
       </div>
 
+      <!-- Offline / queued photo banner -->
+      <div id="queue-banner" class="hidden" style="margin-top: 0.85rem; padding: 0.6rem 0.75rem; border-radius: var(--radius-md); background: rgba(251, 191, 36, 0.12); border: 1px solid rgba(251, 191, 36, 0.35); color: #fde68a; font-size: 0.78rem; display: flex; align-items: center; justify-content: space-between; gap: 0.6rem;">
+        <span id="queue-banner-text">📦 0 photos queued</span>
+        <button id="btn-queue-sync" type="button" style="flex-shrink: 0; padding: 0.45rem 0.7rem; border-radius: var(--radius-sm); background: rgba(251, 191, 36, 0.2); border: 1px solid rgba(251, 191, 36, 0.45); color: #fde68a; font-weight: 700; font-size: 0.72rem; cursor: pointer; min-height: 36px;">Sync now</button>
+      </div>
+
       <!-- Uploading / Preview State -->
       <div id="preview-section" class="hidden" style="margin-top: 0.5rem;">
-        <div class="preview-box">
+        <div class="preview-box" id="editor-preview-box">
           <img id="preview-img" class="preview-img" alt="Captured Product">
+          <div id="crop-layer" class="hidden" style="position: absolute; inset: 0;">
+            <div id="crop-rect" style="position: absolute; left: 10%; top: 10%; width: 80%; height: 80%; border: 2px solid var(--accent-cyan); box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); box-sizing: border-box; cursor: move; touch-action: none;">
+              <span class="crop-handle" data-handle="nw"></span>
+              <span class="crop-handle" data-handle="ne"></span>
+              <span class="crop-handle" data-handle="sw"></span>
+              <span class="crop-handle" data-handle="se"></span>
+            </div>
+          </div>
         </div>
         <div style="margin-top: 0.75rem;">
           <div class="flex items-center justify-between" style="font-size: 0.8rem;">
-            <span id="transfer-label" style="font-weight: 600; color: var(--accent-cyan);">⚡ Sending to your desktop...</span>
+            <span id="transfer-label" style="font-weight: 600; color: var(--accent-cyan);">✂️ Crop or rotate, then send.</span>
             <span id="transfer-percent" style="font-family: var(--font-mono); color: var(--text-muted);">0%</span>
           </div>
           <div class="progress-bar-bg">
             <div id="progress-bar" class="progress-bar-fill"></div>
           </div>
         </div>
-        <button id="btn-manual-send" type="button" class="hidden" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);">
-          ⚡ Tap to Send to Desktop
+
+        <!-- B14: non-destructive crop & rotate -->
+        <div id="editor-controls" style="display: flex; gap: 0.4rem; margin-top: 0.7rem;">
+          <button id="btn-rotate-left" type="button" class="editor-btn" title="Rotate 90° counter-clockwise">↺ Rotate</button>
+          <button id="btn-rotate-right" type="button" class="editor-btn" title="Rotate 90° clockwise">↻ Rotate</button>
+          <button id="btn-crop-toggle" type="button" class="editor-btn" title="Drag to crop the photo">✂️ Crop</button>
+          <button id="btn-editor-reset" type="button" class="editor-btn" title="Undo all rotations and crops">↺ Reset</button>
+        </div>
+        <div id="crop-controls" class="hidden" style="display: flex; gap: 0.4rem; margin-top: 0.5rem;">
+          <button id="btn-crop-apply" type="button" class="editor-btn" style="background: rgba(16,185,129,0.22); border-color: rgba(16,185,129,0.5); color: #6ee7b7;">✓ Apply Crop</button>
+          <button id="btn-crop-cancel" type="button" class="editor-btn">Cancel</button>
+        </div>
+
+        <button id="btn-send-photo" type="button" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); min-height: 48px;">
+          📤 Send to Desktop
         </button>
+        <button id="btn-manual-send" type="button" class="hidden" style="width: 100%; margin-top: 0.85rem; padding: 0.85rem 1rem; border-radius: var(--radius-md); background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%); border: none; color: #fff; font-weight: 700; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4); min-height: 48px;">
+          ⚡ Retry Send to Desktop
+        </button>
+        <div id="btn-cancel-photo" style="text-align: center; margin-top: 0.6rem;">
+          <button type="button" class="editor-btn" style="background: none; border: none; color: var(--text-dim); min-height: 36px;">✕ Remove this photo from the queue</button>
+        </div>
         <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-          <button id="btn-snap-another" type="button" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.85rem; cursor: pointer;">
+          <button id="btn-snap-another" type="button" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(255,255,255,0.08); border: 1px solid var(--border-highlight); color: #fff; font-weight: 700; font-size: 0.85rem; cursor: pointer; min-height: 44px;">
             📸 Snap Another
           </button>
-          <label for="gallery-input" id="btn-gallery-more" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; text-align: center;">
+          <label for="gallery-input" id="btn-gallery-more" class="hidden" style="flex: 1; padding: 0.85rem; border-radius: var(--radius-md); background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: var(--accent-cyan); font-weight: 700; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.35rem; text-align: center; min-height: 44px;">
             <span>🖼️</span>
             <span>Add from Gallery</span>
           </label>
@@ -370,6 +438,21 @@
       const btnManualSend = document.getElementById('btn-manual-send');
       const btnSnapAnother = document.getElementById('btn-snap-another');
       const btnGalleryMore = document.getElementById('btn-gallery-more');
+      const btnSendPhoto = document.getElementById('btn-send-photo');
+      const btnCancelPhoto = document.getElementById('btn-cancel-photo');
+      const editorControls = document.getElementById('editor-controls');
+      const btnRotateLeft = document.getElementById('btn-rotate-left');
+      const btnRotateRight = document.getElementById('btn-rotate-right');
+      const btnCropToggle = document.getElementById('btn-crop-toggle');
+      const btnEditorReset = document.getElementById('btn-editor-reset');
+      const cropLayer = document.getElementById('crop-layer');
+      const cropRect = document.getElementById('crop-rect');
+      const cropControls = document.getElementById('crop-controls');
+      const btnCropApply = document.getElementById('btn-crop-apply');
+      const btnCropCancel = document.getElementById('btn-crop-cancel');
+      const queueBanner = document.getElementById('queue-banner');
+      const queueBannerText = document.getElementById('queue-banner-text');
+      const btnQueueSync = document.getElementById('btn-queue-sync');
 
       const diagSignaling = document.getElementById('diag-signaling');
       const diagDC = document.getElementById('diag-dc');
@@ -522,10 +605,9 @@
               diagDC.textContent = 'Cloud Relay';
               diagDC.style.color = 'var(--accent-cyan)';
             }
-            if (transferLabel && pendingPhoto && !isTransferring) {
-              transferLabel.textContent = '⚡ Cloud Bridge ready. Transmitting photo...';
-              transferLabel.style.color = 'var(--accent-cyan)';
-              transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+            if (photoQueue.length > 0 && !isTransferring && previewSection.classList.contains('hidden')) {
+              logDiag('Cloud Bridge ready. Retrying queued photos...', 'info');
+              syncQueuedPhotos(false);
             }
           }
         }, 5000);
@@ -583,10 +665,10 @@
               activeConn.send({ type: 'HANDSHAKE', device: 'mobile' });
             } catch (e) {}
 
-            // Auto-send if photo is queued
-            if (pendingPhoto && !isTransferring) {
-              logDiag('Sending queued photo to desktop...');
-              transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+            // Auto-send anything left in the phone queue once the desktop opens.
+            if (photoQueue.length > 0 && !isTransferring && previewSection.classList.contains('hidden')) {
+              logDiag('Desktop ready. Syncing ' + photoQueue.length + ' queued photo(s)...', 'info');
+              syncQueuedPhotos(false);
             }
           });
 
@@ -732,42 +814,482 @@
         });
       }
 
+      // ── B13: Phone-Side Offline Photo Queue (IndexedDB) ──────────────────
+      // Photos are saved on the phone the moment they are captured. If the
+      // desktop is unreachable they survive a reload/network drop and retry
+      // automatically, instead of showing a green "sent" lie.
+      const MOBILE_QUEUE_DB = 'qs_mobile_photo_queue';
+      const MOBILE_QUEUE_MAX = 8;
+      const MOBILE_PHOTO_MAX_CHARS = 4 * 1024 * 1024; // ~3 MB encoded
+      let photoQueue = [];
+      let activePhoto = null; // { id, name, data, original, createdAt, status }
+      let cropMode = false;
+      let cropDrag = null;
+      let isSendingQueue = false;
+
+      function newPhotoId() {
+        return 'mob_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8);
+      }
+
+      function openMobileQueueDb() {
+        return new Promise(function(resolve, reject) {
+          if (typeof indexedDB === 'undefined') { reject(new Error('IndexedDB unavailable')); return; }
+          const req = indexedDB.open(MOBILE_QUEUE_DB, 1);
+          req.onupgradeneeded = function() {
+            const db = req.result;
+            if (!db.objectStoreNames.contains('photos')) {
+              const store = db.createObjectStore('photos', { keyPath: 'id' });
+              store.createIndex('createdAt', 'createdAt');
+            }
+          };
+          req.onsuccess = function() { resolve(req.result); };
+          req.onerror = function() { reject(req.error); };
+        });
+      }
+
+      function queueReadAll() {
+        return openMobileQueueDb().then(function(db) {
+          return new Promise(function(resolve, reject) {
+            const tx = db.transaction('photos', 'readonly');
+            const req = tx.objectStore('photos').getAll();
+            req.onsuccess = function() {
+              resolve((req.result || [])
+                .filter(function(p) { return p && typeof p.data === 'string' && p.data.length > 0; })
+                .sort(function(a, b) { return (a.createdAt || 0) - (b.createdAt || 0); }));
+            };
+            req.onerror = function() { reject(req.error); };
+          });
+        });
+      }
+
+      function persistQueueItem(item) {
+        if (!item) return;
+        openMobileQueueDb().then(function(db) {
+          const tx = db.transaction('photos', 'readwrite');
+          tx.objectStore('photos').put({
+            id: item.id,
+            name: item.name,
+            data: item.data,
+            createdAt: item.createdAt,
+            status: item.status || 'queued',
+            attempts: item.attempts || 0,
+            size: Math.round(item.data.length * 0.75)
+          });
+        }).catch(function() {});
+      }
+
+      function deleteQueueItem(id) {
+        openMobileQueueDb().then(function(db) {
+          const tx = db.transaction('photos', 'readwrite');
+          tx.objectStore('photos').delete(id);
+        }).catch(function() {});
+      }
+
+      function renderQueueBanner() {
+        if (!queueBanner) return;
+        const n = photoQueue.length;
+        if (n === 0) {
+          queueBanner.classList.add('hidden');
+          return;
+        }
+        queueBanner.classList.remove('hidden');
+        if (queueBannerText) {
+          queueBannerText.textContent = '📦 ' + n + ' photo' + (n === 1 ? '' : 's') + ' saved on this phone. ' +
+            (isSendingQueue ? 'Sending to desktop…' : 'Tap Sync now to send.');
+        }
+        if (btnQueueSync) {
+          btnQueueSync.disabled = isSendingQueue;
+          btnQueueSync.textContent = isSendingQueue ? 'Sending…' : 'Sync now';
+        }
+      }
+
+      async function enqueuePhoto(dataUrl, filename) {
+        if (!dataUrl) return null;
+        if (dataUrl.length > MOBILE_PHOTO_MAX_CHARS) {
+          logDiag('Skipped ' + (filename || 'photo') + ': too large for the offline queue (max ~3 MB).', 'warn');
+          return null;
+        }
+        if (photoQueue.length >= MOBILE_QUEUE_MAX) {
+          alert('Your phone queue holds up to 8 photos. Send or remove one before adding more.');
+          return null;
+        }
+        const item = {
+          id: newPhotoId(),
+          name: filename || ('photo_' + Date.now() + '.jpg'),
+          data: dataUrl,
+          createdAt: Date.now(),
+          status: 'queued',
+          attempts: 0
+        };
+        photoQueue.push(item);
+        persistQueueItem(item);
+        renderQueueBanner();
+        logDiag('Queued photo on this phone: ' + item.name + ' (' + Math.round(dataUrl.length * 0.75 / 1024) + ' KB)', 'info');
+        return item;
+      }
+
+      async function removeQueuedPhoto(id) {
+        photoQueue = photoQueue.filter(function(p) { return p.id !== id; });
+        deleteQueueItem(id);
+        renderQueueBanner();
+      }
+
+      async function loadPhotoQueue() {
+        try {
+          const stored = await queueReadAll();
+          photoQueue = stored.slice(0, MOBILE_QUEUE_MAX);
+          if (stored.length > MOBILE_QUEUE_MAX) {
+            stored.slice(MOBILE_QUEUE_MAX).forEach(function(p) { deleteQueueItem(p.id); });
+          }
+        } catch (e) {
+          photoQueue = [];
+          logDiag('Could not read the phone queue: ' + (e.message || e), 'warn');
+        }
+        renderQueueBanner();
+        logDiag('Restored ' + photoQueue.length + ' queued photo(s) from this phone.', 'info');
+      }
+
+      // ── B14: Non-destructive crop & rotate before sending ────────────────
+      function setEditorBusy(busy) {
+        [btnRotateLeft, btnRotateRight, btnCropToggle, btnEditorReset, btnCropApply, btnCropCancel].forEach(function(btn) {
+          if (btn) btn.disabled = Boolean(busy);
+        });
+        if (btnCropToggle) btnCropToggle.disabled = Boolean(busy) || cropMode;
+      }
+
+      function loadPhotoImage(dataUrl) {
+        return new Promise(function(resolve, reject) {
+          const img = new Image();
+          img.onload = function() { resolve(img); };
+          img.onerror = function() { reject(new Error('Could not read that photo')); };
+          img.src = dataUrl;
+        });
+      }
+
+      function previewContentRect() {
+        const box = previewImg.getBoundingClientRect();
+        const nw = previewImg.naturalWidth || 1;
+        const nh = previewImg.naturalHeight || 1;
+        const scale = Math.min(box.width / nw, box.height / nh) || 1;
+        const w = nw * scale;
+        const h = nh * scale;
+        return { left: (box.width - w) / 2, top: (box.height - h) / 2, width: w, height: h, scale: scale };
+      }
+
+      function setCropBox(left, top, width, height) {
+        const bounds = previewContentRect();
+        const minSize = 40;
+        width = Math.max(minSize, Math.min(width, bounds.width));
+        height = Math.max(minSize, Math.min(height, bounds.height));
+        left = Math.max(bounds.left, Math.min(left, bounds.left + bounds.width - width));
+        top = Math.max(bounds.top, Math.min(top, bounds.top + bounds.height - height));
+        cropRect.style.left = left + 'px';
+        cropRect.style.top = top + 'px';
+        cropRect.style.width = width + 'px';
+        cropRect.style.height = height + 'px';
+      }
+
+      function enterCropMode() {
+        if (!activePhoto || isTransferring) return;
+        cropMode = true;
+        const bounds = previewContentRect();
+        cropLayer.classList.remove('hidden');
+        cropControls.classList.remove('hidden');
+        if (editorControls) editorControls.style.opacity = '0.55';
+        setCropBox(bounds.left, bounds.top, bounds.width, bounds.height);
+        setEditorBusy(false);
+        transferLabel.textContent = '✂️ Drag the box or its corners, then Apply Crop.';
+        transferLabel.style.color = 'var(--accent-cyan)';
+      }
+
+      function exitCropMode() {
+        cropMode = false;
+        cropDrag = null;
+        cropLayer.classList.add('hidden');
+        cropControls.classList.add('hidden');
+        if (editorControls) editorControls.style.opacity = '';
+        setEditorBusy(false);
+      }
+
+      function commitActiveData(dataUrl) {
+        if (!activePhoto || !dataUrl) return;
+        activePhoto.data = dataUrl;
+        activePhoto.status = 'queued';
+        pendingPhoto = { data: dataUrl, name: activePhoto.name, id: activePhoto.id };
+        previewImg.src = dataUrl;
+        persistQueueItem(activePhoto);
+      }
+
+      async function rotateActive(direction) {
+        if (!activePhoto || isTransferring || cropMode) return;
+        setEditorBusy(true);
+        try {
+          const img = await loadPhotoImage(activePhoto.data);
+          const canvas = document.createElement('canvas');
+          canvas.width = img.height;
+          canvas.height = img.width;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas unavailable');
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+          ctx.rotate((direction === 'left' ? -90 : 90) * Math.PI / 180);
+          ctx.drawImage(img, -img.width / 2, -img.height / 2);
+          commitActiveData(canvas.toDataURL('image/jpeg', 0.85));
+          logDiag('Rotated photo ' + (direction === 'left' ? '90° counter-clockwise' : '90° clockwise') + '.', 'info');
+        } catch (e) {
+          logDiag('Rotate failed: ' + (e.message || e), 'error');
+        }
+        setEditorBusy(false);
+      }
+
+      async function applyCrop() {
+        if (!activePhoto || !cropMode) return;
+        setEditorBusy(true);
+        try {
+          const img = await loadPhotoImage(activePhoto.data);
+          const bounds = previewContentRect();
+          const left = parseFloat(cropRect.style.left) || bounds.left;
+          const top = parseFloat(cropRect.style.top) || bounds.top;
+          const width = parseFloat(cropRect.style.width) || bounds.width;
+          const height = parseFloat(cropRect.style.height) || bounds.height;
+          const sx = Math.max(0, (left - bounds.left) / bounds.scale);
+          const sy = Math.max(0, (top - bounds.top) / bounds.scale);
+          const sw = Math.min(img.naturalWidth - sx, width / bounds.scale);
+          const sh = Math.min(img.naturalHeight - sy, height / bounds.scale);
+          if (sw < 8 || sh < 8) throw new Error('Crop area is too small');
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.round(sw);
+          canvas.height = Math.round(sh);
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw new Error('Canvas unavailable');
+          ctx.drawImage(img, sx, sy, sw, sh, 0, 0, canvas.width, canvas.height);
+          commitActiveData(canvas.toDataURL('image/jpeg', 0.85));
+          exitCropMode();
+          transferLabel.textContent = '✓ Crop applied. Send when ready.';
+          transferLabel.style.color = 'var(--accent-emerald)';
+        } catch (e) {
+          logDiag('Crop failed: ' + (e.message || e), 'error');
+          transferLabel.textContent = '⚠️ ' + (e.message || 'Could not crop this photo.');
+          transferLabel.style.color = 'var(--accent-rose)';
+        }
+        setEditorBusy(false);
+      }
+
+      function resetActiveEdits() {
+        if (!activePhoto || !activePhoto.original) return;
+        exitCropMode();
+        commitActiveData(activePhoto.original);
+        transferLabel.textContent = '↺ Reset to the original capture.';
+        transferLabel.style.color = 'var(--accent-cyan)';
+      }
+
+      function startCropDrag(event, mode, handle) {
+        if (!cropMode) return;
+        event.preventDefault();
+        const bounds = previewContentRect();
+        cropDrag = {
+          mode: mode,
+          handle: handle,
+          startX: event.clientX,
+          startY: event.clientY,
+          left: parseFloat(cropRect.style.left) || bounds.left,
+          top: parseFloat(cropRect.style.top) || bounds.top,
+          width: parseFloat(cropRect.style.width) || bounds.width,
+          height: parseFloat(cropRect.style.height) || bounds.height
+        };
+        if (cropRect.setPointerCapture) {
+          try { cropRect.setPointerCapture(event.pointerId); } catch (e) {}
+        }
+      }
+
+      function moveCropDrag(event) {
+        if (!cropDrag) return;
+        event.preventDefault();
+        const dx = event.clientX - cropDrag.startX;
+        const dy = event.clientY - cropDrag.startY;
+        let left = cropDrag.left;
+        let top = cropDrag.top;
+        let width = cropDrag.width;
+        let height = cropDrag.height;
+
+        if (cropDrag.mode === 'move') {
+          left += dx;
+          top += dy;
+        } else {
+          const h = cropDrag.handle || '';
+          if (h.indexOf('w') !== -1) { left += dx; width -= dx; }
+          if (h.indexOf('e') !== -1) { width += dx; }
+          if (h.indexOf('n') !== -1) { top += dy; height -= dy; }
+          if (h.indexOf('s') !== -1) { height += dy; }
+        }
+        setCropBox(left, top, width, height);
+      }
+
+      function endCropDrag() {
+        cropDrag = null;
+      }
+
+      cropRect?.addEventListener('pointerdown', function(e) {
+        if (e.target === cropRect) startCropDrag(e, 'move');
+      });
+      cropRect?.querySelectorAll('.crop-handle').forEach(function(handleEl) {
+        handleEl.addEventListener('pointerdown', function(e) {
+          e.stopPropagation();
+          startCropDrag(e, 'resize', handleEl.getAttribute('data-handle'));
+        });
+      });
+      window.addEventListener('pointermove', moveCropDrag, { passive: false });
+      window.addEventListener('pointerup', endCropDrag);
+      window.addEventListener('pointercancel', endCropDrag);
+
+      function showEditorFor(item) {
+        if (!item) return;
+        activePhoto = item;
+        activePhoto.original = activePhoto.original || item.data;
+        pendingPhoto = { data: item.data, name: item.name, id: item.id };
+        cameraSection.classList.add('hidden');
+        previewSection.classList.remove('hidden');
+        exitCropMode();
+        previewImg.src = item.data;
+        btnSendPhoto.classList.remove('hidden');
+        btnSendPhoto.disabled = false;
+        btnManualSend.classList.add('hidden');
+        btnSnapAnother.classList.add('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
+        btnCancelPhoto.classList.remove('hidden');
+        transferLabel.textContent = '✂️ Crop or rotate, then send.';
+        transferLabel.style.color = 'var(--accent-cyan)';
+        progressBar.style.width = '0%';
+        transferPercent.textContent = '0%';
+        setEditorBusy(false);
+        renderQueueBanner();
+      }
+
+      function showCameraForNextCapture() {
+        activePhoto = null;
+        exitCropMode();
+        previewSection.classList.add('hidden');
+        cameraSection.classList.remove('hidden');
+        progressBar.style.width = '0%';
+        transferPercent.textContent = '0%';
+        btnManualSend.classList.add('hidden');
+        renderQueueBanner();
+        if (!videoStream) startLiveCamera();
+      }
+
+      function markTransferSucceeded(result) {
+        isTransferring = false;
+        progressBar.style.width = '100%';
+        transferPercent.textContent = '100%';
+        transferLabel.textContent = '✓ Transferred! Check your computer.';
+        transferLabel.style.color = 'var(--accent-emerald)';
+        btnManualSend.classList.add('hidden');
+        btnSnapAnother.classList.remove('hidden');
+        if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
+      }
+
+      async function sendActivePhoto() {
+        if (!activePhoto || isTransferring || isSendingQueue) return;
+        exitCropMode();
+        const item = activePhoto;
+        isSendingQueue = true;
+        renderQueueBanner();
+        btnSendPhoto.disabled = true;
+        transferLabel.textContent = '⚡ Sending to your desktop...';
+        transferLabel.style.color = 'var(--accent-cyan)';
+        try {
+          await transmitPhoto(item.data, item.name, item.id);
+          await removeQueuedPhoto(item.id);
+          logDiag('✓ ' + item.name + ' removed from the phone queue after delivery.', 'success');
+          const next = photoQueue[0];
+          if (next) {
+            showEditorFor(next);
+            transferLabel.textContent = '📸 ' + photoQueue.length + ' more photo(s) queued. Send the next one.';
+            transferLabel.style.color = 'var(--accent-cyan)';
+          } else {
+            showCameraForNextCapture();
+          }
+        } catch (err) {
+          item.status = 'failed';
+          item.attempts = (item.attempts || 0) + 1;
+          persistQueueItem(item);
+          transferLabel.textContent = '📦 Still saved on this phone — it will retry automatically.';
+          transferLabel.style.color = 'var(--accent-amber)';
+          btnManualSend.classList.remove('hidden');
+          logDiag('Send failed; photo kept in the queue: ' + (err.message || err), 'warn');
+        } finally {
+          isSendingQueue = false;
+          renderQueueBanner();
+          if (btnSendPhoto) btnSendPhoto.disabled = false;
+          setEditorBusy(false);
+        }
+      }
+
+      async function syncQueuedPhotos(force) {
+        if (isSendingQueue || isTransferring || photoQueue.length === 0) return;
+        const previewOpen = !previewSection.classList.contains('hidden');
+        if (previewOpen && !force) {
+          renderQueueBanner();
+          return;
+        }
+        if (!activePhoto || activePhoto.id !== photoQueue[0].id) showEditorFor(photoQueue[0]);
+        await sendActivePhoto();
+      }
+
+      btnSendPhoto?.addEventListener('click', function() { sendActivePhoto(); });
+      btnCancelPhoto?.addEventListener('click', async function() {
+        if (!activePhoto) return;
+        const id = activePhoto.id;
+        activePhoto = null;
+        pendingPhoto = null;
+        await removeQueuedPhoto(id);
+        const next = photoQueue[0];
+        if (next) showEditorFor(next);
+        else showCameraForNextCapture();
+      });
+      btnRotateLeft?.addEventListener('click', function() { rotateActive('left'); });
+      btnRotateRight?.addEventListener('click', function() { rotateActive('right'); });
+      btnCropToggle?.addEventListener('click', enterCropMode);
+      btnCropCancel?.addEventListener('click', function() {
+        exitCropMode();
+        transferLabel.textContent = '✂️ Crop or rotate, then send.';
+        transferLabel.style.color = 'var(--accent-cyan)';
+      });
+      btnCropApply?.addEventListener('click', applyCrop);
+      btnEditorReset?.addEventListener('click', resetActiveEdits);
+      btnQueueSync?.addEventListener('click', function() { syncQueuedPhotos(true); });
+
+      window.addEventListener('online', function() {
+        logDiag('Network is back. Retrying queued photos...', 'info');
+        syncQueuedPhotos(false);
+      });
+      window.addEventListener('offline', function() {
+        renderQueueBanner();
+        logDiag('Phone is offline. Photos stay saved in the phone queue.', 'warn');
+      });
+
+
       async function handleMultipleFiles(fileList) {
         const files = Array.from(fileList || []).filter(f => f.type.startsWith('image/'));
         if (files.length === 0) return;
 
-        cameraSection.classList.add('hidden');
-        previewSection.classList.remove('hidden');
-        btnSnapAnother.classList.add('hidden');
-        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
-        btnManualSend.classList.add('hidden');
-
-        logDiag('Queueing ' + files.length + ' photo(s) for transfer to desktop...');
+        logDiag('Saving ' + files.length + ' photo(s) to the phone queue...');
+        let added = 0;
 
         for (let i = 0; i < files.length; i++) {
           const file = files[i];
-          transferLabel.textContent = '⚡ Preparing photo ' + (i + 1) + ' of ' + files.length + '...';
-          progressBar.style.width = '20%';
-          transferPercent.textContent = '20%';
-
           try {
             const base64Data = await resizeImageFile(file);
-            previewImg.src = base64Data;
-            transferLabel.textContent = '⚡ Sending photo ' + (i + 1) + ' of ' + files.length + ' (' + file.name + ')...';
-            await transmitPhoto(base64Data, file.name);
+            const item = await enqueuePhoto(base64Data, file.name);
+            if (item) added++;
           } catch (err) {
-            logDiag('Failed transmitting ' + file.name + ': ' + (err.message || err), 'error');
+            logDiag('Failed queuing ' + file.name + ': ' + (err.message || err), 'error');
           }
         }
 
-        transferLabel.textContent = files.length > 1 ? '✓ All ' + files.length + ' photos sent to desktop!' : '✓ Transferred! Check your computer.';
-        transferLabel.style.color = 'var(--accent-emerald)';
-        progressBar.style.width = '100%';
-        transferPercent.textContent = '100%';
-        btnManualSend.classList.add('hidden');
-        btnSnapAnother.classList.remove('hidden');
-        if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
-        logDiag('✓ Finished transfer of ' + files.length + ' photo(s)!', 'success');
+        if (added > 0) {
+          logDiag('✓ Queued ' + added + ' photo(s). Crop/rotate if needed, then send.', 'success');
+          showEditorFor(photoQueue[0]);
+        }
       }
 
       // Live Shutter Click: Capture frame directly from video
@@ -796,21 +1318,11 @@
 
         const base64Data = canvas.toDataURL('image/jpeg', 0.80);
         const snapName = 'camera_snap_' + Date.now() + '.jpg';
-        pendingPhoto = { data: base64Data, name: snapName };
 
-        // Hide camera, show preview
-        cameraSection.classList.add('hidden');
-        previewImg.src = base64Data;
-        previewSection.classList.remove('hidden');
-        btnSnapAnother.classList.add('hidden');
-        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
-
-        try {
-          await transmitPhoto(base64Data, snapName);
-          btnSnapAnother.classList.remove('hidden');
-          if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
-        } catch (e) {
-          btnManualSend.classList.remove('hidden');
+        const item = await enqueuePhoto(base64Data, snapName);
+        if (item) {
+          showEditorFor(item);
+          logDiag('Snapshot saved to the phone queue. Crop/rotate, then send.', 'success');
         }
       });
 
@@ -829,30 +1341,30 @@
       });
 
       // Transmit payload: Tier 1 P2P LAN -> Tier 2 Cloudflare Worker Bridge
-      function transmitPhoto(base64Data, filename) {
-        // One id per queued photo, reused across every retry of that photo. The
-        // desktop uses it to drop a repeat upload instead of attaching the same
-        // picture twice.
-        if (!pendingPhoto || pendingPhoto.data !== base64Data) {
-          pendingPhoto = {
-            data: base64Data,
-            name: filename,
-            id: 'ph_' + Date.now().toString(36) + '_' + Math.random().toString(36).substring(2, 8)
-          };
-        }
+      function transmitPhoto(base64Data, filename, photoId) {
+        // One stable id per queued photo, reused across every retry of the same
+        // content. The desktop uses it to drop a repeat upload instead of
+        // attaching the same picture twice. Editing the photo changes its
+        // length, which changes the transfer id so the desktop treats the new
+        // bytes as a fresh photo rather than a duplicate.
+        const stableId = photoId ||
+          (pendingPhoto && pendingPhoto.data === base64Data && pendingPhoto.id) ||
+          newPhotoId();
+        const transferId = stableId + '_' + base64Data.length.toString(36);
+        pendingPhoto = { data: base64Data, name: filename, id: stableId };
 
         return new Promise(function(resolve, reject) {
           // Tier 1: Direct WebRTC DataChannel (same Wi-Fi, 0ms, zero server load)
           if (activeConn && activeConn.open) {
             logDiag('Using direct P2P LAN data channel for instant transfer...');
-            sendViaP2PChunks(base64Data, filename, resolve, reject);
+            sendViaP2PChunks(base64Data, filename, resolve, reject, transferId);
             return;
           }
 
           // Tier 2: Cloudflare Bridge (quicksnipe-bridge.radtome.com)
           // Works 100% across cellular 5G, VPNs, different subnets, corporate firewalls
           logDiag('Direct P2P channel not open. Routing through Cloudflare Bridge on quicksnipe-bridge.radtome.com...', 'warn');
-          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject, transferId);
         });
       }
 
@@ -884,19 +1396,7 @@
         });
       }
 
-      function markTransferSucceeded(result) {
-        isTransferring = false;
-        pendingPhoto = null;
-        progressBar.style.width = '100%';
-        transferPercent.textContent = '100%';
-        transferLabel.textContent = '✓ Transferred! Check your computer.';
-        transferLabel.style.color = 'var(--accent-emerald)';
-        btnManualSend.classList.add('hidden');
-        btnSnapAnother.classList.remove('hidden');
-        if (btnGalleryMore) btnGalleryMore.classList.remove('hidden');
-      }
-
-      function sendViaCloudflareBridge(base64Data, filename, resolve, reject) {
+      function sendViaCloudflareBridge(base64Data, filename, resolve, reject, transferId) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
         transferLabel.textContent = '⚡ Transmitting via Cloudflare Bridge...';
@@ -913,7 +1413,7 @@
           progressBar.style.width = pct + '%';
           transferPercent.textContent = pct + '%';
 
-          postPhotoToBridge(base64Data, filename, pendingPhoto && pendingPhoto.id)
+          postPhotoToBridge(base64Data, filename, transferId || (pendingPhoto && pendingPhoto.id))
             .then(function(result) {
               // `delivered` is the only evidence the desktop actually received the
               // photo. Coercing a missing or zero count into a success is what made
@@ -962,7 +1462,7 @@
         tryUpload();
       }
 
-      function sendViaP2PChunks(base64Data, filename, resolve, reject) {
+      function sendViaP2PChunks(base64Data, filename, resolve, reject, transferId) {
         isTransferring = true;
         btnManualSend.classList.add('hidden');
         transferLabel.textContent = '⚡ Transmitting directly over P2P LAN...';
@@ -973,7 +1473,9 @@
         const CHUNK_SIZE = 32768;
         const totalLength = base64Data.length;
         const totalChunks = Math.ceil(totalLength / CHUNK_SIZE);
-        const transferId = 'tx_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6);
+        // Reuse the photo's stable transfer id so a retry resumes/ dedupes
+        // instead of arriving as a second, identical attachment.
+        const txId = transferId || ('tx_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6));
         let chunkIndex = 0;
 
         logDiag('Starting P2P transmission: ' + (filename || 'photo.jpg') + ' (' + totalChunks + ' chunks, ~' + Math.round(totalLength / 1024) + ' KB)');
@@ -982,7 +1484,7 @@
           if (!activeConn || !activeConn.open) {
             isTransferring = false;
             logDiag('P2P connection dropped during transfer. Switching to Cloudflare Bridge...', 'warn');
-            sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+            sendViaCloudflareBridge(base64Data, filename, resolve, reject, txId);
             return;
           }
 
@@ -994,7 +1496,7 @@
             activeConn.send({
               type: 'QS_CHUNK',
               payloadType: 'QUICKSNIPE_PHOTO',
-              id: transferId,
+              id: txId,
               name: filename || 'thrift_photo.jpg',
               index: chunkIndex,
               total: totalChunks,
@@ -1012,20 +1514,20 @@
               // Every byte is now written to the socket, which still proves nothing:
               // the desktop may fail to reassemble, decode, or attach it. Wait for
               // its explicit acknowledgement before claiming the photo arrived.
-              awaitDesktopAck(base64Data, filename, resolve, reject);
+              awaitDesktopAck(base64Data, filename, resolve, reject, txId);
             }
           } catch (err) {
             console.error('[QuickSnipe Mobile] Chunk send error:', err);
             isTransferring = false;
             logDiag('P2P chunk exception: ' + (err.message || err) + '. Falling back to Cloudflare...', 'warn');
-            sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+            sendViaCloudflareBridge(base64Data, filename, resolve, reject, txId);
           }
         }
 
         sendNextChunk();
       }
 
-      function awaitDesktopAck(base64Data, filename, resolve, reject) {
+      function awaitDesktopAck(base64Data, filename, resolve, reject, transferId) {
         var ackTimeout = null;
         var settled = false;
 
@@ -1059,55 +1561,49 @@
           settled = true;
           cleanup();
           logDiag('Direct P2P transfer timed out waiting for desktop confirmation. Trying Cloudflare Bridge...', 'warn');
-          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject, transferId);
         }, 5000);
 
         if (activeConn && activeConn.open) {
           activeConn.on('data', onData);
         } else {
           cleanup();
-          sendViaCloudflareBridge(base64Data, filename, resolve, reject);
+          sendViaCloudflareBridge(base64Data, filename, resolve, reject, transferId);
         }
       }
 
-      // Manual retry send button
+      // Manual retry send button — never drops the queued photo.
       btnManualSend.addEventListener('click', function() {
+        if (activePhoto) {
+          sendActivePhoto();
+          return;
+        }
         if (pendingPhoto) {
           if (!activeConn || !activeConn.open) {
             transferLabel.textContent = '🔄 Reconnecting to desktop (' + sessionId + ')...';
             createFreshPeerAndConnect();
           } else {
-            transmitPhoto(pendingPhoto.data, pendingPhoto.name);
+            transmitPhoto(pendingPhoto.data, pendingPhoto.name, pendingPhoto.id);
           }
         }
       });
 
-      // Snap Another Item
+      // Snap Another Item — the unsent photo stays saved in the phone queue.
       btnSnapAnother.addEventListener('click', function() {
         if (cameraInput) cameraInput.value = '';
         if (galleryInput) galleryInput.value = '';
-        pendingPhoto = null;
-        btnSnapAnother.classList.add('hidden');
-        if (btnGalleryMore) btnGalleryMore.classList.add('hidden');
-        btnManualSend.classList.add('hidden');
-        previewSection.classList.add('hidden');
-        cameraSection.classList.remove('hidden');
-        progressBar.style.width = '0%';
-        transferPercent.textContent = '0%';
-        if (!videoStream) {
-          startLiveCamera();
-        }
+        showCameraForNextCapture();
       });
 
       btnActivateCamera.addEventListener('click', function() {
         startLiveCamera();
       });
 
-      // Try starting camera right away
-      startLiveCamera();
-
-      // Kick off connection
-      createFreshPeerAndConnect();
+      // Restore photos saved on this phone, then start the camera and link up.
+      loadPhotoQueue().finally(function() {
+        startLiveCamera();
+        createFreshPeerAndConnect();
+      });
     })();
   </script>
 </body>
