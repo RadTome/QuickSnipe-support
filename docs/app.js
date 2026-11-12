@@ -378,19 +378,19 @@
     } else if (charLen > limit.max) {
       grade = 'F';
       gradeClass = 'grade-c';
-      advice = `⚠️ Title exceeds ${limit.name} maximum cutoff by ${charLen - limit.max} characters. Search results will cut off important keywords.`;
+      advice = `⚠️ Too long for ${limit.name} by ${charLen - limit.max} characters. Buyers won't see the end of your title, so trim the least important words.`;
     } else if (charLen >= limit.idealMin && charLen <= limit.idealMax) {
       grade = 'S';
       gradeClass = 'grade-s';
-      advice = `✨ Great length optimization. Fits cleanly within ${limit.name} desktop and mobile search viewports without wasted space.`;
+      advice = `✨ Perfect length! Your title fits neatly in ${limit.name} search results on phones and computers.`;
     } else if (charLen >= limit.idealMin - 20) {
       grade = 'A';
       gradeClass = 'grade-a';
-      advice = `Great keyword density. Consider adding 1 or 2 high-converting descriptive tags to maximize reach up to ~${limit.idealMax} chars.`;
+      advice = `👍 Good title. Add 1 or 2 more descriptive words (color, size, material) to show up in even more searches.`;
     } else {
       grade = 'C';
       gradeClass = 'grade-b';
-      advice = `Title is too short (${charLen} chars). Search algorithms rank keyword-dense titles significantly higher. Expand with materials, style, and use cases.`;
+      advice = `Your title is a bit short (${charLen} characters). Longer, descriptive titles get found more often. Try adding brand, size, color or material.`;
     }
 
     if (lqsGradeBadge) {
@@ -432,19 +432,19 @@
       if (sotRateTier) sotRateTier.textContent = '—';
       if (sotEstCost) sotEstCost.textContent = '$0.00';
       if (sotSavingsVal) sotSavingsVal.textContent = '$0.00';
-      if (sotAdviceText) sotAdviceText.textContent = 'Enter total packaged shipping weight in ounces to check against USPS cliff thresholds.';
+      if (sotAdviceText) sotAdviceText.textContent = 'Enter the packed weight in ounces to see if you are under the 1 lb price jump.';
       return;
     }
 
     if (weight <= 15.99) {
       const estMin = 4.15 + (weight / 16) * 1.30;
       if (sotStatusBadge) {
-        sotStatusBadge.textContent = '✅ Safe Zone (Under 16 oz)';
+        sotStatusBadge.textContent = '✅ Under 16 oz';
         sotStatusBadge.style.background = 'rgba(16, 185, 129, 0.15)';
         sotStatusBadge.style.color = 'var(--accent-emerald)';
         sotStatusBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
       }
-      if (sotRateTier) sotRateTier.textContent = 'USPS Ground Advantage (Commercial First-Class Tier)';
+      if (sotRateTier) sotRateTier.textContent = 'Under 1 lb (cheapest tier)';
       if (sotEstCost) sotEstCost.textContent = `~$${estMin.toFixed(2)}`;
       if (sotSavingsVal) {
         sotSavingsVal.textContent = '+$4.20 Saved';
@@ -452,7 +452,7 @@
       }
       const marginBuffer = (15.99 - weight).toFixed(1);
       if (sotAdviceText) {
-        sotAdviceText.innerHTML = `✨ <strong>Safe shipping tier!</strong> You are <strong>${marginBuffer} oz</strong> below the 16 oz cliff. Keeping packaging under 16 oz saves $3.60 to $5.50+ compared to 1–2 lb heavy parcel rates!`;
+        sotAdviceText.innerHTML = `✨ <strong>You're in the cheap zone!</strong> You have <strong>${marginBuffer} oz</strong> to spare before the 16 oz price jump. Staying under 1 lb saves about $3.60–$5.50 per label.`;
       }
     } else {
       const overOz = (weight - 15.99).toFixed(1);
@@ -460,19 +460,19 @@
       const penalty = estJump - 5.45;
 
       if (sotStatusBadge) {
-        sotStatusBadge.textContent = `⚠️ TRAP TRIGGERED (+${overOz} oz)`;
+        sotStatusBadge.textContent = `⚠️ Over 1 lb (+${overOz} oz)`;
         sotStatusBadge.style.background = 'rgba(244, 63, 94, 0.18)';
         sotStatusBadge.style.color = 'var(--accent-rose)';
         sotStatusBadge.style.borderColor = 'rgba(244, 63, 94, 0.5)';
       }
-      if (sotRateTier) sotRateTier.textContent = 'USPS 1-2 lb Tier Leap (Heavy / Priority Rate)';
+      if (sotRateTier) sotRateTier.textContent = 'Over 1 lb (pricier tier)';
       if (sotEstCost) sotEstCost.textContent = `~$${estJump.toFixed(2)}`;
       if (sotSavingsVal) {
-        sotSavingsVal.textContent = `-$${penalty.toFixed(2)} Lost Margin`;
+        sotSavingsVal.textContent = `-$${penalty.toFixed(2)} extra cost`;
         sotSavingsVal.style.color = 'var(--accent-rose)';
       }
       if (sotAdviceText) {
-        sotAdviceText.innerHTML = `🚨 <strong>Ounce Trap Alert:</strong> You are just <strong>${overOz} oz</strong> over 15.9 oz. This triggers a <strong>$${penalty.toFixed(2)} rate spike</strong>! Quick fix: Switch from a box to a polymailer or trim packaging to save $${penalty.toFixed(2)} instantly!`;
+        sotAdviceText.innerHTML = `🚨 <strong>Heads up!</strong> You're just <strong>${overOz} oz</strong> over 1 lb, which adds about <strong>$${penalty.toFixed(2)}</strong> to your label. Quick fix: switch from a box to a poly mailer or trim the packaging.`;
       }
     }
   }
@@ -504,6 +504,7 @@
   });
 
   function startCarouselTimer() {
+    if (carouselSlides.length === 0) return;
     autoSlideTimer = setInterval(() => {
       setSlide(currentSlide + 1);
     }, 6000);
