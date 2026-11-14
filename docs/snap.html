@@ -266,8 +266,8 @@
           Photos sync directly to your computer's QuickSnipe AI Studio over secure peer-to-peer.
         </p>
         <div style="margin-top: 0.6rem; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: var(--radius-sm); padding: 0.45rem 0.65rem; font-size: 0.72rem; color: #cbd5e1; display: flex; align-items: center; gap: 0.45rem;">
-          <span style="font-size: 0.95rem;">📶</span>
-          <span>Ensure phone and PC are on the <strong style="color: var(--accent-cyan);">same Wi-Fi network</strong> with <strong style="color: var(--accent-cyan);">VPN off</strong> for instant sync.</span>
+          <span style="font-size: 0.95rem;">🌐</span>
+          <span>Works over <strong style="color: var(--accent-cyan);">same Wi-Fi (instant P2P)</strong> or <strong style="color: var(--accent-emerald);">Cellular / any network (Cloud Bridge)</strong>.</span>
         </div>
       </div>
 
@@ -506,17 +506,78 @@
 
       let peer = null;
       let activeConn = null;
+      let bridgeWs = null;
+      let bridgePingTimer = null;
+      let cloudBridgeReady = false;
+      let initialBootstrapDone = false;
+      let linkTimer = null;
       let pendingPhoto = null; // { data, name }
       let isTransferring = false;
       let videoStream = null;
+      const bridgeAckListeners = new Set();
 
       function updateStatus(state, msg) {
         statusDot.className = 'dot ' + (state === 'connected' ? 'connected' : state === 'error' ? 'error' : '');
         statusText.textContent = msg;
       }
 
+      function connectBridgeWs() {
+        if (typeof WebSocket === 'undefined' || !sessionId) return;
+        if (bridgeWs && (bridgeWs.readyState === WebSocket.OPEN || bridgeWs.readyState === WebSocket.CONNECTING)) {
+          return;
+        }
+        try {
+          const ws = new WebSocket('wss://quicksnipe-bridge.radtome.com/api/snap/ws?sid=' + encodeURIComponent(sessionId) + '&role=mobile');
+          bridgeWs = ws;
+          ws.onopen = function() {
+            cloudBridgeReady = true;
+            logDiag('Cloud Bridge WebSocket connected (cross-network relay ready).', 'success');
+            try {
+              ws.send(JSON.stringify({ type: 'HANDSHAKE', device: 'mobile', via: 'bridge' }));
+            } catch (e) {}
+            if (bridgePingTimer) clearInterval(bridgePingTimer);
+            bridgePingTimer = setInterval(function() {
+              if (ws.readyState === WebSocket.OPEN) {
+                try { ws.send(JSON.stringify({ type: 'PING' })); } catch (e) {}
+              }
+            }, 25000);
+          };
+          ws.onmessage = function(event) {
+            try {
+              const data = JSON.parse(event.data);
+              if (data && data.type === 'HANDSHAKE_ACK') {
+                cloudBridgeReady = true;
+                if (!activeConn || !activeConn.open) {
+                  updateStatus('connected', 'Cloud Bridge Ready');
+                  if (diagDC) {
+                    diagDC.textContent = 'Cloud Relay';
+                    diagDC.style.color = 'var(--accent-cyan)';
+                  }
+                }
+              } else if (data && data.type === 'QS_ACK') {
+                bridgeAckListeners.forEach(function(fn) {
+                  try { fn(data); } catch (e) {}
+                });
+              }
+            } catch (e) {}
+          };
+          ws.onclose = function() {
+            if (bridgePingTimer) {
+              clearInterval(bridgePingTimer);
+              bridgePingTimer = null;
+            }
+            if (bridgeWs === ws) bridgeWs = null;
+          };
+        } catch (e) {}
+      }
+
       // Fresh peer connection lifecycle
       function createFreshPeerAndConnect() {
+        connectBridgeWs();
+        if (linkTimer) {
+          clearTimeout(linkTimer);
+          linkTimer = null;
+        }
         if (activeConn) {
           try { activeConn.close(); } catch (e) {}
           activeConn = null;
@@ -526,7 +587,9 @@
           peer = null;
         }
 
-        updateStatus('connecting', 'Connecting...');
+        if (!cloudBridgeReady) {
+          updateStatus('connecting', 'Connecting...');
+        }
         if (diagSignaling) {
           diagSignaling.textContent = 'Connecting...';
           diagSignaling.style.color = 'var(--accent-amber)';
@@ -568,11 +631,17 @@
               diagSignaling.style.color = 'var(--accent-rose)';
             }
             if (err.type === 'peer-unavailable') {
-              updateStatus('error', 'Session Expired');
-              if (transferLabel) {
-                transferLabel.textContent = '⚠️ Desktop session #' + sessionId + ' not found. Scan the current QR code on PC.';
-                transferLabel.style.color = 'var(--accent-rose)';
+              cloudBridgeReady = true;
+              updateStatus('connected', 'Cloud Bridge Ready');
+              if (diagDC) {
+                diagDC.textContent = 'Cloud Relay';
+                diagDC.style.color = 'var(--accent-cyan)';
               }
+              logDiag('Direct P2P peer not on broker; using Cloud Bridge relay.', 'info');
+              return;
+            }
+            if (cloudBridgeReady) {
+              updateStatus('connected', 'Cloud Bridge Ready');
               return;
             }
             updateStatus('error', 'Link Error');
@@ -595,16 +664,21 @@
           diagDC.textContent = 'Negotiating...';
           diagDC.style.color = 'var(--accent-amber)';
         }
-        updateStatus('connecting', 'Linking Desktop...');
+        if (!cloudBridgeReady) {
+          updateStatus('connecting', 'Linking Desktop...');
+        }
 
-        let linkTimer = setTimeout(function() {
+        if (linkTimer) clearTimeout(linkTimer);
+        linkTimer = setTimeout(function() {
           if (activeConn && !activeConn.open) {
+            cloudBridgeReady = true;
             logDiag('Direct P2P handshake taking > 5s. Falling back to Cloud Bridge...', 'info');
             updateStatus('connected', 'Cloud Bridge Ready');
             if (diagDC) {
               diagDC.textContent = 'Cloud Relay';
               diagDC.style.color = 'var(--accent-cyan)';
             }
+            connectBridgeWs();
             if (photoQueue.length > 0 && !isTransferring && previewSection.classList.contains('hidden')) {
               logDiag('Cloud Bridge ready. Retrying queued photos...', 'info');
               syncQueuedPhotos(false);
@@ -697,12 +771,13 @@
 
       // Resume connections when user switches back from background
       function handleWakeup() {
-        if (document.visibilityState === 'visible') {
-          console.log('[QuickSnipe Mobile] Tab resumed from background');
-          if (!activeConn || !activeConn.open) {
-            createFreshPeerAndConnect();
-          }
-        }
+        if (!initialBootstrapDone || document.visibilityState !== 'visible') return;
+        connectBridgeWs();
+        if (activeConn && activeConn.open) return;
+        if (cloudBridgeReady) return;
+        if (peer && !peer.destroyed) return;
+        console.log('[QuickSnipe Mobile] Tab resumed from background');
+        createFreshPeerAndConnect();
       }
       document.addEventListener('visibilitychange', handleWakeup);
       window.addEventListener('focus', handleWakeup);
@@ -1203,8 +1278,13 @@
           const next = photoQueue[0];
           if (next) {
             showEditorFor(next);
-            transferLabel.textContent = '📸 ' + photoQueue.length + ' more photo(s) queued. Send the next one.';
+            transferLabel.textContent = '📸 Sending remaining ' + photoQueue.length + ' queued photo(s)...';
             transferLabel.style.color = 'var(--accent-cyan)';
+            setTimeout(function() {
+              if (!cropMode && !isSendingQueue && !isTransferring) {
+                sendActivePhoto();
+              }
+            }, 150);
           } else {
             showCameraForNextCapture();
           }
@@ -1287,8 +1367,9 @@
         }
 
         if (added > 0) {
-          logDiag('✓ Queued ' + added + ' photo(s). Crop/rotate if needed, then send.', 'success');
+          logDiag('✓ Queued ' + added + ' photo(s). Sending to desktop...', 'success');
           showEditorFor(photoQueue[0]);
+          sendActivePhoto();
         }
       }
 
@@ -1322,7 +1403,8 @@
         const item = await enqueuePhoto(base64Data, snapName);
         if (item) {
           showEditorFor(item);
-          logDiag('Snapshot saved to the phone queue. Crop/rotate, then send.', 'success');
+          logDiag('Snapshot captured. Sending to desktop...', 'success');
+          sendActivePhoto();
         }
       });
 
@@ -1372,7 +1454,7 @@
       // response is recoverable: the desktop queues the photo for a short window
       // in case its socket is reconnecting, so retry briefly before giving up
       // with an honest message rather than a green lie.
-      var CLOUD_UPLOAD_ATTEMPTS = 3;
+      var CLOUD_UPLOAD_ATTEMPTS = 5;
       var CLOUD_UPLOAD_RETRY_MS = 1500;
 
       function postPhotoToBridge(base64Data, filename, transferId) {
@@ -1405,16 +1487,43 @@
         transferPercent.textContent = '35%';
         logDiag('Dispatching to the Cloudflare Bridge...');
 
+        var txId = transferId || (pendingPhoto && pendingPhoto.id);
         var attempt = 0;
+        var settled = false;
+
+        function onBridgeAck(ackData) {
+          if (settled) return;
+          if (!ackData || (ackData.id && txId && ackData.id !== txId)) return;
+          settled = true;
+          bridgeAckListeners.delete(onBridgeAck);
+          markTransferSucceeded({ delivered: ackData.count || 1 });
+          logDiag('✓ Desktop confirmed receipt via Cloud Bridge!', 'success');
+          if (resolve) resolve({ success: true, delivered: ackData.count || 1 });
+        }
+        bridgeAckListeners.add(onBridgeAck);
+
+        connectBridgeWs();
+        if (bridgeWs && bridgeWs.readyState === WebSocket.OPEN) {
+          try {
+            bridgeWs.send(JSON.stringify({
+              type: 'QUICKSNIPE_PHOTO',
+              image: base64Data,
+              name: filename || 'thrift_photo.jpg',
+              id: txId
+            }));
+          } catch (e) {}
+        }
 
         function tryUpload() {
+          if (settled) return;
           attempt++;
-          var pct = Math.min(90, 30 + attempt * 15);
+          var pct = Math.min(90, 25 + attempt * 13);
           progressBar.style.width = pct + '%';
           transferPercent.textContent = pct + '%';
 
-          postPhotoToBridge(base64Data, filename, transferId || (pendingPhoto && pendingPhoto.id))
+          postPhotoToBridge(base64Data, filename, txId)
             .then(function(result) {
+              if (settled) return;
               // `delivered` is the only evidence the desktop actually received the
               // photo. Coercing a missing or zero count into a success is what made
               // a lost photo look transferred, so it is read strictly here.
@@ -1422,6 +1531,8 @@
               if (!isFinite(delivered) || delivered < 0) delivered = 0;
 
               if (delivered > 0) {
+                settled = true;
+                bridgeAckListeners.delete(onBridgeAck);
                 markTransferSucceeded(result);
                 logDiag('✓ Cloudflare Bridge delivered to the desktop (' + delivered + ' recipient).', 'success');
                 if (resolve) resolve(result);
@@ -1441,6 +1552,8 @@
                 return;
               }
 
+              settled = true;
+              bridgeAckListeners.delete(onBridgeAck);
               isTransferring = false;
               transferLabel.textContent =
                 '⚠️ Your computer did not receive this. Keep QuickSnipe open on it, then tap retry.';
@@ -1450,6 +1563,9 @@
               if (reject) reject(new Error('Desktop not reachable'));
             })
             .catch(function(err) {
+              if (settled) return;
+              settled = true;
+              bridgeAckListeners.delete(onBridgeAck);
               isTransferring = false;
               logDiag('Cloudflare bridge upload error: ' + (err.message || err), 'error');
               transferLabel.textContent = '⚠️ Cloud sync error. Tap to retry.';
@@ -1601,6 +1717,7 @@
 
       // Restore photos saved on this phone, then start the camera and link up.
       loadPhotoQueue().finally(function() {
+        initialBootstrapDone = true;
         startLiveCamera();
         createFreshPeerAndConnect();
       });
