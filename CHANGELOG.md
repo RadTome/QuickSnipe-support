@@ -4,7 +4,36 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.4] — Current Stable Release (Live in Chrome Web Store)
+## 🚀 [v1.4.5] — Current Stable Release (Live in Chrome Web Store)
+
+> **Status:** Live in Chrome Web Store (Approved & Published)  
+> **Release Date:** November 2026  
+> **Pre-Flight Validation:** All 436 automated unit tests, DOM binding audits, and Chrome Web Store compliance scanners green (0 failures)
+
+### 📱 Wire-Free Mobile Photo Sync (Phone-to-Chrome)
+- **Instant Camera QR Pairing**: Scan a session QR code with any iPhone or Android camera to open the instant mobile companion (`snap.html`). Photos taken at thrift stores, yard sales, or photo tables beam wirelessly directly to the Chrome Side Panel in real time via encrypted peer-to-peer WebRTC with Cloud Bridge fallback.
+- **Zero App Installs & Zero Cables**: Eliminates the slow manual transfer step (emailing photos or waiting on iCloud/Google Photos sync). Includes 1-click **Save All to PC** and **Send to AI Studio** buttons.
+
+### 💎 Modern Light Glass UI & Accessibility Polish
+- **Light Glass Aesthetic**: Translucent glass card styling with refined shadows and subtle borders, elevating contrast and readability during high-volume listing sessions.
+- **Side Panel Performance**: Streamlined task picker, collapsible category pills, and responsive scrolling for fast single-handed navigation.
+
+### 🏪 9-Platform Fee Schedules & Market Math Synchronization
+- **Accurate Fee Alignment**: Synchronized platform fee schedules across `utils/str-radar.js`, `utils/radar.js`, and `utils/sold-comps.js`:
+  - **eBay**: 13.25% + $0.30 fixed fee
+  - **Mercari**: 2.90% + $0.50 fixed fee
+  - **Depop**: 3.30% + $0.45 transaction fee
+  - **Etsy**: 9.50% + $0.45 fixed cut
+  - **Grailed**: 9.00% standard commission
+- **Multi-Platform Listing Support**: Complete generator copy constraints, character limits, and compliance checks for **Etsy, eBay, Poshmark, Mercari, Depop, Amazon, Shopify, Walmart, and Grailed**.
+
+### 🛡️ Robustness & AI Client Guardrails
+- **AbortSignal Stream Cancellation**: Added comprehensive user cancel handlers to `utils/ai-engine.js` so aborted generations immediately terminate model inference sessions, eliminating hanging calls and wasted tokens.
+- **Store Compliance Hardening**: Full validation against automated Chrome Web Store review scanners, zero third-party trademark list dumps, and strict character boundary enforcement.
+
+---
+
+## 🚀 [v1.4.4] — Previous Release
 
 > **Status:** Live in Chrome Web Store (Hotfix Release)  
 > **Release Date:** November 2026  
