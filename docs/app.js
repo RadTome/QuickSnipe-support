@@ -552,6 +552,152 @@
     }
   }, { passive: true });
 
+  // 7b. v1.4.5 Savings (ROI) Calculator
+  const svListings = document.getElementById('sv-listings');
+  const svMinutes = document.getElementById('sv-minutes');
+  const svHourly = document.getElementById('sv-hourly');
+  const svSub = document.getElementById('sv-sub');
+  const svListingsOut = document.getElementById('sv-listings-out');
+  const svMinutesOut = document.getElementById('sv-minutes-out');
+  const svHourlyOut = document.getElementById('sv-hourly-out');
+  const svSubOut = document.getElementById('sv-sub-out');
+  const svTimeYr = document.getElementById('sv-time-yr');
+  const svHoursMo = document.getElementById('sv-hours-mo');
+  const svSubSave = document.getElementById('sv-sub-save');
+  const svFiveYr = document.getElementById('sv-five-yr');
+  const svVerdict = document.getElementById('sv-verdict');
+  const presetButtons = document.querySelectorAll('.preset-btn');
+
+  const QUICKSNIPE_MINUTES_PER_LISTING = 6;
+  const PRO_ANNUAL_COST = 49;
+  const LIFETIME_COST = 69;
+  const fmtUSD = (n, decimals = 0) =>
+    n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: decimals, minimumFractionDigits: decimals });
+
+  function updatePresetButtons(listings, minutes, hourly, sub) {
+    presetButtons.forEach(btn => {
+      const match = Number(btn.dataset.listings) === listings &&
+                    Number(btn.dataset.minutes) === minutes &&
+                    Number(btn.dataset.hourly) === hourly &&
+                    Number(btn.dataset.sub) === sub;
+      btn.classList.toggle('active', match);
+    });
+  }
+
+  presetButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!svListings || !svMinutes || !svHourly || !svSub) return;
+      svListings.value = btn.dataset.listings;
+      svMinutes.value = btn.dataset.minutes;
+      svHourly.value = btn.dataset.hourly;
+      svSub.value = btn.dataset.sub;
+      presetButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSavings();
+    });
+  });
+
+  function renderSavings() {
+    if (!svListings || !svMinutes || !svHourly || !svSub) return;
+    const listings = Number(svListings.value) || 0;
+    const minutes = Number(svMinutes.value) || 0;
+    const hourly = Number(svHourly.value) || 0;
+    const sub = Number(svSub.value) || 0;
+
+    const savedMinutes = Math.max(0, minutes - QUICKSNIPE_MINUTES_PER_LISTING);
+    const hoursMo = (listings * savedMinutes) / 60;
+    const timeYr = hoursMo * hourly * 12;
+    const subSave = sub * 12 - PRO_ANNUAL_COST;
+    const fiveYrSub = sub * 60;
+
+    svListingsOut.textContent = String(listings);
+    svMinutesOut.textContent = String(minutes);
+    svHourlyOut.textContent = fmtUSD(hourly);
+    svSubOut.textContent = fmtUSD(sub);
+
+    svTimeYr.textContent = fmtUSD(timeYr);
+    svHoursMo.textContent = hoursMo.toFixed(1);
+    svSubSave.textContent = (subSave >= 0 ? '+' : '−') + fmtUSD(Math.abs(subSave)) + '/yr';
+    svSubSave.style.color = subSave >= 0 ? 'var(--accent-emerald)' : 'var(--text-muted)';
+    svFiveYr.textContent = `${fmtUSD(fiveYrSub)} vs ${fmtUSD(LIFETIME_COST)}`;
+
+    if (sub > 0) {
+      svVerdict.innerHTML = `At <strong>${listings} listings/month</strong> you reclaim about <strong>${hoursMo.toFixed(1)} hours</strong> every month — and you'd keep <strong>${fmtUSD(Math.max(0, subSave))} a year more</strong> than a ${fmtUSD(sub)}/mo cross-lister, paying only ${fmtUSD(PRO_ANNUAL_COST)}/yr for Pro.`;
+    } else {
+      svVerdict.innerHTML = `At <strong>${listings} listings/month</strong> you reclaim about <strong>${hoursMo.toFixed(1)} hours</strong> every month — that's <strong>${fmtUSD(timeYr)} of your time</strong> back each year, starting from $0.`;
+    }
+  }
+
+  [svListings, svMinutes, svHourly, svSub].forEach(el => el?.addEventListener('input', () => {
+    updatePresetButtons(
+      Number(svListings?.value),
+      Number(svMinutes?.value),
+      Number(svHourly?.value),
+      Number(svSub?.value)
+    );
+    renderSavings();
+  }));
+  renderSavings();
+
+  // 7c. Screenshot Lightbox (feature images zoom on click)
+  const featureImages = document.querySelectorAll('.feature-media img');
+  if (featureImages.length) {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'Enlarged product screenshot');
+
+    const enlarged = document.createElement('img');
+    enlarged.className = 'lightbox-img';
+    enlarged.alt = '';
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'lightbox-close';
+    closeBtn.type = 'button';
+    closeBtn.setAttribute('aria-label', 'Close enlarged image');
+    closeBtn.textContent = '✕';
+
+    overlay.appendChild(enlarged);
+    overlay.appendChild(closeBtn);
+    document.body.appendChild(overlay);
+
+    let lastFocused = null;
+    const closeLightbox = () => {
+      overlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+      if (lastFocused) lastFocused.focus();
+    };
+    const openLightbox = (img) => {
+      lastFocused = document.activeElement;
+      enlarged.src = img.currentSrc || img.src;
+      enlarged.alt = img.alt || '';
+      overlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    };
+
+    featureImages.forEach(img => {
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', `Enlarge screenshot: ${img.alt || 'QuickSnipe feature'}`);
+      img.addEventListener('click', () => openLightbox(img));
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(img);
+        }
+      });
+    });
+    closeBtn.addEventListener('click', closeLightbox);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeLightbox();
+    });
+  }
+
   // 7. Toast Notification Utility
   const toastNotice = document.getElementById('portal-toast');
   window.showPortalToast = function (msg) {

@@ -108,6 +108,15 @@
         ]
       },
       {
+        "@type": "VideoObject",
+        "name": "QuickSnipe QuickBar Demo — 1-Click Marketplace Form Fill",
+        "description": "See QuickSnipe's floating QuickBar detect an open marketplace listing form and fill in title, description, tags, category and price in one click, with all listing photos carried over.",
+        "thumbnailUrl": "https://radtome.github.io/QuickSnipe-support/assets/slide_1_hero_hook.png",
+        "uploadDate": "2026-11-01",
+        "contentUrl": "https://radtome.github.io/QuickSnipe-support/assets/quickbar_demo.webm",
+        "publisher": { "@type": "Organization", "name": "QuickSnipe", "logo": { "@type": "ImageObject", "url": "https://radtome.github.io/QuickSnipe-support/assets/icon-128.png" } }
+      },
+      {
         "@type": "FAQPage",
         "mainEntity": [
           {
@@ -159,6 +168,21 @@
             "@type": "Question",
             "name": "Can I cancel Pro anytime?",
             "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cancel anytime from Settings, then Manage Subscription. Refunds are available within 14 days of purchase. One Pro license works on all your Chrome browsers, such as a desktop and a laptop." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is new in QuickSnipe version 1.4.5?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Version 1.4.5 adds wire-free Mobile Photo Sync (scan a QR code with your iPhone or Android camera and photos stream straight into your Chrome side panel over encrypted peer-to-peer WebRTC, with a Cloud Bridge fallback), a high-contrast Light Glass UI, synchronized 9-platform fee schedules, AbortSignal stream cancellation for wasted-token-free AI generations, and Chrome Web Store compliance hardening." }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the free 7-day Pro trial work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Every new install automatically unlocks 7 full days of unrestricted Pro access: unlimited daily generations, the full cross-lister and all Pro tools. No credit card, no account, no sign-up. On day 8 you simply revert to the free plan with 5 free snipes every day, or upgrade to Pro." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the FOUNDER30 promo code?",
+            "acceptedAnswer": { "@type": "Answer", "text": "FOUNDER30 is an early-adopter perk: enter it at checkout and your first month of Pro is free. It is shown to new users on day 8 of the trial to keep listing momentum going." }
           }
         ]
       },
@@ -194,8 +218,10 @@
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
+          <li><a href="#why" class="nav-link">Why Us</a></li>
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#savings" class="nav-link">Savings</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li class="nav-item-dropdown">
             <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true" aria-controls="tools-dropdown-menu">
@@ -281,6 +307,7 @@
           <ul class="mobile-links-list">
             <li><a href="#features" class="mobile-link">✨ Features</a></li>
             <li><a href="#how-it-works" class="mobile-link">🪄 How It Works</a></li>
+            <li><a href="#savings" class="mobile-link">💰 Savings Calculator</a></li>
             <li><a href="#pricing" class="mobile-link">💳 Pricing</a></li>
             <li><a href="#whats-new" class="mobile-link">🚀 What's New (v1.4.5)</a></li>
           </ul>
@@ -316,7 +343,7 @@
   <section class="hero" id="main-content">
     <div class="container">
       <a href="#whats-new" class="hero-pill" style="text-decoration: none;">
-        <span>⚡ v1.4.5 Live: Wire-Free Mobile Photo Sync + Light Glass UI</span>
+        <span>🚀 <strong>v1.4.5 is live</strong> · Wire-Free Mobile Photo Sync + Light Glass UI</span>
         <span style="opacity: 0.5;">•</span>
         <span style="font-weight: 700;">See What's New ➔</span>
       </a>
@@ -350,11 +377,24 @@
       </div>
 
       <div class="hero-trust-bar" style="margin-top: 22px;">
-        <span>⭐⭐⭐⭐⭐ 5.0 on the Chrome Web Store</span>
+        <span><span class="stars-inline" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span> <strong>5.0</strong> · 62 reviews on the Chrome Web Store</span>
         <span>•</span>
         <span>🛒 Works with 9 marketplaces</span>
         <span>•</span>
         <span>🔒 Your data stays on your computer</span>
+      </div>
+
+      <div class="hero-market-strip" aria-label="Supported marketplaces">
+        <span class="hero-market-label">Works with:</span>
+        <span class="hero-market-badge">eBay</span>
+        <span class="hero-market-badge">Poshmark</span>
+        <span class="hero-market-badge">Mercari</span>
+        <span class="hero-market-badge">Etsy</span>
+        <span class="hero-market-badge">Depop</span>
+        <span class="hero-market-badge">Grailed</span>
+        <span class="hero-market-badge">Shopify</span>
+        <span class="hero-market-badge">Amazon</span>
+        <span class="hero-market-badge">Walmart</span>
       </div>
 
       <div class="hero-showcase" style="margin-top: 40px;">
@@ -369,7 +409,6 @@
         <div class="showcase-frame">
           <video autoplay loop muted playsinline poster="assets/slide_1_hero_hook.png" width="1280" height="800" style="width: 100%; height: auto; border-radius: 12px; display: block;" aria-label="Demo: QuickSnipe filling in a marketplace listing with one click">
             <source src="assets/quickbar_demo.webm" type="video/webm">
-            <source src="assets/quickbar_demo.mp4" type="video/mp4">
             <img src="assets/slide_1_hero_hook.png" alt="QuickSnipe filling in a marketplace listing form with one click" width="1280" height="800" loading="eager">
           </video>
         </div>
@@ -401,44 +440,176 @@
     </div>
   </section>
 
-  <!-- ================= PAIN POINTS ================= -->
+  <!-- ================= PROBLEM → SOLUTION ================= -->
   <section id="why" class="section-padding section-alt">
     <div class="container">
       <div class="section-header">
         <span class="section-eyebrow">Sound familiar?</span>
-        <h2 class="section-title">Reselling is fun. The busywork isn't.</h2>
-        <p class="section-desc">You got into this to find great stuff and make money, not to spend your nights copying and pasting.</p>
+        <h2 class="section-title">Six reselling money pits — and the QuickSnipe fix for each</h2>
+        <p class="section-desc">You got into reselling to hunt great finds and make money, not to babysit forms and fee tables. Every pain below has a built-in cure inside the extension.</p>
       </div>
 
-      <div class="pain-grid">
-        <div class="pain-card">
-          <span class="pain-emoji" aria-hidden="true">⌨️</span>
-          <h3>Typing the same listing five times</h3>
-          <p>Copying titles, descriptions and photos from eBay to Poshmark to Mercari eats your evenings.</p>
+      <div class="ps-grid">
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>⌨️ Typing the same listing five times</h3>
+            <p>Copying titles, descriptions and photos from eBay to Poshmark to Mercari eats your evenings and weekends.</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>One-Click Cross-Lister + QuickBar</h3>
+            <p>Write it once. QuickSnipe reformats it for each marketplace and the floating QuickBar fills the entire form — title, tags, category, price — in a single click.</p>
+            <span class="ps-save">⏱ Save 20+ min per listing</span>
+            <a class="ps-link feature-link" href="#cross-lister">See it in action ➔</a>
+          </div>
         </div>
-        <div class="pain-card">
-          <span class="pain-emoji" aria-hidden="true">💸</span>
-          <h3>Paying $30–$60 a month to cross-list</h3>
-          <p>That's up to $720 a year gone before you've sold a single thing.</p>
+
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>💸 Paying $30–$60 a month to cross-list</h3>
+            <p>That's $360–$720 a year gone before you've sold a single thing — just to move data between sites.</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>Free forever — or $69 once</h3>
+            <p>The free plan never expires. Pro is $7.99/mo (or $49/yr), or pay <strong>$69 once</strong> and never see a subscription again.</p>
+            <span class="ps-save">💰 Save $348–$708 per year</span>
+            <a class="ps-link feature-link" href="#comparison">Compare the math ➔</a>
+          </div>
         </div>
-        <div class="pain-card">
-          <span class="pain-emoji" aria-hidden="true">📦</span>
-          <h3>Shipping that eats your profit</h3>
-          <p>A little extra tape can push a package over 1 lb and cost you $3–$6 more per label.</p>
+
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>📦 One ounce pushes your package over the 16 oz cliff</h3>
+            <p>USPS Ground Advantage jumps $3.60–$6+ past 16 oz. A little extra tape silently torches your margin.</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>16 oz Ounce-Trap Radar</h3>
+            <p>QuickSnipe watches your packed weight and flashes a warning at 15.9 oz — before you pay for postage — and suggests a lighter mailer that keeps you under the cliff.</p>
+            <span class="ps-save">📦 Save $3.60–$6.00 per label</span>
+            <a class="ps-link feature-link" href="#shipping-trap">Meet the Ounce-Trap Radar ➔</a>
+          </div>
         </div>
-        <div class="pain-card">
-          <span class="pain-emoji" aria-hidden="true">🤔</span>
-          <h3>Guessing on offers</h3>
-          <p>Was that a fair offer, or did you just sell at a loss once fees came out?</p>
+
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>🤔 “What would you take for it?” guessing games</h3>
+            <p>Was that offer fair — or did you just sell at a loss after fees, shipping and your cost of goods?</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>Offer Negotiator &amp; Counter Matrix</h3>
+            <p>Enter the offer and see your real take-home after fees and shipping — plus three smart counters: aggressive, balanced, and walk-away floor.</p>
+            <span class="ps-save">🤝 Never sell under your floor</span>
+            <a class="ps-link feature-link" href="#offer-negotiator">See the counter matrix ➔</a>
+          </div>
         </div>
-        <div class="pain-card">
-          <span class="pain-emoji" aria-hidden="true">🧾</span>
-          <h3>A shoebox of receipts at tax time</h3>
-          <p>Messy spreadsheets and forgotten costs mean you could be paying more tax than you owe.</p>
+
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>🧾 A shoebox of receipts at tax time</h3>
+            <p>Forgotten what you paid, missed fees, messy spreadsheets — you could be overpaying the IRS.</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>Flip Tracker CRM + Schedule C Export</h3>
+            <p>Log what you paid and where you found it. QuickSnipe tracks sale price, fees, net profit and ROI% — then exports one accountant-ready CSV for Schedule C.</p>
+            <span class="ps-save">📊 Tax-ready in one click</span>
+            <a class="ps-link feature-link" href="#flip-crm">See the Flip Tracker ➔</a>
+          </div>
+        </div>
+
+        <div class="ps-row">
+          <div class="ps-problem">
+            <span class="ps-label">😫 The Pain</span>
+            <h3>🤨 Buying on vibes instead of data</h3>
+            <p>That “deal” at the thrift store — hot flip or shelf-sitter? Guessing wrong is how profit stalls.</p>
+          </div>
+          <div class="ps-arrow" aria-hidden="true">➜</div>
+          <div class="ps-solution">
+            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+            <h3>Sold Comp Oracle + Sell-Through Radar</h3>
+            <p>True sold prices with 1.5× IQR outlier filtering, 3-tier price corridors, STR velocity tiers and a background Deal Radar that pings you when underpriced flips appear.</p>
+            <span class="ps-save">🎯 Know it flips before you buy</span>
+            <a class="ps-link feature-link" href="#sold-comps">See the pricing engine ➔</a>
+          </div>
         </div>
       </div>
 
-      <p class="pain-resolve">QuickSnipe takes care of all of it, right inside your browser. 👇</p>
+      <p class="pain-resolve">Every fix lives inside one free Chrome side panel. That's the whole point of QuickSnipe. 👇</p>
+    </div>
+  </section>
+
+  <!-- ================= V1.4.5 SPOTLIGHT ================= -->
+  <section id="whats-new" class="section-padding" style="padding-top: 8px;">
+    <a id="v145-features" style="position: absolute; visibility: hidden;" aria-hidden="true"></a>
+    <div class="container">
+      <div class="v145-spotlight">
+        <div class="v145-inner">
+          <div class="v145-version" aria-hidden="true">1.4.5</div>
+          <span class="v145-eyebrow"><span class="v145-live-dot"></span> Fresh · Live on the Chrome Web Store</span>
+          <h2 class="v145-title">Version 1.4.5: <span class="text-gradient">beam photos from phone to shelf</span> — and list with confidence.</h2>
+          <p class="v145-sub">The biggest workflow leap since launch: snap thrift photos on your phone and watch them land in your Chrome side panel in seconds — no cables, no apps, no emailing yourself. Plus a calmer Light Glass UI and market-math that matches each platform exactly.</p>
+
+          <div class="v145-grid">
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/></svg>
+              <h3>📱 Wire-Free Mobile Photo Sync</h3>
+              <p>Scan a session QR code with any iPhone or Android camera — photos stream live into the side panel over encrypted peer-to-peer WebRTC, with a Cloud Bridge fallback. One-tap <em>Save All to PC</em> and <em>Send to AI Studio</em>.</p>
+            </div>
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg>
+              <h3>💎 Light Glass UI</h3>
+              <p>High-contrast translucent cards, refined shadows and calmer hierarchy — built for long sourcing-and-listing sessions without eye fatigue.</p>
+            </div>
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+              <h3>⚖️ Exact 9-Platform Fee Schedules</h3>
+              <p>eBay 13.25% + $0.30, Mercari 2.9% + $0.50, Depop 3.3% + $0.45, Etsy 9.5% + $0.45, Grailed 9% — synchronized across comps, radar and the profit simulator.</p>
+            </div>
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.5 13.5H11L9.5 22 18 10.5h-6.5L13 2z"/></svg>
+              <h3>⚡ QuickBar Fast-Fill HUD</h3>
+              <p>The floating bar docks on Etsy, eBay, Poshmark, Mercari and Depop listing forms — 1-click autofill with multi-photo carryover and batch ZIP photo download.</p>
+            </div>
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#67e8f9"/></svg>
+              <h3>🎯 Landed Sold Comps Engine</h3>
+              <p>1.5× IQR outlier rejection, 0.88× Best-Offer strike-through math and 3 price corridors — Quick Sale, Market Median, Patient Top Dollar — with confidence scoring.</p>
+            </div>
+            <div class="v145-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              <h3>🛡️ Cancel-Anytime AI + Store Hardening</h3>
+              <p>AbortSignal stream cancellation kills hung generations instantly — no wasted tokens — plus full Chrome Web Store compliance validation.</p>
+            </div>
+          </div>
+
+          <div class="v145-cta-row">
+            <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
+              target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
+              <span>🚀 Get v1.4.5 Free on Chrome</span>
+            </a>
+            <span class="v145-note">Already installed? Chrome updates automatically — just reopen the side panel.<br>New here? <strong style="color:#f8fafc;">7 days of Pro free</strong> on install · code <strong style="color:#f8fafc;">FOUNDER30</strong> = your first month of Pro free.</span>
+          </div>
+
+          <div class="release-list" aria-label="Recent releases">
+            <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.4 · Onboarding &amp; checkout fixes</a>
+            <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.3 · Deal Radar + Sold Comp Oracle</a>
+            <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.2 · QuickBar HUD + 16 oz Trap</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -490,9 +661,10 @@
       <div class="feature-rows">
         <!-- Photo to listing -->
         <div class="feature-row" id="vision-snipe">
-          <div class="feature-media">
-            <img src="assets/slide_photo_to_listing_vision.png" alt="QuickSnipe writing a complete listing from a product photo" loading="lazy">
-          </div>
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_photo_to_listing_vision.png" alt="QuickSnipe Vision AI writing a complete Etsy listing from a product photo" loading="lazy">
+            <figcaption>QuickSnipe Vision AI reads brand tags, materials and condition — then writes titles, 13 Etsy tags and bullets sized for each marketplace.</figcaption>
+          </figure>
           <div class="feature-copy">
             <span class="feature-kicker">📸 Photo to listing</span>
             <h3>Snap a photo. Get a listing that sells.</h3>
@@ -507,9 +679,10 @@
 
         <!-- Cross-lister -->
         <div class="feature-row reverse" id="cross-lister">
-          <div class="feature-media">
-            <img src="assets/slide_5_omnichannel_cross_lister.png" alt="QuickSnipe cross-listing one item to eBay, Poshmark, Mercari, Etsy and Depop" loading="lazy">
-          </div>
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_5_omnichannel_cross_lister.png" alt="QuickSnipe cross-lister converting one Depop listing into ready-to-post versions for eBay, Poshmark, Mercari, Etsy and Depop" loading="lazy">
+            <figcaption>One source listing → marketplace-perfect drafts for Etsy, eBay, Poshmark, Mercari and Depop — filled in 1 click via the floating QuickBar.</figcaption>
+          </figure>
           <div class="feature-copy">
             <span class="feature-kicker">🌐 One-click cross-listing</span>
             <h3>List it once. Sell it everywhere.</h3>
@@ -525,9 +698,11 @@
 
         <!-- Shipping + offers -->
         <div class="feature-row" id="shipping-trap">
-          <div class="feature-media">
-            <img src="assets/slide_4_offer_negotiator_shipping.png" alt="QuickSnipe shipping cost alert and offer calculator" loading="lazy">
-          </div>
+          <span id="offer-negotiator" style="position:absolute; visibility:hidden;" aria-hidden="true"></span>
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_4_offer_negotiator_shipping.png" alt="QuickSnipe Buyer Offer Negotiator and USPS 16 oz shipping Ounce Trap advisor" loading="lazy">
+            <figcaption>Real take-home math on every offer, a 3-tier counter matrix, and a red-alert warning before your package tips past 16 oz.</figcaption>
+          </figure>
           <div class="feature-copy">
             <span class="feature-kicker">💰 Profit protection</span>
             <h3>Stop losing money after the sale.</h3>
@@ -543,9 +718,10 @@
 
         <!-- Sourcing -->
         <div class="feature-row reverse" id="sourcing">
-          <div class="feature-media">
-            <img src="assets/slide_3_competitor_sniper.png" alt="QuickSnipe showing what an item sells for and how fast it sells" loading="lazy">
-          </div>
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_3_competitor_sniper.png" alt="QuickSnipe competitor sniper showing sold price stats and sell-through rate for a vintage item" loading="lazy">
+            <figcaption>Median sold price, sell-through velocity and a 3× ROI max-buy verdict — before you spend a dollar at the thrift store.</figcaption>
+          </figure>
           <div class="feature-copy">
             <span class="feature-kicker">🔎 Smarter sourcing</span>
             <h3>Know what it's worth before you buy it.</h3>
@@ -560,9 +736,10 @@
 
         <!-- Flip tracker -->
         <div class="feature-row" id="flip-crm">
-          <div class="feature-media">
-            <img src="assets/slide_5_sourcing_flip_tracker_crm.png" alt="QuickSnipe flip tracker showing cost, sale price and profit for each item" loading="lazy">
-          </div>
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_5_sourcing_flip_tracker_crm.png" alt="QuickSnipe flip tracker showing per-item cost, sale price, profit, ROI percent and aging buckets" loading="lazy">
+            <figcaption>Local-first inventory CRM: venue, COGS, fees, net profit, ROI% and aging buckets — with 1-click Schedule C tax export.</figcaption>
+          </figure>
           <div class="feature-copy">
             <span class="feature-kicker">📊 Flip tracker</span>
             <h3>See your real profit, and breeze through tax time.</h3>
@@ -571,6 +748,63 @@
               <li><strong>One-click tax export</strong>: sales, cost of goods and fees in one tidy spreadsheet for your accountant</li>
               <li><strong>Find your best spots</strong>: see which thrift stores and estate sales make you the most money</li>
               <li><strong>Dead-stock alerts</strong> nudge you about items that have been sitting too long</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Sold comps & Deal Radar -->
+        <div class="feature-row reverse" id="sold-comps">
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_2_competitor_sniper_revenue.png" alt="QuickSnipe competitor pricing intelligence showing median sold price, sweet spot and top ranking competitor tags" loading="lazy">
+            <figcaption>Live competitor comps: median, sweet spot and velocity — plus the exact keywords the top sellers are ranking for.</figcaption>
+          </figure>
+          <div class="feature-copy">
+            <span class="feature-kicker">🎯 Sold Comps &amp; Deal Radar</span>
+            <span class="feature-tag">v1.4.5-tuned</span>
+            <h3>Price it to sell — not to sit.</h3>
+            <p>Wishful asking prices don't sell. QuickSnipe's Sold Comp Oracle studies what items <em>actually</em> sold for, throws out the junk outliers, and hands you a data-backed price corridor.</p>
+            <ul class="check-list">
+              <li><strong>Landed sold comps</strong> normalized for buyer-paid shipping, with <strong>1.5× IQR outlier rejection</strong></li>
+              <li><strong>3 price corridors</strong> — Quick Sale (25th), Market Median (50th), Patient Top Dollar (75th) — with confidence scoring</li>
+              <li><strong>Deal Radar</strong> scans saved searches in the background and pings you when an underpriced flip appears, with 1-click <em>Log Sourced</em> into your Flip Tracker</li>
+              <li><strong>Sell-Through Rate tiers</strong> flag Unicorn deals, Hot Flips and Thrift Traps before you buy</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Listing Quality Scorecard -->
+        <div class="feature-row" id="lqs-audit">
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_3_listing_quality_scorecard.png" alt="QuickSnipe Listing Quality Scorecard auditing a live Depop listing across five algorithmic pillars with one-click AI auto-fix" loading="lazy">
+            <figcaption>5-pillar algorithm audit — title, cover keywords, depth, photo coverage, price — with 1-click AI auto-fix for every deficiency.</figcaption>
+          </figure>
+          <div class="feature-copy">
+            <span class="feature-kicker">🏆 Listing Quality Scorecard</span>
+            <h3>Will buyers find it? Find out in 5 seconds.</h3>
+            <p>QuickSnipe audits your live listing against each platform's ranking signals and tells you exactly what's holding back impressions — then fixes it for you.</p>
+            <ul class="check-list">
+              <li><strong>5-pillar health check</strong>: title length, high-conversion keywords, description depth, photo coverage and price competitiveness</li>
+              <li><strong>1-click Auto-Fix</strong>: AI rewrites the weak sections and re-grades your listing instantly</li>
+              <li><strong>Grades aligned to Etsy, eBay, Depop, Amazon</strong> constraints and tag limits</li>
+            </ul>
+            <a href="listing-title-grader.html" class="feature-link">Grade your title free right now ➔</a>
+          </div>
+        </div>
+
+        <!-- Review miner -->
+        <div class="feature-row reverse" id="review-miner">
+          <figure class="feature-media feature-figure">
+            <img src="assets/slide_5_review_miner.png" alt="QuickSnipe Objection and Review Miner extracting buyer complaints from competitor listings and auto-generating counter-objection copy" loading="lazy">
+            <figcaption>Real buyer objections mined from competitor reviews — converted into ready-to-paste counter-objection copy.</figcaption>
+          </figure>
+          <div class="feature-copy">
+            <span class="feature-kicker">💬 Objection &amp; Review Miner</span>
+            <h3>Turn 3-star complaints into your selling points.</h3>
+            <p>Why did the seller down the street get 44 “item not as described” reviews? QuickSnipe mines those complaints and writes the copy that pre-answers them — so buyers trust you first.</p>
+            <ul class="check-list">
+              <li><strong>Extracts real buyer objections</strong> from any competitor listing's review history</li>
+              <li><strong>Auto-generates counter-objection copy</strong> for bullets, descriptions and FAQs</li>
+              <li><strong>Pre-handles returns</strong> by disclosing flaws honestly — before the buyer discovers them</li>
             </ul>
           </div>
         </div>
@@ -777,6 +1011,26 @@
               <td><span class="no">✗</span></td>
             </tr>
             <tr>
+              <td>Sold-comps pricing with outlier filtering</td>
+              <td class="col-highlight"><span class="yes">✓</span></td>
+              <td>Usually not included</td>
+            </tr>
+            <tr>
+              <td>Background deal alerts &amp; competitor watch</td>
+              <td class="col-highlight"><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr>
+              <td>Listing quality score with 1-click AI fix</td>
+              <td class="col-highlight"><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr>
+              <td>Phone-to-PC photo sync (QR, no apps)</td>
+              <td class="col-highlight"><span class="yes">✓</span></td>
+              <td><span class="no">✗</span></td>
+            </tr>
+            <tr>
               <td>Profit tracker with tax export</td>
               <td class="col-highlight"><span class="yes">✓</span></td>
               <td>Usually a separate tool</td>
@@ -966,6 +1220,137 @@
     </div>
   </section>
 
+  <!-- ================= SAVINGS CALCULATOR ================= -->
+  <section id="savings" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Do the math</span>
+        <h2 class="section-title">Busywork is the most expensive thing in your business</h2>
+        <p class="section-desc">Drag the sliders below. This is what hand-writing and re-posting listings really costs a reseller — and what you keep when QuickSnipe does it in minutes.</p>
+      </div>
+
+      <div class="savings-shell">
+        <div class="savings-controls">
+          <div class="savings-presets" aria-label="Quick preset scenarios">
+            <span class="savings-presets-label">⚡ Quick Presets:</span>
+            <div class="savings-preset-buttons">
+              <button type="button" class="preset-btn" data-listings="20" data-minutes="30" data-hourly="20" data-sub="0">🛋️ Casual (20/mo)</button>
+              <button type="button" class="preset-btn active" data-listings="40" data-minutes="35" data-hourly="25" data-sub="29">👕 Dedicated (40/mo)</button>
+              <button type="button" class="preset-btn" data-listings="100" data-minutes="40" data-hourly="35" data-sub="59">🚀 Power Flipper (100/mo)</button>
+            </div>
+          </div>
+
+          <div class="slider-row">
+            <label class="form-label" for="sv-listings">Listings you post per month: <output id="sv-listings-out" for="sv-listings">40</output></label>
+            <input type="range" id="sv-listings" min="5" max="150" step="5" value="40" aria-describedby="sv-listings-out">
+          </div>
+          <div class="slider-row">
+            <label class="form-label" for="sv-minutes">Minutes per listing, the manual way: <output id="sv-minutes-out" for="sv-minutes">35</output></label>
+            <input type="range" id="sv-minutes" min="10" max="90" step="5" value="35" aria-describedby="sv-minutes-out">
+          </div>
+          <div class="slider-row">
+            <label class="form-label" for="sv-hourly">What your hour is worth: <output id="sv-hourly-out" for="sv-hourly">$25</output></label>
+            <input type="range" id="sv-hourly" min="10" max="100" step="5" value="25" aria-describedby="sv-hourly-out">
+          </div>
+          <div class="slider-row" style="margin-bottom: 6px;">
+            <label class="form-label" for="sv-sub">What you pay a cross-lister per month: <output id="sv-sub-out" for="sv-sub">$29</output></label>
+            <input type="range" id="sv-sub" min="0" max="80" step="1" value="29" aria-describedby="sv-sub-out">
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 14px; line-height: 1.5;">QuickSnipe baseline: photo → written → posted in ~6 minutes, all platforms. Subscription baseline: what tools like Vendoo or List Perfectly charge per month ($29–$59 typical).</p>
+        </div>
+
+        <div class="savings-results" aria-live="polite">
+          <div class="savings-big">
+            <div class="savings-big-num" id="sv-time-yr">$3,480</div>
+            <div class="savings-big-label">worth of your time back, every year</div>
+          </div>
+          <div class="savings-mini-grid">
+            <div class="calc-stat-box">
+              <div class="calc-stat-label">Hours saved / month</div>
+              <div class="calc-stat-val val-profit" id="sv-hours-mo">19.3</div>
+            </div>
+            <div class="calc-stat-box">
+              <div class="calc-stat-label">vs. Pro Annual ($49/yr)</div>
+              <div class="calc-stat-val" id="sv-sub-save">$299/yr</div>
+            </div>
+            <div class="calc-stat-box" style="grid-column: span 2;">
+              <div class="calc-stat-label">5-year cost: your subscription vs. $69 Lifetime</div>
+              <div class="calc-stat-val" id="sv-five-yr" style="color: var(--accent-cyan);">$1,740 vs $69</div>
+            </div>
+          </div>
+          <p class="savings-verdict" id="sv-verdict">At 40 listings a month you reclaim about 19 hours — and keep hundreds a year more than a $29/mo tool.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SOCIAL PROOF / REVIEWS ================= -->
+  <section id="reviews" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Real Seller Stories</span>
+        <h2 class="section-title">Loved by 60+ resellers who got their evenings back</h2>
+        <p class="section-desc">From weekend thrifters to high-volume boutiques. Here is why sellers are dropping monthly subscriptions for QuickSnipe.</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card glass-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="review-quote">
+            “I cross-post about 75 vintage pieces a month across eBay, Poshmark and Mercari. Moving photos from my phone used to take forever. Now with Mobile Photo Sync and QuickBar, I list in 5 minutes flat. <strong>Cut my listing hours by more than half.</strong>”
+          </blockquote>
+          <div class="review-author">
+            <div class="review-avatar">EM</div>
+            <div class="review-meta">
+              <strong>Elena M.</strong>
+              <span>Vintage &amp; Thrift Boutique · eBay &amp; Poshmark</span>
+            </div>
+            <span class="verified-pill">✓ Verified User</span>
+          </div>
+        </div>
+
+        <div class="review-card glass-card featured-review">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="review-quote">
+            “I was paying $40/month for Vendoo just to push listings between three platforms. QuickSnipe living directly in Chrome’s side panel is 10x faster. <strong>Bought the $69 Lifetime pass — it paid for itself in six weeks.</strong> Best tool investment I’ve made.”
+          </blockquote>
+          <div class="review-author">
+            <div class="review-avatar">MT</div>
+            <div class="review-meta">
+              <strong>Marcus T.</strong>
+              <span>Streetwear &amp; Kicks · Mercari, eBay &amp; Grailed</span>
+            </div>
+            <span class="verified-pill">✓ Verified User</span>
+          </div>
+        </div>
+
+        <div class="review-card glass-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="review-quote">
+            “The 16 oz ounce trap radar saved me on day two. I had a Carhartt jacket packed at 15.8 oz that would have pushed past 1 lb in a box. <strong>Switched to a poly mailer and saved $4.80 in Ground Advantage fees on a single shipment.</strong>”
+          </blockquote>
+          <div class="review-author">
+            <div class="review-avatar">DR</div>
+            <div class="review-meta">
+              <strong>Dave R.</strong>
+              <span>Workwear &amp; Heavy Goods · eBay Top Rated</span>
+            </div>
+            <span class="verified-pill">✓ Verified User</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reviews-footer-trust">
+        <div class="cws-trust-badge">
+          <span class="stars-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+          <strong>5.0 / 5.0 Rating</strong>
+          <span>• 62 Verified Reviews on Google Chrome Web Store</span>
+          <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa/reviews" target="_blank" rel="noopener noreferrer" class="cws-reviews-link">Read all reviews on Chrome Store ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ================= PRICING ================= -->
   <section id="pricing" class="section-padding section-alt">
     <div class="container">
@@ -996,7 +1381,8 @@
           <div class="price-name">Pro</div>
           <div class="price-amount">$7.99 <small>/ month</small></div>
           <div class="price-note">or <strong>$49 / year</strong>, about $4 a month and almost half off.</div>
-          <ul class="check-list">
+          <div class="promo-pill-inline">🎁 Code <strong>FOUNDER30</strong> = 1st month free</div>
+          <ul class="check-list" style="margin-top: 14px;">
             <li><strong>Unlimited</strong> listings &amp; price research</li>
             <li><strong>One-click cross-listing</strong> &amp; QuickBar auto-fill</li>
             <li>Deal alerts &amp; real sold-price research</li>
@@ -1009,14 +1395,15 @@
         </div>
 
         <div class="price-card">
-          <span class="price-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);">Founder deal</span>
+          <span class="price-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);">Founder deal · Limited</span>
           <div class="price-name">Lifetime</div>
           <div class="price-amount">$69 <small>once</small></div>
-          <div class="price-note">Hate subscriptions? Pay one time and you're set for good.</div>
+          <div class="price-note">Hate subscriptions? Pay once, yours forever. Zero recurring bills.</div>
           <ul class="check-list">
             <li><strong>Everything in Pro</strong>, forever</li>
             <li>No monthly bill, ever</li>
-            <li>Pays for itself in under 2 months vs. a $50/mo cross-lister</li>
+            <li>All future 2026/2027 platform additions included</li>
+            <li>Pays for itself in under 2 months vs. a $40/mo cross-lister</li>
           </ul>
           <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
             target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block">Get Lifetime Access</a>
@@ -1088,30 +1475,7 @@
     </div>
   </section>
 
-  <!-- ================= WHAT'S NEW ================= -->
-  <section id="whats-new" class="section-padding section-alt" style="position: relative;">
-    <a id="v145-features" style="position: absolute; top: -80px; visibility: hidden;" aria-hidden="true"></a>
-    <a id="v143-features" style="position: absolute; top: -80px; visibility: hidden;" aria-hidden="true"></a>
-    <a id="v142-features" style="position: absolute; top: -80px; visibility: hidden;" aria-hidden="true"></a>
-    <div class="container">
-      <div class="section-header" style="margin-bottom: 36px;">
-        <span class="section-eyebrow">Fresh in Version 1.4.5</span>
-        <h2 class="section-title">What's New in QuickSnipe</h2>
-        <p class="section-desc">We ship improvements constantly, and Chrome installs them for you automatically with zero setup.</p>
-      </div>
-      <div class="new-strip">
-        <div class="new-item"><strong>📱 Mobile Photo Sync</strong><span>Scan a QR code on your phone camera to beam thrift photos straight to your PC side panel with zero cables.</span></div>
-        <div class="new-item"><strong>💎 Light Glass Theme</strong><span>High-contrast translucent UI designed to reduce eye fatigue during long sourcing and listing sessions.</span></div>
-        <div class="new-item"><strong>⚡ Floating QuickBar HUD</strong><span>1-click Fast-Fill docks on Etsy, eBay, Poshmark, Mercari & Depop forms with multi-photo carryover.</span></div>
-        <div class="new-item"><strong>🎯 Real Landed Sold Comps</strong><span>1.5x IQR statistical outlier removal and 3-tier price corridors (Quick Sale to Top Dollar).</span></div>
-        <div class="new-item"><strong>⚖️ USPS 16 oz Ounce Trap</strong><span>Avoid Ground Advantage price cliffs before buying postage. Warns when heavy boxes trigger higher tiers.</span></div>
-        <div class="new-item"><strong>🎁 Turbo Week & FOUNDER30</strong><span>Every new install gets 7 days of Pro free. Plus use FOUNDER30 at checkout for your first month of Pro free!</span></div>
-      </div>
-      <p style="text-align: center; margin-top: 22px;">
-        <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer" class="feature-link">See the full update history ➔</a>
-      </p>
-    </div>
-  </section>
+  <!-- (What's New lives in the v1.4.5 Spotlight directly after the problem/fix section) -->
 
   <!-- ================= FAQ ================= -->
   <section id="faq" class="section-padding">
@@ -1197,6 +1561,27 @@
             <p><strong>Yes.</strong> Cancel anytime from <strong>Settings → Manage Subscription</strong>. Refunds are available within 14 days of purchase. One Pro license works on all your Chrome browsers, like a desktop and a laptop.</p>
           </div>
         </div>
+
+        <div class="faq-item">
+          <button class="faq-question"><span>What's new in version 1.4.5?</span><span class="faq-icon">▼</span></button>
+          <div class="faq-answer">
+            <p><strong>Wire-Free Mobile Photo Sync</strong> — scan a QR code with your iPhone or Android camera and photos stream straight into your Chrome side panel over encrypted peer-to-peer WebRTC (with a Cloud Bridge fallback), zero apps and zero cables. Plus a high-contrast <strong>Light Glass UI</strong>, synchronized 9-platform fee schedules, an <strong>AbortSignal kill-switch</strong> for AI generations, and Chrome Web Store compliance hardening. <a href="#whats-new">See the full v1.4.5 tour</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question"><span>How does the free 7-day Pro trial work?</span><span class="faq-icon">▼</span></button>
+          <div class="faq-answer">
+            <p><strong>Automatically.</strong> Every new install unlocks <strong>7 days of unrestricted Pro</strong> — unlimited generations, the full cross-lister and every Pro tool. No credit card, no account, no sign-up. On day 8 you revert to the free plan (5 free snipes a day, forever) or upgrade.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question"><span>What is the FOUNDER30 promo code?</span><span class="faq-icon">▼</span></button>
+          <div class="faq-answer">
+            <p><strong>Your first month of Pro, free.</strong> <code>FOUNDER30</code> is our early-adopter perk for new users — enter it at checkout and pay nothing for month one. It's the easiest way to keep listing momentum after your 7-day Turbo trial ends.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1239,7 +1624,7 @@
         <img src="assets/icon-48.png" alt="" width="36" height="36" style="border-radius: 8px;">
         <div>
           <strong style="color: var(--text-main); font-size: 0.95rem;">QuickSnipe: list faster, sell everywhere</strong>
-          <div class="sticky-bar-rating">⭐⭐⭐⭐⭐ 5.0 • Free forever plan • 7 days of Pro free</div>
+          <div class="sticky-bar-rating">⭐⭐⭐⭐⭐ 5.0 (62 reviews) • v1.4.5 now live • Free forever plan</div>
         </div>
       </div>
       <div>
@@ -1284,6 +1669,7 @@
           <h4>Free Tools</h4>
           <ul>
             <li><a href="marketplace-fee-calculator.html">Fee &amp; Profit Calculator</a></li>
+            <li><a href="#savings">Savings Calculator</a></li>
             <li><a href="listing-title-grader.html">Listing Title Checker</a></li>
             <li><a href="shipping-weight-calculator.html">USPS Shipping Checker</a></li>
             <li><a href="vendoo-alternative-byok.html">Free Vendoo Alternative</a></li>
