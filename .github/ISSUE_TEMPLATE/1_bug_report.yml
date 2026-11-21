@@ -17,6 +17,9 @@ body:
         - "⚡ 1-Click Form Autofill & In-Page QuickBar"
         - "📈 Competitor Sales Velocity & Revenue Estimator"
         - "🎯 Competitor Keyword Gap Matrix & Sniper"
+        - "📡 Deal Radar & Sold Comp Oracle"
+        - "📱 Mobile QR Photo Sync (snap.html)"
+        - "🔒 Opt-In Marketplace / AI Permissions"
         - "🏆 Listing Quality Scorecard (LQS)"
         - "🛡️ Trademark Pre-Flight Guard"
         - "💰 Multi-Platform Profit & Margin Calculator"
@@ -34,8 +37,8 @@ body:
     id: extension-version
     attributes:
       label: QuickSnipe Extension Version
-      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.3.2).
-      placeholder: "v1.3.2"
+      description: Found in Sidepanel footer or chrome://extensions (e.g. v1.5.0).
+      placeholder: "v1.5.0"
     validations:
       required: true
   - type: input

@@ -11,7 +11,7 @@ Everything you need to know about QuickSnipe, safety, AI providers, marketplace 
 - [🛒 3. Marketplace Features & Tools](#-3-marketplace-features--tools)
 - [⌨️ 4. Shortcuts, QuickBar & Themes](#-4-shortcuts-quickbar--themes)
 - [💳 5. Plans, Licensing & Subscriptions](#-5-plans-licensing--subscriptions)
-- [🚀 6. Release Updates (v1.4.3 Upcoming / v1.4.2 / v1.4.1 / v1.4.0)](#-6-release-updates-v143-upcoming--v142--v141--v140)
+- [🚀 6. Release Updates (v1.5.0 / v1.4.5 / v1.4.3 / v1.4.2 / v1.4.1 / v1.4.0)](#-6-release-updates-v150--v145--v143--v142--v141--v140)
 
 ---
 
@@ -39,7 +39,7 @@ QuickSnipe operates strictly as a client-side productivity assistant in your loc
 
 ### Q: What is the best FREE AI provider to start with?
 **A:** We strongly recommend **Google Gemini**:
-- Provides **15 free requests per minute** on `gemini-3.6-flash` and `gemini-2.0-flash`.
+- Provides **15 free requests per minute** on `gemini-3.6-flash` and `gemini-3.5-flash`.
 - No credit card required.
 - Sign up in 30 seconds at [Google AI Studio](https://aistudio.google.com/app/apikey).
 
@@ -163,7 +163,7 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 **A:** When you first install QuickSnipe, your first 7 days run in **Launch Week Turbo Mode**! You receive 100% unrestricted Pro access—unlimited daily listing generations (∞), full cross-lister, Deal Radar, Sold Comps, and advanced tools—with zero credit card, zero account registration, and zero setup. An amber `TURBO · Nd` countdown appears in your header. After day 7, your account seamlessly transitions to the generous Free daily tier. On day 8, a one-time founder banner offers code `FOUNDER30` to claim your first month of Pro free!
 
 ### Q: What is the difference between Free and Pro?
-- **Free Plan**: Free forever. Gives you 3 full competitor snipes every day, a 4th limited snipe, and a 5th basic summary before daily reset at midnight local time. Includes access to listing generators, profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
+- **Free Plan**: Free daily tier (no credit card). Gives you 3 full competitor snipes every day, a 4th limited snipe, and a 5th basic summary before daily reset at midnight local time. Includes access to listing generators, profit calculator, Amazon 249B validator, SEO auditor, and BYOK AI engine.
 - **Pro Plan**: Unlimited daily generations, unrestricted competitor snipes, sales velocity & revenue run-rates, deep review objection miner, 1-click form autofill & QuickBar, priority scraper updates, and unlimited swipe file storage.
 
 ### Q: How does the free tier and daily snipe allowance work?
@@ -178,7 +178,7 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 **A:** QuickSnipe is designed with a pure-value pricing model that heavily undercuts traditional seller software ($20–$50/mo):
 - **Pro Monthly**: **$7.99 / month** (includes 7-day free trial). Over 60% cheaper than legacy tools.
 - **Pro Annual**: **$49 / year** (~$4.08/mo). Save nearly 50% compared to monthly.
-- **Lifetime Deal**: **$69 one-time** (Limited Founder Offer). Pay once, keep Pro listing intelligence forever with zero ongoing server markups.
+- **Lifetime Deal**: **$69 one-time** (Limited Founder Offer). Pay once, unlock Pro listing intelligence with zero recurring monthly bills or server markups.
 
 ### Q: Can I use one Pro license on both my desktop and laptop?
 **A: Yes.** Your Pro license is managed securely via ExtensionPay and linked to your email address. Simply enter the same email on any Chrome browser to activate your license.
@@ -188,10 +188,24 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 
 ---
 
-## 🚀 6. Release Updates (v1.4.3 / v1.4.2 / v1.4.1 / v1.4.0)
+## 🚀 6. Release Updates (v1.5.0 / v1.4.5 / v1.4.3 / v1.4.2 / v1.4.1 / v1.4.0)
 
 ### Q: What is the current version of QuickSnipe?
-**A:** QuickSnipe **v1.4.3** is the current live production release available directly in the Chrome Web Store. All existing installs receive this update automatically via Google Chrome with zero data loss or configuration needed.
+**A:** QuickSnipe **v1.5.0** is the current live production release available directly in the Chrome Web Store. All existing installs receive this update automatically via Google Chrome (or via the new one-click **Update Ready** banner in the side panel) with zero data loss.
+
+### Q: What is new in QuickSnipe v1.5.0?
+**A:** QuickSnipe **v1.5.0** focuses on privacy-first opt-in permissions, live 2026 marketplace selector accuracy, and hardening:
+- **🔒 Zero Site Permissions at Install (`optional_host_permissions`)**: Only `extensionpay.com` is requested on install. Pick only the marketplaces you sell on in Onboarding or Settings (including modern `admin.shopify.com`), and grant AI host access only for the provider you configure.
+- **🔍 2026 Live Marketplace Parser Refresh**: Updated DOM selectors for eBay (`s-card`), Grailed (`__NEXT_DATA__`), Depop (`meta__jsonLd`), Amazon (`.priceToPay`), Mercari, Walmart, and modern Shopify Admin (`admin.shopify.com`), plus sale-price card handling (`Was $X Now $Y`) and European decimal-comma money parsing.
+- **🛡️ Prompt-Injection Defense & Modernized AI IDs**: Scraped marketplace text is enclosed inside `<untrusted_marketplace_data>` delimiters, and retired sunset model IDs (Gemini 2.0, Groq Llama 3.2 vision) automatically migrate to `gemini-3.6-flash` / `llama-4-scout`.
+- **🎨 Bundled Local Fonts**: Plus Jakarta Sans, Inter, and JetBrains Mono are packaged directly inside the extension — zero external font CDN calls.
+- **🔄 One-Click In-Panel Update Banner & Concurrency-Safe Storage**: Apply pending extension updates in one click inside the side panel, backed by serialized storage writes, formula-safe CSV exports, and **516 automated unit tests across 30 suites**.
+
+### Q: How do opt-in marketplace permissions work in v1.5.0?
+**A:** On install (or after upgrading to v1.5.0), QuickSnipe does not ask for blanket access to shopping sites. In the **Choose Your Marketplaces** card on Onboarding or in **Settings ⚙**, check only the platforms you sell on and click **Enable Selected Marketplaces**. QuickSnipe registers QuickBar and parser access solely for those origins, and you can revoke any platform at any time.
+
+### Q: What was new in QuickSnipe v1.4.5?
+**A:** QuickSnipe **v1.4.5** introduced wire-free Mobile Photo Sync (`snap.html` QR pairing via encrypted P2P WebRTC with Cloud Bridge fallback), the high-contrast Light Glass UI, synchronized 9-platform fee schedules, and `AbortSignal` stream cancellation to stop hung AI generations without wasting tokens.
 
 ### Q: What is new in QuickSnipe v1.4.3?
 **A:** QuickSnipe **v1.4.3** introduces automated background sourcing, deep historical sold analytics, inventory velocity math, and bulk operations:
@@ -277,8 +291,8 @@ You can toggle themes in **Settings ⚙ → Appearance**.
 ### Q: Is my phone's photo data secure and private during transfer?
 **A: Yes, 100% private.** Photos transfer directly from your phone to your computer over encrypted WebRTC data channels. They are not stored on any remote cloud database or public image servers. If cross-network firewall conditions require the Cloudflare bridge fallback, images pass in-memory through an encrypted WebSocket session and are discarded immediately upon desktop delivery.
 
-### Q: Will updating to v1.4.0 erase my API keys, saved prompts, or swipes?
-**A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's encrypted `chrome.storage.local`. Updates preserve your configuration seamlessly. You can also use the new **Export / Import Backup** feature in Settings for added peace of mind.
+### Q: Will updating to v1.5.0 erase my API keys, saved prompts, or swipes?
+**A: No.** All user data, custom templates, API keys, and local swipe files persist safely in your browser's `chrome.storage.local`. If you had a retired Gemini 2.0 or Groq 3.2 model selected, v1.5.0 automatically migrates it to the current replacement model. You can also use **Export / Import Backup** in Settings at any time.
 
 ### Q: Where can I review the complete version history?
 **A:** See the comprehensive [CHANGELOG.md](CHANGELOG.md) for detailed notes on all releases.

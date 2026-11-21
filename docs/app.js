@@ -5,7 +5,6 @@
  * - Visual Showcase Carousel
  * - Instant FAQ Search
  * - Theme Switcher (Cyber Dark / Light Glass)
- * - Sticky Install Bar
  */
 
 (function () {
@@ -97,6 +96,16 @@
 
     function toggleDropdown(open) {
       const willOpen = open !== undefined ? open : btn.getAttribute('aria-expanded') !== 'true';
+      if (willOpen) {
+        dropdownToggles.forEach(other => {
+          if (other !== btn) {
+            other.setAttribute('aria-expanded', 'false');
+            const otherId = other.getAttribute('aria-controls');
+            const otherMenu = otherId ? document.getElementById(otherId) : other.nextElementSibling;
+            otherMenu?.classList.remove('is-open');
+          }
+        });
+      }
       btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
       if (menu) {
         menu.classList.toggle('is-open', willOpen);
@@ -542,17 +551,7 @@
     });
   });
 
-  // 6. Sticky Bottom Install Bar on Scroll
-  const stickyBar = document.getElementById('sticky-install-bar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 480) {
-      stickyBar?.classList.add('visible');
-    } else {
-      stickyBar?.classList.remove('visible');
-    }
-  }, { passive: true });
-
-  // 7b. v1.4.5 Savings (ROI) Calculator
+  // 7b. v1.5.0 Savings (ROI) Calculator
   const svListings = document.getElementById('sv-listings');
   const svMinutes = document.getElementById('sv-minutes');
   const svHourly = document.getElementById('sv-hourly');
@@ -722,6 +721,45 @@
         } catch {
           window.showPortalToast('Failed to copy.');
         }
+      }
+    });
+  });
+
+  // 8. Interactive Before/After Workflow Proof Tabs
+  const proofTabs = Array.from(document.querySelectorAll('.proof-tab-btn'));
+  const proofPanels = Array.from(document.querySelectorAll('.proof-panel'));
+
+  function activateProofTab(targetBtn, moveFocus) {
+    const panelId = targetBtn.getAttribute('aria-controls');
+    proofTabs.forEach(btn => {
+      const isSelected = btn === targetBtn;
+      btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      btn.setAttribute('tabindex', isSelected ? '0' : '-1');
+      btn.classList.toggle('active', isSelected);
+    });
+    proofPanels.forEach(panel => {
+      const match = panel.id === panelId;
+      panel.hidden = !match;
+      panel.classList.toggle('active', match);
+    });
+    if (moveFocus) targetBtn.focus();
+  }
+
+  proofTabs.forEach((btn, idx) => {
+    btn.addEventListener('click', () => activateProofTab(btn, false));
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        activateProofTab(proofTabs[(idx + 1) % proofTabs.length], true);
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        activateProofTab(proofTabs[(idx - 1 + proofTabs.length) % proofTabs.length], true);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        activateProofTab(proofTabs[0], true);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        activateProofTab(proofTabs[proofTabs.length - 1], true);
       }
     });
   });

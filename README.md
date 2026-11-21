@@ -8,17 +8,17 @@
 # ⚡ QuickSnipe — 1-Click Cross-Lister & Reseller Copilot
 ### List Faster. Price with True Sold Comps. Stop Paying $30–$60/mo for Reseller Software.
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.4.5_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-v1.5.0_Live-blue.svg?logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
 [![Turbo Week](https://img.shields.io/badge/Turbo_Week-7_Days_Pro_Free-purple.svg)](https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa)
-[![Pricing](https://img.shields.io/badge/Free_Plan-Forever_%E2%80%A2_No_Card-success.svg)](#-pricing--free-daily-plan)
+[![Pricing](https://img.shields.io/badge/Free_Plan-Daily_%E2%80%A2_No_Card-success.svg)](#-pricing--free-daily-plan)
 [![Platforms](https://img.shields.io/badge/Marketplaces-9_Supported-orange.svg)](#-built-for-every-reselling-marketplace)
-[![Automated Tests](https://img.shields.io/badge/Tests-436_Passed_100%25-success.svg)](CHANGELOG.md)
+[![Automated Tests](https://img.shields.io/badge/Tests-516_Passed_100%25-success.svg)](CHANGELOG.md)
 [![Privacy](https://img.shields.io/badge/Privacy-100%25_Local_%26_Client--Side-green.svg)](PRIVACY.md)
 
 <p align="center">
   <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"><b>🚀 Add to Chrome (Free)</b></a> •
   <a href="https://radtome.github.io/QuickSnipe-support/"><b>🌐 Interactive Web Portal</b></a> •
-  <a href="#-whats-new-in-v145"><b>✨ What's New in v1.4.5</b></a> •
+  <a href="#-whats-new-in-v150"><b>✨ What's New in v1.5.0</b></a> •
   <a href="#-core-features-at-a-glance"><b>🔥 Features</b></a> •
   <a href="#-quicksnipe-vs-incumbent-cross-listers"><b>⚖️ QuickSnipe vs. Vendoo</b></a> •
   <a href="#-30-second-quick-start-guide"><b>⚡ Quick Start</b></a> •
@@ -27,21 +27,22 @@
 
 ---
 
-### 🎁 Free Forever • No Credit Card • No Signup • No API Keys Required
+### 🎁 Free Daily Plan • No Credit Card • No Signup • No API Keys Required
 **QuickSnipe** lives in your **Chrome Side Panel**, right alongside your marketplace tabs. Cross-list active items in 1 click, check real landed sold prices with outlier filtering, spot underpriced flips on autopilot, beam photos wirelessly from phone to PC, and generate search-optimized listings in seconds.
 
 </div>
 
 ---
 
-## ✨ What's New in v1.4.5
+## ✨ What's New in v1.5.0
 
 | Feature | What It Does for Resellers |
 |---|---|
-| 📱 **Wire-Free Mobile Photo Sync** | Scan a QR code on your iPhone or Android camera to instantly beam thrift photos straight into your computer side panel. **Zero cables, zero cloud drive lag, and zero app downloads.** |
-| 💎 **Modern Light Glass Theme** | Re-engineered high-contrast aesthetic with translucent glass cards, reducing visual fatigue during high-volume listing marathons. |
-| ⚡ **Floating In-Page QuickBar HUD** | Docks directly onto listing forms across Etsy, eBay, Poshmark, Mercari & Depop. 1-click Fast-Fill injects title, description, price, tags, and condition with native synthetic DOM events. |
-| 🏪 **Expanded 9-Platform Power** | Full listing generation, tag formatting, and margin calculations for **Etsy, eBay, Poshmark, Mercari, Depop, Amazon, Shopify, Walmart, and Grailed**. |
+| 🔒 **Zero Site Permissions at Install** | QuickSnipe asks for **zero marketplace permissions at install** (`extensionpay.com` only for licensing). Pick only the marketplaces you sell on in Onboarding or Settings and revoke access per platform anytime. |
+| 🔍 **2026 Live Parser Refresh + Shopify Admin** | Updated live selectors across **eBay, Grailed, Depop, Amazon, Mercari, Walmart**, and modern **`admin.shopify.com`** editors, with sale-price (`Was $X Now $Y`) and EU decimal-comma parsing. |
+| 🛡️ **Prompt-Injection Shield & Modern AI** | Scraped listing text is isolated inside `<untrusted_marketplace_data>` delimiters, while legacy sunset model IDs auto-migrate to **`gemini-3.6-flash` / `llama-4-scout`**. |
+| 🎨 **Bundled Local Fonts (Zero CDN Calls)** | Plus Jakarta Sans, Inter, and JetBrains Mono now ship inside the extension bundle — zero external font requests at runtime. |
+| 🔄 **One-Click In-Panel Update Banner** | Apply pending Chrome Web Store updates in one click straight from the side panel, backed by concurrency-safe local storage, formula-safe CSV exports, and **516 passing unit tests**. |
 | 🏷️ **Promo Code `FOUNDER30`** | Activate in-app checkout for your **first month of Pro free**, then just $7.99/mo (cancel anytime). |
 
 ---
@@ -87,9 +88,9 @@ Track every item from **Sourced ➔ Listed ➔ Sold**. View live KPIs (Invested 
 
 ## ⚖️ QuickSnipe vs. Incumbent Cross-Listers
 
-| Feature | QuickSnipe (v1.4.5) | Vendoo | List Perfectly |
+| Feature | QuickSnipe (v1.5.0) | Vendoo | List Perfectly |
 |:---|:---:|:---:|:---:|
-| **Monthly Cost** | **Free Forever** or $7.99/mo Pro | $29.99 – $59.99/mo | $29.00 – $69.00/mo |
+| **Monthly Cost** | **Free Daily Plan** or $7.99/mo Pro | $29.99 – $59.99/mo | $29.00 – $69.00/mo |
 | **Lifetime License** | **$69 (One-Time)** | ❌ No | ❌ No |
 | **Signup Required?** | **None** (Works immediately) | Account & Password | Account & Password |
 | **Credit Card to Test?** | **Zero** (7-Day Turbo Week Free) | Credit Card Required | Credit Card Required |
@@ -131,9 +132,9 @@ Step 3: Open Anytime with Alt+Q
 
 ---
 
-## 💸 Pricing — Free Daily Plan Forever
+## 💸 Pricing — Free Daily Plan
 
-* **🆓 Free Daily Plan (Forever, No Card):** 5 daily market scans, 3 ready-to-paste listing drafts, photo extractions, sold comp lookups, every fee & profit calculator, quality scorecard audits, 1 saved Deal Radar search, and 3 cross-posts.
+* **🆓 Free Daily Plan (No Card):** 5 daily market scans, 3 ready-to-paste listing drafts, photo extractions, sold comp lookups, every fee & profit calculator, quality scorecard audits, 1 saved Deal Radar search, and 3 cross-posts.
 * **⚡ Turbo Week (Automatic on Install):** 7 full days of unlocked Pro mode right out of the box — zero credit card, zero signup.
 * **⭐ Pro:** $7.99/mo (**first month free with code `FOUNDER30`**), $49/year, or a **$69 one-time lifetime license**. Cancel anytime from Settings with 1 click.
 
@@ -153,9 +154,11 @@ No extension installed yet? Test our free suite of standalone reseller web tools
 ## 🛡️ Privacy, Security & Technical Architecture
 
 QuickSnipe is engineered as a **local-first, 100% client-side Chrome Side Panel application**:
+* **Zero Site Permissions at Install:** Requires only `extensionpay.com` at install time (`optional_host_permissions` per marketplace & AI provider). Enable only the platforms you sell on and revoke anytime.
 * **Zero Middleman Servers:** Listing drafts, flip ledgers, and inventory data remain on your local machine (`chrome.storage.local`).
+* **Bundled Local Fonts & Prompt Shield:** Extension pages ship Plus Jakarta Sans, Inter, and JetBrains Mono locally (zero remote font/CDN requests) and wrap scraped listing text in `<untrusted_marketplace_data>` delimiters.
 * **Passive Browser Automation:** Interacts with listing forms using standard DOM typing and input events. Never uses bot crawlers, headless automation, or account logins.
-* **Optional BYOK Cloud Boost:** Connect your personal API key (Google Gemini, OpenAI, Claude, Groq, Ollama) in Settings anytime. Keys are stored encrypted in your local browser storage and never touch third-party servers.
+* **Optional BYOK Cloud Boost:** Connect your personal API key (Google Gemini, OpenAI, Claude, Groq, Ollama) in Settings anytime. Keys are stored in your local browser storage and never touch third-party developer servers.
 
 ---
 

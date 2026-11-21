@@ -33,7 +33,7 @@ QuickSnipe is a Manifest V3 Google Chrome extension engineered specifically for 
 - **Storage**: Isolated `chrome.storage.local` with zero remote cloud server database reliance.
 - **AI Engine Support**:
   - Offline local execution via **Chrome Built-in AI (Gemini Nano)** using the Chrome 131+ Prompt API.
-  - Multi-provider Bring-Your-Own-Key (BYOK) support for Google Gemini (Flash 2.0 / 3.6), OpenAI (GPT-4o), Anthropic (Claude 3.7 Sonnet), Groq (Llama 3.3 70B), DeepSeek (V3/R1), OpenRouter, and local offline Ollama instances.
+  - Multi-provider Bring-Your-Own-Key (BYOK) support for Google Gemini (3.6 Flash / 3.5 Flash / 3.5 Flash Lite), OpenAI (GPT-4o), Anthropic (Claude 3.7 Sonnet), Groq (Llama 3.3 70B / Llama 4 Scout Vision), DeepSeek (V3/R1), OpenRouter, and local offline Ollama instances.
   - Automatic smart rate-limit fallback (HTTP 429 handler routing to secondary backup models).
 - **DOM & Extraction Engine**: Zero external scraper dependencies; operates via focused `activeTab` DOM parser scripts compatible with React and Vue marketplace frontends.
 - **Licensing Engine**: Powered securely by ExtensionPay (`https://extensionpay.com/`), processing stripe payments with zero access to user payment credentials.
@@ -161,7 +161,7 @@ Interactive simulation engine supporting all 9 major platforms:
 | **Mercari** | Title, photos, specifics | Mercari web listing fill | Yes (0% or 10%) |
 | **Depop** | In-depth fashion tags | Depop web listing fill | Yes (0% selling fee) |
 | **Amazon** | ASIN, BSR & 249-byte checker | Manual copy / byte meter | Yes (Category referral) |
-| **Shopify** | Product handle & tags | Shopify Admin form fill | Yes (2.9% + $0.30) |
+| **Shopify** | Product handle & tags | Shopify Admin form fill (`*.myshopify.com`, `admin.shopify.com`) | Yes (2.9% + $0.30) |
 | **Walmart** | Product `/ip/` pages | Manual copy cards | Yes (Referral matrix) |
 | **Grailed** | Next.js luxury archive data | Manual copy cards | Yes (9% + processing) |
 
@@ -180,8 +180,9 @@ QuickSnipe adheres to a transparent, reseller-friendly pricing philosophy:
 
 ## 6. Privacy, Security & Technical Architecture
 
-- **Manifest V3 Compliant**: Uses modern Chrome Service Workers with strict least-privilege permissions (`activeTab`, `storage`, `sidePanel`).
-- **No Third-Party Telemetry**: QuickSnipe contains zero tracking scripts, Google Analytics, or external marketing pixels inside the extension package.
+- **Manifest V3 Least-Privilege Opt-In (v1.5.0)**: Uses modern Chrome Service Workers with `extensionpay.com` as the sole required host permission at install. All 9 marketplaces (including `admin.shopify.com`) and all 6 cloud AI endpoints use `optional_host_permissions`, dynamically registering QuickBar only on user-enabled platforms.
+- **Bundled Local Fonts & Prompt-Injection Hardening**: Extension pages ship Plus Jakarta Sans, Inter, and JetBrains Mono locally (zero remote font/CDN requests). Scraped listing text is wrapped inside `<untrusted_marketplace_data>` delimiters before reaching any LLM, and CSV exports neutralize spreadsheet formula characters.
+- **No Third-Party Telemetry & One-Click Update**: Zero tracking scripts, Google Analytics, or external marketing pixels; includes a one-click in-panel Update Ready banner and serialized `chrome.storage.local` writes.
 - **Strict Host Storage Sandboxing**: Floating QuickBar state and user preferences are saved strictly to `chrome.storage.local`. No cookies, localStorage entries, or trackers are injected into host merchant websites.
 - **W3C APG Accessibility**: Accessible roving focus, focus trapping in modal dialogs, and instant `Escape` key dismissal.
 

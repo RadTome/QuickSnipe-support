@@ -20,8 +20,9 @@ Thank you for using **QuickSnipe**! This document explains our support channels,
 
 Over 80% of reported issues are resolved with these 4 steps:
 
-### 1. Hard Refresh the Marketplace Tab
+### 1. Hard Refresh the Marketplace Tab & Check Opt-In Permissions
 If QuickSnipe says `No listing detected` or `Reading...`:
+- In **v1.5.0+**, QuickSnipe asks for zero site permissions at install. Open **Settings ⚙ → Enabled Marketplaces** (or Onboarding) and make sure the marketplace you are browsing is enabled (`Allow`).
 - Click into the active marketplace tab.
 - Press `Ctrl + F5` (Windows) or `Cmd + Shift + R` (Mac) to reload the page.
 - In the QuickSnipe Sidepanel header, click the **🔄 (Refresh)** button.

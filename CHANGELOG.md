@@ -4,9 +4,42 @@ All notable changes to **QuickSnipe** are documented here. QuickSnipe adheres st
 
 ---
 
-## 🚀 [v1.4.5] — Current Stable Release (Live in Chrome Web Store)
+## 🚀 [v1.5.0] — Current Stable Release (Live in Chrome Web Store)
 
 > **Status:** Live in Chrome Web Store (Approved & Published)  
+> **Release Date:** November 2026  
+> **Pre-Flight Validation:** All 516 automated unit tests across 30 test suites, DOM binding audits, live parser checks, and Chrome Web Store compliance scanners green (0 failures)
+
+### 🔒 Zero-Site-Permissions Opt-In Install (`optional_host_permissions`)
+- **Minimal Install Footprint**: Trimmed required `host_permissions` to `extensionpay.com` only so Pro checkout and license checks work right away without broad install-time site access prompts.
+- **Per-Marketplace Opt-In Picker**: Choose only the marketplaces you sell on inside Onboarding (`welcome.html`) and Settings (`options.html`), or enable on demand when running a tool. Dynamic content script registration (`utils/permissions.js` / `QSPermissions.syncDynamicContentScripts`) activates and revokes QuickBar access per platform cleanly at any time.
+- **Opt-In Cloud AI Hosts**: Moved all 6 cloud AI API endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`) to `optional_host_permissions`, requested only for the provider you configure.
+
+### 🎨 Bundled Local Fonts (Zero Remote CDN Calls)
+- **Self-Contained Typography**: Bundled Plus Jakarta Sans, Inter, and JetBrains Mono (`woff2`) directly inside the extension package (`assets/fonts/`). Extension pages make zero runtime requests to external font CDNs.
+
+### 🔍 2026 Live Marketplace Parser Refresh & `admin.shopify.com` Support
+- **Refreshed Live Selectors**: Updated product, search, and listing editor parsers across eBay (`s-card` markup + `sr-only` suffix stripping), Grailed (`__NEXT_DATA__` `designerNames`/`designers[]`), Depop (`meta__jsonLd` fallback), Amazon (`.priceToPay` priority over struck-through list prices), Mercari, Walmart, and both legacy `*.myshopify.com` and modern `admin.shopify.com` product editors.
+- **Smarter Price Extraction**: Properly keeps current prices in `"Was $X Now $Y"` and `"Original Price $X Your Price $Y"` cards, parses thousands separators without currency symbols, and handles European decimal-comma formats cleanly.
+
+### 🛡️ Prompt-Injection Defense & Modernized AI Models
+- **Untrusted Data Isolation**: Framed all scraped marketplace titles, descriptions, tags, and reviews inside `<untrusted_marketplace_data>` delimiters with breakout-tag neutralization so untrusted listing text cannot hijack AI generation instructions.
+- **Sunset Model Migration**: Retired sunset Gemini 2.0 and Groq Llama 3.2 vision IDs with automatic settings migration (`gemini-3.6-flash`, `gemini-3.5-flash`, `gemini-3.5-flash-lite`, `meta-llama/llama-4-scout-17b-16e-instruct`, `llama-3.3-70b-versatile`).
+
+### 🔄 One-Click In-Panel Update Banner & MV3 Reliability
+- **Inline Update Prompt**: Side panel displays a one-click update banner (`QS_APPLY_UPDATE` / `QS_DISMISS_UPDATE`, sender-verified) when a new Chrome Web Store build is ready, clearing pending update state and reloading cleanly.
+- **MV3 Service Worker Licensing**: Top-level ExtensionPay initialization in the background service worker prevents sleep/wake licensing drift.
+
+### 🧪 Concurrency-Safe Storage, Formula-Safe CSVs & 516 Unit Tests
+- **Serialized Storage Writes**: Eliminated concurrent lost updates across `saveFlip`, `updateFlip`, `deleteFlip`, `incrementDailyUsage`, `saveSwipe`, and `appendUserFeedback` (with entry size caps and retried-append deduplication).
+- **Export & Pricing Hardening**: Neutralized spreadsheet formula injection (`=`, `+`, `-`, `@`) with UTF-8 BOM in CSV exports, normalized platform fee lookups case-insensitively, enforced global regex trademark sanitization, preserved explicit `expectedResale` in Deal Radar with multi-drop alert merging and idempotent dismissal, and stripped `extensionpay_*` keys from settings exports.
+- **516 Unit Tests**: Expanded automated suite from 436 tests across 26 suites to **516 automated tests across 30 suites** (`test-v146-features.js`, `test-v146-regressions.js`, and new parser/permission assertions).
+
+---
+
+## 🚀 [v1.4.5] — Previous Stable Release
+
+> **Status:** Superseded by v1.5.0  
 > **Release Date:** November 2026  
 > **Pre-Flight Validation:** All 436 automated unit tests, DOM binding audits, and Chrome Web Store compliance scanners green (0 failures)
 

@@ -26,6 +26,7 @@ This guide provides targeted solutions for the most common technical issues, err
 - [18. Deal Radar: Notifications & Background Scan Diagnostics (v1.4.3+)](#18-deal-radar-notifications--background-scan-diagnostics-v143)
 - [19. Bulk Listing Studio: CSV Import & Column Mapping (v1.4.3+)](#19-bulk-listing-studio-csv-import--column-mapping-v143)
 - [20. Launch Week Turbo Mode & Promo Code Activation (v1.4.3+)](#20-launch-week-turbo-mode--promo-code-activation-v143)
+- [21. Opt-In Marketplace & AI Host Permissions (v1.5.0+)](#21-opt-in-marketplace--ai-host-permissions-v150)
 
 ---
 
@@ -37,13 +38,14 @@ This guide provides targeted solutions for the most common technical issues, err
 - The URL is an account dashboard, home page, or unsupported sub-domain rather than a product or search page.
 
 #### Solutions:
-1. Click the **🔄 (Refresh)** button located in the top-right header of the QuickSnipe sidepanel.
-2. Hard reload the active marketplace tab using `Ctrl + F5` (Windows) or `Cmd + Shift + R` (Mac).
-3. Ensure the active tab URL matches standard product or search URL patterns:
+1. Verify you granted opt-in access for that marketplace in **Settings ⚙ → Enabled Marketplaces** (v1.5.0 asks for zero marketplace permissions at install).
+2. Click the **🔄 (Refresh)** button located in the top-right header of the QuickSnipe sidepanel.
+3. Hard reload the active marketplace tab using `Ctrl + F5` (Windows) or `Cmd + Shift + R` (Mac).
+4. Ensure the active tab URL matches standard product or search URL patterns:
    - **Etsy**: `etsy.com/listing/...` or `etsy.com/search?q=...`
    - **Amazon**: `amazon.com/dp/...` or `amazon.com/gp/product/...` or `amazon.com/s?k=...`
    - **eBay**: `ebay.com/itm/...` or `ebay.com/sch/...`
-   - **Shopify**: Any `/products/...` page.
+   - **Shopify**: Any `/products/...` storefront page or `admin.shopify.com/.../products/...` editor.
    - **Poshmark**: `poshmark.com/listing/...`
    - **Depop**: `depop.com/products/...`
    - **Mercari**: `mercari.com/us/item/...`
@@ -97,7 +99,7 @@ This guide provides targeted solutions for the most common technical issues, err
 
 #### Solutions:
 1. Wait 30–60 seconds for the provider rate window to reset, then retry.
-2. In Settings, select a faster/lighter model (e.g., switch from preview models to `gemini-3.6-flash` or `gemini-2.0-flash`).
+2. In Settings, select a faster/lighter model (e.g., switch from preview models to `gemini-3.6-flash` or `gemini-3.5-flash-lite`).
 3. For OpenAI/Anthropic/DeepSeek, verify that your account has available balance on their billing settings page.
 
 ---
@@ -188,7 +190,7 @@ This guide provides targeted solutions for the most common technical issues, err
    - Locate **Optimization Guide On Device Model**.
    - Click **Check for update** and wait for the status to show **Up-to-date**.
 4. If your device does not meet hardware requirements (requires minimum 4GB GPU / VRAM or 16GB system RAM), switch to **Google Gemini** in QuickSnipe Settings for free, instant cloud generation.
-5. **Slow Generation Notice**: Because Gemini Nano executes on local CPU/RAM without cloud acceleration, generation typically takes 15–30 seconds. We strongly recommend getting a free API key for **Google Gemini** (`gemini-2.0-flash` / `gemini-3.6-flash`) from [Google AI Studio](https://aistudio.google.com/app/apikey) for instant sub-second generations.
+5. **Slow Generation Notice**: Because Gemini Nano executes on local CPU/RAM without cloud acceleration, generation typically takes 15–30 seconds. We strongly recommend getting a free API key for **Google Gemini** (`gemini-3.6-flash` / `gemini-3.5-flash`) from [Google AI Studio](https://aistudio.google.com/app/apikey) for instant sub-second generations.
 
 ---
 
@@ -199,9 +201,10 @@ This guide provides targeted solutions for the most common technical issues, err
 - The content script on the existing page lost its active connection to the newly loaded background service worker.
 
 #### Solutions:
-1. Simply refresh the active marketplace tab (`F5` or `Ctrl+R`).
-2. Re-open QuickSnipe using **`Alt+Q`** or click the extension icon.
-3. Your previous session state (scraped items, mined reviews, draft copy) will automatically restore without data loss.
+1. In **v1.5.0+**, when an update is pending, click **Update Now** on the inline banner at the top of the side panel to apply it cleanly.
+2. Refresh the active marketplace tab (`F5` or `Ctrl+R`).
+3. Re-open QuickSnipe using **`Alt+Q`** or click the extension icon.
+4. Your previous session state (scraped items, mined reviews, draft copy) will automatically restore without data loss.
 
 ---
 
@@ -374,5 +377,24 @@ This guide provides targeted solutions for the most common technical issues, err
 2. **Redeeming FOUNDER30**:
    - On day 8 after Turbo concludes, click the founder banner or go to **Settings ⚙ → Upgrade to Pro**.
    - Enter promo code `FOUNDER30` to claim your first month of Pro free!
+
+---
+
+### 21. Opt-In Marketplace & AI Host Permissions (v1.5.0+)
+
+#### Potential Causes:
+- QuickBar does not appear on a marketplace editor, or Deal Radar / Sold Comps reports missing permission for a platform.
+- A cloud AI API request prompts for site access on first use or fails after declining Chrome's optional permission dialog.
+
+#### Solutions:
+1. **Enable Marketplaces in Onboarding or Settings**:
+   - Open QuickSnipe **⚙ Settings → Enabled Marketplaces** (or the Onboarding welcome page).
+   - Check the specific marketplaces you sell on (e.g. eBay, Etsy, Poshmark, Mercari, Depop, `admin.shopify.com`) and click **Enable Selected Marketplaces**, then approve Chrome's prompt.
+   - Refresh the open marketplace tab so the dynamically registered QuickBar attaches.
+2. **Grant Opt-In AI Provider Host Access**:
+   - When configuring a cloud BYOK provider (Gemini, Groq, OpenAI, Anthropic, DeepSeek, OpenRouter), approve Chrome's optional permission prompt for that provider's API domain.
+   - Prefer zero remote prompts? Choose **Chrome Built-in AI (Gemini Nano)** or local **Ollama** (`http://localhost:11434`), which require no remote AI host permissions.
+3. **Revoking Access Anytime**:
+   - Uncheck any marketplace in Settings or manage per-site access in `chrome://extensions` → **QuickSnipe** → **Details** → **Site access**.
 
 

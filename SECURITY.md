@@ -10,7 +10,8 @@ We actively provide security patches and updates for the following versions:
 
 | Version | Supported | Notes |
 |---|:---:|---|
-| `1.4.5` | ✅ | Current Live Production Release (Chrome Web Store) |
+| `1.5.0` | ✅ | Current Live Production Release (Chrome Web Store) |
+| `1.4.5` | ✅ | Previous Stable Release |
 | `1.4.4` | ✅ | Previous Stable Release |
 | `1.4.3` | ✅ | Previous Stable Release |
 | `1.4.2` | ✅ | Previous Stable Release |
@@ -23,13 +24,13 @@ We actively provide security patches and updates for the following versions:
 
 ## 🔐 Architectural Security Highlights
 
-1. **Least-Privilege Security Footprint**: Zero broad wildcard permissions (`http://*/*` and `https://*/*` removed). Manifest permissions are strictly limited to necessary extension APIs (`storage`, `activeTab`, `sidePanel`, `scripting`, `alarms`, `contextMenus`) and explicit official endpoints.
+1. **Least-Privilege Opt-In Footprint**: Zero broad wildcard permissions (`http://*/*` and `https://*/*` removed). In v1.5.0+, `extensionpay.com` is the sole required host permission at install; marketplaces (including `admin.shopify.com`) and cloud AI API endpoints are `optional_host_permissions` granted strictly per platform/provider on opt-in and revocable anytime.
 2. **Zero Intermediate Servers**: QuickSnipe does not maintain backend proxies or logging servers. Your search terms, listing copy, and scraped data stay strictly within your local machine.
-3. **Encrypted Local Storage & Sandboxing**: API keys, swipe files, and QuickBar preferences are stored locally in Chrome's sandboxed `chrome.storage.local`. Zero host-origin storage footprint.
-4. **Strict Content Security Policy**: QuickSnipe adheres to Manifest V3 CSP specifications:
-   - Zero execution of remote or dynamic strings (`no eval()`, `no new Function()`).
-   - All scripts are packaged locally within the verified extension bundle.
-5. **Direct HTTPS Communication**: BYOK API calls connect directly from your client browser to official provider endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`).
+3. **Encrypted Local Storage & Sandboxing**: API keys, swipe files, and QuickBar preferences are stored locally in Chrome's sandboxed `chrome.storage.local` with serialized writes to prevent race conditions. Zero host-origin storage footprint.
+4. **Prompt-Injection Delimiter Hardening**: Scraped marketplace fields are wrapped in `<untrusted_marketplace_data>` delimiters with breakout-tag neutralization before reaching AI prompts.
+5. **Bundled Local Fonts & Strict Content Security Policy**: QuickSnipe adheres to Manifest V3 CSP (`no eval()`, `no new Function()`, zero remote script or font CDN calls — all fonts ship inside `assets/fonts/`).
+6. **CSV Formula-Injection Neutralization**: Exported CSV spreadsheets escape leading formula characters (`=`, `+`, `-`, `@`) and emit a UTF-8 BOM.
+7. **Direct HTTPS Communication**: Optional BYOK API calls connect directly from your client browser to official provider endpoints (`generativelanguage.googleapis.com`, `api.openai.com`, `api.groq.com`, `api.anthropic.com`, `api.deepseek.com`, `openrouter.ai`) only when you configure and authorize that provider.
 
 ---
 

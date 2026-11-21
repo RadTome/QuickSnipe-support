@@ -2,8 +2,8 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "name": "QuickSnipe",
   "displayName": "QuickSnipe: AI Listing & Reseller Assistant",
-  "version": "1.4.5",
-  "softwareVersion": "1.4.5",
+  "version": "1.5.0",
+  "softwareVersion": "1.5.0",
   "type": "browser_extension",
   "platform": "Google Chrome (Manifest V3)",
   "browserRequirements": "Google Chrome 116 or higher, Chromium, Brave, Microsoft Edge, Opera",
@@ -49,7 +49,7 @@
     { "id": "mercari", "name": "Mercari", "features": ["Scraping", "Form Autofill", "Fee Calculator"] },
     { "id": "depop", "name": "Depop", "features": ["Scraping", "Form Autofill", "Fee Calculator", "Tag Generator"] },
     { "id": "amazon", "name": "Amazon", "features": ["ASIN Scraping", "249-Byte Search Term Meter", "FBA Fee Calculator"] },
-    { "id": "shopify", "name": "Shopify", "features": ["Product Extraction", "Admin Form Autofill", "Fee Calculator"] },
+    { "id": "shopify", "name": "Shopify", "features": ["Product Extraction", "Admin Form Autofill (admin.shopify.com)", "Fee Calculator"] },
     { "id": "walmart", "name": "Walmart Marketplace", "features": ["Product Parsing", "Referral Fee Calculator"] },
     { "id": "grailed", "name": "Grailed", "features": ["Archive Hydration Parsing", "Luxury Fee Calculator"] }
   ],
@@ -119,7 +119,7 @@
     "freeTier": {
       "price": 0,
       "currency": "USD",
-      "description": "Free daily snipes, cross-listing, and calculations forever."
+      "description": "Free daily snipes, cross-listing, and calculations with no credit card required."
     },
     "proMonthly": {
       "price": 7.99,
@@ -144,6 +144,9 @@
     "serverDataCollection": "None",
     "storageType": "chrome.storage.local",
     "thirdPartyTrackers": "None",
+    "optInMarketplacePermissions": true,
+    "bundledLocalFonts": true,
+    "promptInjectionDelimiters": true,
     "aiProviderOptions": ["Chrome Built-in AI (Offline Gemini Nano)", "Bring Your Own Key (BYOK)"]
   }
 }

@@ -65,14 +65,14 @@
       {
         "@type": "SoftwareApplication",
         "name": "QuickSnipe",
-        "softwareVersion": "1.4.5",
+        "softwareVersion": "1.5.0",
         "applicationCategory": "BusinessApplication",
         "applicationSubCategory": "Reseller Cross-Listing Tool",
         "operatingSystem": "Google Chrome, Microsoft Edge, Brave, Opera",
         "browserRequirements": "Requires Google Chrome 116 or higher",
         "image": "https://radtome.github.io/QuickSnipe-support/assets/github-social-preview.png",
         "offers": [
-          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free forever plan with 5 free snipes every day" },
+          { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD", "description": "Free daily plan with 5 free snipes per day" },
           { "@type": "Offer", "name": "Pro Monthly", "price": "7.99", "priceCurrency": "USD", "description": "Unlimited listings, one-click cross-listing and all Pro tools, billed monthly" },
           { "@type": "Offer", "name": "Pro Annual", "price": "49", "priceCurrency": "USD", "description": "All Pro tools, billed yearly" },
           { "@type": "Offer", "name": "Lifetime", "price": "69", "priceCurrency": "USD", "description": "One-time payment for lifetime Pro access" }
@@ -80,7 +80,7 @@
         "aggregateRating": {
           "@type": "AggregateRating",
           "ratingValue": "5.0",
-          "ratingCount": "62",
+          "ratingCount": "1",
           "bestRating": "5",
           "worstRating": "1"
         },
@@ -95,7 +95,9 @@
         "featureList": [
           "Turn a product photo into a finished listing in about 10 seconds",
           "One-click cross-listing to eBay, Poshmark, Mercari, Etsy and Depop",
-          "Floating QuickBar that fills in marketplace listing forms for you",
+          "Floating QuickBar that fills in marketplace listing forms for you (including admin.shopify.com)",
+          "Zero site permissions at install — opt-in per marketplace and revocable anytime",
+          "Bundled local fonts with zero remote CDN or font tracking requests",
           "Download every listing photo at once as a ZIP file",
           "USPS 16 oz shipping cost alerts",
           "Offer calculator with suggested counteroffers",
@@ -122,7 +124,7 @@
           {
             "@type": "Question",
             "name": "Is QuickSnipe really free?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. QuickSnipe has a free-forever plan with 5 free snipes every day that reset at midnight. Every new install also gets 7 days of Pro for free with no credit card. If you want unlimited use, Pro is $7.99 a month, $49 a year, or $69 once for lifetime access." }
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. QuickSnipe has a free daily plan with 5 free snipes a day that reset at midnight. Every new install also gets 7 days of Pro for free with no credit card. If you want unlimited use, Pro is $7.99 a month, $49 a year, or $69 once for a one-time option." }
           },
           {
             "@type": "Question",
@@ -171,8 +173,13 @@
           },
           {
             "@type": "Question",
-            "name": "What is new in QuickSnipe version 1.4.5?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Version 1.4.5 adds wire-free Mobile Photo Sync (scan a QR code with your iPhone or Android camera and photos stream straight into your Chrome side panel over encrypted peer-to-peer WebRTC, with a Cloud Bridge fallback), a high-contrast Light Glass UI, synchronized 9-platform fee schedules, AbortSignal stream cancellation for wasted-token-free AI generations, and Chrome Web Store compliance hardening." }
+            "name": "What is new in QuickSnipe version 1.5.0?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Version 1.5.0 moves all 9 marketplaces (including admin.shopify.com) and cloud AI hosts to opt-in optional_host_permissions so QuickSnipe asks for zero site permissions at install, bundles Plus Jakarta Sans, Inter and JetBrains Mono fonts locally with zero CDN calls, refreshes 2026 live DOM parsers across eBay, Grailed, Depop, Amazon, Mercari and Walmart, frames scraped data in untrusted_marketplace_data delimiters against prompt injection, migrates sunset AI model IDs automatically, and adds a one-click in-panel Update Ready banner alongside 516 passing unit tests." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do local data, opt-in permissions and optional BYOK AI calls work?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Your inventory, COGS, profits, swipes, Deal Radar rules and API keys stay in local chrome.storage.local on your computer. QuickSnipe requests zero marketplace permissions at install — you opt into only the marketplaces you sell on and can revoke any platform anytime. If you configure an optional BYOK key (Gemini, OpenAI, Anthropic, Groq, DeepSeek or OpenRouter), Chrome sends only the active item's text or photo directly to that provider's HTTPS API, never through QuickSnipe servers." }
           },
           {
             "@type": "Question",
@@ -218,10 +225,8 @@
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links">
-          <li><a href="#why" class="nav-link">Why Us</a></li>
           <li><a href="#features" class="nav-link">Features</a></li>
           <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
-          <li><a href="#savings" class="nav-link">Savings</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
           <li class="nav-item-dropdown">
             <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true" aria-controls="tools-dropdown-menu">
@@ -269,7 +274,70 @@
               </li>
             </ul>
           </li>
-          <li><a href="#faq" class="nav-link">FAQ</a></li>
+          <li class="nav-item-dropdown">
+            <button type="button" class="nav-dropdown-btn" aria-expanded="false" aria-haspopup="true" aria-controls="support-dropdown-menu">
+              <span>Support</span>
+              <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="2 4 6 8 10 4"></polyline>
+              </svg>
+            </button>
+            <ul id="support-dropdown-menu" class="dropdown-menu" role="menu">
+              <li role="none">
+                <a role="menuitem" href="#support" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">🛠️</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Setup &amp; Support Hub</span>
+                    <span class="dropdown-desc">Quick setup, BYOK keys &amp; diagnostics</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="#privacy" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">🔒</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Privacy &amp; BYOK Guide</span>
+                    <span class="dropdown-desc">Local data, opt-in permissions &amp; safety</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="#faq" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">❓</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">FAQ</span>
+                    <span class="dropdown-desc">Plans, platforms &amp; common questions</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">📘</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Troubleshooting Guide ↗</span>
+                    <span class="dropdown-desc">Autofill, 429 limits, Ollama &amp; permissions</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="https://github.com/RadTome/QuickSnipe-support/issues/new/choose" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">🐛</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Report a Bug / Scraper Issue ↗</span>
+                    <span class="dropdown-desc">Broken selectors, API errors or billing help</span>
+                  </div>
+                </a>
+              </li>
+              <li role="none">
+                <a role="menuitem" href="https://github.com/RadTome/QuickSnipe-support/discussions" target="_blank" rel="noopener noreferrer" class="dropdown-item">
+                  <span class="dropdown-icon" aria-hidden="true">💬</span>
+                  <div class="dropdown-content">
+                    <span class="dropdown-title">Seller Community ↗</span>
+                    <span class="dropdown-desc">Ask questions &amp; share reseller setups</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
 
@@ -309,7 +377,7 @@
             <li><a href="#how-it-works" class="mobile-link">🪄 How It Works</a></li>
             <li><a href="#savings" class="mobile-link">💰 Savings Calculator</a></li>
             <li><a href="#pricing" class="mobile-link">💳 Pricing</a></li>
-            <li><a href="#whats-new" class="mobile-link">🚀 What's New (v1.4.5)</a></li>
+            <li><a href="#whats-new" class="mobile-link">🚀 What's New (v1.5.0)</a></li>
           </ul>
         </div>
         <div class="mobile-nav-section">
@@ -322,9 +390,13 @@
           </ul>
         </div>
         <div class="mobile-nav-section">
-          <span class="mobile-section-label">Help</span>
+          <span class="mobile-section-label">Support &amp; Help</span>
           <ul class="mobile-links-list">
+            <li><a href="#support" class="mobile-link">🛠️ Setup &amp; Support Hub</a></li>
+            <li><a href="#privacy" class="mobile-link">🔒 Privacy &amp; BYOK Guide</a></li>
             <li><a href="#faq" class="mobile-link">❓ Questions &amp; Answers</a></li>
+            <li><a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer" class="mobile-link">📘 Troubleshooting Guide ↗</a></li>
+            <li><a href="https://github.com/RadTome/QuickSnipe-support/issues/new/choose" target="_blank" rel="noopener noreferrer" class="mobile-link">🐛 Report a Problem ↗</a></li>
             <li><a href="https://github.com/RadTome/QuickSnipe-support/discussions" target="_blank" rel="noopener noreferrer" class="mobile-link">💬 Seller Community ↗</a></li>
           </ul>
         </div>
@@ -343,7 +415,7 @@
   <section class="hero" id="main-content">
     <div class="container">
       <a href="#whats-new" class="hero-pill" style="text-decoration: none;">
-        <span>🚀 <strong>v1.4.5 is live</strong> · Wire-Free Mobile Photo Sync + Light Glass UI</span>
+        <span>🚀 <strong>v1.5.0 is live</strong> · Opt-in marketplace permissions + 2026 parser refresh</span>
         <span style="opacity: 0.5;">•</span>
         <span style="font-weight: 700;">See What's New ➔</span>
       </a>
@@ -354,9 +426,7 @@
       </h1>
 
       <p class="hero-lede">
-        QuickSnipe is the free Chrome extension that <strong>turns a photo into a finished listing</strong>,
-        <strong>posts it to eBay, Poshmark, Mercari &amp; Etsy in one click</strong>, and warns you before shipping
-        costs or lowball offers eat your profit.
+        QuickSnipe turns a photo into a finished listing, <strong>cross-lists across eBay, Poshmark, Mercari &amp; Etsy in one click</strong>, and catches shipping cliffs and lowball offers before they cut into your profit.
       </p>
 
       <div class="hero-cta-group">
@@ -365,52 +435,59 @@
           <span>⚡ Add to Chrome — It's Free</span>
         </a>
         <a href="#how-it-works" class="btn btn-secondary btn-lg">
-          <span>▶ See How It Works</span>
+          <span>▶ How It Works &amp; Setup Guide</span>
         </a>
       </div>
 
-      <div class="hero-microcopy">
-        <span>Free forever plan</span>
-        <span>No credit card</span>
-        <span>No account to create</span>
-        <span>Set up in 30 seconds</span>
+      <div class="hero-utility-links" aria-label="Quick help and support links">
+        <span>Already installed?</span>
+        <a href="#support">Support &amp; Setup</a>
+        <span aria-hidden="true">·</span>
+        <a href="#privacy">BYOK &amp; Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer">Troubleshooting ↗</a>
       </div>
 
-      <div class="hero-trust-bar" style="margin-top: 22px;">
-        <span><span class="stars-inline" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span> <strong>5.0</strong> · 62 reviews on the Chrome Web Store</span>
-        <span>•</span>
-        <span>🛒 Works with 9 marketplaces</span>
-        <span>•</span>
-        <span>🔒 Your data stays on your computer</span>
+      <div class="hero-trust-strip" role="region" aria-label="QuickSnipe highlights">
+        <span>
+          <span class="stars-inline" role="img" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+          <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa/reviews" target="_blank" rel="noopener noreferrer" style="color: inherit;"><strong>5.0</strong> · 1 review on Chrome Web Store</a>
+        </span>
+        <span class="hero-trust-sep" aria-hidden="true">•</span>
+        <span>Free daily plan · No card</span>
+        <span class="hero-trust-sep" aria-hidden="true">•</span>
+        <span>🔒 Zero site permissions at install</span>
       </div>
 
-      <div class="hero-market-strip" aria-label="Supported marketplaces">
-        <span class="hero-market-label">Works with:</span>
-        <span class="hero-market-badge">eBay</span>
-        <span class="hero-market-badge">Poshmark</span>
-        <span class="hero-market-badge">Mercari</span>
-        <span class="hero-market-badge">Etsy</span>
-        <span class="hero-market-badge">Depop</span>
-        <span class="hero-market-badge">Grailed</span>
-        <span class="hero-market-badge">Shopify</span>
-        <span class="hero-market-badge">Amazon</span>
-        <span class="hero-market-badge">Walmart</span>
-      </div>
-
-      <div class="hero-showcase" style="margin-top: 40px;">
-        <div class="floating-pill floating-pill-1">
-          <span>💸 Save $348+ a year</span>
-          <span style="color: var(--accent-emerald); font-weight: 800;">vs. monthly cross-listers</span>
-        </div>
-        <div class="floating-pill floating-pill-2">
-          <span>📦 No more shipping surprises</span>
-        </div>
-
+      <div class="hero-showcase" style="margin-top: 32px;">
         <div class="showcase-frame">
-          <video autoplay loop muted playsinline poster="assets/slide_1_hero_hook.png" width="1280" height="800" style="width: 100%; height: auto; border-radius: 12px; display: block;" aria-label="Demo: QuickSnipe filling in a marketplace listing with one click">
+          <video autoplay loop muted playsinline poster="assets/slide_1_hero_hook.png" width="1280" height="800" style="width: 100%; height: auto; display: block;" aria-label="Demo: QuickSnipe filling in a marketplace listing with one click">
             <source src="assets/quickbar_demo.webm" type="video/webm">
             <img src="assets/slide_1_hero_hook.png" alt="QuickSnipe filling in a marketplace listing form with one click" width="1280" height="800" loading="eager">
           </video>
+          <div class="demo-steps-strip" aria-label="3-step QuickSnipe workflow">
+            <div class="demo-step-item">
+              <span class="demo-step-num" aria-hidden="true">1</span>
+              <div>
+                <strong>Snap / Sync Photo</strong>
+                <span>Beam via phone QR or open any existing listing tab</span>
+              </div>
+            </div>
+            <div class="demo-step-item">
+              <span class="demo-step-num" aria-hidden="true">2</span>
+              <div>
+                <strong>Review AI Draft &amp; Comps</strong>
+                <span>Marketplace title, 13 tags, sold median &amp; net fee math</span>
+              </div>
+            </div>
+            <div class="demo-step-item">
+              <span class="demo-step-num" aria-hidden="true">3</span>
+              <div>
+                <strong>One-Click Fill</strong>
+                <span>QuickBar fills every form field; you review &amp; click Publish</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -434,8 +511,21 @@
         </div>
         <div class="stat-item">
           <div class="stat-number">$0</div>
-          <div class="stat-label">to get started, forever</div>
+          <div class="stat-label">to get started, no card needed</div>
         </div>
+      </div>
+
+      <div class="below-fold-markets" aria-label="Supported marketplaces">
+        <span class="hero-market-label">Works with:</span>
+        <span class="hero-market-badge">eBay</span>
+        <span class="hero-market-badge">Poshmark</span>
+        <span class="hero-market-badge">Mercari</span>
+        <span class="hero-market-badge">Etsy</span>
+        <span class="hero-market-badge">Depop</span>
+        <span class="hero-market-badge">Grailed</span>
+        <span class="hero-market-badge">Shopify</span>
+        <span class="hero-market-badge">Amazon</span>
+        <span class="hero-market-badge">Walmart</span>
       </div>
     </div>
   </section>
@@ -449,100 +539,117 @@
         <p class="section-desc">You got into reselling to hunt great finds and make money, not to babysit forms and fee tables. Every pain below has a built-in cure inside the extension.</p>
       </div>
 
-      <div class="ps-grid">
-        <div class="ps-row">
-          <div class="ps-problem">
+      <div class="ps-grid-compact">
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
             <span class="ps-label">😫 The Pain</span>
-            <h3>⌨️ Typing the same listing five times</h3>
-            <p>Copying titles, descriptions and photos from eBay to Poshmark to Mercari eats your evenings and weekends.</p>
+            <p>⌨️ Typing the same title, description &amp; tags across 5 platforms eats your evenings.</p>
           </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
             <h3>One-Click Cross-Lister + QuickBar</h3>
-            <p>Write it once. QuickSnipe reformats it for each marketplace and the floating QuickBar fills the entire form — title, tags, category, price — in a single click.</p>
-            <span class="ps-save">⏱ Save 20+ min per listing</span>
-            <a class="ps-link feature-link" href="#cross-lister">See it in action ➔</a>
+            <p>Write it once; QuickSnipe adapts lengths/tags and fills the target form in a single click.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">⏱ Save 20+ min / listing</span>
+              <a class="ps-link feature-link" href="#cross-lister">See it in action ➔</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="ps-row">
-          <div class="ps-problem">
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
             <span class="ps-label">😫 The Pain</span>
-            <h3>💸 Paying $30–$60 a month to cross-list</h3>
-            <p>That's $360–$720 a year gone before you've sold a single thing — just to move data between sites.</p>
+            <p>💸 Paying $30–$60/mo ($360–$720/yr) just to move inventory between sites.</p>
           </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
-            <h3>Free forever — or $69 once</h3>
-            <p>The free plan never expires. Pro is $7.99/mo (or $49/yr), or pay <strong>$69 once</strong> and never see a subscription again.</p>
-            <span class="ps-save">💰 Save $348–$708 per year</span>
-            <a class="ps-link feature-link" href="#comparison">Compare the math ➔</a>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
+            <h3>Free daily plan — or $7.99/mo Pro</h3>
+            <p>Start on the free daily plan with no card. Pro is $7.99/mo ($49/yr), or a one-time <strong>$69</strong> option.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">💰 Save $348–$708 / yr</span>
+              <a class="ps-link feature-link" href="#comparison">Compare the math ➔</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="ps-row">
-          <div class="ps-problem">
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
             <span class="ps-label">😫 The Pain</span>
-            <h3>📦 One ounce pushes your package over the 16 oz cliff</h3>
-            <p>USPS Ground Advantage jumps $3.60–$6+ past 16 oz. A little extra tape silently torches your margin.</p>
+            <p>📦 Extra tape tips a 15.8 oz parcel past 16 oz, adding $3.60–$6+ in USPS postage.</p>
           </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
             <h3>16 oz Ounce-Trap Radar</h3>
-            <p>QuickSnipe watches your packed weight and flashes a warning at 15.9 oz — before you pay for postage — and suggests a lighter mailer that keeps you under the cliff.</p>
-            <span class="ps-save">📦 Save $3.60–$6.00 per label</span>
-            <a class="ps-link feature-link" href="#shipping-trap">Meet the Ounce-Trap Radar ➔</a>
+            <p>Flags packages near 15.9 oz before buying postage and recommends lighter poly mailers.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">📦 Save $3.60–$6 / label</span>
+              <a class="ps-link feature-link" href="#shipping-trap">Meet Ounce-Trap Radar ➔</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="ps-row">
-          <div class="ps-problem">
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
             <span class="ps-label">😫 The Pain</span>
-            <h3>🤔 “What would you take for it?” guessing games</h3>
-            <p>Was that offer fair — or did you just sell at a loss after fees, shipping and your cost of goods?</p>
+            <p>🤔 Accepting buyer offers blindly without checking fees, shipping, or COGS.</p>
           </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
             <h3>Offer Negotiator &amp; Counter Matrix</h3>
-            <p>Enter the offer and see your real take-home after fees and shipping — plus three smart counters: aggressive, balanced, and walk-away floor.</p>
-            <span class="ps-save">🤝 Never sell under your floor</span>
-            <a class="ps-link feature-link" href="#offer-negotiator">See the counter matrix ➔</a>
+            <p>Shows exact net cash plus 3 smart counteroffers: aggressive, balanced, and walk-away floor.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">🤝 Protect your floor</span>
+              <a class="ps-link feature-link" href="#offer-negotiator">See counter matrix ➔</a>
+            </div>
           </div>
-        </div>
+        </article>
 
-        <div class="ps-row">
-          <div class="ps-problem">
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
             <span class="ps-label">😫 The Pain</span>
-            <h3>🧾 A shoebox of receipts at tax time</h3>
-            <p>Forgotten what you paid, missed fees, messy spreadsheets — you could be overpaying the IRS.</p>
+            <p>🧾 Missing receipts, COGS, and platform fees when Schedule C tax time hits.</p>
           </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
             <h3>Flip Tracker CRM + Schedule C Export</h3>
-            <p>Log what you paid and where you found it. QuickSnipe tracks sale price, fees, net profit and ROI% — then exports one accountant-ready CSV for Schedule C.</p>
-            <span class="ps-save">📊 Tax-ready in one click</span>
-            <a class="ps-link feature-link" href="#flip-crm">See the Flip Tracker ➔</a>
+            <p>Tracks purchase venue, COGS, aging buckets &amp; ROI%, then exports an accountant-ready CSV.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">📊 Tax-ready in 1 click</span>
+              <a class="ps-link feature-link" href="#flip-crm">See Flip Tracker ➔</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="ps-pair-card">
+          <div class="ps-pair-pain">
+            <span class="ps-label">😫 The Pain</span>
+            <p>🤨 Buying thrift finds on asking-price vibes instead of real completed sales.</p>
+          </div>
+          <div class="ps-pair-fix">
+            <span class="ps-label">🛠️ QuickSnipe Fix</span>
+            <h3>Sold Comp Oracle + Deal Radar</h3>
+            <p>1.5× IQR outlier-filtered sold comps, 3 price corridors, STR score &amp; background deal alerts.</p>
+            <div class="ps-pair-footer">
+              <span class="ps-save">🎯 Know before you buy</span>
+              <a class="ps-link feature-link" href="#sold-comps">See pricing engine ➔</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="rules-callout-strip" aria-label="Built-in profit protection rules">
+        <div class="rule-callout">
+          <span class="rule-callout-icon" aria-hidden="true">⚖️</span>
+          <div>
+            <h3>USPS 15.99 oz Cliff Rule</h3>
+            <p>Ground Advantage jumps sharply at 16.0 oz. QuickSnipe flags any parcel between 14.5 and 16.5 oz so switching a box to a 0.4 oz poly mailer saves $3.60–$6.00 on the spot.</p>
           </div>
         </div>
-
-        <div class="ps-row">
-          <div class="ps-problem">
-            <span class="ps-label">😫 The Pain</span>
-            <h3>🤨 Buying on vibes instead of data</h3>
-            <p>That “deal” at the thrift store — hot flip or shelf-sitter? Guessing wrong is how profit stalls.</p>
-          </div>
-          <div class="ps-arrow" aria-hidden="true">➜</div>
-          <div class="ps-solution">
-            <span class="ps-label">🛠️ The QuickSnipe Fix</span>
-            <h3>Sold Comp Oracle + Sell-Through Radar</h3>
-            <p>True sold prices with 1.5× IQR outlier filtering, 3-tier price corridors, STR velocity tiers and a background Deal Radar that pings you when underpriced flips appear.</p>
-            <span class="ps-save">🎯 Know it flips before you buy</span>
-            <a class="ps-link feature-link" href="#sold-comps">See the pricing engine ➔</a>
+        <div class="rule-callout rule-callout-amber">
+          <span class="rule-callout-icon" aria-hidden="true">🤝</span>
+          <div>
+            <h3>3-Tier Counter-Offer Floor Rule</h3>
+            <p>Every incoming offer is checked against marketplace fees, label cost &amp; COGS before displaying Aggressive, Balanced, and Walkaway Floor numbers.</p>
           </div>
         </div>
       </div>
@@ -551,59 +658,61 @@
     </div>
   </section>
 
-  <!-- ================= V1.4.5 SPOTLIGHT ================= -->
+  <!-- ================= V1.5.0 SPOTLIGHT ================= -->
   <section id="whats-new" class="section-padding" style="padding-top: 8px;">
-    <a id="v145-features" style="position: absolute; visibility: hidden;" aria-hidden="true"></a>
+    <a id="v150-features" class="anchor-target" style="position: absolute; visibility: hidden;" aria-hidden="true"></a>
+    <a id="v145-features" class="anchor-target" style="position: absolute; visibility: hidden;" aria-hidden="true"></a>
     <div class="container">
       <div class="v145-spotlight">
         <div class="v145-inner">
-          <div class="v145-version" aria-hidden="true">1.4.5</div>
+          <div class="v145-version" aria-hidden="true">1.5.0</div>
           <span class="v145-eyebrow"><span class="v145-live-dot"></span> Fresh · Live on the Chrome Web Store</span>
-          <h2 class="v145-title">Version 1.4.5: <span class="text-gradient">beam photos from phone to shelf</span> — and list with confidence.</h2>
-          <p class="v145-sub">The biggest workflow leap since launch: snap thrift photos on your phone and watch them land in your Chrome side panel in seconds — no cables, no apps, no emailing yourself. Plus a calmer Light Glass UI and market-math that matches each platform exactly.</p>
+          <h2 class="v145-title">Version 1.5.0: <span class="text-gradient">zero site permissions at install</span> — and sharper 2026 parsers.</h2>
+          <p class="v145-sub">Opt in only to the marketplaces you actually sell on, get refreshed 2026 DOM selectors (including modern Shopify Admin), bundled local fonts with zero CDN calls, prompt-injection delimiters, and one-click in-panel updates.</p>
 
           <div class="v145-grid">
             <div class="v145-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2.5"/><line x1="11" y1="18.5" x2="13" y2="18.5"/></svg>
-              <h3>📱 Wire-Free Mobile Photo Sync</h3>
-              <p>Scan a session QR code with any iPhone or Android camera — photos stream live into the side panel over encrypted peer-to-peer WebRTC, with a Cloud Bridge fallback. One-tap <em>Save All to PC</em> and <em>Send to AI Studio</em>.</p>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              <h3>🔒 Opt-In Marketplace Permissions</h3>
+              <p>Zero shopping-site permissions at install — only <code>extensionpay.com</code> for licensing. Enable only the platforms you use in Onboarding or Settings and revoke anytime.</p>
             </div>
             <div class="v145-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12L4 7.5M12 12v9"/></svg>
-              <h3>💎 Light Glass UI</h3>
-              <p>High-contrast translucent cards, refined shadows and calmer hierarchy — built for long sourcing-and-listing sessions without eye fatigue.</p>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <h3>🔍 2026 Live Parsers + Shopify Admin</h3>
+              <p>Refreshed selectors for eBay (<code>s-card</code>), Grailed, Depop, Amazon (<code>.priceToPay</code>), Mercari, Walmart, and <code>admin.shopify.com</code>, plus sale-price &amp; EU comma parsing.</p>
             </div>
             <div class="v145-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
-              <h3>⚖️ Exact 9-Platform Fee Schedules</h3>
-              <p>eBay 13.25% + $0.30, Mercari 2.9% + $0.50, Depop 3.3% + $0.45, Etsy 9.5% + $0.45, Grailed 9% — synchronized across comps, radar and the profit simulator.</p>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+              <h3>🛡️ Prompt Shield &amp; Modern AI</h3>
+              <p>Scraped listing fields are isolated inside <code>&lt;untrusted_marketplace_data&gt;</code> tags, while retired legacy model IDs auto-migrate to <code>gemini-3.6-flash</code> &amp; <code>llama-4-scout</code>.</p>
             </div>
             <div class="v145-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4.5 13.5H11L9.5 22 18 10.5h-6.5L13 2z"/></svg>
-              <h3>⚡ QuickBar Fast-Fill HUD</h3>
-              <p>The floating bar docks on Etsy, eBay, Poshmark, Mercari and Depop listing forms — 1-click autofill with multi-photo carryover and batch ZIP photo download.</p>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+              <h3>🎨 Bundled Local Fonts</h3>
+              <p>Plus Jakarta Sans, Inter, and JetBrains Mono ship locally inside the extension package — zero remote font or CDN requests from any extension page.</p>
             </div>
             <div class="v145-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="#67e8f9"/></svg>
-              <h3>🎯 Landed Sold Comps Engine</h3>
-              <p>1.5× IQR outlier rejection, 0.88× Best-Offer strike-through math and 3 price corridors — Quick Sale, Market Median, Patient Top Dollar — with confidence scoring.</p>
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+              <h3>🔄 One-Click Update Banner</h3>
+              <p>Apply new Chrome Web Store updates right from an inline banner inside the side panel, paired with top-level MV3 ExtensionPay licensing initialization.</p>
             </div>
             <div class="v145-item">
               <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-              <h3>🛡️ Cancel-Anytime AI + Store Hardening</h3>
-              <p>AbortSignal stream cancellation kills hung generations instantly — no wasted tokens — plus full Chrome Web Store compliance validation.</p>
+              <h3>🧪 Concurrency-Safe + 516 Tests</h3>
+              <p>Serialized local storage writes, formula-safe CSV exports with UTF-8 BOM, Deal Radar multi-drop merging, and <strong>516 automated unit tests across 30 suites</strong>.</p>
             </div>
           </div>
 
           <div class="v145-cta-row">
             <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
               target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">
-              <span>🚀 Get v1.4.5 Free on Chrome</span>
+              <span>🚀 Get v1.5.0 Free on Chrome</span>
             </a>
-            <span class="v145-note">Already installed? Chrome updates automatically — just reopen the side panel.<br>New here? <strong style="color:#f8fafc;">7 days of Pro free</strong> on install · code <strong style="color:#f8fafc;">FOUNDER30</strong> = your first month of Pro free.</span>
+            <span class="v145-note">Already installed? Chrome updates automatically — or click <em>Update Now</em> inside the side panel.<br>New here? <strong style="color:#f8fafc;">7 days of Pro free</strong> on install · code <strong style="color:#f8fafc;">FOUNDER30</strong> = your first month of Pro free.</span>
           </div>
 
           <div class="release-list" aria-label="Recent releases">
+            <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.5 · Mobile Photo Sync + Light Glass</a>
             <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.4 · Onboarding &amp; checkout fixes</a>
             <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.3 · Deal Radar + Sold Comp Oracle</a>
             <a class="release-chip" href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">v1.4.2 · QuickBar HUD + 16 oz Trap</a>
@@ -637,6 +746,103 @@
           <span class="step-emoji" aria-hidden="true">🚀</span>
           <h3>Post everywhere</h3>
           <p>Open eBay, Poshmark, Mercari, Etsy or Depop and click <strong>Fill</strong>. Your listing drops right in. Hit publish. Done.</p>
+        </div>
+      </div>
+
+      <!-- Interactive Before/After Workflow Proof -->
+      <div class="workflow-proof-card" aria-label="Before and after reseller workflow examples">
+        <div class="proof-header">
+          <div class="proof-header-title">
+            <strong>Real Before / After Output Preview</strong>
+            <span>Inspect an actual multi-platform draft and counter-offer matrix produced in the side panel</span>
+          </div>
+          <div class="proof-tabs" role="tablist" aria-label="Workflow examples">
+            <button type="button" id="proof-tab-listing" class="proof-tab-btn active" role="tab" aria-selected="true" aria-controls="proof-panel-listing" tabindex="0">📸 Photo → Listing Draft</button>
+            <button type="button" id="proof-tab-offer" class="proof-tab-btn" role="tab" aria-selected="false" aria-controls="proof-panel-offer" tabindex="-1">🤝 $28 Offer → Counter Matrix</button>
+          </div>
+        </div>
+
+        <div id="proof-panel-listing" class="proof-panel active" role="tabpanel" aria-labelledby="proof-tab-listing">
+          <div class="proof-split">
+            <div class="proof-pane">
+              <span class="proof-pane-label">Before · 1 Thrift Rack Photo</span>
+              <h4>Carhartt Detroit Jacket (Bin Find)</h4>
+              <ul class="proof-kv-list">
+                <li><strong>Input:</strong> 1 phone photo snapped via QR sync</li>
+                <li><strong>Detected Tag:</strong> Carhartt J97 · Men's Large · Moss Green</li>
+                <li><strong>Detected Condition:</strong> Distressed faded duck canvas, blanket lined, intact brass zip</li>
+                <li><strong>Your Cost (COGS):</strong> $14.00</li>
+              </ul>
+            </div>
+            <div class="proof-pane proof-pane-after">
+              <span class="proof-pane-label">After · Side-Panel Draft &amp; Sold Comps</span>
+              <h4>eBay 80c Title: Vintage Carhartt J97 Detroit Jacket Mens L Moss Green Blanket Lined</h4>
+              <p><strong>Item Specifics:</strong> Brand: Carhartt · Size: L · Outer Shell: Cotton Duck · Style: Workwear Jacket · Era: Vintage 2000s</p>
+              <div class="proof-tags-list" aria-label="13 Etsy search tags under 20 characters">
+                <span class="proof-tag-chip">carhartt j97</span>
+                <span class="proof-tag-chip">detroit jacket</span>
+                <span class="proof-tag-chip">moss green coat</span>
+                <span class="proof-tag-chip">vintage workwear</span>
+                <span class="proof-tag-chip">blanket lined</span>
+                <span class="proof-tag-chip">distressed canvas</span>
+                <span class="proof-tag-chip">mens work jacket</span>
+                <span class="proof-tag-chip">90s chore coat</span>
+                <span class="proof-tag-chip">duck canvas</span>
+                <span class="proof-tag-chip">streetwear coat</span>
+                <span class="proof-tag-chip">faded carhartt</span>
+                <span class="proof-tag-chip">carpenter jacket</span>
+                <span class="proof-tag-chip">mens large coat</span>
+              </div>
+              <div class="proof-price-row">
+                <div class="proof-price-box">
+                  <small>Quick Sale (P25)</small>
+                  <strong>$118</strong>
+                </div>
+                <div class="proof-price-box">
+                  <small>Market Median (P50)</small>
+                  <strong>$142</strong>
+                </div>
+                <div class="proof-price-box">
+                  <small>Top Dollar (P75)</small>
+                  <strong>$168</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="proof-panel-offer" class="proof-panel" role="tabpanel" aria-labelledby="proof-tab-offer" hidden>
+          <div class="proof-split">
+            <div class="proof-pane">
+              <span class="proof-pane-label">Before · Lowball Buyer Offer</span>
+              <h4>$28.00 Offer on $48.00 eBay Listing</h4>
+              <ul class="proof-kv-list">
+                <li><strong>Marketplace:</strong> eBay (13.25% final value + $0.30)</li>
+                <li><strong>Shipping:</strong> Free Shipping ($4.50 seller label)</li>
+                <li><strong>Your Cost (COGS):</strong> $12.00</li>
+                <li><strong>If Accepted at $28.00:</strong> $4.01 fee → <strong>$7.49 net</strong> (26.8% margin) · Breakeven: <strong>$19.37</strong></li>
+              </ul>
+            </div>
+            <div class="proof-pane proof-pane-after">
+              <span class="proof-pane-label">After · 3-Tier Counteroffer Matrix</span>
+              <h4>Suggested Counteroffers (Plus Ready-to-Send DM Scripts)</h4>
+              <div class="proof-price-row">
+                <div class="proof-price-box">
+                  <small>Aggressive ($42)</small>
+                  <strong>$19.63 net</strong>
+                </div>
+                <div class="proof-price-box">
+                  <small>Balanced ($38)</small>
+                  <strong>$16.16 net</strong>
+                </div>
+                <div class="proof-price-box">
+                  <small>Walkaway ($32)</small>
+                  <strong>$10.96 net</strong>
+                </div>
+              </div>
+              <p>QuickSnipe also drafts 4 ready-to-copy reply scripts (Counter-Offer, Meet in the Middle, Bundle Upsell, and Polite Decline) so you never accept below your floor.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -760,7 +966,7 @@
           </figure>
           <div class="feature-copy">
             <span class="feature-kicker">🎯 Sold Comps &amp; Deal Radar</span>
-            <span class="feature-tag">v1.4.5-tuned</span>
+            <span class="feature-tag">v1.5.0-tuned</span>
             <h3>Price it to sell — not to sit.</h3>
             <p>Wishful asking prices don't sell. QuickSnipe's Sold Comp Oracle studies what items <em>actually</em> sold for, throws out the junk outliers, and hands you a data-backed price corridor.</p>
             <ul class="check-list">
@@ -975,6 +1181,24 @@
         <p class="section-desc">Monthly cross-listing apps add up fast. QuickSnipe gives you more tools for a fraction of the price, or for free.</p>
       </div>
 
+      <div class="cost-math-strip" aria-label="3-year software cost comparison">
+        <div class="cost-math-item highlight">
+          <div class="cost-math-label">QuickSnipe Lifetime</div>
+          <div class="cost-math-val">$69 total</div>
+          <div class="cost-math-sub">One-time payment · Saves $1,335 over 3 yrs</div>
+        </div>
+        <div class="cost-math-item">
+          <div class="cost-math-label">QuickSnipe Pro Annual</div>
+          <div class="cost-math-val">$147 / 3 yrs</div>
+          <div class="cost-math-sub">$49/yr (~$4.08/mo) · Or Free daily tier</div>
+        </div>
+        <div class="cost-math-item">
+          <div class="cost-math-label">Typical $39/mo Cross-Lister</div>
+          <div class="cost-math-val">$1,404 / 3 yrs</div>
+          <div class="cost-math-sub">Ongoing monthly subscription lock-in</div>
+        </div>
+      </div>
+
       <div class="comparison-table-wrapper" style="max-width: 940px; margin: 0 auto;">
         <table class="comparison-table compare-simple">
           <thead>
@@ -1041,8 +1265,8 @@
               <td>Stored on their servers</td>
             </tr>
             <tr>
-              <td>Pay once, own it forever</td>
-              <td class="col-highlight"><span class="yes">✓ $69 lifetime</span></td>
+              <td>One-time payment option (no monthly bill)</td>
+              <td class="col-highlight"><span class="yes">✓ $69 one-time</span></td>
               <td><span class="no">✗</span></td>
             </tr>
           </tbody>
@@ -1127,6 +1351,11 @@
               <div id="calc-result-breakeven" class="calc-stat-val">$0.00</div>
             </div>
           </div>
+
+          <div class="calc-ext-bridge">
+            <span><strong>Automate in Chrome:</strong> While browsing eBay, Etsy, or Poshmark, the Side Panel pulls the active item's price automatically and pairs it with the Offer Negotiator so you never counter below your floor.</span>
+            <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa" target="_blank" rel="noopener noreferrer">Open inside Chrome Side Panel ↗</a>
+          </div>
         </div>
 
         <!-- Title checker -->
@@ -1172,6 +1401,11 @@
           </div>
 
           <div id="lqs-advice-text" style="font-size: 0.86rem; color: var(--text-muted); margin-top: 12px; line-height: 1.45;"></div>
+
+          <div class="calc-ext-bridge">
+            <span><strong>Automate in Chrome:</strong> Inside the extension, QuickSnipe grades your live listing across all 5 ranking pillars (title, tags, depth, photos, price) and applies 1-click Auto-Fix chips on your active tab.</span>
+            <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa" target="_blank" rel="noopener noreferrer">Auto-audit live listings in Chrome ↗</a>
+          </div>
         </div>
 
         <!-- Shipping checker -->
@@ -1215,6 +1449,11 @@
           </div>
 
           <div id="sot-advice-text" style="font-size: 0.86rem; color: var(--text-muted); margin-top: 14px; line-height: 1.45;"></div>
+
+          <div class="calc-ext-bridge">
+            <span><strong>Automate in Chrome:</strong> QuickSnipe's built-in Ounce-Trap Radar checks box + item weights, DIM weight, and USPS zones directly inside your Side Panel while creating listings or evaluating buyer offers.</span>
+            <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa" target="_blank" rel="noopener noreferrer">Run Ounce-Trap checks in Chrome ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1284,68 +1523,15 @@
     </div>
   </section>
 
-  <!-- ================= SOCIAL PROOF / REVIEWS ================= -->
-  <section id="reviews" class="section-padding">
+  <!-- ================= CHROME WEB STORE RATING ================= -->
+  <section id="reviews" class="section-padding" style="padding: 40px 0;">
     <div class="container">
-      <div class="section-header">
-        <span class="section-eyebrow">Real Seller Stories</span>
-        <h2 class="section-title">Loved by 60+ resellers who got their evenings back</h2>
-        <p class="section-desc">From weekend thrifters to high-volume boutiques. Here is why sellers are dropping monthly subscriptions for QuickSnipe.</p>
-      </div>
-
-      <div class="reviews-grid">
-        <div class="review-card glass-card">
-          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="review-quote">
-            “I cross-post about 75 vintage pieces a month across eBay, Poshmark and Mercari. Moving photos from my phone used to take forever. Now with Mobile Photo Sync and QuickBar, I list in 5 minutes flat. <strong>Cut my listing hours by more than half.</strong>”
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar">EM</div>
-            <div class="review-meta">
-              <strong>Elena M.</strong>
-              <span>Vintage &amp; Thrift Boutique · eBay &amp; Poshmark</span>
-            </div>
-            <span class="verified-pill">✓ Verified User</span>
-          </div>
-        </div>
-
-        <div class="review-card glass-card featured-review">
-          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="review-quote">
-            “I was paying $40/month for Vendoo just to push listings between three platforms. QuickSnipe living directly in Chrome’s side panel is 10x faster. <strong>Bought the $69 Lifetime pass — it paid for itself in six weeks.</strong> Best tool investment I’ve made.”
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar">MT</div>
-            <div class="review-meta">
-              <strong>Marcus T.</strong>
-              <span>Streetwear &amp; Kicks · Mercari, eBay &amp; Grailed</span>
-            </div>
-            <span class="verified-pill">✓ Verified User</span>
-          </div>
-        </div>
-
-        <div class="review-card glass-card">
-          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="review-quote">
-            “The 16 oz ounce trap radar saved me on day two. I had a Carhartt jacket packed at 15.8 oz that would have pushed past 1 lb in a box. <strong>Switched to a poly mailer and saved $4.80 in Ground Advantage fees on a single shipment.</strong>”
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar">DR</div>
-            <div class="review-meta">
-              <strong>Dave R.</strong>
-              <span>Workwear &amp; Heavy Goods · eBay Top Rated</span>
-            </div>
-            <span class="verified-pill">✓ Verified User</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="reviews-footer-trust">
+      <div class="reviews-footer-trust" style="margin-top: 0;">
         <div class="cws-trust-badge">
-          <span class="stars-inline"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
-          <strong>5.0 / 5.0 Rating</strong>
-          <span>• 62 Verified Reviews on Google Chrome Web Store</span>
-          <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa/reviews" target="_blank" rel="noopener noreferrer" class="cws-reviews-link">Read all reviews on Chrome Store ↗</a>
+          <span class="stars-inline" role="img" aria-label="5 out of 5 stars"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+          <strong>5.0 / 5.0</strong>
+          <span>• 1 review on the Chrome Web Store · Built by an indie developer</span>
+          <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa/reviews" target="_blank" rel="noopener noreferrer" class="cws-reviews-link">Leave an honest review on Chrome Store ↗</a>
         </div>
       </div>
     </div>
@@ -1357,13 +1543,13 @@
       <div class="section-header">
         <span class="section-eyebrow">Simple, honest pricing</span>
         <h2 class="section-title">Start free. Upgrade only if you love it.</h2>
-        <p class="section-desc">Every new install gets <strong>7 days of Pro, free</strong>. No credit card, no sign-up. After that, keep the free plan forever or upgrade.</p>
+        <p class="section-desc">Every new install gets <strong>7 days of Pro, free</strong>. No credit card, no sign-up. After that, stay on the free daily plan or upgrade.</p>
       </div>
 
       <div class="pricing-grid">
         <div class="price-card">
           <div class="price-name">Free</div>
-          <div class="price-amount">$0 <small>forever</small></div>
+          <div class="price-amount">$0 <small>to start</small></div>
           <div class="price-note">Perfect for trying things out and casual sellers.</div>
           <ul class="check-list">
             <li><strong>5 free snipes</strong> every day, reset at midnight</li>
@@ -1396,17 +1582,17 @@
 
         <div class="price-card">
           <span class="price-badge" style="background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 100%);">Founder deal · Limited</span>
-          <div class="price-name">Lifetime</div>
+          <div class="price-name">One-Time Pass</div>
           <div class="price-amount">$69 <small>once</small></div>
-          <div class="price-note">Hate subscriptions? Pay once, yours forever. Zero recurring bills.</div>
+          <div class="price-note">Hate subscriptions? Pay once — no recurring monthly bills.</div>
           <ul class="check-list">
-            <li><strong>Everything in Pro</strong>, forever</li>
+            <li><strong>Everything in Pro</strong>, one-time payment</li>
             <li>No monthly bill, ever</li>
-            <li>All future 2026/2027 platform additions included</li>
+            <li>Includes all supported marketplaces &amp; updates</li>
             <li>Pays for itself in under 2 months vs. a $40/mo cross-lister</li>
           </ul>
           <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
-            target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block">Get Lifetime Access</a>
+            target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block">Get One-Time Access</a>
         </div>
       </div>
 
@@ -1443,39 +1629,110 @@
     </div>
   </section>
 
-  <!-- ================= TRUST / SAFETY ================= -->
+  <!-- ================= TRUST / PRIVACY & HOW BYOK WORKS ================= -->
   <section id="privacy" class="section-padding">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Safe for your shops</span>
-        <h2 class="section-title">Built to protect your accounts and your privacy</h2>
+        <span class="section-eyebrow">Privacy, Permissions &amp; How BYOK Works</span>
+        <h2 class="section-title">What stays local, what goes to AI, and why your accounts stay safe</h2>
+        <p class="section-desc">Clear answers to the two questions every reseller asks before installing an extension: what happens to my photos/keys, and will this ever flag my seller account?</p>
       </div>
-      <div class="trust-grid">
-        <div class="trust-item glass-card">
-          <span class="trust-emoji" aria-hidden="true">🤝</span>
-          <h3>No bots, no risk</h3>
-          <p>QuickSnipe fills in forms just like you would. You stay in control and click publish yourself.</p>
+
+      <div class="architecture-grid">
+        <article class="arch-card">
+          <span class="arch-badge">1 · Stays on Your Device</span>
+          <h3>100% Local Browser Storage</h3>
+          <p>QuickSnipe runs inside Chrome with zero developer user accounts, zero analytics SDKs, and bundled local fonts (zero remote CDN calls).</p>
+          <ul class="check-list">
+            <li><strong>Flip CRM, COGS &amp; Profits:</strong> Saved strictly in <code>chrome.storage.local</code> — never synced to any server.</li>
+            <li><strong>Swipes, Deal Radar &amp; Keys:</strong> Saved locally; settings backups mask API keys and strip license keys.</li>
+            <li><strong>Optional Phone QR Sync:</strong> Ephemeral relay purges undelivered photos automatically in 60s.</li>
+          </ul>
+        </article>
+
+        <article class="arch-card">
+          <span class="arch-badge arch-badge-indigo">2 · Direct BYOK or Offline AI</span>
+          <h3>How AI &amp; BYOK Work in Practice</h3>
+          <p>QuickSnipe works right out of the box with no API key. If you connect your own BYOK key (Gemini, OpenAI, Claude, Groq, DeepSeek, OpenRouter):</p>
+          <ul class="check-list">
+            <li><strong>Direct HTTPS Calls:</strong> Chrome sends only the active item's text or selected photo straight to that provider — never via QuickSnipe servers.</li>
+            <li><strong>Prompt-Injection Shield:</strong> Scraped text is isolated inside <code>&lt;untrusted_marketplace_data&gt;</code> delimiters.</li>
+            <li><strong>100% Offline Option:</strong> Use Chrome Built-in AI (Gemini Nano) or local Ollama with zero cloud calls.</li>
+          </ul>
+        </article>
+
+        <article class="arch-card">
+          <span class="arch-badge">3 · Seller Account Safety</span>
+          <h3>Zero-Permission Install &amp; Human Control</h3>
+          <p>Marketplace accounts stay safe because QuickSnipe behaves like a human assistant inside your own open tab:</p>
+          <ul class="check-list">
+            <li><strong>v1.5.0 Opt-In Permissions:</strong> Asks for zero marketplace site permissions at install (only <code>extensionpay.com</code> for licensing). Enable &amp; revoke per platform anytime.</li>
+            <li><strong>No Bots or Logins:</strong> Never sees passwords, cookies, or payment details; uses standard DOM input events.</li>
+            <li><strong>You Click Publish:</strong> Every listing draft and price is reviewed by you before publishing.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="privacy-policy-bar">
+        <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">📄 Read Full Privacy Policy (v1.5.0) ↗</a>
+        <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">🛡️ Security &amp; Disclosure Policy ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUPPORT & TROUBLESHOOTING HUB ================= -->
+  <section id="support" class="section-padding section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Support &amp; Help Center</span>
+        <h2 class="section-title">Setup guides, BYOK help, and direct troubleshooting</h2>
+        <p class="section-desc">Already using QuickSnipe or setting up a new marketplace or AI key? Jump straight to the resource you need.</p>
+      </div>
+
+      <div class="support-hub-grid">
+        <div class="support-hub-card">
+          <h3>⚡ 30-Second Setup &amp; Marketplace Opt-In</h3>
+          <p>Click <strong>Add to Chrome</strong>, pin QuickSnipe from the Extensions puzzle menu, then pick only the marketplaces you sell on in Onboarding or <strong>Settings ⚙ → Enabled Marketplaces</strong>. Press <strong>Alt+Q</strong> anywhere to toggle the Side Panel.</p>
+          <div class="support-links">
+            <a href="#how-it-works" class="btn btn-secondary btn-sm">How It Works</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md#21-opt-in-marketplace--ai-host-permissions-v150" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Permission Setup ↗</a>
+          </div>
         </div>
-        <div class="trust-item glass-card">
-          <span class="trust-emoji" aria-hidden="true">🔑</span>
-          <h3>Never sees your passwords</h3>
-          <p>No logins, no payment details, no access to your seller accounts. Ever.</p>
+
+        <div class="support-hub-card">
+          <h3>🔑 BYOK API Key &amp; Local AI Help</h3>
+          <p>Start free with <strong>Google Gemini</strong> (<code>gemini-3.6-flash</code>) or <strong>Groq</strong>, or run 100% offline with Chrome Built-in Gemini Nano or local Ollama. Seeing a <code>401</code>, <code>429</code>, or Ollama CORS error? Check the step-by-step key diagnostics.</p>
+          <div class="support-links">
+            <a href="#ai-options" class="btn btn-secondary btn-sm">Compare AI Options</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md#3-ai-generation-fails-401-unauthorized--invalid-api-key" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">API Key Guide ↗</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/issues/new?template=4_byok_api_issue.yml" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">BYOK Issue Form ↗</a>
+          </div>
         </div>
-        <div class="trust-item glass-card">
-          <span class="trust-emoji" aria-hidden="true">🔒</span>
-          <h3>Your numbers stay yours</h3>
-          <p>Your inventory, costs and profits are saved on your computer, not on someone else's server.</p>
+
+        <div class="support-hub-card">
+          <h3>🛠️ Troubleshooting &amp; Quick Diagnostics</h3>
+          <p>Side panel says <em>"No listing detected"</em>, QuickBar won't autofill, or Deal Radar alerts aren't firing? Verify marketplace opt-in access, hard-refresh the tab, or inspect DevTools logs using our 21-point checklist.</p>
+          <div class="support-links">
+            <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Troubleshooting Guide ↗</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/blob/main/SUPPORT.md" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">Support SLA &amp; Channels ↗</a>
+          </div>
         </div>
-        <div class="trust-item glass-card">
-          <span class="trust-emoji" aria-hidden="true">🔄</span>
-          <h3>Always up to date</h3>
-          <p>Chrome updates QuickSnipe automatically, so you get new features without lifting a finger.</p>
+
+        <div class="support-hub-card">
+          <h3>💬 Bug Reports, Scraper Fixes &amp; Community</h3>
+          <p>Marketplaces change HTML layouts often. Report a broken scraper or bug directly with one of our pre-filled GitHub forms, get Pro billing help within 24h, or ask fellow sellers in Discussions.</p>
+          <div class="support-links">
+            <a href="https://github.com/RadTome/QuickSnipe-support/issues/new?template=1_bug_report.yml" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">🐛 Bug Report ↗</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/issues/new?template=3_marketplace_scraper_issue.yml" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">🛒 Scraper Issue ↗</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/issues/new?template=5_billing_license_support.yml" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">💳 Billing Help ↗</a>
+            <a href="https://github.com/RadTome/QuickSnipe-support/discussions" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">💬 Discussions ↗</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- (What's New lives in the v1.4.5 Spotlight directly after the problem/fix section) -->
+  <!-- (What's New lives in the v1.5.0 Spotlight directly after the problem/fix section) -->
 
   <!-- ================= FAQ ================= -->
   <section id="faq" class="section-padding">
@@ -1495,7 +1752,7 @@
         <div class="faq-item">
           <button class="faq-question"><span>Is QuickSnipe really free?</span><span class="faq-icon">▼</span></button>
           <div class="faq-answer">
-            <p><strong>Yes.</strong> The free plan gives you <strong>5 free snipes every day</strong>, reset at midnight, forever. Every new install also gets <strong>7 days of Pro free</strong> with no credit card. Want unlimited? Pro is $7.99/month, $49/year, or $69 once for lifetime access.</p>
+            <p><strong>Yes.</strong> The free daily plan gives you <strong>5 free snipes every day</strong>, reset at midnight. Every new install also gets <strong>7 days of Pro free</strong> with no credit card. Want unlimited? Pro is $7.99/month, $49/year, or a $69 one-time option.</p>
           </div>
         </div>
 
@@ -1563,16 +1820,23 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-question"><span>What's new in version 1.4.5?</span><span class="faq-icon">▼</span></button>
+          <button class="faq-question"><span>What's new in version 1.5.0?</span><span class="faq-icon">▼</span></button>
           <div class="faq-answer">
-            <p><strong>Wire-Free Mobile Photo Sync</strong> — scan a QR code with your iPhone or Android camera and photos stream straight into your Chrome side panel over encrypted peer-to-peer WebRTC (with a Cloud Bridge fallback), zero apps and zero cables. Plus a high-contrast <strong>Light Glass UI</strong>, synchronized 9-platform fee schedules, an <strong>AbortSignal kill-switch</strong> for AI generations, and Chrome Web Store compliance hardening. <a href="#whats-new">See the full v1.4.5 tour</a>.</p>
+            <p><strong>Zero-permission opt-in install</strong> (asks for zero marketplace permissions at install; enable only the sites you sell on in Onboarding or Settings), <strong>refreshed 2026 live DOM parsers</strong> across eBay, Grailed, Depop, Amazon, Mercari, Walmart and <code>admin.shopify.com</code>, <strong>bundled local fonts</strong> (zero external CDN calls), <strong>prompt-injection isolation</strong> with <code>&lt;untrusted_marketplace_data&gt;</code> delimiters, automatic migration off legacy Gemini 2.0 / Groq 3.2 IDs, a <strong>one-click Update Ready banner</strong> inside the side panel, and <strong>516 passing unit tests</strong>. <a href="#whats-new">See the full v1.5.0 tour</a>.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question"><span>How do opt-in marketplace permissions and BYOK privacy work?</span><span class="faq-icon">▼</span></button>
+          <div class="faq-answer">
+            <p>QuickSnipe keeps your inventory, COGS, profits, swipes, and API keys locally in <code>chrome.storage.local</code> and requests zero marketplace host access on install. You opt into only the marketplaces you sell on and can revoke any platform anytime. If you connect an optional BYOK API key, requests go directly over HTTPS from Chrome to that provider using only the active item's text or photo—never through QuickSnipe servers. <a href="#privacy">See the full Privacy &amp; BYOK breakdown</a>.</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-question"><span>How does the free 7-day Pro trial work?</span><span class="faq-icon">▼</span></button>
           <div class="faq-answer">
-            <p><strong>Automatically.</strong> Every new install unlocks <strong>7 days of unrestricted Pro</strong> — unlimited generations, the full cross-lister and every Pro tool. No credit card, no account, no sign-up. On day 8 you revert to the free plan (5 free snipes a day, forever) or upgrade.</p>
+            <p><strong>Automatically.</strong> Every new install unlocks <strong>7 days of unrestricted Pro</strong> — unlimited generations, the full cross-lister and every Pro tool. No credit card, no account, no sign-up. On day 8 you revert to the free daily plan (5 free snipes a day) or upgrade.</p>
           </div>
         </div>
 
@@ -1597,7 +1861,7 @@
           <span>⚡ Add QuickSnipe to Chrome — Free</span>
         </a>
         <div class="hero-microcopy" style="margin-top: 16px;">
-          <span>Free forever plan</span>
+          <span>Free daily plan</span>
           <span>7 days of Pro free</span>
           <span>No credit card</span>
         </div>
@@ -1616,25 +1880,6 @@
     </div>
   </section>
   </main>
-
-  <!-- Sticky Bottom Install Bar (reveals on scroll) -->
-  <aside id="sticky-install-bar" class="sticky-install-bar" aria-label="Quick install bar">
-    <div class="sticky-bar-inner">
-      <div class="sticky-bar-info">
-        <img src="assets/icon-48.png" alt="" width="36" height="36" style="border-radius: 8px;">
-        <div>
-          <strong style="color: var(--text-main); font-size: 0.95rem;">QuickSnipe: list faster, sell everywhere</strong>
-          <div class="sticky-bar-rating">⭐⭐⭐⭐⭐ 5.0 (62 reviews) • v1.4.5 now live • Free forever plan</div>
-        </div>
-      </div>
-      <div>
-        <a href="https://chromewebstore.google.com/detail/quicksnipe-ai-listing-res/aignalgmmlmnmofabamcdngdopabgkaa"
-          target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
-          <span>Add to Chrome — Free</span>
-        </a>
-      </div>
-    </div>
-  </aside>
 
   <!-- Toast Notice -->
   <div id="portal-toast" class="toast-notice" role="status">✓ Copied to clipboard!</div>
@@ -1679,8 +1924,10 @@
         <div class="footer-col">
           <h4>Help &amp; Policies</h4>
           <ul>
+            <li><a href="#support">Support &amp; Setup Hub</a></li>
+            <li><a href="#privacy">Privacy &amp; BYOK Guide</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer">Help Guide</a></li>
+            <li><a href="https://github.com/RadTome/QuickSnipe-support/blob/main/TROUBLESHOOTING.md" target="_blank" rel="noopener noreferrer">Troubleshooting Guide</a></li>
             <li><a href="https://github.com/RadTome/QuickSnipe-support/discussions" target="_blank" rel="noopener noreferrer">Seller Community</a></li>
             <li><a href="https://github.com/RadTome/QuickSnipe-support/blob/main/CHANGELOG.md" target="_blank" rel="noopener noreferrer">What's New</a></li>
             <li><a href="https://github.com/RadTome/QuickSnipe-support/blob/main/PRIVACY.md" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
