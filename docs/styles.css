@@ -1367,11 +1367,7 @@ summary:focus-visible {
   display: block;
 }
 
-/* Toast */
-.toast-notice {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
+/* SEO Footer */
 .site-footer {
   background: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
@@ -1439,7 +1435,7 @@ summary:focus-visible {
 /* Toast */
 .toast-notice {
   position: fixed;
-  bottom: 80px;
+  bottom: 24px;
   right: 24px;
   background: var(--bg-card);
   backdrop-filter: blur(16px);
